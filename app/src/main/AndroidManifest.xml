@@ -13,7 +13,7 @@
         android:roundIcon="@mipmap/icon"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".Activity.MyTeamActivity"></activity>
+
         <activity android:name=".Activity.FriendShareActivity" />
         <activity android:name=".Activity.BaseActivity" /> <!-- 启动页 -->
         <activity
@@ -80,6 +80,11 @@
             android:name=".Activity.PersonalDataActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
+
+        <activity android:name=".Activity.MyTeamActivity"
+                android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"
+            />
     </application>
 
 </manifest>

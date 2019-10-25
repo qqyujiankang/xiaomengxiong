@@ -5,4 +5,10 @@
     style="@style/MatchMatch.Vertical"
     tools:context=".Activity.MyTeamActivity">
 
+    <include layout="@layout/public_title" />
+
+    <WebView
+        android:layout_width="match_parent"
+
+        android:layout_height="match_parent" />
 </LinearLayout>
