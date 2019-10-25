@@ -1,0 +1,48 @@
+Index: app/src/main/res/layout/activity_my_team.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/activity_my_team.xml	(revision 78a495d08daafe794815ed2c92d579759da0a0fc)
++++ app/src/main/res/layout/activity_my_team.xml	(date 1571983805619)
+@@ -5,4 +5,10 @@
+     style="@style/MatchMatch.Vertical"
+     tools:context=".Activity.MyTeamActivity">
+ 
++    <include layout="@layout/public_title" />
++
++    <WebView
++        android:layout_width="match_parent"
++
++        android:layout_height="match_parent" />
+ </LinearLayout>
+\ No newline at end of file
+Index: app/src/main/AndroidManifest.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/AndroidManifest.xml	(revision 78a495d08daafe794815ed2c92d579759da0a0fc)
++++ app/src/main/AndroidManifest.xml	(date 1571983805610)
+@@ -13,7 +13,7 @@
+         android:roundIcon="@mipmap/icon"
+         android:supportsRtl="true"
+         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+-        <activity android:name=".Activity.MyTeamActivity"></activity>
++
+         <activity android:name=".Activity.FriendShareActivity" />
+         <activity android:name=".Activity.BaseActivity" /> <!-- 启动页 -->
+         <activity
+@@ -80,6 +80,11 @@
+             android:name=".Activity.PersonalDataActivity"
+             android:screenOrientation="portrait"
+             android:theme="@style/AppTheme" />
++
++        <activity android:name=".Activity.MyTeamActivity"
++                android:screenOrientation="portrait"
++            android:theme="@style/AppTheme"
++            />
+     </application>
+ 
+ </manifest>
+\ No newline at end of file
