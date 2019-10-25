@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/MatchMatch.Vertical"
+    android:background="@color/black"
+    tools:context=".Activity.SecurityCenterconActivity">
+
+    <include layout="@layout/public_title" />
+
+    <LinearLayout
+
+        style="@style/MatchWrap.Vertical"
+        android:layout_marginTop="@dimen/icon_width_height_20"
+        android:background="@color/black_p">
+
+        <RelativeLayout
+            android:id="@+id/Rl_Change_login_password"
+            style="@style/MatchWrap"
+            android:layout_marginStart="@dimen/icon_width_height_20"
+            android:layout_marginLeft="@dimen/icon_width_height_20"
+            android:padding="@dimen/icon_width_height_10">
+
+            <TextView
+                style="@style/WrapWrap"
+                android:text="@string/Change_login_password"
+                android:textColor="@color/white" />
+
+            <ImageView style="@style/WrapWrap.ImageView_bank" />
+        </RelativeLayout>
+
+        <include layout="@layout/public_line" />
+
+        <RelativeLayout
+            android:id="@+id/Rl_Set_security_password"
+            style="@style/MatchWrap"
+            android:layout_marginStart="@dimen/icon_width_height_20"
+            android:layout_marginLeft="@dimen/icon_width_height_20"
+            android:padding="@dimen/icon_width_height_10">
+
+            <TextView
+                style="@style/WrapWrap"
+                android:text="@string/Set_security_password"
+                android:textColor="@color/white" />
+
+            <ImageView style="@style/WrapWrap.ImageView_bank" />
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>

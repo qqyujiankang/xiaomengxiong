@@ -12,9 +12,9 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
- * 我的团队
+ * 节点收益
  */
-public class MyTeamActivity extends BaseActivity {
+public class NodeReturnsActivity extends BaseActivity {
 
     @BindView(R.id.public_back)
     TextView publicBack;
@@ -30,7 +30,7 @@ public class MyTeamActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_my_team);
+        setContentView(R.layout.activity_node_returns);
         ButterKnife.bind(this);
         initView();
     }
@@ -38,11 +38,10 @@ public class MyTeamActivity extends BaseActivity {
     @Override
     public void initView() {
         super.initView();
-        publicTitleTv.setText(getText(R.string.my_team));
+        publicTitleTv.setText(getString(R.string.Node_returns));
     }
 
     @OnClick(R.id.public_back)
     public void onViewClicked() {
-        finish();
     }
 }

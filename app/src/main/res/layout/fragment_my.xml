@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     style="@style/MatchMatch.Vertical"
-    android:background="@color/black_01">
+    android:background="@color/black">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -28,6 +28,7 @@
             </LinearLayout>
 
             <RelativeLayout
+                android:id="@+id/Rl_Record"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
                 android:layout_marginStart="@dimen/start_or_end_20"
@@ -55,9 +56,10 @@
             <LinearLayout
                 style="@style/MatchWrap.Vertical"
                 android:layout_marginTop="@dimen/start_or_end_20"
-                android:background="#121E2EFF">
+                android:background="@color/black_01">
 
                 <LinearLayout
+                    android:id="@+id/Ll_Friends_share"
                     style="@style/MatchWrap.Horizontal"
                     android:layout_marginStart="@dimen/start_or_end_20"
                     android:layout_marginLeft="@dimen/start_or_end_20"
@@ -78,18 +80,10 @@
                             android:id="@+id/tv_Friends_share"
                             style="@style/WrapWrap"
                             android:layout_centerVertical="true"
-                            android:text="分享好友"
+                            android:text="@string/Friends_share"
                             android:textColor="@color/white" />
 
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentRight="true"
-                            android:layout_centerVertical="true"
-                            android:layout_gravity="center"
-                            android:layout_marginEnd="@dimen/start_or_end_20"
-                            android:layout_marginRight="@dimen/start_or_end_20"
-                            android:src="@mipmap/bank" />
+                        <ImageView style="@style/WrapWrap.ImageView_bank" />
 
                         <TextView
                             android:layout_width="match_parent"
@@ -104,6 +98,7 @@
 
 
                 <LinearLayout
+                    android:id="@+id/ll_my_team"
                     style="@style/MatchWrap.Horizontal"
                     android:layout_marginStart="@dimen/start_or_end_20"
                     android:layout_marginLeft="@dimen/start_or_end_20"
@@ -111,8 +106,7 @@
                     android:layout_marginBottom="@dimen/start_or_end_10">
 
                     <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        style="@style/WrapWrap"
                         android:layout_gravity="center"
                         android:src="@mipmap/fenxianghaoyou" />
 
@@ -125,18 +119,10 @@
                             android:id="@+id/tv_my_team"
                             style="@style/WrapWrap"
                             android:layout_centerVertical="true"
-                            android:text="我的团队"
+                            android:text="@string/my_team"
                             android:textColor="@color/white" />
 
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentRight="true"
-                            android:layout_centerVertical="true"
-                            android:layout_gravity="center"
-                            android:layout_marginEnd="@dimen/start_or_end_20"
-                            android:layout_marginRight="@dimen/start_or_end_20"
-                            android:src="@mipmap/bank" />
+                        <ImageView style="@style/WrapWrap.ImageView_bank" />
 
                         <TextView
                             android:layout_width="match_parent"
@@ -150,13 +136,13 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/Rl__Node_returns"
                     style="@style/MatchWrap.Horizontal"
                     android:layout_marginStart="@dimen/start_or_end_20"
                     android:layout_marginLeft="@dimen/start_or_end_20">
 
                     <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        style="@style/WrapWrap"
                         android:layout_gravity="center"
                         android:src="@mipmap/jiedian" />
 
@@ -169,18 +155,10 @@
                             android:id="@+id/tv_Node_returns"
                             style="@style/WrapWrap"
                             android:layout_centerVertical="true"
-                            android:text="节点收益"
+                            android:text="@string/Node_returns"
                             android:textColor="@color/white" />
 
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentRight="true"
-                            android:layout_centerVertical="true"
-                            android:layout_gravity="center"
-                            android:layout_marginEnd="@dimen/start_or_end_20"
-                            android:layout_marginRight="@dimen/start_or_end_20"
-                            android:src="@mipmap/bank" />
+                        <ImageView style="@style/WrapWrap.ImageView_bank" />
 
                         <TextView
                             android:layout_width="match_parent"
@@ -194,14 +172,14 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/ll_gain_recording"
                     style="@style/MatchWrap.Horizontal"
                     android:layout_marginStart="@dimen/start_or_end_20"
                     android:layout_marginLeft="@dimen/start_or_end_20"
                     android:layout_marginBottom="@dimen/start_or_end_10">
 
                     <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        style="@style/WrapWrap"
                         android:layout_gravity="center"
                         android:src="@mipmap/message_2" />
 
@@ -214,18 +192,10 @@
                             android:id="@+id/tv_gain_recording"
                             style="@style/WrapWrap"
                             android:layout_centerVertical="true"
-                            android:text="收益记录"
+                            android:text="@string/gain_recording"
                             android:textColor="@color/white" />
 
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentRight="true"
-                            android:layout_centerVertical="true"
-                            android:layout_gravity="center"
-                            android:layout_marginEnd="@dimen/start_or_end_20"
-                            android:layout_marginRight="@dimen/start_or_end_20"
-                            android:src="@mipmap/bank" />
+                        <ImageView style="@style/WrapWrap.ImageView_bank" />
 
                         <TextView
                             android:layout_width="match_parent"
@@ -239,6 +209,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/Ll_USDT_address_binding"
                     style="@style/MatchWrap.Horizontal"
                     android:layout_marginStart="@dimen/start_or_end_20"
                     android:layout_marginLeft="@dimen/start_or_end_20"
@@ -259,18 +230,10 @@
                             android:id="@+id/tv_address_binding"
                             style="@style/WrapWrap"
                             android:layout_centerVertical="true"
-                            android:text="USDT地址绑定"
+                            android:text="@string/USDT_address_binding"
                             android:textColor="@color/white" />
 
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentRight="true"
-                            android:layout_centerVertical="true"
-                            android:layout_gravity="center"
-                            android:layout_marginEnd="@dimen/start_or_end_20"
-                            android:layout_marginRight="@dimen/start_or_end_20"
-                            android:src="@mipmap/bank" />
+                        <ImageView style="@style/WrapWrap.ImageView_bank" />
 
                         <TextView
                             android:layout_width="match_parent"
@@ -284,14 +247,14 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/ll_set_password"
                     style="@style/MatchWrap.Horizontal"
                     android:layout_marginStart="@dimen/start_or_end_20"
                     android:layout_marginLeft="@dimen/start_or_end_20"
                     android:layout_marginBottom="@dimen/start_or_end_10">
 
                     <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        style="@style/WrapWrap"
                         android:layout_gravity="center"
                         android:src="@mipmap/mimao" />
 
@@ -304,18 +267,10 @@
                             android:id="@+id/tv_apassword"
                             style="@style/WrapWrap"
                             android:layout_centerVertical="true"
-                            android:text="密码设置"
+                            android:text="@string/set_password"
                             android:textColor="@color/white" />
 
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentRight="true"
-                            android:layout_centerVertical="true"
-                            android:layout_gravity="center"
-                            android:layout_marginEnd="@dimen/start_or_end_20"
-                            android:layout_marginRight="@dimen/start_or_end_20"
-                            android:src="@mipmap/bank" />
+                        <ImageView style="@style/WrapWrap.ImageView_bank" />
 
                         <TextView
                             android:layout_width="match_parent"
@@ -333,17 +288,17 @@
             <LinearLayout
                 style="@style/MatchWrap.Vertical"
                 android:layout_marginTop="@dimen/start_or_end_20"
-                android:background="#121E2EFF">
+                android:background="@color/black_01">
 
                 <LinearLayout
+                    android:id="@+id/ll_feedback"
                     style="@style/MatchWrap.Horizontal"
                     android:layout_marginStart="@dimen/start_or_end_20"
                     android:layout_marginLeft="@dimen/start_or_end_20"
                     android:layout_marginBottom="@dimen/start_or_end_10">
 
                     <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        style="@style/WrapWrap"
                         android:layout_gravity="center"
                         android:src="@mipmap/yijianfankui" />
 
@@ -356,18 +311,10 @@
                             android:id="@+id/tv_feedback"
                             style="@style/WrapWrap"
                             android:layout_centerVertical="true"
-                            android:text="意见反馈"
+                            android:text="@string/feedback"
                             android:textColor="@color/white" />
 
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentRight="true"
-                            android:layout_centerVertical="true"
-                            android:layout_gravity="center"
-                            android:layout_marginEnd="@dimen/start_or_end_20"
-                            android:layout_marginRight="@dimen/start_or_end_20"
-                            android:src="@mipmap/bank" />
+                        <ImageView style="@style/WrapWrap.ImageView_bank" />
 
                         <TextView
                             android:layout_width="match_parent"
@@ -382,6 +329,7 @@
 
 
                 <LinearLayout
+                    android:id="@+id/ll_version_information"
                     style="@style/MatchWrap.Horizontal"
                     android:layout_marginStart="@dimen/start_or_end_20"
                     android:layout_marginLeft="@dimen/start_or_end_20"
@@ -389,8 +337,7 @@
                     android:layout_marginBottom="@dimen/start_or_end_10">
 
                     <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        style="@style/WrapWrap"
                         android:layout_gravity="center"
                         android:src="@mipmap/banbenxinxi" />
 
@@ -403,18 +350,10 @@
                             android:id="@+id/tv_version_information"
                             style="@style/WrapWrap"
                             android:layout_centerVertical="true"
-                            android:text="版本信息"
+                            android:text="@string/version_information"
                             android:textColor="@color/white" />
 
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentRight="true"
-                            android:layout_centerVertical="true"
-                            android:layout_gravity="center"
-                            android:layout_marginEnd="@dimen/start_or_end_20"
-                            android:layout_marginRight="@dimen/start_or_end_20"
-                            android:src="@mipmap/bank" />
+                        <ImageView style="@style/WrapWrap.ImageView_bank" />
 
                         <TextView
                             android:layout_width="match_parent"

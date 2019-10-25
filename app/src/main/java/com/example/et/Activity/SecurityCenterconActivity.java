@@ -2,21 +2,21 @@ package com.example.et.Activity;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.et.R;
+import com.example.et.Ustlis.ActivityUtils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
- * 预约合约
+ * 安全中心
  */
-public class AppointmentcontractActivity extends BaseActivity {
+public class SecurityCenterconActivity extends BaseActivity {
 
     @BindView(R.id.public_back)
     TextView publicBack;
@@ -28,32 +28,40 @@ public class AppointmentcontractActivity extends BaseActivity {
     ImageView ivPublicOther;
     @BindView(R.id.rl_bacground)
     RelativeLayout rlBacground;
-    @BindView(R.id.public_button)
-    Button publicButton;
+    @BindView(R.id.Rl_Change_login_password)
+    RelativeLayout RlChangeLoginPassword;
+    @BindView(R.id.Rl_Set_security_password)
+    RelativeLayout RlSetSecurityPassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_appointmentcontract);
+        setContentView(R.layout.activity_security_centercon);
         ButterKnife.bind(this);
-        initView();
 
+        initView();
     }
 
     @Override
     public void initView() {
         super.initView();
-        publicTitleTv.setText(getString(R.string.Appointment_contract));
-        publicButton.setText(getString(R.string.confirm));
+        publicTitleTv.setText(getString(R.string.Security_Centercon));
     }
 
-    @OnClick({R.id.public_back, R.id.public_button})
+    @OnClick({R.id.public_back, R.id.Rl_Change_login_password, R.id.Rl_Set_security_password})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.public_back:
                 finish();
                 break;
-            case R.id.public_button:
+            case R.id.Rl_Change_login_password:
+                ActivityUtils.startActivity(LogiPasswordActivity.class);
+
+                break;
+            case R.id.Rl_Set_security_password:
+                  ActivityUtils.startActivity(SafePasswordActivity.class);
+
+
                 break;
         }
     }

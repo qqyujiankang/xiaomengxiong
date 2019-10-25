@@ -3,9 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/MatchMatch.Vertical"
-    tools:context=".Activity.MyTeamActivity">
+    android:background="@color/black"
+    tools:context=".Activity.NodeReturnsActivity">
 
     <include layout="@layout/public_title" />
-
-
 </LinearLayout>

@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.example.et.Activity.HopePropertyActivityActivity;
 import com.example.et.Activity.USTDPropertyActivity;
 import com.example.et.R;
 import com.example.et.Ustlis.ActivityUtils;
@@ -91,6 +92,8 @@ public class WalletFragment extends BaseFragment {
                 ActivityUtils.startActivity(intent);
                 break;
             case R.id.RL_Hope:
+                intent.setClass(context, HopePropertyActivityActivity.class);
+                ActivityUtils.startActivity(intent);
                 break;
         }
     }

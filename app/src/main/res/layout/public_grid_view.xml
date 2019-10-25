@@ -3,7 +3,7 @@
     android:id="@+id/public_grid_view"
     style="@style/MatchWrap"
     android:background="@color/black_01"
-    android:listSelector="@color/white"
+    android:listSelector="@color/black_01"
     android:paddingBottom="10dp"
 
     android:paddingTop="10dp"

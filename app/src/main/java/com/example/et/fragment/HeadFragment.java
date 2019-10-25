@@ -173,11 +173,13 @@ public class HeadFragment extends BaseFragment implements AdapterView.OnItemClic
 
     @OnClick({R.id.service, R.id.ll_announcement})
     public void onViewClicked(View view) {
+              Intent intent = new Intent();
         switch (view.getId()) {
             case R.id.service:
+
                 break;
             case R.id.ll_announcement:
-                Intent intent = new Intent();
+
                 intent.setClass(context, Contentoftheannouncementctivity.class);
 
                 ActivityUtils.startActivity(intent);

@@ -41,6 +41,6 @@
             android:id="@+id/settings_tab"
             style="@style/Custom.TabRadioButton"
             android:drawableTop="@drawable/tab_contact_myr"
-            android:text="设置" />
+            android:text="@string/my" />
     </RadioGroup>
 </RelativeLayout>

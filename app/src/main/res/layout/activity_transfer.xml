@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/MatchMatch.Vertical"
+    android:background="@color/black"
+    tools:context=".Activity.TransferActivity">
+
+    <include layout="@layout/public_title" />
+
+    <LinearLayout
+        style="@style/MatchWrap.Vertical"
+        android:layout_marginTop="@dimen/icon_width_height_10"
+        android:background="@color/black_p"
+
+        android:paddingStart="@dimen/icon_width_height_20"
+        android:paddingLeft="@dimen/icon_width_height_20">
+
+        <TextView
+            style="@style/WrapWrap"
+            android:paddingTop="@dimen/start_or_end_5"
+            android:paddingBottom="@dimen/start_or_end_5"
+            android:text="账号"
+            android:textColor="@color/white" />
+
+        <EditText
+            style="@style/MatchWrap"
+            android:background="@null"
+            android:hint="请填写对方账号"
+            android:paddingTop="@dimen/start_or_end_5"
+            android:paddingBottom="@dimen/start_or_end_5"
+            android:textColor="@color/white"
+            android:textColorHint="@color/p_white_test"
+            android:textSize="@dimen/text_size_14" />
+
+        <include layout="@layout/public_line_01" />
+
+        <TextView
+            style="@style/WrapWrap"
+            android:paddingTop="@dimen/start_or_end_5"
+            android:paddingBottom="@dimen/start_or_end_5"
+            android:text="金额"
+            android:textColor="@color/white" />
+
+        <EditText
+            style="@style/MatchWrap"
+            android:background="@null"
+            android:hint="请填写转出金额，不得小于10"
+            android:paddingTop="@dimen/start_or_end_5"
+            android:paddingBottom="@dimen/start_or_end_5"
+            android:textColor="@color/white"
+            android:textColorHint="@color/p_white_test"
+            android:textSize="@dimen/text_size_14" />
+
+        <include layout="@layout/public_line_01" />
+
+        <TextView
+            style="@style/WrapWrap"
+            android:paddingTop="@dimen/start_or_end_5"
+            android:paddingBottom="@dimen/start_or_end_5"
+            android:text="币种"
+            android:textColor="@color/white" />
+
+        <TextView
+            style="@style/MatchWrap"
+            android:paddingTop="@dimen/icon_width_height_10"
+            android:paddingBottom="@dimen/icon_width_height_10"
+            android:text="HOPE"
+            android:textColor="@color/p_white_test" />
+
+    </LinearLayout>
+
+    <include layout="@layout/public_button1" />
+</LinearLayout>

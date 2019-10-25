@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/MatchMatch.Vertical"
+    android:background="@color/black"
+    tools:context=".Activity.FeedbackActivity">
+
+    <include layout="@layout/public_title" />
+
+    <LinearLayout
+        style="@style/MatchWrap.Vertical"
+        android:layout_marginTop="@dimen/icon_width_height_10"
+        android:background="@color/black_01">
+
+        <EditText
+            android:textColor="@color/white"
+            android:id="@+id/edit_feedback"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:background="@null"
+            android:gravity="start"
+            android:hint="请输入反馈内容，我们会为您提供更好的服务。"
+            android:paddingStart="@dimen/start_or_end_20"
+            android:paddingEnd="@dimen/start_or_end_20"
+            android:textColorHint="@color/p_white_test" />
+
+        <TextView
+            style="@style/MatchWrap"
+            android:layout_marginRight="@dimen/icon_width_height_10"
+            android:layout_marginBottom="@dimen/icon_width_height_10"
+            android:gravity="end"
+            android:text="0/300"
+            android:textColor="@color/white" />
+
+
+    </LinearLayout>
+
+    <include layout="@layout/public_button1" />
+</LinearLayout>

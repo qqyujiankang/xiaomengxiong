@@ -64,4 +64,27 @@
     <string name="The_wallet_address">钱包地址</string>
     <string name="Please_enter_your_wallet_address">请输入钱包地址</string>
     <string name="Withdrawal_amount">提币金额（USDT）</string>
+    <string name="my_team">我的团队</string>
+    <string name="Friends_share">分享好友</string>
+    <string name="personal_data">个人资料</string>
+    <string name="Node_returns">节点收益</string>
+    <string name="Change_login_password">修改登录密码</string>
+    <string name="Set_security_password">设置安全密码</string>
+    <string name="Security_Centercon">安全中心</string>
+    <string name="gain_recording">收益记录</string>
+    <string name="set_password">密码设置</string>
+    <string name="feedback">意见反馈</string>
+    <string name="version_information">版本信息</string>
+    <string name="original_password">原密码</string>
+    <string name="new_password">新密码</string>
+    <string name="Please_enter_your_new_password">请输入新密码</string>
+    <string name="Confirm_new_password">确认新密码</string>
+    <string name="Please_enter_your_new_password_again">请再次输入新密码</string>
+    <string name="Please_enter_the_original_password">请输入原密码</string>
+    <string name="login_password">登录密码</string>
+    <string name="security_code">安全密码</string>
+    <string name="submit_feedback">提交反馈</string>
+    <string name="transfer">转账</string>
+    <string name="HOPE_the_asset">HOPE资产</string>
+    <string name="quit">退出</string>
 </resources>

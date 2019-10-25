@@ -113,9 +113,17 @@
         <item name="android:textColor">@color/white</item>
         <item name="android:layout_weight">1</item>
         <item name="android:layout_width">0dp</item>
-        <item name="android:layout_height">40dp</item>
+        <item name="android:layout_height">30dp</item>
         <item name="android:background">@drawable/bg_radius5_blue</item>
+    </style>
+    <!--    返回键
 
-
+    -->
+    <style name="WrapWrap.ImageView_bank">
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:layout_marginEnd">@dimen/icon_width_height_20</item>
+        <item name="android:layout_marginRight">@dimen/icon_width_height_20</item>
+        <item name="android:src">@mipmap/bank</item>
     </style>
 </resources>
