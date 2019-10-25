@@ -15,4 +15,5 @@
     <color name="p_gray">#F0EFF5</color>
     <color name="p_white">#ffffff</color>
     <color name="p_white_test">#6F8AACFF</color>
+    <color name="p_transparency">#00000000</color>
 </resources>
