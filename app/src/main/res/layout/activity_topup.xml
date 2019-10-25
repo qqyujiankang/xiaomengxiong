@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/MatchMatch.Vertical"
+    android:background="@color/black"
+    tools:context=".Activity.TopupActivity">
+
+    <include layout="@layout/public_title" />
+
+    <LinearLayout
+        style="@style/MatchWrap"
+        android:layout_width="230dp"
+        android:layout_height="230dp"
+        android:layout_marginStart="@dimen/icon_width_height_80"
+        android:layout_marginTop="@dimen/icon_width_height_100"
+        android:layout_marginEnd="@dimen/icon_width_height_80"
+        android:background="@mipmap/top_bian">
+
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_margin="@dimen/icon_width_height_20" />
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/MatchWrap.Vertical"
+        android:layout_marginTop="@dimen/icon_width_height_20">
+
+        <TextView
+            style="@style/MatchWrap"
+            android:gravity="center"
+            android:text="钱包地址"
+            android:textColor="@color/white" />
+
+        <TextView
+            style="@style/MatchWrap"
+            android:layout_marginTop="@dimen/icon_width_height_10"
+            android:gravity="center"
+            android:text="ksadjfhjkabksjadfkfskadfjkasdfksajkldf"
+            android:textColor="@color/orange" />
+
+        <include layout="@layout/public_button1" />
+
+    </LinearLayout>
+
+</LinearLayout>

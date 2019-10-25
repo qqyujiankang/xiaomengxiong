@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--一下内容格式是   先宽度****后高度-->
+
+    <style name="TextColor">
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <!-- 先宽度****后高度   的匹配-->
+    <style name="WrapMatch" parent="TextColor">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <style name="WrapWrap" parent="TextColor">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="MatchWrap" parent="TextColor">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="MatchMatch" parent="TextColor">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+
+    <!-- 先宽度****后高度   的比重-->
+
+    <style name="AutoWrap" parent="TextColor">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="WrapAuto" parent="TextColor">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_height">0dp</item>
+    </style>
+
+
+    <!-- 先宽度****后高度   的  水平或垂直  -->
+
+    <style name="WrapWrap.Vertical">
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="WrapWrap.Horizontal">
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <style name="MatchWrap.Vertical">
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="MatchWrap.Horizontal">
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <style name="MatchMatch.Vertical">
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="MatchMatch.Horizontal">
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+
+    <!-- 先宽度****后高度   的比重  的  水平或垂直-->
+
+
+    <style name="AutoWrap.Vertical">
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="AutoWrap.horizontal">
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <style name="WrapAuto.Vertical">
+        <item name="android:orientation">vertical</item>
+    </style>
+
+
+    <!-- 自定义控件风格-->
+    <style name="Custom" />
+
+    <style name="Custom.TabRadioButton">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:padding">5dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:button">@null</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/tab_text_color_selector</item>
+    </style>
+
+
+    <style name="GreyStrokeBtn">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:textColor">#444444</item>
+        <item name="android:background">@color/p_white</item>
+        <item name="android:layout_height">44dip</item>
+    </style>
+
+
+    <style name="AutoWrapbuttn">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:background">@drawable/bg_radius5_blue</item>
+
+
+    </style>
+</resources>

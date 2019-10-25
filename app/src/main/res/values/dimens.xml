@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--字体大小-->
+    <dimen name="text_size_12">12sp</dimen>
+    <dimen name="text_size_14">14sp</dimen>
+    <dimen name="text_size_16">16sp</dimen>
+    <dimen name="text_size_18">18sp</dimen>
+    <dimen name="text_size_25">25sp</dimen>
+    <dimen name="text_size_40">40sp</dimen>
+
+    <!--距离边缘的距离-->
+    <dimen name="start_or_end_5">5dp</dimen>
+    <dimen name="start_or_end_10">10dp</dimen>
+    <dimen name="start_or_end_15">15dp</dimen>
+    <dimen name="start_or_end_20">20dp</dimen>
+    <dimen name="start_or_end_30">30dp</dimen>
+
+    <!--图标大小-->
+    <dimen name="icon_width_height_10">10dp</dimen>
+    <dimen name="icon_width_height_20">20dp</dimen>
+    <dimen name="icon_width_height_25">25dp</dimen>
+    <dimen name="icon_width_height_30">30dp</dimen>
+    <dimen name="icon_width_height_50">50dp</dimen>
+    <dimen name="icon_width_height_80">80dp</dimen>
+    <dimen name="icon_width_height_100">100dp</dimen>
+
+
+    <dimen name="panding_or_margin_5">5dp</dimen>
+    <dimen name="panding_or_margin_10">10dp</dimen>
+    <dimen name="panding_or_margin_15">15dp</dimen>
+    <dimen name="panding_or_margin_20">20dp</dimen>
+    <dimen name="panding_or_margin_30">30dp</dimen>
+    <dimen name="panding_or_margin_45">45dp</dimen>
+
+</resources>

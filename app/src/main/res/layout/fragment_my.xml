@@ -1,0 +1,443 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/MatchMatch.Vertical"
+    android:background="@color/black_01">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout style="@style/MatchWrap.Vertical">
+
+
+            <LinearLayout
+
+                style="@style/MatchWrap.Vertical"
+                android:layout_height="120dp"
+                android:background="@color/orange">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/my"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size_18" />
+
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_marginStart="@dimen/start_or_end_20"
+                android:layout_marginTop="-50dp"
+                android:layout_marginEnd="@dimen/start_or_end_20"
+                android:background="@mipmap/uesr_bang">
+
+                <ImageView
+                    android:layout_width="@dimen/icon_width_height_50"
+                    android:layout_height="@dimen/icon_width_height_50"
+                    android:layout_marginStart="@dimen/icon_width_height_50"
+                    android:layout_marginLeft="@dimen/icon_width_height_50"
+                    android:layout_marginTop="@dimen/start_or_end_10" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="@dimen/start_or_end_20"
+                    android:layout_marginRight="@dimen/start_or_end_20"
+                    android:src="@mipmap/bank" />
+            </RelativeLayout>
+
+            <LinearLayout
+                style="@style/MatchWrap.Vertical"
+                android:layout_marginTop="@dimen/start_or_end_20"
+                android:background="#121E2EFF">
+
+                <LinearLayout
+                    style="@style/MatchWrap.Horizontal"
+                    android:layout_marginStart="@dimen/start_or_end_20"
+                    android:layout_marginLeft="@dimen/start_or_end_20"
+                    android:layout_marginBottom="@dimen/start_or_end_10">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:src="@mipmap/fenxiang" />
+
+                    <RelativeLayout
+                        style="@style/WrapWrap"
+                        android:layout_marginStart="@dimen/start_or_end_20"
+                        android:layout_marginLeft="@dimen/start_or_end_20">
+
+                        <TextView
+                            android:id="@+id/tv_Friends_share"
+                            style="@style/WrapWrap"
+                            android:layout_centerVertical="true"
+                            android:text="分享好友"
+                            android:textColor="@color/white" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_gravity="center"
+                            android:layout_marginEnd="@dimen/start_or_end_20"
+                            android:layout_marginRight="@dimen/start_or_end_20"
+                            android:src="@mipmap/bank" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_below="@+id/tv_Friends_share"
+                            android:layout_marginTop="@dimen/start_or_end_20"
+                            android:background="@color/textcolor_yellow" />
+                    </RelativeLayout>
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    style="@style/MatchWrap.Horizontal"
+                    android:layout_marginStart="@dimen/start_or_end_20"
+                    android:layout_marginLeft="@dimen/start_or_end_20"
+
+                    android:layout_marginBottom="@dimen/start_or_end_10">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:src="@mipmap/fenxianghaoyou" />
+
+                    <RelativeLayout
+                        style="@style/WrapWrap"
+                        android:layout_marginStart="@dimen/start_or_end_20"
+                        android:layout_marginLeft="@dimen/start_or_end_20">
+
+                        <TextView
+                            android:id="@+id/tv_my_team"
+                            style="@style/WrapWrap"
+                            android:layout_centerVertical="true"
+                            android:text="我的团队"
+                            android:textColor="@color/white" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_gravity="center"
+                            android:layout_marginEnd="@dimen/start_or_end_20"
+                            android:layout_marginRight="@dimen/start_or_end_20"
+                            android:src="@mipmap/bank" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_below="@+id/tv_my_team"
+                            android:layout_marginTop="@dimen/start_or_end_10"
+                            android:background="@color/textcolor_yellow" />
+                    </RelativeLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/MatchWrap.Horizontal"
+                    android:layout_marginStart="@dimen/start_or_end_20"
+                    android:layout_marginLeft="@dimen/start_or_end_20">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:src="@mipmap/jiedian" />
+
+                    <RelativeLayout
+                        style="@style/WrapWrap"
+                        android:layout_marginStart="@dimen/start_or_end_20"
+                        android:layout_marginLeft="@dimen/start_or_end_20">
+
+                        <TextView
+                            android:id="@+id/tv_Node_returns"
+                            style="@style/WrapWrap"
+                            android:layout_centerVertical="true"
+                            android:text="节点收益"
+                            android:textColor="@color/white" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_gravity="center"
+                            android:layout_marginEnd="@dimen/start_or_end_20"
+                            android:layout_marginRight="@dimen/start_or_end_20"
+                            android:src="@mipmap/bank" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_below="@+id/tv_Node_returns"
+                            android:layout_marginTop="@dimen/start_or_end_10"
+                            android:background="@color/textcolor_yellow" />
+                    </RelativeLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/MatchWrap.Horizontal"
+                    android:layout_marginStart="@dimen/start_or_end_20"
+                    android:layout_marginLeft="@dimen/start_or_end_20"
+                    android:layout_marginBottom="@dimen/start_or_end_10">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:src="@mipmap/message_2" />
+
+                    <RelativeLayout
+                        style="@style/WrapWrap"
+                        android:layout_marginStart="@dimen/start_or_end_20"
+                        android:layout_marginLeft="@dimen/start_or_end_20">
+
+                        <TextView
+                            android:id="@+id/tv_gain_recording"
+                            style="@style/WrapWrap"
+                            android:layout_centerVertical="true"
+                            android:text="收益记录"
+                            android:textColor="@color/white" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_gravity="center"
+                            android:layout_marginEnd="@dimen/start_or_end_20"
+                            android:layout_marginRight="@dimen/start_or_end_20"
+                            android:src="@mipmap/bank" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_below="@+id/tv_gain_recording"
+                            android:layout_marginTop="@dimen/start_or_end_10"
+                            android:background="@color/textcolor_yellow" />
+                    </RelativeLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/MatchWrap.Horizontal"
+                    android:layout_marginStart="@dimen/start_or_end_20"
+                    android:layout_marginLeft="@dimen/start_or_end_20"
+                    android:layout_marginBottom="@dimen/start_or_end_10">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:src="@mipmap/qianbaodizhiguanli" />
+
+                    <RelativeLayout
+                        style="@style/WrapWrap"
+                        android:layout_marginStart="@dimen/start_or_end_20"
+                        android:layout_marginLeft="@dimen/start_or_end_20">
+
+                        <TextView
+                            android:id="@+id/tv_address_binding"
+                            style="@style/WrapWrap"
+                            android:layout_centerVertical="true"
+                            android:text="USDT地址绑定"
+                            android:textColor="@color/white" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_gravity="center"
+                            android:layout_marginEnd="@dimen/start_or_end_20"
+                            android:layout_marginRight="@dimen/start_or_end_20"
+                            android:src="@mipmap/bank" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_below="@+id/tv_address_binding"
+                            android:layout_marginTop="@dimen/start_or_end_10"
+                            android:background="@color/textcolor_yellow" />
+                    </RelativeLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/MatchWrap.Horizontal"
+                    android:layout_marginStart="@dimen/start_or_end_20"
+                    android:layout_marginLeft="@dimen/start_or_end_20"
+                    android:layout_marginBottom="@dimen/start_or_end_10">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:src="@mipmap/mimao" />
+
+                    <RelativeLayout
+                        style="@style/WrapWrap"
+                        android:layout_marginStart="@dimen/start_or_end_20"
+                        android:layout_marginLeft="@dimen/start_or_end_20">
+
+                        <TextView
+                            android:id="@+id/tv_apassword"
+                            style="@style/WrapWrap"
+                            android:layout_centerVertical="true"
+                            android:text="密码设置"
+                            android:textColor="@color/white" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_gravity="center"
+                            android:layout_marginEnd="@dimen/start_or_end_20"
+                            android:layout_marginRight="@dimen/start_or_end_20"
+                            android:src="@mipmap/bank" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_below="@+id/tv_apassword"
+                            android:layout_marginTop="@dimen/start_or_end_10"
+                            android:background="@color/textcolor_yellow" />
+                    </RelativeLayout>
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/MatchWrap.Vertical"
+                android:layout_marginTop="@dimen/start_or_end_20"
+                android:background="#121E2EFF">
+
+                <LinearLayout
+                    style="@style/MatchWrap.Horizontal"
+                    android:layout_marginStart="@dimen/start_or_end_20"
+                    android:layout_marginLeft="@dimen/start_or_end_20"
+                    android:layout_marginBottom="@dimen/start_or_end_10">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:src="@mipmap/yijianfankui" />
+
+                    <RelativeLayout
+                        style="@style/WrapWrap"
+                        android:layout_marginStart="@dimen/start_or_end_20"
+                        android:layout_marginLeft="@dimen/start_or_end_20">
+
+                        <TextView
+                            android:id="@+id/tv_feedback"
+                            style="@style/WrapWrap"
+                            android:layout_centerVertical="true"
+                            android:text="意见反馈"
+                            android:textColor="@color/white" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_gravity="center"
+                            android:layout_marginEnd="@dimen/start_or_end_20"
+                            android:layout_marginRight="@dimen/start_or_end_20"
+                            android:src="@mipmap/bank" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_below="@+id/tv_feedback"
+                            android:layout_marginTop="@dimen/start_or_end_20"
+                            android:background="@color/textcolor_yellow" />
+                    </RelativeLayout>
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    style="@style/MatchWrap.Horizontal"
+                    android:layout_marginStart="@dimen/start_or_end_20"
+                    android:layout_marginLeft="@dimen/start_or_end_20"
+
+                    android:layout_marginBottom="@dimen/start_or_end_10">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:src="@mipmap/banbenxinxi" />
+
+                    <RelativeLayout
+                        style="@style/WrapWrap"
+                        android:layout_marginStart="@dimen/start_or_end_20"
+                        android:layout_marginLeft="@dimen/start_or_end_20">
+
+                        <TextView
+                            android:id="@+id/tv_version_information"
+                            style="@style/WrapWrap"
+                            android:layout_centerVertical="true"
+                            android:text="版本信息"
+                            android:textColor="@color/white" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_gravity="center"
+                            android:layout_marginEnd="@dimen/start_or_end_20"
+                            android:layout_marginRight="@dimen/start_or_end_20"
+                            android:src="@mipmap/bank" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_below="@+id/tv_version_information"
+                            android:layout_marginTop="@dimen/start_or_end_10"
+                            android:background="@color/textcolor_yellow" />
+                    </RelativeLayout>
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-20dp">
+
+                <include layout="@layout/public_button1" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

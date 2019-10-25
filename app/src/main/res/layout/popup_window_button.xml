@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/btnPhoto"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/p_white"
+        android:gravity="center"
+        android:text="@string/launchGallery" />
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/p_gray" />
+
+    <Button
+        android:id="@+id/btnCapture"
+        style="@style/GreyStrokeBtn"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/p_white"
+        android:text="@string/lanuchCapture" />
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/p_gray" />
+
+    <Button
+        android:id="@+id/btnCanel"
+        style="@style/GreyStrokeBtn"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/p_white"
+        android:text="@string/dialog_cancel" />
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/p_gray" />
+</LinearLayout>

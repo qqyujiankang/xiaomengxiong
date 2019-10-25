@@ -1,0 +1,30 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <!-- Base application theme. -->
+    <style name="AppTheme.NoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/black</item>
+        <item name="colorPrimaryDark">@color/black</item>
+    </style>
+
+    <style name="LunchTheme" parent="Theme.AppCompat">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+        <!--&lt;!&ndash;下面这句如果你加上觉得好看就加，不好看就不加咯&ndash;&gt;-->
+        <!--&lt;!&ndash;<item name="android:navigationBarColor">@color/transparent</item>&ndash;&gt;-->
+        <!--<item name="android:statusBarColor">@android:color/transparent</item>-->
+        <!--<item name="android:windowBackground">@drawable/ic_logo</item>-->
+    </style>
+    <!--启动防止黑屏-->
+    <style name="AppTheme" parent="AppTheme.NoActionBar">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <!--android:windowIsTranslucent必须为true，（false）在华为手机上有问题;            android:screenOrientation="portrait",这两个联合使用在小米手机上有问题    android 8.0报错 Only fullscreen opaque activities can request orientation -->
+        <item name="android:windowDisablePreview">true</item>
+        <item name="colorPrimary">@color/black</item>
+        <item name="colorPrimaryDark">@color/black</item>
+    </style>
+
+</resources>

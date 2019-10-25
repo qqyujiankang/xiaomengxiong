@@ -1,0 +1,67 @@
+<resources>
+    <string name="app_name">ET</string>
+    <string name="login_ID">登录账号</string>
+    <string name="Mobile_phone_number_email">手机号/邮箱</string>
+    <string name="password">密码</string>
+    <string name="phoenumber_or_email_account">请输入手机号或邮箱账号</string>
+    <string name="verification_code">验证码</string>
+    <string name="Please_enter_verification_code">请输入验证码</string>
+    <string name="enter_your_PIN">请输入密码</string>
+    <string name="enter_your_PIN_1">请再次输入密码</string>
+    <string name="login">登录</string>
+    <string name="forget_the_password">忘记密码？</string>
+    <string name="register">还没有账号，立即注册</string>
+    <string name="get_cot">获取验证码</string>
+    <string name="menu_msg">首页</string>
+    <string name="menu_contact">钱包</string>
+    <string name="menu_find">合约</string>
+    <string name="my">我的</string>
+    <string name="Appointment_contract">预约合约</string>
+    <string name="To_perform_the_contract">执行合约</string>
+    <string name="Contract_record">合约记录</string>
+    <string name="biaoti">标题</string>
+    <string name="money">金额</string>
+    <string name="Please_select_contract_amount">请选择合约金额</string>
+    <string name="phone">手机号</string>
+    <string name="payment_code">支付密码</string>
+    <string name="payment_code_ok">确认支付密码</string>
+    <string name="phoenumber_payment_code_ok">请输入支付密码</string>
+    <string name="phoenumber_payment_code_ok_0">请再次输入支付密码</string>
+    <string name="Invitation_code">邀请码</string>
+    <string name="Please_enter_the_invitation_code">请输入邀请码</string>
+    <string name="Please_enter_your_cell_phone_number">请输入手机号</string>
+
+
+    <string name="launchGallery">图库选取</string>
+    <string name="lanuchCapture">拍照选取</string>
+    <string name="dialog_cancel">取消</string>
+    <string name="permission_write_storage_rationale">拍照需要存储权限</string>
+    <string name="permission_write_storage_rationale1">拍照时需要相机权限</string>
+    <string name="permission_read_storage_rationale">选择图片时需要读取权限</string>
+    <string name="permissions_prohibited">权限被禁止</string>
+
+    <string name="permission_text_a0">提示</string>
+    <string name="permission_text_a1">取消</string>
+    <string name="permission_text_a2">权限设置</string>
+    <string name="permission_text_a3"><Data><![CDATA[权限修改向导: 点击“权限设置”>  <font color="#ff0000"><b>“权限”</b></font>，授予对应权限]]></Data></string>
+    <string name="permission_text_a6">储存权限&#160;&#160;&#160;&#160;</string>
+    <string name="permission_text_a8">当前应用需要获取以下权限,否则可能造成此应用功能异常</string>
+    <string name="Please_enter_nickname">请输入昵称</string>
+    <string name="balance">余额</string>
+    <string name="rental">总额</string>
+    <string name="usable">可用</string>
+    <string name="convert">折合(CNY)</string>
+    <string name="top_up">充值</string>
+    <string name="Mention_money">提币</string>
+    <string name="record">记录</string>
+    <string name="USDT_assets">USDT资产</string>
+    <string name="Binding_address">绑定地址</string>
+    <string name="USDT_address">USDT地址</string>
+    <string name="Please_enter_the_USDT_address">请输入USDT地址</string>
+    <string name="USDT_address_binding">USDT地址绑定</string>
+    <string name="confirm">确定</string>
+    <string name="Copy_the_address">复制地址</string>
+    <string name="The_wallet_address">钱包地址</string>
+    <string name="Please_enter_your_wallet_address">请输入钱包地址</string>
+    <string name="Withdrawal_amount">提币金额（USDT）</string>
+</resources>

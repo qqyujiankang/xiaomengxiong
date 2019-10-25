@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/MatchMatch.Vertical"
+    android:background="@color/black"
+    tools:context=".Activity.MentionmoneyActivity">
+
+    <include layout="@layout/public_title" />
+
+    <LinearLayout
+        style="@style/MatchWrap.Vertical"
+        android:layout_marginTop="@dimen/icon_width_height_10"
+        android:background="@color/black_01">
+
+        <LinearLayout
+            style="@style/MatchWrap.Vertical"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="30dp">
+
+            <TextView
+                style="@style/WrapWrap"
+                android:layout_marginBottom="@dimen/icon_width_height_10"
+                android:text="@string/The_wallet_address"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_12" />
+
+            <EditText
+                android:id="@+id/et_password"
+                style="@style/MatchWrap"
+                android:layout_marginBottom="@dimen/icon_width_height_10"
+                android:background="@null"
+                android:hint="@string/Please_enter_your_wallet_address"
+                android:inputType="textPassword"
+                android:textColor="@color/white"
+                android:textColorHint="@color/silver"
+                android:textSize="@dimen/text_size_16" />
+
+
+        </LinearLayout>
+
+        <include layout="@layout/public_line" />
+
+        <TextView
+            style="@style/WrapWrap"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/Withdrawal_amount"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_12" />
+
+        <RelativeLayout
+            style="@style/MatchWrap.Horizontal"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="@dimen/icon_width_height_10">
+
+
+            <EditText
+                android:id="@+id/et_code"
+                style="@style/WrapWrap"
+                android:background="@null"
+                android:hint="可转出余额500USDT"
+                android:inputType="number"
+                android:textColor="@color/white"
+                android:textColorHint="@color/silver"
+                android:textSize="@dimen/text_size_16" />
+
+            <TextView
+                android:id="@+id/tv_get_cot"
+                style="@style/WrapWrap"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:text="全部"
+                android:textColor="@color/orange"
+                android:textSize="@dimen/text_size_16" />
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+    <TextView
+        style="@style/WrapWrap"
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="@dimen/icon_width_height_10"
+        android:text="注：转出需支付0.5%手续费"
+        android:textColor="@color/orange" />
+
+
+    <include layout="@layout/public_button1"></include>
+</LinearLayout>

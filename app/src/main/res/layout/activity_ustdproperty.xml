@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/MatchMatch.Vertical"
+    android:background="@color/black"
+    tools:context=".Activity.USTDPropertyActivity">
+
+    <include layout="@layout/public_title" />
+
+    <RelativeLayout
+        android:id="@+id/RL_Hope"
+        style="@style/MatchWrap"
+        android:layout_below="@+id/RL_Usdt"
+        android:layout_marginTop="@dimen/icon_width_height_20"
+        android:background="@color/black_01">
+
+        <TextView
+            android:id="@+id/Rl_banl"
+            style="@style/WrapWrap"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/icon_width_height_20"
+            android:layout_marginLeft="@dimen/icon_width_height_20"
+            android:text="USDT"
+            android:textColor="@color/orange" />
+
+        <RelativeLayout
+            android:id="@+id/Rl_ban2"
+            style="@style/MatchWrap"
+            android:layout_below="@+id/Rl_banl"
+            android:layout_marginStart="@dimen/icon_width_height_20"
+            android:layout_marginLeft="@dimen/icon_width_height_20"
+            android:layout_marginTop="@dimen/icon_width_height_10">
+
+            <TextView
+                style="@style/WrapWrap"
+                android:text="@string/rental"
+                android:textColor="@color/p_white_test" />
+
+            <TextView
+
+                style="@style/WrapWrap"
+                android:layout_centerHorizontal="true"
+                android:text="@string/usable"
+                android:textColor="@color/p_white_test" />
+
+            <TextView
+                style="@style/WrapWrap"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="@dimen/icon_width_height_20"
+                android:text="@string/convert"
+                android:textColor="@color/p_white_test" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            style="@style/MatchWrap"
+            android:layout_below="@+id/Rl_ban2"
+            android:layout_marginStart="@dimen/icon_width_height_20"
+            android:layout_marginLeft="@dimen/icon_width_height_20"
+            android:layout_marginTop="@dimen/icon_width_height_10"
+            android:paddingBottom="@dimen/icon_width_height_10">
+
+            <TextView
+                style="@style/WrapWrap"
+                android:text="@string/balance"
+                android:textColor="@color/p_white" />
+
+            <TextView
+                style="@style/WrapWrap"
+                android:layout_centerHorizontal="true"
+                android:text="@string/balance"
+                android:textColor="@color/p_white" />
+
+            <TextView
+                style="@style/WrapWrap"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="@dimen/icon_width_height_20"
+                android:text="@string/balance"
+                android:textColor="@color/p_white" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <LinearLayout
+
+        style="@style/MatchWrap.Horizontal"
+        android:layout_marginTop="@dimen/icon_width_height_30">
+
+        <Button
+            android:id="@+id/btn_top_up"
+            style="@style/AutoWrapbuttn"
+            android:layout_marginLeft="@dimen/icon_width_height_20"
+            android:layout_marginRight="@dimen/icon_width_height_20"
+
+            android:text="@string/top_up" />
+
+        <Button
+            android:id="@+id/btn_Mention_money"
+            style="@style/AutoWrapbuttn"
+            android:text="@string/Mention_money" />
+
+        <Button
+            android:id="@+id/btn_record"
+            style="@style/AutoWrapbuttn"
+            android:layout_marginLeft="@dimen/icon_width_height_20"
+            android:layout_marginRight="@dimen/icon_width_height_20"
+            android:text="@string/record" />
+    </LinearLayout>
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/icon_width_height_20">
+
+    </ListView>
+</LinearLayout>

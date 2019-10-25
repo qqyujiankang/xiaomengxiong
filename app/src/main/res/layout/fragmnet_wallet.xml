@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/MatchMatch.Vertical"
+    android:background="@color/black">
+
+    <include layout="@layout/public_title" />
+
+    <RelativeLayout
+
+        style="@style/MatchWrap"
+        android:layout_marginTop="@dimen/icon_width_height_10"
+        android:background="@color/black_01"
+        android:padding="@dimen/panding_or_margin_5">
+
+        <RelativeLayout
+            android:id="@+id/RL_Usdt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <TextView
+                android:id="@+id/tv_name"
+                style="@style/WrapWrap"
+                android:layout_marginStart="@dimen/icon_width_height_20"
+                android:layout_marginLeft="@dimen/icon_width_height_20"
+                android:text="USDt"
+                android:textColor="@color/orange" />
+
+            <TextView
+                style="@style/WrapWrap"
+                android:layout_marginRight="@dimen/icon_width_height_30"
+                android:layout_toStartOf="@+id/iv_bank"
+                android:layout_toLeftOf="@+id/iv_bank"
+                android:layout_toRightOf="@+id/tv_name"
+                android:text="321313213"
+                android:textColor="@color/white" />
+
+            <ImageView
+                android:id="@+id/iv_bank"
+                style="@style/WrapWrap"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/icon_width_height_20"
+                android:src="@mipmap/bank" />
+
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/icon_width_height_50"
+                android:layout_marginLeft="@dimen/icon_width_height_50"
+                android:layout_toRightOf="@+id/tv_name"
+                android:text="@string/balance"
+                android:textColor="@color/white" />
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/tv_name"
+                android:layout_marginStart="@dimen/icon_width_height_20"
+                android:layout_marginLeft="@dimen/icon_width_height_20"
+                android:layout_marginTop="@dimen/icon_width_height_10"
+                android:background="@color/textcolor_yellow" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/RL_Hope"
+            style="@style/MatchWrap"
+            android:layout_below="@+id/RL_Usdt">
+
+            <RelativeLayout
+                android:id="@+id/Rl_banl"
+                style="@style/MatchWrap"
+
+                android:layout_marginTop="@dimen/icon_width_height_20">
+
+                <TextView
+                    style="@style/WrapWrap"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/icon_width_height_20"
+                    android:layout_marginLeft="@dimen/icon_width_height_20"
+                    android:text="HOPE"
+                    android:textColor="@color/orange" />
+
+                <ImageView
+                    android:id="@+id/iv_bank_"
+                    style="@style/WrapWrap"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/icon_width_height_20"
+                    android:src="@mipmap/bank" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/Rl_ban2"
+                style="@style/MatchWrap"
+                android:layout_below="@+id/Rl_banl"
+                android:layout_marginStart="@dimen/icon_width_height_20"
+                android:layout_marginLeft="@dimen/icon_width_height_20"
+                android:layout_marginTop="@dimen/icon_width_height_10">
+
+                <TextView
+                    style="@style/WrapWrap"
+                    android:text="@string/balance"
+                    android:textColor="@color/p_white_test" />
+
+                <TextView
+                    style="@style/WrapWrap"
+                    android:layout_centerHorizontal="true"
+                    android:text="@string/balance"
+                    android:textColor="@color/p_white_test" />
+
+                <TextView
+                    style="@style/WrapWrap"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="@dimen/icon_width_height_20"
+                    android:text="@string/balance"
+                    android:textColor="@color/p_white_test" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                style="@style/MatchWrap"
+                android:layout_below="@+id/Rl_ban2"
+                android:layout_marginStart="@dimen/icon_width_height_20"
+                android:layout_marginLeft="@dimen/icon_width_height_20"
+                android:layout_marginTop="@dimen/icon_width_height_10"
+                android:paddingBottom="@dimen/icon_width_height_10">
+
+                <TextView
+                    style="@style/WrapWrap"
+                    android:text="@string/balance"
+                    android:textColor="@color/p_white" />
+
+                <TextView
+                    style="@style/WrapWrap"
+                    android:layout_centerHorizontal="true"
+                    android:text="@string/balance"
+                    android:textColor="@color/p_white" />
+
+                <TextView
+                    style="@style/WrapWrap"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="@dimen/icon_width_height_20"
+                    android:text="@string/balance"
+                    android:textColor="@color/p_white" />
+            </RelativeLayout>
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+
+</LinearLayout>
