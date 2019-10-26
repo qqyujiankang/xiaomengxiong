@@ -7,30 +7,58 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.AdapterView;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.PopupWindow;
+import android.widget.TextView;
 
+import com.example.et.Adapter.ContractAdapter;
+import com.example.et.Constant;
 import com.example.et.R;
+import com.example.et.entnty.Contract;
+import com.example.et.entnty.Pagebean;
+import com.example.et.util.CacheUtils;
+import com.example.et.util.LogUtils;
+import com.example.et.util.TaskPresenterUntils;
+import com.example.et.util.constant.CacheConstants;
+import com.example.et.util.lifeful.Lifeful;
+import com.example.et.util.lifeful.OnLoadLifefulListener;
+import com.example.et.util.lifeful.OnLoadListener;
+import com.example.et.util.realize.AdapterRealize;
+import com.example.et.util.realize.ParseUtils;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 
 /**
- * 支付的对话框
  * Created by Administrator on 2018/3/29.
  */
 
 public class AlipayPopuWindow extends PopupWindow {
     private View mMenuView;
-    private LinearLayout ll_white,ll_wechatpay,ll_alipay;
-    public AlipayPopuWindow(final Activity context, View.OnClickListener itemsOnClick) {
+    private ListView listView;
+    private AdapterRealize adapterRealize;
+    private TextView tv_cancel;
+
+    public AlipayPopuWindow(final Activity context, AdapterView.OnItemClickListener itemsOnClick, Lifeful Lifeful) {
         super(context);
         LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         mMenuView = inflater.inflate(R.layout.popup_window_alipay, null);
 
-        ll_white.setOnClickListener(itemsOnClick);
-        ll_wechatpay.setOnClickListener(itemsOnClick);
-        ll_alipay.setOnClickListener(itemsOnClick);
+
+        /**
+         *
+         */
+
+
+        listView = mMenuView.findViewById(R.id.listv);
+        tv_cancel = mMenuView.findViewById(R.id.tv_cancel);
+        listView.setOnItemClickListener(itemsOnClick);
+        retdata(Lifeful, context, listView);
         //设置SelectPicPopupWindow的View
         this.setContentView(mMenuView);
 
@@ -49,18 +77,58 @@ public class AlipayPopuWindow extends PopupWindow {
         //mMenuView添加OnTouchListener监听判断获取触屏位置如果在选择框外面则销毁弹出框
         mMenuView.setOnTouchListener(new View.OnTouchListener() {
 
+            @Override
             public boolean onTouch(View v, MotionEvent event) {
 
                 int height = mMenuView.findViewById(R.id.pop_layout).getTop();
-                int y=(int) event.getY();
-                if(event.getAction()== MotionEvent.ACTION_UP){
-                    if(y<height){
+                int y = (int) event.getY();
+                if (event.getAction() == MotionEvent.ACTION_UP) {
+                    if (y < height) {
                         dismiss();
                     }
                 }
                 return true;
             }
         });
+        tv_cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dismiss();
+            }
+        });
+
+    }
+
+    /**
+     * @param lifeful
+     * @param context
+     * @param listView
+     */
+    private void retdata(Lifeful lifeful, Activity context, ListView listView) {
+
+        try {
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("phone", CacheUtils.getInstance().getString(CacheConstants.PHONE));
+            TaskPresenterUntils.lifeful(Constant.contract, jsonObject, new OnLoadLifefulListener<String>(null, new OnLoadListener<String>() {
+                @Override
+                public void onSuccess(String success) {
+                    LogUtils.i("=======lifeful====" + success);
+                    if (adapterRealize == null) {
+                        adapterRealize = new AdapterRealize();
+                    }
+
+                    Pagebean<Object> objectPagebean = ParseUtils.analysisListTypeDatasAndCount(context, success, Contract[].class, false);
+
+                    adapterRealize.AdapterSetListDatas(objectPagebean, 0, listView, context, ContractAdapter.class, lifeful);//返回第几页
+
+
+                }
+
+            }, lifeful));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
 
     }
 }

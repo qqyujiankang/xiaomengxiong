@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ll"
     style="@style/MatchMatch.Vertical"
     android:background="@color/black_01"
     tools:context=".Activity.AppointmentcontractActivity">
@@ -9,6 +10,7 @@
     <include layout="@layout/public_title" />
 
     <LinearLayout
+        android:id="@+id/ll_contract_amount"
         style="@style/MatchWrap.Vertical"
         android:layout_marginTop="@dimen/start_or_end_10"
         android:background="@color/black_p"
@@ -16,8 +18,7 @@
         android:paddingBottom="@dimen/start_or_end_10">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/WrapWrap"
             android:layout_marginStart="@dimen/start_or_end_20"
             android:layout_marginLeft="@dimen/start_or_end_20"
             android:text="@string/money"
@@ -28,20 +29,14 @@
             android:layout_marginStart="@dimen/start_or_end_20"
             android:layout_marginLeft="@dimen/start_or_end_20">
 
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@null"
-                android:hint="@string/Please_select_contract_amount"
-                android:textColorHint="@color/white" />
+            <TextView
+                android:id="@+id/tvUSDT"
+                style="@style/MatchWrap"
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="@dimen/start_or_end_20"
-                android:src="@mipmap/bank" />
+                android:text="@string/Please_select_contract_amount"
+                android:textColor="@color/white" />
+
+            <ImageView style="@style/WrapWrap.ImageView_bank" />
         </RelativeLayout>
 
     </LinearLayout>

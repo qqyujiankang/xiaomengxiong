@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
+import com.example.et.util.lifeful.Lifeful;
 
 import java.util.List;
 
@@ -20,14 +21,14 @@ public abstract class ManagerAdapter<T> extends BaseAdapter {
 
     protected Context context;
     private List<T> tList;
-   // protected Lifeful lifeful;
+    protected Lifeful lifeful;
     protected LayoutInflater layoutInflater;
 
 
-    public ManagerAdapter(Context context, List<T> tList) {
+    public ManagerAdapter(Context context, List<T> tList, Lifeful lifefu) {
         this.context = context;
         this.tList = tList;
-       // this.lifeful = lifefu;
+        this.lifeful = lifefu;
         this.layoutInflater = LayoutInflater.from(context);
     }
 

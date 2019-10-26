@@ -6,15 +6,13 @@
 
     <LinearLayout
         android:id="@+id/pop_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/MatchWrap"
         android:layout_alignParentBottom="true"
-        android:background="@drawable/bg_radius5_white_top"
         android:orientation="vertical">
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/MatchWrap"
+            android:background="@color/black_01"
             android:gravity="center"
             android:padding="10dp"
             android:text="请选择在支付方式"
@@ -24,9 +22,27 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@color/p_gray" />
+            android:background="@color/textcolor_yellow" />
 
+        <ListView
+            android:id="@+id/listv"
+            style="@style/MatchWrap"
+            android:background="@color/black_01"
+            android:divider="@color/textcolor_yellow"
+            android:dividerHeight="1dp" />
+
+
+        <TextView
+            android:id="@+id/tv_cancel"
+            style="@style/MatchWrap"
+            android:layout_marginTop="@dimen/icon_width_height_10"
+            android:background="@color/black_01"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="@string/cancel"
+            android:textColor="@color/white" />
 
     </LinearLayout>
+
 
 </RelativeLayout>

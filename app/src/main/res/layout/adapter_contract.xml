@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/MatchMatch.Vertical"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_name"
+        style="@style/MatchWrap"
+        android:background="@color/black_01"
+        android:gravity="center"
+        android:padding="@dimen/icon_width_height_10"
+        android:textColor="@color/white" />
+</LinearLayout>

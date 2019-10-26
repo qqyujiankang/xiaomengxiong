@@ -87,4 +87,5 @@
     <string name="transfer">转账</string>
     <string name="HOPE_the_asset">HOPE资产</string>
     <string name="quit">退出</string>
+    <string name="cancel">取消</string>
 </resources>

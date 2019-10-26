@@ -118,7 +118,7 @@ public class HeadFragment extends BaseFragment implements AdapterView.OnItemClic
         });
 
         publicGridView.setNumColumns(3);
-        publicGridView.setAdapter(new ListActivityAdapter(context, ListDatasUtils.getListActivity(context)));
+        publicGridView.setAdapter(new ListActivityAdapter(context, ListDatasUtils.getListActivity(context),null));
         publicGridView.setOnItemClickListener(this);
 
         List<String> list = new ArrayList<>();
@@ -137,7 +137,6 @@ public class HeadFragment extends BaseFragment implements AdapterView.OnItemClic
     @Override
     public void requestDatas() {
         super.requestDatas();
-
         try {
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("phone", "15535958281");

@@ -7,6 +7,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.example.et.R;
 import com.example.et.entnty.ListObject;
+import com.example.et.util.lifeful.Lifeful;
 
 import java.util.List;
 
@@ -17,8 +18,8 @@ import butterknife.BindView;
  */
 
 public class ListActivityAdapter<T> extends ManagerAdapter {
-    public ListActivityAdapter(Context context, List list) {
-        super(context, list);
+    public ListActivityAdapter(Context context, List list, Lifeful lifeful) {
+        super(context, list, lifeful);
     }
 
     @Override
