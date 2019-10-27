@@ -8,12 +8,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.HeaderViewListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
 import com.example.et.Adapter.AnswerAdapter;
+import com.example.et.Adapter.ManagerAdapter;
 import com.example.et.Adapter.TestCheckOneAdapter;
 import com.example.et.Constant;
 import com.example.et.R;
@@ -44,7 +46,7 @@ public class AnswerDiog extends AlertDialog {
     private String problem;
     private List<Answer> answers;
 
-    public AnswerDiog(Activity context, View.OnClickListener onClickListener, AdapterView.OnItemClickListener onItemClickListener, String problem, List<Answer> answers) {
+    public AnswerDiog(Activity context, View.OnClickListener onClickListener, String problem, List<Answer> answers) {
         super(context);
         this.onClickListener = onClickListener;
         this.onItemClickListener = onItemClickListener;
@@ -57,6 +59,8 @@ public class AnswerDiog extends AlertDialog {
     private Button btnconfirm;
     private TextView tvissue;
 
+    AnswerAdapter mAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,11 +69,32 @@ public class AnswerDiog extends AlertDialog {
         btnconfirm = findViewById(R.id.btn_confirm);
         tvissue = findViewById(R.id.tv_issue);
         btnconfirm.setOnClickListener(onClickListener);
-        listv.setOnItemClickListener(onItemClickListener);
-        listv.setAdapter(new TestCheckOneAdapter(context, answers));
+        listv.setOnItemClickListener(onClickListener1);
+        mAdapter = new AnswerAdapter(context, answers, null);
+        listv.setAdapter(mAdapter);
         tvissue.setText(problem);
 
     }
 
+    private AdapterView.OnItemClickListener onClickListener1 = new AdapterView.OnItemClickListener() {
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long l) {
+            ManagerAdapter managerAdapter = null;
+            if (parent.getAdapter() instanceof HeaderViewListAdapter) {
+                HeaderViewListAdapter ha = (HeaderViewListAdapter) parent.getAdapter();
+                managerAdapter = (ManagerAdapter) ha.getWrappedAdapter();
+            } else if (parent.getAdapter() instanceof ManagerAdapter) {
+                managerAdapter = (ManagerAdapter) parent.getAdapter();
+            }
+
+            Answer contract = (Answer) managerAdapter.getItem(position);
+            for (Answer bean : answers) {//全部设为未选中
+                bean.setChecked(false);
+            }
+
+            contract.setChecked(true);//点击的设为选中
+            mAdapter.notifyDataSetChanged();
+        }
+    };
 
 }

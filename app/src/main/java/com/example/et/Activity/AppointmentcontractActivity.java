@@ -106,7 +106,7 @@ public class AppointmentcontractActivity extends BaseActivity {
                 //requestDatas();
 //                answerPopuwindow = new AnswerPopuwindow((Activity) context, onClickListener, onClickListener1, lifeful);
 //                answerPopuwindow.showAtLocation(ll, Gravity.CENTER_VERTICAL, 0, 0); //设置layout在PopupWindow中显示的位置
-                new AnswerDiog(this, onClickListener, onClickListener1, problem, answers).show();
+                new AnswerDiog(this, onClickListener, problem, answers).show();
 
                 break;
             default:
@@ -179,11 +179,5 @@ public class AppointmentcontractActivity extends BaseActivity {
             alipayPopuWindow.dismiss();
         }
     };
-    private AdapterView.OnItemClickListener onClickListener1 = new AdapterView.OnItemClickListener() {
-        @Override
-        public void onItemClick(AdapterView<?> parent, View view, int position, long l) {
- TestCheckOneAdapter.ViewHolder holder = (TestCheckOneAdapter.ViewHolder) view.getTag();
-        holder.checkBox.toggle();
-        }
-    };
+
 }

@@ -60,26 +60,7 @@ public class TestCheckOneAdapter extends BaseAdapter {
         }
         holder.tvName.setText(mData.get(position).getString());
         holder.checkBox.setId(position);    //设置当前position为CheckBox的id
-        holder.checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    if (tempPosition != -1) {
-                        //根据id找到上次点击的CheckBox,将它设置为false.
-                        CheckBox tempCheckBox = (CheckBox) mActivity.findViewById(tempPosition);
-                        if (tempCheckBox != null) {
-                            tempCheckBox.setChecked(false);
-                        }
-                    }
-                    //保存当前选中CheckBox的id值
-                    tempPosition = buttonView.getId();
-
-                } else {    //当CheckBox被选中,又被取消时,将tempPosition重新初始化.
-                    tempPosition = -1;
-                }
-            }
-        });
-        if (position == tempPosition)   //比较位置是否一样,一样就设置为选中,否则就设置为未选中.
+      if (position == tempPosition)   //比较位置是否一样,一样就设置为选中,否则就设置为未选中.
         {
             holder.checkBox.setChecked(true);
         } else {
@@ -99,7 +80,7 @@ public class TestCheckOneAdapter extends BaseAdapter {
         @BindView(R.id.tv_name)
         public TextView tvName;
         @BindView(R.id.cb_check)
-        public RadioButton checkBox;
+        public CheckBox checkBox;
 
         public ViewHolder(View view) {
             ButterKnife.bind(this, view);

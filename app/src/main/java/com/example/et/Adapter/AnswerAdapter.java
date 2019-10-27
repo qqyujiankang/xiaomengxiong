@@ -27,7 +27,10 @@ public class AnswerAdapter extends ManagerAdapter {
     public class ViewHolder extends BaseHolder {
 
 
-
+        @BindView(R.id.cb_check)
+        CheckBox cbCheck;
+        @BindView(R.id.tv_name)
+        TextView tvName;
 
         @Override
         protected int getItemLayoutResId() {
@@ -37,7 +40,12 @@ public class AnswerAdapter extends ManagerAdapter {
         @Override
         public void setViewData(int position, List list) {
             Answer answer = (Answer) list.get(position);
-           // tvanser.setText(answer.getString());
+            tvName.setText(answer.getString());
+            if(answer.isChecked()){//状态选中
+                cbCheck.setChecked(true);
+            }else{
+                cbCheck.setChecked(false);
+            }
 
         }
     }

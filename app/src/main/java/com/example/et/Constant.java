@@ -15,6 +15,7 @@ public class Constant {
     public static final String contract = BASE_URL + "contract";//合约信息
     public static final String tocontract = BASE_URL + "tocontract";//首页信息和个人信息
     public static final String problem = BASE_URL + "problem";//随机取出一条题库的问题
+    public static final String news = BASE_URL + "news";//公告列表
 
 
     //
