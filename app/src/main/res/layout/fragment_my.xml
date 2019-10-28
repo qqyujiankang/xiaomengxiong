@@ -134,9 +134,9 @@
 
 
                 </LinearLayout>
-
+                <!--      android:id="@+id/ll__node_returns"-->
                 <LinearLayout
-                    android:id="@+id/Rl__Node_returns"
+                    android:id="@+id/ll_returns"
                     style="@style/MatchWrap.Horizontal"
                     android:layout_marginStart="@dimen/start_or_end_20"
                     android:layout_marginLeft="@dimen/start_or_end_20">
@@ -233,14 +233,27 @@
                             android:text="@string/USDT_address_binding"
                             android:textColor="@color/white" />
 
-                        <ImageView style="@style/WrapWrap.ImageView_bank" />
+                        <ImageView
+                            android:id="@+id/iv_bank"
+                            style="@style/WrapWrap.ImageView_bank" />
 
                         <TextView
+
                             android:layout_width="match_parent"
                             android:layout_height="1dp"
                             android:layout_below="@+id/tv_address_binding"
                             android:layout_marginTop="@dimen/start_or_end_10"
                             android:background="@color/textcolor_yellow" />
+
+                        <TextView
+                            android:id="@+id/tv_binding"
+                            style="@style/WrapWrap"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="@dimen/icon_width_height_20"
+                            android:layout_toStartOf="@+id/iv_bank"
+                            android:layout_toLeftOf="@+id/iv_bank"
+                            android:text="@string/not_bound"
+                            android:textColor="@color/white" />
                     </RelativeLayout>
 
 

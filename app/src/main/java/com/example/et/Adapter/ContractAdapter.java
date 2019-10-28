@@ -11,6 +11,9 @@ import java.util.List;
 
 import butterknife.BindView;
 
+/**
+ * 选择币种的对话框
+ */
 public class ContractAdapter extends ManagerAdapter {
     public ContractAdapter(Context context, List list, Lifeful lifefu) {
         super(context, list, lifefu);

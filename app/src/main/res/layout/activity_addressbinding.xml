@@ -8,82 +8,108 @@
 
     <include layout="@layout/public_title" />
 
-    <TextView
-        style="@style/WrapWrap"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="30dp"
-        android:text="@string/verification_code"
-        android:textColor="@color/white"
-        android:textSize="@dimen/text_size_12" />
-
-    <RelativeLayout
-        style="@style/MatchWrap.Horizontal"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginBottom="@dimen/icon_width_height_10">
-
-
-        <EditText
-            android:id="@+id/et_code"
-            style="@style/WrapWrap"
-            android:background="@null"
-            android:hint="@string/Please_enter_verification_code"
-            android:inputType="number"
-            android:textColor="@color/white"
-            android:textColorHint="@color/silver"
-            android:textSize="@dimen/text_size_16" />
-
-        <TextView
-            android:id="@+id/tv_get_cot"
-            style="@style/WrapWrap"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:text="@string/get_cot"
-            android:textColor="@color/orange"
-            android:textSize="@dimen/text_size_16" />
-
-    </RelativeLayout>
-
-    <include layout="@layout/public_line" />
 
     <LinearLayout
-        style="@style/MatchWrap.Vertical"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="30dp">
+        android:id="@+id/ll_binding_usDt"
+        style="@style/MatchMatch.Vertical"
+        android:visibility="gone">
 
         <TextView
             style="@style/WrapWrap"
-            android:layout_marginBottom="@dimen/icon_width_height_10"
-            android:text="@string/USDT_address"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="30dp"
+            android:text="@string/verification_code"
             android:textColor="@color/white"
             android:textSize="@dimen/text_size_12" />
 
-        <EditText
-            android:id="@+id/et_password"
-            style="@style/MatchWrap"
-            android:layout_marginBottom="@dimen/icon_width_height_10"
-            android:background="@null"
-            android:hint="@string/Please_enter_the_USDT_address"
-            android:inputType="textPassword"
-            android:textColor="@color/white"
-            android:textColorHint="@color/silver"
-            android:textSize="@dimen/text_size_16" />
+        <RelativeLayout
+            style="@style/MatchWrap.Horizontal"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="@dimen/icon_width_height_10">
 
 
+            <EditText
+                android:id="@+id/et_code"
+                style="@style/WrapWrap"
+                android:background="@null"
+                android:hint="@string/Please_enter_verification_code"
+                android:inputType="number"
+                android:textColor="@color/white"
+                android:textColorHint="@color/silver"
+                android:textSize="@dimen/text_size_16" />
+
+            <TextView
+                android:id="@+id/tv_get_cot"
+                style="@style/WrapWrap"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:text="@string/get_cot"
+                android:textColor="@color/orange"
+                android:textSize="@dimen/text_size_16" />
+
+        </RelativeLayout>
+
+        <include layout="@layout/public_line" />
+
+        <LinearLayout
+            style="@style/MatchWrap.Vertical"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="30dp">
+
+            <TextView
+                style="@style/WrapWrap"
+                android:layout_marginBottom="@dimen/icon_width_height_10"
+                android:text="@string/USDT_address"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_12" />
+
+            <EditText
+                android:id="@+id/et_password"
+                style="@style/MatchWrap"
+                android:layout_marginBottom="@dimen/icon_width_height_10"
+                android:background="@null"
+                android:hint="@string/Please_enter_the_USDT_address"
+                android:textColor="@color/white"
+                android:textColorHint="@color/silver"
+                android:textSize="@dimen/text_size_16" />
+
+
+        </LinearLayout>
+
+        <include layout="@layout/public_line" />
+
+        <RelativeLayout
+            style="@style/MatchMatch.Vertical"
+            android:layout_marginBottom="100dp"
+            android:gravity="bottom">
+
+            <include layout="@layout/public_button1" />
+        </RelativeLayout>
     </LinearLayout>
 
-    <include layout="@layout/public_line" />
+    <LinearLayout
+        style="@style/MatchWrap.Vertical"
+        android:layout_marginTop="@dimen/icon_width_height_10"
+        android:background="@color/black_p"
+        android:paddingTop="@dimen/icon_width_height_10"
+        android:paddingBottom="@dimen/icon_width_height_10">
 
-    <RelativeLayout
-        style="@style/MatchMatch.Vertical"
-        android:layout_marginBottom="100dp"
-        android:gravity="bottom">
+        <TextView
+            style="@style/WrapWrap"
+            android:layout_marginStart="@dimen/icon_width_height_20"
+            android:layout_marginLeft="@dimen/icon_width_height_20"
+            android:text="USDT"
+            android:textColor="@color/orange" />
 
-        <include
-
-            layout="@layout/public_button1" />
-    </RelativeLayout>
+        <TextView
+            android:id="@+id/tv_address_binding"
+            style="@style/MatchWrap"
+            android:layout_marginStart="@dimen/icon_width_height_20"
+            android:layout_marginLeft="@dimen/icon_width_height_20"
+            android:textColor="@color/white" />
+    </LinearLayout>
 
 
 </LinearLayout>

@@ -31,8 +31,10 @@ import com.example.et.Ustlis.ActivityUtils;
 import com.example.et.Ustlis.ListDatasUtils;
 import com.example.et.View.MyGridView;
 import com.example.et.entnty.ListObject;
+import com.example.et.util.CacheUtils;
 import com.example.et.util.LogUtils;
 import com.example.et.util.TaskPresenterUntils;
+import com.example.et.util.constant.CacheConstants;
 import com.example.et.util.constant.KeyValueConstants;
 import com.example.et.util.lifeful.Lifeful;
 import com.example.et.util.lifeful.OnLoadLifefulListener;
@@ -118,7 +120,7 @@ public class HeadFragment extends BaseFragment implements AdapterView.OnItemClic
         });
 
         publicGridView.setNumColumns(3);
-        publicGridView.setAdapter(new ListActivityAdapter(context, ListDatasUtils.getListActivity(context),null));
+        publicGridView.setAdapter(new ListActivityAdapter(context, ListDatasUtils.getListActivity(context), null));
         publicGridView.setOnItemClickListener(this);
 
         List<String> list = new ArrayList<>();
@@ -139,7 +141,7 @@ public class HeadFragment extends BaseFragment implements AdapterView.OnItemClic
         super.requestDatas();
         try {
             JSONObject jsonObject = new JSONObject();
-            jsonObject.put("phone", "15535958281");
+            jsonObject.put("phone", CacheUtils.getInstance().getString(CacheConstants.PHONE));
             TaskPresenterUntils.lifeful(Constant.home, jsonObject, new OnLoadLifefulListener<String>(null, new OnLoadListener<String>() {
                 @Override
                 public void onSuccess(String success) {
@@ -172,7 +174,7 @@ public class HeadFragment extends BaseFragment implements AdapterView.OnItemClic
 
     @OnClick({R.id.service, R.id.ll_announcement})
     public void onViewClicked(View view) {
-              Intent intent = new Intent();
+        Intent intent = new Intent();
         switch (view.getId()) {
             case R.id.service:
 

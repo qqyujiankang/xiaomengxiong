@@ -5,6 +5,7 @@ import android.content.Context;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.DecimalFormat;
 import java.util.Properties;
 
 /**
@@ -246,4 +247,39 @@ public final class StringUtils {
     }
 
 
+   /**
+     * 获取double数据小数点后两位不进行四舍五入
+     * @param doubleValue
+     * @return -1 , double
+     */
+   public static String calculateProfit(double doubleValue) {
+        // 保留4位小数
+        DecimalFormat df = new DecimalFormat("0.0000");
+        String result = df.format(doubleValue);
+        // 获取小数 . 号第一次出现的位置
+        int inde = firstIndexOf(result, ".");
+        // 字符串截断
+        return result.substring(0, inde + 5);
+    }
+    /**
+     * 获取小数点的位数
+     * @param str
+     * @param pattern
+     * @return i , -1
+     */
+   public static int firstIndexOf(String str, String pattern) {
+        for (int i = 0; i < (str.length() - pattern.length()); i++) {
+            int j = 0;
+            while (j < pattern.length()) {
+                if (str.charAt(i + j) != pattern.charAt(j)) {
+                    break;
+                }
+                j++;
+            }
+            if (j == pattern.length()) {
+                return i;
+            }
+        }
+        return -1;
+    }
 }

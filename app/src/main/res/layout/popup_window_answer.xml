@@ -25,7 +25,6 @@
             android:choiceMode="singleChoice"
             android:id="@+id/listv"
             style="@style/MatchWrap"
-            android:layout_height="150dp"
             android:background="@color/black_01"
             android:divider="@color/textcolor_yellow" />
 

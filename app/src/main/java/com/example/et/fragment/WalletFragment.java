@@ -6,16 +6,36 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.HeaderViewListAdapter;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.et.Activity.HopePropertyActivityActivity;
 import com.example.et.Activity.USTDPropertyActivity;
+import com.example.et.Adapter.AssAdaper;
+import com.example.et.Adapter.ContractAdapter;
+import com.example.et.Adapter.ManagerAdapter;
+import com.example.et.Constant;
 import com.example.et.R;
 import com.example.et.Ustlis.ActivityUtils;
+import com.example.et.entnty.Ass;
+import com.example.et.entnty.Contract;
+import com.example.et.entnty.Pagebean;
+import com.example.et.util.CacheUtils;
+import com.example.et.util.LogUtils;
+import com.example.et.util.TaskPresenterUntils;
+import com.example.et.util.constant.CacheConstants;
 import com.example.et.util.lifeful.Lifeful;
-import com.gyf.immersionbar.ImmersionBar;
+import com.example.et.util.lifeful.OnLoadLifefulListener;
+import com.example.et.util.lifeful.OnLoadListener;
+import com.example.et.util.realize.AdapterRealize;
+import com.example.et.util.realize.ParseUtils;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -25,7 +45,8 @@ import butterknife.Unbinder;
 /**
  * 钱包
  */
-public class WalletFragment extends BaseFragment {
+public class WalletFragment extends BaseFragment implements AdapterView.OnItemClickListener {
+
 
     @BindView(R.id.public_back)
     TextView publicBack;
@@ -37,22 +58,8 @@ public class WalletFragment extends BaseFragment {
     ImageView ivPublicOther;
     @BindView(R.id.rl_bacground)
     RelativeLayout rlBacground;
-    @BindView(R.id.tv_name)
-    TextView tvName;
-    @BindView(R.id.iv_bank)
-    ImageView ivBank;
-    @BindView(R.id.textView3)
-    TextView textView3;
-    @BindView(R.id.RL_Usdt)
-    RelativeLayout RLUsdt;
-    @BindView(R.id.iv_bank_)
-    ImageView ivBank1;
-    @BindView(R.id.Rl_banl)
-    RelativeLayout RlBanl;
-    @BindView(R.id.Rl_ban2)
-    RelativeLayout RlBan2;
-    @BindView(R.id.RL_Hope)
-    RelativeLayout RLHope;
+    @BindView(R.id.listv)
+    ListView listv;
     private Context context;
     Unbinder unbinder;
 
@@ -66,7 +73,38 @@ public class WalletFragment extends BaseFragment {
         View view = inflater.inflate(R.layout.fragmnet_wallet, container, false);
         unbinder = ButterKnife.bind(this, view);
         initView();
+        requestDatas();
         return view;
+    }
+
+    private AdapterRealize adapterRealize;
+
+    @Override
+    public void requestDatas() {
+        super.requestDatas();
+        try {
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("phone", CacheUtils.getInstance().getString(CacheConstants.PHONE));
+
+
+            TaskPresenterUntils.lifeful(Constant.assets, jsonObject, new OnLoadLifefulListener<String>(null, new OnLoadListener<String>() {
+                @Override
+                public void onSuccess(String success) {
+                    LogUtils.i("======钱包======" + success);
+                    adapterRealize = new AdapterRealize();
+
+                    Pagebean<Object> objectPagebean = ParseUtils.analysisListTypeDatasAndCount1(getActivity(), success, Ass[].class, false);
+
+                    adapterRealize.AdapterSetListDatas(objectPagebean, 0, listv, context, AssAdaper.class, lifeful);//返回第几页
+
+
+                }
+
+
+            }, lifeful));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -81,20 +119,28 @@ public class WalletFragment extends BaseFragment {
 
         publicBack.setVisibility(View.GONE);
         publicTitleTv.setText(getString(R.string.menu_contact));
+        listv.setOnItemClickListener(this);
     }
 
-    @OnClick({R.id.RL_Usdt, R.id.RL_Hope})
-    public void onViewClicked(View view) {
-        Intent intent = new Intent();
-        switch (view.getId()) {
-            case R.id.RL_Usdt:
-                intent.setClass(context, USTDPropertyActivity.class);
-                ActivityUtils.startActivity(intent);
-                break;
-            case R.id.RL_Hope:
-                intent.setClass(context, HopePropertyActivityActivity.class);
-                ActivityUtils.startActivity(intent);
-                break;
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int i, long l) {
+        ManagerAdapter managerAdapter = null;
+        if (parent.getAdapter() instanceof HeaderViewListAdapter) {
+            HeaderViewListAdapter ha = (HeaderViewListAdapter) parent.getAdapter();
+            managerAdapter = (ManagerAdapter) ha.getWrappedAdapter();
+        } else if (parent.getAdapter() instanceof ManagerAdapter) {
+            managerAdapter = (ManagerAdapter) parent.getAdapter();
         }
+        Intent intent = new Intent();
+        Ass ass = (Ass) managerAdapter.getItem(i);
+
+        if (ass.getId() == 8) {
+            intent.setClass(context, USTDPropertyActivity.class);
+
+        } else if (ass.getId() == 7) {
+            intent.setClass(context, HopePropertyActivityActivity.class);
+        }
+        ActivityUtils.startActivity(intent);
     }
 }

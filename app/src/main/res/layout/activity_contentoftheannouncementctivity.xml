@@ -8,7 +8,9 @@
     <include layout="@layout/public_title" />
 
     <ListView
-        android:id="@+id/listv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:id="@+id/lv_contern"
+        style="@style/MatchWrap"
+        android:background="@color/black_01"
+        android:divider="@color/textcolor_yellow"
+        android:dividerHeight="1dp" />
 </LinearLayout>

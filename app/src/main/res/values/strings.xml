@@ -56,6 +56,7 @@
     <string name="record">记录</string>
     <string name="USDT_assets">USDT资产</string>
     <string name="Binding_address">绑定地址</string>
+    <string name="revision_Binding_address">修改地址</string>
     <string name="USDT_address">USDT地址</string>
     <string name="Please_enter_the_USDT_address">请输入USDT地址</string>
     <string name="USDT_address_binding">USDT地址绑定</string>
@@ -89,5 +90,8 @@
     <string name="quit">退出</string>
     <string name="cancel">取消</string>
     <string name="announcement">公告</string>
+    <string name="not_bound">未绑定</string>
+    <string name="make">预约中</string>
+    <string name="convert_init">折合（USDT）</string>
 
 </resources>

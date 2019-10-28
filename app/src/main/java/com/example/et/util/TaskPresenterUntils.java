@@ -31,7 +31,7 @@ public class TaskPresenterUntils {
 
 
     public static void lifeful(String url, @NonNull JSONObject jsonObject, OnLoadLifefulListener<String> listener) {
-       ;
+        //LogUtils.i("app参数=========="+jsonObject+"=========url======"+url);
         new TaskLoadRealize().loadPost(url, jsonObject, listener);
     }
 

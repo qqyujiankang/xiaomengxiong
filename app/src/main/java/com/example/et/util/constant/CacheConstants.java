@@ -25,6 +25,10 @@ public class CacheConstants {
      */
     public static final String PHONE = "phone";//手机号
 
+    public static final String usdtaddress = "usdtaddress";//usdtaddress
+    public static final String upgoldaddress = "upgoldaddress";//添加币地址
+
+
 
 
 }
