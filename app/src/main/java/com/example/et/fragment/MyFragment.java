@@ -1,6 +1,7 @@
 package com.example.et.fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,12 +17,14 @@ import androidx.annotation.Nullable;
 import com.example.et.Activity.AddressbindingActivity;
 import com.example.et.Activity.FeedbackActivity;
 import com.example.et.Activity.FriendShareActivity;
+import com.example.et.Activity.LoginActivity;
 import com.example.et.Activity.MyTeamActivity;
 import com.example.et.Activity.NodeReturnsActivity;
 import com.example.et.Activity.PersonalDataActivity;
 import com.example.et.Activity.SecurityCenterconActivity;
 import com.example.et.R;
 import com.example.et.Ustlis.ActivityUtils;
+import com.example.et.Ustlis.ImageLoaderUtil;
 import com.example.et.util.CacheUtils;
 import com.example.et.util.constant.CacheConstants;
 import com.example.et.util.lifeful.Lifeful;
@@ -76,6 +79,12 @@ public class MyFragment extends BaseFragment {
     TextView tvBinding;
     @BindView(R.id.Ll_USDT_address_binding)
     LinearLayout LlUSDTAddressBinding;
+    @BindView(R.id.iv_holder)
+    ImageView ivHolder;
+    @BindView(R.id.tv_name)
+    TextView tvName;
+    @BindView(R.id.tv_phone)
+    TextView tvPhone;
     private Context context;
     Unbinder unbinder;
 
@@ -105,10 +114,17 @@ public class MyFragment extends BaseFragment {
             tvBinding.setVisibility(View.GONE);
         }
         publicButton.setText(getString(R.string.quit));
+        //头像
+        ImageLoaderUtil.loadCircleImage(context, CacheUtils.getInstance().getString(CacheConstants.photo_url)
+                + CacheUtils.getInstance().getString(CacheConstants.photo), ivHolder);
+        tvName.setText(CacheUtils.getInstance().getString(CacheConstants.name));
+        tvPhone.setText(CacheUtils.getInstance().getString(CacheConstants.PHONE));
+
     }
 
     @OnClick({R.id.Rl_Record,
-            R.id.Ll_Friends_share, R.id.ll_my_team, R.id.ll_returns, R.id.ll_gain_recording, R.id.Ll_USDT_address_binding, R.id.ll_set_password, R.id.ll_feedback, R.id.ll_version_information, R.id.public_button})
+            R.id.Ll_Friends_share, R.id.ll_my_team, R.id.ll_returns, R.id.ll_gain_recording, R.id.Ll_USDT_address_binding,
+            R.id.ll_set_password, R.id.ll_feedback, R.id.ll_version_information, R.id.public_button})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.Rl_Record:
@@ -140,6 +156,8 @@ public class MyFragment extends BaseFragment {
             case R.id.ll_version_information:
                 break;
             case R.id.public_button:
+                ActivityUtils.finishActivity(context);
+                ActivityUtils.startActivity(LoginActivity.class);
 
                 break;
             default:

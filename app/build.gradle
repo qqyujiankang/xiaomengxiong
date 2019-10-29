@@ -52,11 +52,11 @@ dependencies {
     // retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.3.0'
     // rxjava
-    implementation 'io.reactivex.rxjava2:rxjava:2.1.1'
+    // implementation 'io.reactivex.rxjava2:rxjava:2.1.1'
     // rxandroid
-    implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    // implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
     // 配合Rxjava 使用
-    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
+    //implementation 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
     implementation 'com.squareup.okhttp3:logging-interceptor:3.4.1'
     // 转换器 将结果通过gson将json串转换为model
     implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
@@ -74,4 +74,15 @@ dependencies {
     implementation 'com.gyf.immersionbar:immersionbar:3.0.0'
     // fragment快速实现（可选）
     implementation 'com.gyf.immersionbar:immersionbar-components:3.0.0'
+
+
+//Glide的基本使用
+    implementation 'com.github.bumptech.glide:glide:4.8.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
+    implementation 'jp.wasabeef:glide-transformations:3.3.0'
+
+    // luBan压缩
+    implementation 'top.zibin:Luban:1.0.9'
+    implementation 'io.reactivex:rxandroid:1.2.1'
+    implementation 'io.reactivex:rxjava:1.1.6'
 }

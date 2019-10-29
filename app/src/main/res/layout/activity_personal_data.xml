@@ -9,8 +9,8 @@
     <include layout="@layout/public_title" />
 
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:id="@+id/Rl_hoder"
+       style="@style/MatchWrap"
         android:layout_marginTop="@dimen/icon_width_height_10"
         android:background="@color/black_p">
 
@@ -28,6 +28,7 @@
             android:layout_marginRight="@dimen/icon_width_height_20">
 
             <ImageView
+                android:id="@+id/iv_holder"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginRight="@dimen/icon_width_height_10" />

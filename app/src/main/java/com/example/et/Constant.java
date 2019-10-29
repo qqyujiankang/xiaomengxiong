@@ -21,6 +21,9 @@ public class Constant {
     public static final String goldaddress = BASE_URL + "goldaddress";//查询币地址
     public static final String assets = BASE_URL + "assets";//assets
     public static final String uppass = BASE_URL + "uppass";//assets
+    public static final String upphoto = BASE_URL + "upphoto";//头像
+    public static final String getpass = BASE_URL + "getpass";//找回密码
+    public static final String feedback = BASE_URL + "feedback";//意见提交
 
 
     //

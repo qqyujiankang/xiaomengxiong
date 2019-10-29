@@ -142,11 +142,13 @@ public class HeadFragment extends BaseFragment implements AdapterView.OnItemClic
         try {
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("phone", CacheUtils.getInstance().getString(CacheConstants.PHONE));
+            LogUtils.i("exp======home===" + jsonObject + "==========");
             TaskPresenterUntils.lifeful(Constant.home, jsonObject, new OnLoadLifefulListener<String>(null, new OnLoadListener<String>() {
                 @Override
                 public void onSuccess(String success) {
                     LogUtils.i("homne=========" + success);
                     Map<String, Object> resultMap = ParseUtils.analysisListTypeDatasAndCount((Activity) context, success, null, true).getStringMap();
+                    LogUtils.i("homne=========" + success + "==========" + resultMap.get(KeyValueConstants.MSG));
                     if (resultMap.get(KeyValueConstants.CODE).equals("200")) {
 
                     } else {

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/MatchMatch.Vertical"
+    android:orientation="vertical">
+
+    <LinearLayout
+        style="@style/MatchWrap.Vertical"
+        android:background="@color/black_01">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/icon_width_height_20"
+            android:paddingStart="@dimen/icon_width_height_20"
+            android:paddingLeft="@dimen/icon_width_height_20">
+
+            <TextView
+                android:id="@+id/tv_name"
+                style="@style/WrapWrap"
+                android:layout_marginStart="@dimen/icon_width_height_30"
+                android:layout_marginLeft="@dimen/icon_width_height_50"
+                android:textColor="@color/white" />
+
+            <ImageView
+                android:id="@+id/tv_jieidian"
+                style="@style/WrapWrap.ImageView_bank"
+                android:src="@mipmap/node" />
+        </RelativeLayout>
+
+        <LinearLayout
+
+            style="@style/MatchWrap.Horizontal"
+            android:layout_marginTop="@dimen/icon_width_height_10">
+
+            <TextView
+                style="@style/AutoWrap"
+                android:gravity="center"
+                android:text="@string/team"
+                android:textColor="@color/p_white_test" />
+
+            <TextView
+
+                style="@style/AutoWrap"
+                android:gravity="center"
+                android:text="@string/Active_member"
+                android:textColor="@color/p_white_test" />
+
+            <TextView
+                style="@style/AutoWrap"
+                android:gravity="center"
+                android:text="@string/performance"
+                android:textColor="@color/p_white_test" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/MatchWrap.Horizontal"
+            android:layout_marginTop="@dimen/icon_width_height_10"
+            android:layout_marginBottom="@dimen/icon_width_height_20">
+
+            <TextView
+                android:id="@+id/tv_team"
+                style="@style/AutoWrap"
+                android:gravity="center"
+                android:text=""
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/tv_Active_member"
+                style="@style/AutoWrap"
+                android:gravity="center"
+                android:text=""
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/tv_performance"
+                style="@style/AutoWrap"
+                android:gravity="center"
+                android:text=""
+                android:textColor="@color/white" />
+
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

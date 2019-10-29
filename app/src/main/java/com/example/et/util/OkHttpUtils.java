@@ -180,10 +180,11 @@ public class OkHttpUtils {
             builder.tag(tag);
         }
         if (CacheUtils.getInstance().getString(CacheConstants.TOKEN) != null) {
-            builder.addHeader("Cookie", CacheUtils.getInstance().getString(CacheConstants.TOKEN));
+            builder.addHeader("token", CacheUtils.getInstance().getString(CacheConstants.TOKEN));
         }
         // builder.addHeader("Authorization", "Bearer b572e475-4cfc-484f-b22d-0b19f161ec97");//
         builder.addHeader("Authorization", "Basic cGFzc3dvcmQ6MTIzNDU2");//
+
 
         MultipartBody.Builder multipartBuilder = new MultipartBody.Builder();
 
@@ -240,11 +241,12 @@ public class OkHttpUtils {
         }
         if (CacheUtils.getInstance().getString(CacheConstants.TOKEN) != null) {
             builder.addHeader("token", CacheUtils.getInstance().getString(CacheConstants.TOKEN));
-             LogUtils.i("token============"+CacheUtils.getInstance().getString(CacheConstants.TOKEN).toString());
+            LogUtils.i("token============" + CacheUtils.getInstance().getString(CacheConstants.TOKEN).toString());
         }
 
-        //  MultipartBody.Builder multipartBuilder = new MultipartBody.Builder();
-        FormBody.Builder multipartBuilder = new FormBody.Builder();  ///这里
+        //
+        // FormBody.Builder multipartBuilder = new FormBody.Builder();  ///这里
+        MultipartBody.Builder requestBody = new MultipartBody.Builder().setType(MultipartBody.FORM);
         JSONArray jsonArray = jsonObject.names();
 
         if (jsonArray != null) {
@@ -255,13 +257,17 @@ public class OkHttpUtils {
                     if (object instanceof File) {
                         File file = (File) object;
                         if (file.exists()) {
-                           // multipartBuilder.addFormDataPart(paramsKey, file.getName(), RequestBody.create(null, file));
+                            RequestBody body = RequestBody.create(MediaType.parse("image/*"), file);
+                            String filename = file.getName();
+                            // 参数分别为， 请求key ，文件名称 ， RequestBody
+                            requestBody.addFormDataPart(paramsKey, file.getName(), body);
+                            // requestBody.addEncoded(paramsKey, file.getName());
+                            //  multipartBuilder1.addFormDataPart(paramsKey, file.getName(), RequestBody.create(null, file));
+
                         }
                     } else {
                         LogUtils.i("我是你巴巴变============" + paramsKey + "======" + object);
-//                          MediaType JSON = MediaType.parse("application/json; charset=utf-8");//数据类型为json格式，
-//                        multipartBuilder.setType(JSON);
-                        multipartBuilder.add(paramsKey, object + "");
+                        requestBody.addFormDataPart(paramsKey, object + "");
                     }
 
                 } catch (JSONException e) {
@@ -270,7 +276,7 @@ public class OkHttpUtils {
             }
         }
 
-        builder.post(multipartBuilder.build());
+        builder.post(requestBody.build());
 
 
         Request request = builder.build();

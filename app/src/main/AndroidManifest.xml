@@ -13,7 +13,8 @@
         android:roundIcon="@mipmap/icon"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <!--       公告详情 -->
+        <activity android:name=".Activity.ForgetThePasswordActivity"></activity>
+        <!-- 公告详情 -->
         <activity
             android:name=".Activity.NoticedetailsActivity"
             android:screenOrientation="portrait"

@@ -13,6 +13,9 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.CircleCrop;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.et.Activity.HopePropertyActivityActivity;
 import com.example.et.Activity.USTDPropertyActivity;
 import com.example.et.Adapter.AssAdaper;
@@ -120,6 +123,8 @@ public class WalletFragment extends BaseFragment implements AdapterView.OnItemCl
         publicBack.setVisibility(View.GONE);
         publicTitleTv.setText(getString(R.string.menu_contact));
         listv.setOnItemClickListener(this);
+
+
     }
 
 
@@ -133,14 +138,10 @@ public class WalletFragment extends BaseFragment implements AdapterView.OnItemCl
             managerAdapter = (ManagerAdapter) parent.getAdapter();
         }
         Intent intent = new Intent();
+
         Ass ass = (Ass) managerAdapter.getItem(i);
-
-        if (ass.getId() == 8) {
-            intent.setClass(context, USTDPropertyActivity.class);
-
-        } else if (ass.getId() == 7) {
-            intent.setClass(context, HopePropertyActivityActivity.class);
-        }
+        intent.putExtra("ass", ass);
+        intent.setClass(context, HopePropertyActivityActivity.class);
         ActivityUtils.startActivity(intent);
     }
 }

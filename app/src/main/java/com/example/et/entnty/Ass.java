@@ -1,6 +1,9 @@
 package com.example.et.entnty;
 
-public class Ass {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Ass implements Parcelable {
 
     /**
      * newnumber : 0
@@ -55,4 +58,41 @@ public class Ass {
     public void setCny(int cny) {
         this.cny = cny;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(this.newnumber);
+        dest.writeInt(this.id);
+        dest.writeString(this.number);
+        dest.writeString(this.name);
+        dest.writeInt(this.cny);
+    }
+
+    public Ass() {
+    }
+
+    protected Ass(Parcel in) {
+        this.newnumber = in.readInt();
+        this.id = in.readInt();
+        this.number = in.readString();
+        this.name = in.readString();
+        this.cny = in.readInt();
+    }
+
+    public static final Parcelable.Creator<Ass> CREATOR = new Parcelable.Creator<Ass>() {
+        @Override
+        public Ass createFromParcel(Parcel source) {
+            return new Ass(source);
+        }
+
+        @Override
+        public Ass[] newArray(int size) {
+            return new Ass[size];
+        }
+    };
 }

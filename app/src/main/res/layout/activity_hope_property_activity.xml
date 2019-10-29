@@ -62,21 +62,26 @@
             android:paddingBottom="@dimen/icon_width_height_10">
 
             <TextView
+                android:id="@+id/tv_rental"
                 style="@style/WrapWrap"
-                android:text="134344"
+                android:text=""
                 android:textColor="@color/p_white" />
 
             <TextView
+                android:id="@+id/tv_usable"
                 style="@style/WrapWrap"
                 android:layout_centerHorizontal="true"
-                android:text="3243434"
+                android:text=""
                 android:textColor="@color/p_white" />
 
             <TextView
+                android:id="@+id/tv_convert"
                 style="@style/WrapWrap"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:layout_marginRight="@dimen/icon_width_height_20"
-                android:text="131321"
+                android:layout_marginRight="20dp"
+                android:text=""
                 android:textColor="@color/p_white" />
         </RelativeLayout>
     </RelativeLayout>
@@ -97,16 +102,18 @@
         <Button
             android:id="@+id/btn_Mention_money"
             style="@style/AutoWrapbuttn"
+             android:layout_marginLeft="@dimen/icon_width_height_20"
+            android:layout_marginRight="@dimen/icon_width_height_20"
             android:text="@string/Mention_money" />
 
         <Button
             android:id="@+id/btn_transfer"
             style="@style/AutoWrapbuttn"
-            android:layout_marginLeft="@dimen/icon_width_height_20"
-            android:layout_marginRight="@dimen/icon_width_height_20"
+
             android:text="@string/transfer" />
 
         <Button
+            android:layout_marginLeft="@dimen/icon_width_height_20"
             android:id="@+id/btn_record"
             style="@style/AutoWrapbuttn"
             android:layout_marginRight="@dimen/icon_width_height_20"

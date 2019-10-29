@@ -5,16 +5,20 @@ import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.et.Constant;
 import com.example.et.R;
+import com.example.et.Ustlis.ToastUtils;
 import com.example.et.util.CacheUtils;
 import com.example.et.util.LogUtils;
+import com.example.et.util.StringUtils;
 import com.example.et.util.TaskPresenterUntils;
 import com.example.et.util.constant.CacheConstants;
+import com.example.et.util.constant.KeyValueConstants;
 import com.example.et.util.lifeful.OnLoadLifefulListener;
 import com.example.et.util.lifeful.OnLoadListener;
 import com.example.et.util.realize.ParseUtils;
@@ -45,12 +49,22 @@ public class LogiPasswordActivity extends BaseActivity {
     RelativeLayout rlBacground;
     @BindView(R.id.public_button)
     Button publicButton;
+    @BindView(R.id.et_original_password)
+    EditText etOriginalPassword;
+    @BindView(R.id.et_new_password)
+    EditText etNewPassword;
+    @BindView(R.id.et_ok_new_paswwosd)
+    EditText etOkNewPaswwosd;
     private Context context;
+    private String OriginalPassword;
+    private String NewPassword;
+    private String OkNewPaswwosd;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        context=LogiPasswordActivity.this;
+        context = LogiPasswordActivity.this;
         setContentView(R.layout.activity_logi_password);
         ButterKnife.bind(this);
         initView();
@@ -71,21 +85,54 @@ public class LogiPasswordActivity extends BaseActivity {
                 finish();
                 break;
             case R.id.public_button:
-                redata();
+                if (examine()) {
+                    redata();
+                }
+
                 break;
 
             default:
         }
     }
 
+    /**
+     * 检查信息是否全
+     *
+     * @return
+     */
+    private boolean examine() {
+        OriginalPassword = etOriginalPassword.getText().toString();
+        NewPassword = etNewPassword.getText().toString();
+        OkNewPaswwosd = etOkNewPaswwosd.getText().toString();
+
+        if (StringUtils.isEmpty(OriginalPassword)) {
+            ToastUtils.showShort(R.string.Please_enter_the_original_password);
+            return false;
+        }
+        if (StringUtils.isEmpty(NewPassword)) {
+            ToastUtils.showShort(R.string.Please_enter_your_new_password);
+            return false;
+        }
+        if (StringUtils.isEmpty(OkNewPaswwosd)) {
+            ToastUtils.showShort(R.string.Please_enter_your_new_password_again);
+            return false;
+        }
+        if (!NewPassword.equals(OkNewPaswwosd)) {
+            ToastUtils.showShort(R.string.The_two_password_do_not_match);
+            return false;
+        }
+
+        return true;
+    }
+
     private void redata() {
         try {
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("phone", CacheUtils.getInstance().getString(CacheConstants.PHONE));
-            jsonObject.put("pass", "yy123456");
+            jsonObject.put("pass", OriginalPassword);
             jsonObject.put("type", "1");
-            jsonObject.put("newpass", "yyy123456");
-            jsonObject.put("newpasstwo", "yyy123456");
+            jsonObject.put("newpass", NewPassword);
+            jsonObject.put("newpasstwo", OkNewPaswwosd);
 
 
             TaskPresenterUntils.lifeful(Constant.uppass, jsonObject, new OnLoadLifefulListener<String>(null, new OnLoadListener<String>() {
@@ -95,7 +142,10 @@ public class LogiPasswordActivity extends BaseActivity {
 
 
                     Map<String, Object> stringMap = ParseUtils.analysisListTypeDatasAndCount((Activity) context, success, null, false).getStringMap();
-
+                    if (stringMap.get(KeyValueConstants.CODE).equals("200")) {
+                        finish();
+                    }
+                    ToastUtils.showShort(stringMap.get(KeyValueConstants.MSG).toString());
 
                 }
 

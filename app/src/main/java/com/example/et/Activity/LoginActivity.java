@@ -91,7 +91,8 @@ public class LoginActivity extends BaseActivity {
 //
                 break;
             case R.id.tv_forget_the_password:
-
+                intent.setClass(LoginActivity.this, ForgetThePasswordActivity.class);
+                ActivityUtils.startActivity(intent);
                 break;
             case R.id.tv_register:
                 intent.setClass(LoginActivity.this, RegisterActivity.class);
@@ -138,7 +139,9 @@ public class LoginActivity extends BaseActivity {
 
 
                     } else if (i == 2) {
+
                         CacheUtils.getInstance().put(CacheConstants.TOKEN, (CacheUtils.getInstance().getString("token")));
+                        CacheUtils.getInstance().put(CacheConstants.PHONE, phone);
                         ActivityUtils.startActivity(MainActivity.class);
                         finish();
 
