@@ -1,6 +1,7 @@
 package com.example.et.Activity;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -62,7 +63,7 @@ public class MainActivity extends BaseActivity {
 
         mFragments = new ArrayList<>();
         mFragments.add(new HeadFragment());
-             mFragments.add(new WalletFragment());
+        mFragments.add(new WalletFragment());
         mFragments.add(new ContractFragment());
 
 
@@ -114,5 +115,19 @@ public class MainActivity extends BaseActivity {
 //        mViewPager.removeOnPageChangeListener(mPageChangeListener);
 //    }
 
+    private int fragment_flag;
 
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        fragment_flag = intent.getIntExtra("fragment_flag", 0);
+        if (fragment_flag == 2) { // 我的
+            mViewPager.setCurrentItem(2);
+            contactTab.setChecked(true);
+            todayTab.setChecked(false);
+            settingsTab.setChecked(false);
+            recordTab.setChecked(false);
+
+        }
+    }
 }

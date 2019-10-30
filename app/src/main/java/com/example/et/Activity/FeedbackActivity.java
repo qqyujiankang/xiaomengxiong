@@ -39,6 +39,7 @@ import butterknife.OnClick;
  */
 public class FeedbackActivity extends BaseActivity {
 
+
     @BindView(R.id.public_back)
     TextView publicBack;
     @BindView(R.id.public_title_tv)
@@ -51,10 +52,10 @@ public class FeedbackActivity extends BaseActivity {
     RelativeLayout rlBacground;
     @BindView(R.id.edit_feedback)
     EditText editFeedback;
-    @BindView(R.id.public_button)
-    Button publicButton;
     @BindView(R.id.tv_cancel)
     TextView tvCancel;
+    @BindView(R.id.public_button)
+    Button publicButton;
     private Context context;
     private static final int MAX_COUNT = 200;
 
@@ -85,7 +86,7 @@ public class FeedbackActivity extends BaseActivity {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                if (editable.length() >= 200) {
+                if (MAX_COUNT - editable.length() >= 0) {
                     tvCancel.setText("剩余字数：" + (MAX_COUNT - editable.length()));
                 }
 

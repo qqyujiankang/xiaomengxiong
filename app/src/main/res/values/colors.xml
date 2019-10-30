@@ -16,4 +16,5 @@
     <color name="p_white">#ffffff</color>
     <color name="p_white_test">#6F8AACFF</color>
     <color name="p_transparency">#00000000</color>
+    <color name="p_green">#FF00CAA1</color>
 </resources>

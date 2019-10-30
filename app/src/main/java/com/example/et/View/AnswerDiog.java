@@ -46,7 +46,7 @@ public class AnswerDiog extends AlertDialog {
     private String problem;
     private List<Answer> answers;
 
-    public AnswerDiog(Activity context, View.OnClickListener onClickListener, String problem, List<Answer> answers) {
+    public AnswerDiog(Activity context, View.OnClickListener onClickListener, AdapterView.OnItemClickListener  onItemClickListener,String problem, List<Answer> answers) {
         super(context);
         this.onClickListener = onClickListener;
         this.onItemClickListener = onItemClickListener;
@@ -69,32 +69,14 @@ public class AnswerDiog extends AlertDialog {
         btnconfirm = findViewById(R.id.btn_confirm);
         tvissue = findViewById(R.id.tv_issue);
         btnconfirm.setOnClickListener(onClickListener);
-        listv.setOnItemClickListener(onClickListener1);
+        listv.setOnItemClickListener(onItemClickListener);
         mAdapter = new AnswerAdapter(context, answers, null);
         listv.setAdapter(mAdapter);
         tvissue.setText(problem);
 
     }
 
-    private AdapterView.OnItemClickListener onClickListener1 = new AdapterView.OnItemClickListener() {
-        @Override
-        public void onItemClick(AdapterView<?> parent, View view, int position, long l) {
-            ManagerAdapter managerAdapter = null;
-            if (parent.getAdapter() instanceof HeaderViewListAdapter) {
-                HeaderViewListAdapter ha = (HeaderViewListAdapter) parent.getAdapter();
-                managerAdapter = (ManagerAdapter) ha.getWrappedAdapter();
-            } else if (parent.getAdapter() instanceof ManagerAdapter) {
-                managerAdapter = (ManagerAdapter) parent.getAdapter();
-            }
 
-            Answer contract = (Answer) managerAdapter.getItem(position);
-            for (Answer bean : answers) {//全部设为未选中
-                bean.setChecked(false);
-            }
 
-            contract.setChecked(true);//点击的设为选中
-            mAdapter.notifyDataSetChanged();
-        }
-    };
 
 }

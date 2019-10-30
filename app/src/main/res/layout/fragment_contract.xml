@@ -3,7 +3,6 @@
     style="@style/MatchMatch.Vertical"
     android:background="@color/black">
 
-    <include layout="@layout/public_title" />
 
     <RelativeLayout
         android:id="@+id/Rl_"
@@ -29,9 +28,17 @@
             android:layout_below="@+id/tv_not_available"
             android:layout_marginTop="60dp">
 
-            <include layout="@layout/public_button1">
+            <Button xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/public_button1"
+                style="@style/MatchWrap"
+                android:layout_marginStart="30dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginEnd="30dp"
+                android:background="@drawable/bg_radius5_blue"
+                android:text=""
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_16" />
 
-            </include>
         </LinearLayout>
     </RelativeLayout>
 
@@ -50,9 +57,10 @@
             android:layout_marginEnd="@dimen/icon_width_height_20">
 
             <TextView
+                android:id="@+id/tv_state"
                 style="@style/WrapWrap"
                 android:layout_marginTop="@dimen/icon_width_height_10"
-                android:text="预约中"
+                android:text="@string/To_make_an_appointment_in"
                 android:textColor="@color/white"
                 android:textSize="@dimen/text_size_16" />
 
@@ -66,6 +74,7 @@
                     android:textColor="@color/white" />
 
                 <TextView
+                    android:id="@+id/tv_yy_time"
                     style="@style/MatchWrap"
                     android:gravity="right"
                     android:text="40:56"
@@ -90,7 +99,6 @@
                 android:text=" 13123 "
                 android:textColor="@color/white" />
         </LinearLayout>
-        >
 
         <RelativeLayout
             style="@style/MatchWrap"
@@ -101,6 +109,7 @@
             android:background="@drawable/bg_radius5_white_bottom_left">
 
             <TextView
+
                 style="@style/WrapWrap"
                 android:layout_marginStart="@dimen/icon_width_height_10"
                 android:layout_marginLeft="@dimen/icon_width_height_10"
@@ -109,7 +118,7 @@
                 android:textColor="@color/p_white_test" />
 
             <TextView
-
+                android:id="@+id/tv_price"
                 style="@style/WrapWrap"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
@@ -139,6 +148,7 @@
         <RelativeLayout style="@style/MatchWrap">
 
             <TextView
+
                 style="@style/WrapWrap"
                 android:layout_marginStart="@dimen/icon_width_height_10"
                 android:layout_marginLeft="@dimen/icon_width_height_10"
@@ -147,7 +157,7 @@
                 android:textColor="@color/p_white_test" />
 
             <TextView
-
+                android:id="@+id/tv_currency"
                 style="@style/WrapWrap"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
@@ -162,6 +172,7 @@
         <RelativeLayout style="@style/MatchWrap">
 
             <TextView
+
                 style="@style/WrapWrap"
                 android:layout_marginStart="@dimen/icon_width_height_10"
                 android:layout_marginLeft="@dimen/icon_width_height_10"
@@ -170,7 +181,7 @@
                 android:textColor="@color/p_white_test" />
 
             <TextView
-
+                android:id="@+id/tv_quantity"
                 style="@style/WrapWrap"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
@@ -185,6 +196,32 @@
         <RelativeLayout style="@style/MatchWrap">
 
             <TextView
+
+                style="@style/WrapWrap"
+                android:layout_marginStart="@dimen/icon_width_height_10"
+                android:layout_marginLeft="@dimen/icon_width_height_10"
+                android:padding="@dimen/icon_width_height_10"
+                android:text="预约时间"
+                android:textColor="@color/p_white_test" />
+
+            <TextView
+                android:id="@+id/tv_time"
+                style="@style/WrapWrap"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/icon_width_height_20"
+                android:layout_marginRight="@dimen/icon_width_height_20"
+                android:text="08-13 12:40:30"
+                android:textColor="@color/white" />
+        </RelativeLayout>
+
+        <include layout="@layout/public_line_01" />
+
+        <RelativeLayout
+            style="@style/MatchWrap"
+            android:visibility="gone">
+
+            <TextView
                 style="@style/WrapWrap"
                 android:layout_marginStart="@dimen/icon_width_height_10"
                 android:layout_marginLeft="@dimen/icon_width_height_10"
@@ -205,30 +242,9 @@
 
         <include layout="@layout/public_line_01" />
 
-        <RelativeLayout style="@style/MatchWrap">
-
-            <TextView
-                style="@style/WrapWrap"
-                android:layout_marginStart="@dimen/icon_width_height_10"
-                android:layout_marginLeft="@dimen/icon_width_height_10"
-                android:padding="@dimen/icon_width_height_10"
-                android:text="预约时间"
-                android:textColor="@color/p_white_test" />
-
-            <TextView
-
-                style="@style/WrapWrap"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginEnd="@dimen/icon_width_height_20"
-                android:layout_marginRight="@dimen/icon_width_height_20"
-                android:text="08-13 12:40:30"
-                android:textColor="@color/white" />
-        </RelativeLayout>
-
-        <include layout="@layout/public_line_01" />
-
-        <RelativeLayout style="@style/MatchWrap">
+        <RelativeLayout
+            style="@style/MatchWrap"
+            android:visibility="gone">
 
             <TextView
                 style="@style/WrapWrap"

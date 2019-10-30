@@ -24,6 +24,8 @@ public class Constant {
     public static final String upphoto = BASE_URL + "upphoto";//头像
     public static final String getpass = BASE_URL + "getpass";//找回密码
     public static final String feedback = BASE_URL + "feedback";//意见提交
+    public static final String newcontract = BASE_URL + "newcontract";//合约
+    public static final String mycontract = BASE_URL + "mycontract";//合约记录
 
 
     //

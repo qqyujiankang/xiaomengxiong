@@ -13,7 +13,7 @@ import java.util.Date;
 import java.util.Locale;
 
 /**
-
+ *
  */
 public final class TimeUtils {
 
@@ -88,6 +88,20 @@ public final class TimeUtils {
         }
         return -1;
     }
+
+
+    /*
+     * 将时间戳转换为时间
+     */
+    public static String stampToDate(long  s) {
+        String res;
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+        Date date = new Date(s);
+        res = simpleDateFormat.format(date);
+        return res;
+    }
+
 
     /**
      * 将时间字符串转为 Date 类型

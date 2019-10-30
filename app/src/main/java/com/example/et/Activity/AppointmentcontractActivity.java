@@ -2,6 +2,7 @@ package com.example.et.Activity;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
@@ -106,7 +107,7 @@ public class AppointmentcontractActivity extends BaseActivity {
                 //requestDatas();
 //                answerPopuwindow = new AnswerPopuwindow((Activity) context, onClickListener, onClickListener1, lifeful);
 //                answerPopuwindow.showAtLocation(ll, Gravity.CENTER_VERTICAL, 0, 0); //设置layout在PopupWindow中显示的位置
-                new AnswerDiog(this, onClickListener, problem, answers).show();
+                new AnswerDiog(this, onClickListener, onClickListener1, problem, answers).show();
 
                 break;
             default:
@@ -115,35 +116,81 @@ public class AppointmentcontractActivity extends BaseActivity {
     }
 
     private List<Answer> answers = new ArrayList<>();
-    private String problem;
+    private String problem, answerok, problemid;
+    private AdapterView.OnItemClickListener onClickListener1 = new AdapterView.OnItemClickListener() {
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long l) {
+            ManagerAdapter managerAdapter = null;
+            if (parent.getAdapter() instanceof HeaderViewListAdapter) {
+                HeaderViewListAdapter ha = (HeaderViewListAdapter) parent.getAdapter();
+                managerAdapter = (ManagerAdapter) ha.getWrappedAdapter();
+            } else if (parent.getAdapter() instanceof ManagerAdapter) {
+                managerAdapter = (ManagerAdapter) parent.getAdapter();
+            }
+
+            Answer contract = (Answer) managerAdapter.getItem(position);
+            for (Answer bean : answers) {//全部设为未选中
+                bean.setChecked(false);
+            }
+            answerok = contract.getString();
+            contract.setChecked(true);//点击的设为选中
+            managerAdapter.notifyDataSetChanged();
+        }
+    };
 
     @Override
     public void requestDatas() {
         super.requestDatas();
+        redata(0);
 
+    }
+
+    String url;
+
+    private void redata(int i) {
         try {
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("phone", CacheUtils.getInstance().getString(CacheConstants.PHONE));
-            TaskPresenterUntils.lifeful(Constant.problem, jsonObject, new OnLoadLifefulListener<String>(null, new OnLoadListener<String>() {
+            if (i == 1) {
+                jsonObject.put("cid", id);
+                jsonObject.put("problemid", problemid);
+                jsonObject.put("answerok", answerok);
+                url = Constant.tocontract;
+            } else {
+                url = Constant.problem;
+            }
+
+
+            TaskPresenterUntils.lifeful(url, jsonObject, new OnLoadLifefulListener<String>(null, new OnLoadListener<String>() {
                 @Override
                 public void onSuccess(String success) {
                     LogUtils.i("=======lifeful====" + success);
                     Map<String, Object> resultMap = ParseUtils.analysisListTypeDatasAndCount((Activity) context, success, null, false).getStringMap();
                     if (resultMap.get(KeyValueConstants.CODE).equals("200")) {
-                        problem = resultMap.get("problem").toString();
-                        try {
-                            String s = resultMap.get("answer").toString();
-                            JSONArray myJsonObject = new JSONArray(s);
-                            for (int i = 0; i < myJsonObject.length(); i++) {
-                                answers.add(new Answer(myJsonObject.getString(i)));
+                        if (i == 0) {
+                            problem = resultMap.get("problem").toString();
+                            try {
+                                String s = resultMap.get("answer").toString();
+                                problemid = resultMap.get("id").toString();
+                                JSONArray myJsonObject = new JSONArray(s);
+                                for (int i = 0; i < myJsonObject.length(); i++) {
+                                    answers.add(new Answer(myJsonObject.getString(i)));
+                                }
+                            } catch (JSONException e) {
+
                             }
-                        } catch (JSONException e) {
+                        } else {
+                            Intent i = new Intent();
+                            i.setClass(AppointmentcontractActivity.this, MainActivity.class);
+                            i.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            i.putExtra("fragment_flag", 2);
+                            startActivity(i);
+                            finish();
 
                         }
 
-                    } else {
-
                     }
+                    LogUtils.i("=======lifeful====" + success + "========" + resultMap.get(KeyValueConstants.MSG));
 
 
                 }
@@ -152,11 +199,20 @@ public class AppointmentcontractActivity extends BaseActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+
     }
 
     private View.OnClickListener onClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
+            switch (view.getId()) {
+                case R.id.btn_confirm:
+                    LogUtils.i("====================" + answerok);
+                    redata(1);
+
+                    break;
+                default:
+            }
 
         }
     };

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    style="@style/MatchMatch">
+    style="@style/MatchMatch"
+    android:background="@color/black">
 
     <LinearLayout
         android:id="@+id/pop_layout"
@@ -12,8 +13,11 @@
         android:orientation="vertical">
 
         <TextView
+            android:layout_marginEnd="@dimen/icon_width_height_20"
             android:id="@+id/tv_issue"
             style="@style/MatchWrap"
+            android:layout_marginStart="@dimen/icon_width_height_20"
+            android:layout_marginLeft="@dimen/icon_width_height_20"
             android:background="@color/black_01"
             android:padding="10dp"
             android:text=""
@@ -22,17 +26,20 @@
 
 
         <ListView
-            android:choiceMode="singleChoice"
             android:id="@+id/listv"
             style="@style/MatchWrap"
+            android:layout_marginStart="@dimen/icon_width_height_20"
             android:background="@color/black_01"
-            android:divider="@color/textcolor_yellow" />
+            android:choiceMode="singleChoice"
+            android:divider="@color/black_01"
+            android:dividerHeight="@dimen/icon_width_height_10" />
 
         <Button
             android:id="@+id/btn_confirm"
             style="@style/MatchWrap"
             android:layout_gravity="center_horizontal"
             android:layout_marginStart="@dimen/icon_width_height_30"
+            android:layout_marginTop="@dimen/icon_width_height_20"
             android:layout_marginEnd="@dimen/icon_width_height_30"
             android:layout_marginBottom="@dimen/icon_width_height_20"
             android:background="@drawable/bg_radius5_blue"

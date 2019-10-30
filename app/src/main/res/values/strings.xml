@@ -100,5 +100,9 @@
     <string name="team">团队</string>
     <string name="Active_member">有效会员</string>
     <string name="performance">业绩</string>
+    <string name="To_make_an_appointment_in">预约中</string>
+    <string name="Take_out_the_principal_and_interest_countdown">取出本息倒计时</string>
+    <string name="Appointment_success_time">预约成功时间</string>
+    <string name="The_contract_amount">合约金额</string>
 
 </resources>

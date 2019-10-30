@@ -26,6 +26,7 @@ import com.example.et.R;
 import com.example.et.Ustlis.ActivityUtils;
 import com.example.et.Ustlis.ImageLoaderUtil;
 import com.example.et.util.CacheUtils;
+import com.example.et.util.LogUtils;
 import com.example.et.util.constant.CacheConstants;
 import com.example.et.util.lifeful.Lifeful;
 
@@ -104,6 +105,7 @@ public class MyFragment extends BaseFragment {
         View view = inflater.inflate(R.layout.fragment_my, container, false);
         unbinder = ButterKnife.bind(this, view);
         initView();
+               LogUtils.i("=====onCreateView==="+"MyFragment");
         return view;
     }
 
@@ -156,6 +158,7 @@ public class MyFragment extends BaseFragment {
             case R.id.ll_version_information:
                 break;
             case R.id.public_button:
+                CacheUtils.getInstance().put(CacheConstants.TOKEN, "");
                 ActivityUtils.finishActivity(context);
                 ActivityUtils.startActivity(LoginActivity.class);
 

@@ -33,6 +33,7 @@ import com.example.et.View.MyGridView;
 import com.example.et.entnty.ListObject;
 import com.example.et.util.CacheUtils;
 import com.example.et.util.LogUtils;
+import com.example.et.util.StringUtils;
 import com.example.et.util.TaskPresenterUntils;
 import com.example.et.util.constant.CacheConstants;
 import com.example.et.util.constant.KeyValueConstants;
@@ -73,6 +74,12 @@ public class HeadFragment extends BaseFragment implements AdapterView.OnItemClic
     ImageView service;
     @BindView(R.id.ll_announcement)
     LinearLayout llAnnouncement;
+    @BindView(R.id.tv_r_gold)
+    TextView tvRGold;
+    @BindView(R.id.tv_r_huilv)
+    TextView tvRHuilv;
+    @BindView(R.id.tv_r_zd)
+    TextView tvRZd;
     private Context context;
     Unbinder unbinder;
 
@@ -95,6 +102,7 @@ public class HeadFragment extends BaseFragment implements AdapterView.OnItemClic
         View view = inflater.inflate(R.layout.fragment_head, container, false);
         unbinder = ButterKnife.bind(this, view);
         initView();
+        LogUtils.i("=====onCreateView===" + "HeadFragment");
         return view;
     }
 
@@ -150,7 +158,19 @@ public class HeadFragment extends BaseFragment implements AdapterView.OnItemClic
                     Map<String, Object> resultMap = ParseUtils.analysisListTypeDatasAndCount((Activity) context, success, null, true).getStringMap();
                     LogUtils.i("homne=========" + success + "==========" + resultMap.get(KeyValueConstants.MSG));
                     if (resultMap.get(KeyValueConstants.CODE).equals("200")) {
+                        tvRGold.setText(CacheUtils.getInstance().getString(CacheConstants.s_gold));
+                         double s_huil = Double.parseDouble(CacheUtils.getInstance().getString(CacheConstants.s_huil));
 
+
+                        double s_zd = Double.parseDouble(CacheUtils.getInstance().getString(CacheConstants.s_zd));
+                        if (s_huil > 0.0) {//你输入的是正数
+
+                            tvRHuilv.setTextColor(getResources().getColor(R.color.colorPrimaryDark));
+                        } else if (s_huil < 0.0) {//你输入的是负数
+                            tvRHuilv.setTextColor(getResources().getColor(R.color.colorAccent_01));
+                        }
+                        tvRHuilv.setText(StringUtils.calculateProfit(s_huil));
+                        tvRZd.setText(StringUtils.calculateProfit(s_zd));
                     } else {
                         ActivityUtils.startActivity(LoginActivity.class);
                         ((Activity) context).finish();

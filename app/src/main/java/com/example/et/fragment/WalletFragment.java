@@ -77,8 +77,10 @@ public class WalletFragment extends BaseFragment implements AdapterView.OnItemCl
         unbinder = ButterKnife.bind(this, view);
         initView();
         requestDatas();
+        LogUtils.i("=====onCreateView==="+"WalletFragment");
         return view;
     }
+
 
     private AdapterRealize adapterRealize;
 
