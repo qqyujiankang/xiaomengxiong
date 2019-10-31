@@ -50,6 +50,12 @@ public class RecordAdapter extends ManagerAdapter {
             tvType.setText(record.getTypes());
             tvHavePeople.setText(record.getType());
             tvGlod.setText(record.getNumber());
+            if (Double.parseDouble(record.getNumber())>0){
+
+                tvGlod.setTextColor(context.getResources().getColor(R.color.colorPrimaryDark));
+            }else if (Double.parseDouble(record.getNumber())<0){
+                tvGlod.setTextColor(context.getResources().getColor(R.color.colorAccent_01));
+            }
 
 
         }
