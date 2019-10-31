@@ -17,6 +17,7 @@ import com.example.et.Ustlis.ToastUtils;
 import com.example.et.Verification;
 import com.example.et.util.CacheUtils;
 import com.example.et.util.LogUtils;
+import com.example.et.util.StringUtils;
 import com.example.et.util.TaskPresenterUntils;
 import com.example.et.util.constant.CacheConstants;
 import com.example.et.util.constant.KeyValueConstants;
@@ -61,8 +62,11 @@ public class AddressbindingActivity extends BaseActivity {
     LinearLayout llBindingUsDt;
     @BindView(R.id.tv_address_binding)
     TextView tvAddressBinding;
+    @BindView(R.id.ll_USDT)
+    LinearLayout llUSDT;
     private Context context;
     private Lifeful lifeful;
+    private int id;
 
     @Override
 
@@ -72,13 +76,18 @@ public class AddressbindingActivity extends BaseActivity {
         lifeful = this;
         setContentView(R.layout.activity_addressbinding);
         ButterKnife.bind(this);
+        getIntentDatas();
         initView();
 
         LogUtils.i("============" + "0xqwertyuiolkjhgfdsazxcvbnm147258369qwertQ".length());
 
     }
 
-
+    @Override
+    public void getIntentDatas() {
+        super.getIntentDatas();
+        id = getIntent().getIntExtra("id", 0);
+    }
 
     @Override
     public void initView() {
@@ -93,7 +102,7 @@ public class AddressbindingActivity extends BaseActivity {
 
     }
 
-    @OnClick({R.id.public_back, R.id.tv_get_cot, R.id.public_button})
+    @OnClick({R.id.public_back, R.id.tv_get_cot, R.id.public_button, R.id.public_other})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.public_back:
@@ -105,7 +114,18 @@ public class AddressbindingActivity extends BaseActivity {
 
                 break;
             case R.id.public_button:
-                datat();
+                if (!StringUtils.isEmpty(etPassword.getText().toString().trim())) {
+                    datat();
+                } else {
+                    ToastUtils.showShort(R.string.Please_enter_the_USDT_address);
+                }
+
+                break;
+            case R.id.public_other:
+                llBindingUsDt.setVisibility(View.VISIBLE);
+                llUSDT.setVisibility(View.GONE);
+                publicOther.setVisibility(View.GONE);
+
                 break;
             default:
         }
@@ -116,8 +136,13 @@ public class AddressbindingActivity extends BaseActivity {
             JSONObject jsonObject = new JSONObject();
 
             jsonObject.put("phone", CacheUtils.getInstance().getString(CacheConstants.PHONE));
-            jsonObject.put("type", "usdt");
-            jsonObject.put("address", "0xad023b17ece15a40cf52f91c49ec234b8aca0a42");
+            if (id == 0) {
+                jsonObject.put("type", "usdt");
+            } else {
+                jsonObject.put("type", id);
+            }
+
+            jsonObject.put("address", etPassword.getText().toString().trim());
             jsonObject.put("code", etCode.getText().toString());
 
             TaskPresenterUntils.lifeful(Constant.upgoldaddress, jsonObject, new OnLoadLifefulListener<String>(null, new OnLoadListener<String>() {
@@ -125,7 +150,7 @@ public class AddressbindingActivity extends BaseActivity {
                 public void onSuccess(String success) {
                     Map<String, Object> resultMap = ParseUtils.analysisListTypeDatasAndCount((Activity) context, success, null, true).getStringMap();
                     if (resultMap.get(KeyValueConstants.CODE).equals("200")) {
-                        CacheUtils.getInstance().put(CacheConstants.PHONE, "0xad023b17ece15a40cf52f91c49ec234b8aca0a42");
+                        CacheUtils.getInstance().put(CacheConstants.usdtaddress, etPassword.getText().toString().trim());
                         finish();
                     }
                     ToastUtils.showShort(resultMap.get(KeyValueConstants.MSG).toString());

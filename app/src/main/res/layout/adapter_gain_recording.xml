@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        style="@style/MatchWrap.Vertical"
+        android:layout_marginStart="@dimen/icon_width_height_20"
+        android:layout_marginEnd="@dimen/icon_width_height_20">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/icon_width_height_10"
+            android:padding="@dimen/icon_width_height_10">
+
+            <TextView
+                android:id="@+id/tv_glod"
+                style="@style/WrapWrap"
+                android:textColor="@color/orange" />
+
+            <TextView
+                android:id="@+id/tv_type"
+                style="@style/WrapWrap"
+                android:layout_alignParentRight="true"
+                android:layout_marginStart="@dimen/icon_width_height_20"
+                android:layout_marginLeft="@dimen/icon_width_height_20"
+                android:layout_marginEnd="@dimen/icon_width_height_20"
+                android:textColor="@color/white" />
+        </RelativeLayout>
+
+        <LinearLayout
+            style="@style/MatchWrap"
+            android:layout_marginBottom="@dimen/icon_width_height_10">
+
+            <TextView
+                style="@style/WrapWrap"
+                android:text="@string/Have_people"
+                android:textColor="@color/p_white_test" />
+
+            <TextView
+                android:id="@+id/tv_Have_people"
+                style="@style/WrapWrap"
+                android:text="15787645698"
+                android:textColor="@color/p_white_test" />
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/MatchWrap"
+            android:layout_marginBottom="@dimen/icon_width_height_10">
+
+            <TextView
+                style="@style/WrapWrap"
+                android:text="@string/time"
+                android:textColor="@color/p_white_test" />
+
+            <TextView
+                android:id="@+id/tv_time"
+                style="@style/WrapWrap"
+                android:text="15787645698"
+                android:textColor="@color/p_white_test" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

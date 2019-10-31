@@ -17,6 +17,7 @@ import androidx.annotation.Nullable;
 import com.example.et.Activity.AddressbindingActivity;
 import com.example.et.Activity.FeedbackActivity;
 import com.example.et.Activity.FriendShareActivity;
+import com.example.et.Activity.GainRecordingActivity;
 import com.example.et.Activity.LoginActivity;
 import com.example.et.Activity.MyTeamActivity;
 import com.example.et.Activity.NodeReturnsActivity;
@@ -94,18 +95,25 @@ public class MyFragment extends BaseFragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        context = getActivity();
+        lifeful = (Lifeful) getActivity();
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        unbinder.unbind();
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        context = getActivity();
-        lifeful = (Lifeful) getActivity();
+
         View view = inflater.inflate(R.layout.fragment_my, container, false);
         unbinder = ButterKnife.bind(this, view);
         initView();
-               LogUtils.i("=====onCreateView==="+"MyFragment");
+        LogUtils.i("=====onCreateView===" + "MyFragment");
         return view;
     }
 
@@ -113,7 +121,8 @@ public class MyFragment extends BaseFragment {
     public void initView() {
         super.initView();
         if (CacheUtils.getInstance().getString(CacheConstants.usdtaddress) != null) {
-            tvBinding.setVisibility(View.GONE);
+            // tvBinding.setVisibility(View.GONE);
+            tvBinding.setText(getString(R.string.Is_binding));
         }
         publicButton.setText(getString(R.string.quit));
         //头像
@@ -144,7 +153,7 @@ public class MyFragment extends BaseFragment {
 
             case R.id.ll_gain_recording:
                 // TODO: 2019/10/25
-                //ActivityUtils.startActivity(PersonalDataActivity.class);
+                ActivityUtils.startActivity(GainRecordingActivity.class);
                 break;
             case R.id.Ll_USDT_address_binding:
                 ActivityUtils.startActivity(AddressbindingActivity.class);

@@ -35,6 +35,12 @@ public class CacheConstants {
     public static final String s_gold = "s_gold";
     public static final String s_huil = "s_huil";
     public static final String s_zd = "s_zd";
+    public static final String r_gold = "r_gold";
+    public static final String r_huil = "r_huil";
+    public static final String r_zd = "r_zd";
+    public static final String newd = "new";
+
+
 
 
 }

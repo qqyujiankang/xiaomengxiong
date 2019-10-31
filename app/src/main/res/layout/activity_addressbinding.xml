@@ -90,6 +90,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/ll_USDT"
         style="@style/MatchWrap.Vertical"
         android:layout_marginTop="@dimen/icon_width_height_10"
         android:background="@color/black_p"

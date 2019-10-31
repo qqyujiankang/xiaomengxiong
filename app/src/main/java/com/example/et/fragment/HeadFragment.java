@@ -30,9 +30,13 @@ import com.example.et.R;
 import com.example.et.Ustlis.ActivityUtils;
 import com.example.et.Ustlis.ListDatasUtils;
 import com.example.et.View.MyGridView;
+import com.example.et.entnty.DataFlow;
 import com.example.et.entnty.ListObject;
+import com.example.et.entnty.Pagebean;
 import com.example.et.util.CacheUtils;
+import com.example.et.util.JsonUtil;
 import com.example.et.util.LogUtils;
+import com.example.et.util.PublicSwipeRefreshLayout.SwipeRefreshLayout;
 import com.example.et.util.StringUtils;
 import com.example.et.util.TaskPresenterUntils;
 import com.example.et.util.constant.CacheConstants;
@@ -80,6 +84,16 @@ public class HeadFragment extends BaseFragment implements AdapterView.OnItemClic
     TextView tvRHuilv;
     @BindView(R.id.tv_r_zd)
     TextView tvRZd;
+    @BindView(R.id.tv_s_gold)
+    TextView tvSGold;
+    @BindView(R.id.tv_s_huil)
+    TextView tvSHuil;
+    @BindView(R.id.tv_s_zd)
+    TextView tvSZd;
+    @BindView(R.id.swipeRefreshLayout)
+    SwipeRefreshLayout swipeRefreshLayout;
+    @BindView(R.id.tv_new_name)
+    TextView tvNewName;
     private Context context;
     Unbinder unbinder;
 
@@ -131,17 +145,53 @@ public class HeadFragment extends BaseFragment implements AdapterView.OnItemClic
         publicGridView.setAdapter(new ListActivityAdapter(context, ListDatasUtils.getListActivity(context), null));
         publicGridView.setOnItemClickListener(this);
 
-        List<String> list = new ArrayList<>();
-        for (int i = 0; i < 5; ) {
-            list.add(" Item: " + ++i);
-        }
-        AutoPollAdapter adapter = new AutoPollAdapter(list);
-        recycleView.addItemDecoration(new DividerItemDecoration(context, DividerItemDecoration.VERTICAL));
-        recycleView.setAdapter(adapter);
-        recycleView.start();
 
         requestDatas();
+        requestDatas2();
 
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                requestDatas();
+
+
+            }
+        });
+
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        unbinder.unbind();
+    }
+
+    @Override
+    public void requestDatas2() {
+        super.requestDatas2();
+        try {
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("phone", CacheUtils.getInstance().getString(CacheConstants.PHONE));
+            TaskPresenterUntils.lifeful(Constant.shujuliu, jsonObject, new OnLoadLifefulListener<String>(swipeRefreshLayout, new OnLoadListener<String>() {
+                @Override
+                public void onSuccess(String success) {
+                    LogUtils.i("homne====shujuliu=====" + success);
+                    Pagebean<Object> objectPagebean = ParseUtils.analysisListTypeDatasAndCount((Activity) context, success, DataFlow[].class, false);
+
+                    if (objectPagebean.getStringMap().get(KeyValueConstants.CODE).equals("200")) {
+                        AutoPollAdapter adapter = new AutoPollAdapter((ArrayList<DataFlow>) (ArrayList) objectPagebean.getList());
+                        recycleView.addItemDecoration(new DividerItemDecoration(context, DividerItemDecoration.VERTICAL));
+                        recycleView.setAdapter(adapter);
+                        recycleView.start();
+                    }
+
+                }
+
+
+            }, lifeful));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -151,26 +201,40 @@ public class HeadFragment extends BaseFragment implements AdapterView.OnItemClic
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("phone", CacheUtils.getInstance().getString(CacheConstants.PHONE));
             LogUtils.i("exp======home===" + jsonObject + "==========");
-            TaskPresenterUntils.lifeful(Constant.home, jsonObject, new OnLoadLifefulListener<String>(null, new OnLoadListener<String>() {
+            TaskPresenterUntils.lifeful(Constant.home, jsonObject, new OnLoadLifefulListener<String>(swipeRefreshLayout, new OnLoadListener<String>() {
                 @Override
                 public void onSuccess(String success) {
                     LogUtils.i("homne=========" + success);
                     Map<String, Object> resultMap = ParseUtils.analysisListTypeDatasAndCount((Activity) context, success, null, true).getStringMap();
                     LogUtils.i("homne=========" + success + "==========" + resultMap.get(KeyValueConstants.MSG));
                     if (resultMap.get(KeyValueConstants.CODE).equals("200")) {
-                        tvRGold.setText(CacheUtils.getInstance().getString(CacheConstants.s_gold));
-                         double s_huil = Double.parseDouble(CacheUtils.getInstance().getString(CacheConstants.s_huil));
+                        tvRGold.setText(CacheUtils.getInstance().getString(CacheConstants.r_gold));
+                        tvRHuilv.setText(StringUtils.calculateProfit(Double.parseDouble(CacheUtils.getInstance().getString(CacheConstants.r_huil))));
+                        double r_zd = Double.parseDouble(CacheUtils.getInstance().getString(CacheConstants.r_zd));
+                        tvRZd.setText(StringUtils.calculateProfit(r_zd));
 
+                        if (r_zd > 0) {//你输入的是正数
 
-                        double s_zd = Double.parseDouble(CacheUtils.getInstance().getString(CacheConstants.s_zd));
-                        if (s_huil > 0.0) {//你输入的是正数
-
-                            tvRHuilv.setTextColor(getResources().getColor(R.color.colorPrimaryDark));
-                        } else if (s_huil < 0.0) {//你输入的是负数
-                            tvRHuilv.setTextColor(getResources().getColor(R.color.colorAccent_01));
+                            tvRZd.setTextColor(getResources().getColor(R.color.colorPrimaryDark));
+                        } else if (r_zd < 0) {//你输入的是负数
+                            tvRZd.setTextColor(getResources().getColor(R.color.colorAccent_01));
                         }
-                        tvRHuilv.setText(StringUtils.calculateProfit(s_huil));
-                        tvRZd.setText(StringUtils.calculateProfit(s_zd));
+                        tvSGold.setText(CacheUtils.getInstance().getString(CacheConstants.s_gold));
+                        tvSHuil.setText(StringUtils.calculateProfit(Double.parseDouble(CacheUtils.getInstance().getString(CacheConstants.s_huil))));
+                        double s_zd = Double.parseDouble(CacheUtils.getInstance().getString(CacheConstants.s_zd));
+                        tvSZd.setText(StringUtils.calculateProfit(s_zd));
+                        if (s_zd > 0) {//你输入的是正数
+
+                            tvSZd.setTextColor(getResources().getColor(R.color.colorPrimaryDark));
+                        } else if (s_zd < 0) {//你输入的是负数
+                            tvSZd.setTextColor(getResources().getColor(R.color.colorAccent_01));
+                        }
+
+                        LogUtils.i("homne======1===" + CacheUtils.getInstance().getString(CacheConstants.newd));
+                        Map<String, Object> stringObjectMap;
+                        stringObjectMap = JsonUtil.parseJSON(CacheUtils.getInstance().getString(CacheConstants.newd));
+                        tvNewName.setText(stringObjectMap.get("name").toString());
+
                     } else {
                         ActivityUtils.startActivity(LoginActivity.class);
                         ((Activity) context).finish();
@@ -240,4 +304,6 @@ public class HeadFragment extends BaseFragment implements AdapterView.OnItemClic
         }
         ActivityUtils.startActivity(intent);
     }
+
+
 }

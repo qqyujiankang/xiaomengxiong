@@ -5,216 +5,253 @@
     style="@style/MatchMatch.Vertical"
     android:background="@color/black">
 
-    <RelativeLayout
-        style="@style/MatchWrap"
-        android:background="@color/black_p"
-        android:padding="5dp">
+    <com.example.et.util.PublicSwipeRefreshLayout.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/swipeRefreshLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
-        <LinearLayout style="@style/MatchWrap">
+        <LinearLayout style="@style/MatchMatch.Vertical">
 
-            <ImageView
-                android:layout_width="35dp"
-                android:layout_height="34dp"
-                android:src="@mipmap/login_01" />
+
+            <RelativeLayout
+                style="@style/MatchWrap"
+                android:background="@color/black_p"
+                android:padding="5dp">
+
+                <LinearLayout style="@style/MatchWrap">
+
+                    <ImageView
+                        android:layout_width="35dp"
+                        android:layout_height="34dp"
+                        android:src="@mipmap/login_01" />
+
+                    <TextView
+                        android:id="@+id/textView"
+                        style="@style/WrapMatch"
+                        android:layout_marginLeft="10dp"
+                        android:gravity="center"
+                        android:text="ET 联盟社区"
+                        android:textColor="@color/orange"
+                        android:textSize="@dimen/text_size_16"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/service"
+                    style="@style/WrapWrap"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="20dp"
+                    android:src="@mipmap/service" />
+            </RelativeLayout>
+
+            <com.youth.banner.Banner
+                android:id="@+id/banner"
+                android:layout_width="match_parent"
+                android:layout_height="150dp" />
+
+            <LinearLayout
+                android:id="@+id/ll_announcement"
+                style="@style/MatchWrap"
+                android:background="@color/black_p"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp">
+
+                <TextView
+                    android:id="@+id/textView2"
+                    style="@style/WrapWrap"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:text="公告"
+                    android:textColor="@color/orange"
+                    android:textSize="@dimen/text_size_18"
+                    android:typeface="monospace" />
+
+                <TextView
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:background="#CCCCCC" />
+
+                <RelativeLayout
+                    style="@style/MatchWrap"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10dp">
+
+                    <TextView
+                        android:id="@+id/tv_new_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_toLeftOf="@+id/iv_bank"
+                        android:text="习近平总书记15日赴内蒙古自治区"
+                        android:textColor="#E5EAFF" />
+
+                    <ImageView
+                        android:id="@+id/iv_bank"
+                        style="@style/WrapWrap.ImageView_bank" />
+                </RelativeLayout>
+            </LinearLayout>
 
             <TextView
-                android:id="@+id/textView"
-                style="@style/WrapMatch"
-                android:layout_marginLeft="10dp"
-                android:gravity="center"
-                android:text="ET 联盟社区"
-                android:textColor="@color/orange"
-                android:textSize="@dimen/text_size_16"
-                android:textStyle="bold" />
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#192754" />
 
-        </LinearLayout>
+            <include layout="@layout/public_grid_view" />
 
-        <ImageView
-            android:id="@+id/service"
-            style="@style/WrapWrap"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="20dp"
-            android:src="@mipmap/service" />
-    </RelativeLayout>
-
-    <com.youth.banner.Banner
-        android:id="@+id/banner"
-        android:layout_width="match_parent"
-        android:layout_height="150dp" />
-
-    <LinearLayout
-        android:id="@+id/ll_announcement"
-        style="@style/MatchWrap"
-        android:background="@color/black_p"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp">
-
-        <TextView
-            android:id="@+id/textView2"
-            style="@style/WrapWrap"
-            android:layout_marginStart="20dp"
-            android:layout_marginLeft="20dp"
-            android:text="公告"
-            android:textColor="@color/orange"
-            android:textSize="@dimen/text_size_18"
-            android:typeface="monospace" />
-
-        <TextView
-            android:layout_width="1dp"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="10dp"
-            android:background="#CCCCCC" />
-
-        <RelativeLayout
-            style="@style/MatchWrap"
-            android:layout_gravity="center"
-            android:layout_marginLeft="10dp">
-
-            <TextView
-                android:layout_width="304dp"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="习近平总书记15日赴内蒙古自治区"
-                android:textColor="#E5EAFF" />
+                android:layout_marginTop="10dp">
 
-            <ImageView
-                android:id="@+id/iv_bank"
-                style="@style/WrapWrap.ImageView_bank" />
-        </RelativeLayout>
-    </LinearLayout>
+                <LinearLayout
+                    style="@style/AutoWrap.Vertical"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/bg_gray1"
+                    android:gravity="center"
+                    android:padding="5dp">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#192754" />
+                    <TextView
+                        style="@style/WrapWrap"
+                        android:text="预约合约币种"
+                        android:textColor="@color/white" />
 
-    <include layout="@layout/public_grid_view" />
+                    <TextView
+                        android:id="@+id/tv_r_gold"
+                        style="@style/WrapWrap"
+                        android:text="USDT"
+                        android:textColor="@color/orange"
+                        android:textSize="@dimen/text_size_18"
+                        android:textStyle="bold" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp">
+                    <LinearLayout
+                        style="@style/WrapWrap.Horizontal"
+                        android:gravity="center">
 
-        <LinearLayout
-            style="@style/AutoWrap.Vertical"
-            android:layout_marginStart="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginEnd="10dp"
-            android:background="@drawable/bg_gray1"
-            android:gravity="center"
-            android:padding="5dp">
+                        <TextView
+                            android:id="@+id/tv_r_huilv"
+                            style="@style/WrapWrap"
+                            android:text="78.08"
+                            android:textColor="@color/white" />
 
-            <TextView
-                style="@style/WrapWrap"
-                android:text="预约合约币种"
-                android:textColor="@color/white" />
+                        <TextView
+                            android:id="@+id/tv_r_zd"
+                            style="@style/WrapWrap"
+                            android:layout_marginStart="15dp"
+                            android:layout_marginLeft="15dp"
+                            android:text="+78.08"
+                            android:textSize="13dp" />
 
-            <TextView
-                android:id="@+id/tv_r_gold"
-                style="@style/WrapWrap"
-                android:text="USDT"
-                android:textColor="@color/orange"
-                android:textSize="@dimen/text_size_18"
-                android:textStyle="bold" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/AutoWrap.Vertical"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/bg_gray1"
+                    android:gravity="center"
+                    android:padding="5dp">
+
+                    <TextView
+                        style="@style/WrapWrap"
+                        android:text="执行合约币种"
+                        android:textColor="@color/white" />
+
+                    <TextView
+                        android:id="@+id/tv_s_gold"
+                        style="@style/WrapWrap"
+                        android:layout_width="wrap_content"
+                        android:text="USDT"
+                        android:textColor="@color/orange"
+                        android:textSize="@dimen/text_size_18"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        style="@style/MatchWrap.Horizontal"
+                        android:gravity="center">
+
+                        <TextView
+                            android:id="@+id/tv_s_huil"
+                            style="@style/WrapWrap"
+                            android:text="78.08"
+                            android:textColor="@color/white" />
+
+                        <TextView
+                            android:id="@+id/tv_s_zd"
+                            style="@style/WrapWrap"
+                            android:layout_marginStart="15dp"
+                            android:layout_marginLeft="15dp"
+                            android:text="-78.08" />
+
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
 
             <LinearLayout
-                style="@style/WrapWrap.Horizontal"
-                android:gravity="center">
+                style="@style/MatchWrap"
+                android:layout_marginTop="10dp"
+                android:background="@color/black_p"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp">
+
 
                 <TextView
-                    android:id="@+id/tv_r_huilv"
-                    style="@style/WrapWrap"
-                    android:text="78.08"
-                    android:textColor="@color/white" />
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginLeft="10dp"
+                    android:background="@color/orange" />
 
                 <TextView
-                    android:textSize="13dp"
-                    android:id="@+id/tv_r_zd"
                     style="@style/WrapWrap"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginLeft="15dp"
-                    android:text="+78.08"
-                    />
+                    android:layout_marginStart="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:text="最新合约"
+                    android:textColor="@color/orange"
+                    android:textSize="@dimen/text_size_18"
+                    android:typeface="monospace" />
+
 
             </LinearLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            style="@style/AutoWrap.Vertical"
-            android:layout_marginRight="10dp"
-            android:background="@drawable/bg_gray1"
-            android:gravity="center"
-            android:padding="5dp">
 
             <TextView
-                style="@style/WrapWrap"
-                android:text="执行合约币种"
-                android:textColor="@color/white" />
-
-            <TextView
-
-                style="@style/WrapWrap"
-                android:text="USDT"
-                android:textColor="@color/orange"
-                android:textSize="@dimen/text_size_18"
-                android:textStyle="bold" />
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#192754" />
 
             <LinearLayout
-                style="@style/MatchWrap.Horizontal"
-                android:gravity="center">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
                 <TextView
-                    style="@style/WrapWrap"
-                    android:text="78.08"
-                    android:textColor="@color/white" />
+                    style="@style/AutoWrap"
+                    android:gravity="center"
+                    android:text="账号"
+                    android:textColor="@color/bottom_test" />
 
                 <TextView
+                    style="@style/AutoWrap"
+                    android:gravity="center"
+                    android:text="合约"
+                    android:textColor="@color/bottom_test" />
 
-                    style="@style/WrapWrap"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginLeft="15dp"
-                    android:text="-78.08"
-                   />
-
+                <TextView
+                    style="@style/AutoWrap"
+                    android:gravity="center"
+                    android:text="@string/time"
+                    android:textColor="@color/bottom_test" />
             </LinearLayout>
+
+            <com.example.et.Adapter.AutoPollRecyclerView
+                android:id="@+id/recycleView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layoutManager="LinearLayoutManager" />
         </LinearLayout>
-    </LinearLayout>
+    </com.example.et.util.PublicSwipeRefreshLayout.SwipeRefreshLayout>
 
-    <LinearLayout
-        style="@style/MatchWrap"
-        android:layout_marginTop="10dp"
-        android:background="@color/black_p"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp">
-
-
-        <TextView
-            android:layout_width="1dp"
-            android:layout_height="match_parent"
-            android:layout_marginStart="20dp"
-            android:layout_marginLeft="10dp"
-            android:background="@color/orange" />
-
-        <TextView
-            style="@style/WrapWrap"
-            android:layout_marginStart="20dp"
-            android:layout_marginLeft="20dp"
-            android:text="最新合约"
-            android:textColor="@color/orange"
-            android:textSize="@dimen/text_size_18"
-            android:typeface="monospace" />
-
-
-    </LinearLayout>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#192754" />
-
-    <com.example.et.Adapter.AutoPollRecyclerView
-        android:id="@+id/recycleView"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        app:layoutManager="LinearLayoutManager" />
 </LinearLayout>

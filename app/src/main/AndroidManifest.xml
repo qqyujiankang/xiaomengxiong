@@ -13,12 +13,17 @@
         android:roundIcon="@mipmap/icon"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <!--      忘记密码  -->
+        <!--收益记录-->
+        <activity
+            android:name=".Activity.GainRecordingActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
+
+        <!-- 忘记密码 -->
         <activity
             android:name=".Activity.ForgetThePasswordActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme" />
-        <!-- 公告详情 -->
+            android:theme="@style/AppTheme" /> <!-- 公告详情 -->
         <activity
             android:name=".Activity.NoticedetailsActivity"
             android:screenOrientation="portrait"

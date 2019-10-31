@@ -28,9 +28,11 @@ import com.example.et.entnty.Ass;
 import com.example.et.entnty.Contract;
 import com.example.et.entnty.Pagebean;
 import com.example.et.util.CacheUtils;
+import com.example.et.util.JsonUtil;
 import com.example.et.util.LogUtils;
 import com.example.et.util.TaskPresenterUntils;
 import com.example.et.util.constant.CacheConstants;
+import com.example.et.util.constant.KeyValueConstants;
 import com.example.et.util.lifeful.Lifeful;
 import com.example.et.util.lifeful.OnLoadLifefulListener;
 import com.example.et.util.lifeful.OnLoadListener;
@@ -39,6 +41,9 @@ import com.example.et.util.realize.ParseUtils;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.List;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -71,13 +76,12 @@ public class WalletFragment extends BaseFragment implements AdapterView.OnItemCl
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        lifeful = (Lifeful) getActivity();
-        context = getActivity();
+
         View view = inflater.inflate(R.layout.fragmnet_wallet, container, false);
         unbinder = ButterKnife.bind(this, view);
         initView();
         requestDatas();
-        LogUtils.i("=====onCreateView==="+"WalletFragment");
+        LogUtils.i("=====onCreateView===" + "WalletFragment");
         return view;
     }
 
@@ -98,9 +102,12 @@ public class WalletFragment extends BaseFragment implements AdapterView.OnItemCl
                     LogUtils.i("======钱包======" + success);
                     adapterRealize = new AdapterRealize();
 
-                    Pagebean<Object> objectPagebean = ParseUtils.analysisListTypeDatasAndCount1(getActivity(), success, Ass[].class, false);
+                    Map<String, Object> objectPagebean = ParseUtils.analysisListTypeDatasAndCount(getActivity(), success, null, false).getStringMap();
+                    if (objectPagebean.get(KeyValueConstants.CODE).equals("200")) {
+                        List<Ass> asses = JsonUtil.stringToList(objectPagebean.get("ass").toString(), Ass.class);
+                        listv.setAdapter(new AssAdaper(context, asses, null));
+                    }
 
-                    adapterRealize.AdapterSetListDatas(objectPagebean, 0, listv, context, AssAdaper.class, lifeful);//返回第几页
 
 
                 }
@@ -116,6 +123,8 @@ public class WalletFragment extends BaseFragment implements AdapterView.OnItemCl
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        lifeful = (Lifeful) getActivity();
+        context = getActivity();
     }
 
     @Override
@@ -129,6 +138,18 @@ public class WalletFragment extends BaseFragment implements AdapterView.OnItemCl
 
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        initView();
+        requestDatas();
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        unbinder.unbind();
+    }
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int i, long l) {
@@ -146,4 +167,5 @@ public class WalletFragment extends BaseFragment implements AdapterView.OnItemCl
         intent.setClass(context, HopePropertyActivityActivity.class);
         ActivityUtils.startActivity(intent);
     }
+
 }

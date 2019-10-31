@@ -8,11 +8,12 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.example.et.Adapter.GainRecordingAdapter;
 import com.example.et.Adapter.RecordAdapter;
 import com.example.et.Constant;
 import com.example.et.R;
+import com.example.et.entnty.GainRecording;
 import com.example.et.entnty.Pagebean;
-import com.example.et.entnty.Record;
 import com.example.et.util.CacheUtils;
 import com.example.et.util.LogUtils;
 import com.example.et.util.PublicSwipeRefreshLayout.SwipeRefreshLayout;
@@ -33,10 +34,9 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
- * 记录
+ * 收益记录
  */
-public class RecordActivity extends BaseActivity {
-
+public class GainRecordingActivity extends BaseActivity {
 
     @BindView(R.id.public_back)
     TextView publicBack;
@@ -54,6 +54,7 @@ public class RecordActivity extends BaseActivity {
     SwipeRefreshLayout swipeRefreshLayout;
     @BindView(R.id.refreshView)
     RelativeLayout refreshView;
+    private AdapterRealize adapterRealize;
     private Context context;
     private Lifeful lifeful;
     private int id;
@@ -62,25 +63,37 @@ public class RecordActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_record);
-        context = RecordActivity.this;
-        lifeful = RecordActivity.this;
+        context = GainRecordingActivity.this;
+        lifeful = GainRecordingActivity.this;
+        setContentView(R.layout.activity_gain_recording);
         ButterKnife.bind(this);
-        getIntentDatas();
         initView();
         requestDatas();
 
     }
 
     @Override
-    public void getIntentDatas() {
-        super.getIntentDatas();
-        id = getIntent().getIntExtra("id", 0);
+    public void initView() {
+        super.initView();
+        publicTitleTv.setText(getString(R.string.gain_recording));
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                page = 0;
+                requestDatas();
 
+            }
+        });
+
+        swipeRefreshLayout.setOnLoadMoreListener(new SwipeRefreshLayout.OnLoadMoreListener() {
+            @Override
+            public void onLoadMore() {
+                requestDatas();
+
+
+            }
+        });
     }
-
-
-    private AdapterRealize adapterRealize;
 
     @Override
     public void requestDatas() {
@@ -88,11 +101,10 @@ public class RecordActivity extends BaseActivity {
         try {
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("phone", CacheUtils.getInstance().getString(CacheConstants.PHONE));
-            jsonObject.put("gid", id);
             jsonObject.put("page", page);
+            LogUtils.i("收益记录==========" + jsonObject);
 
-            LogUtils.i("======钱包======"+jsonObject);
-            TaskPresenterUntils.lifeful(Constant.assorder, jsonObject, new OnLoadLifefulListener<String>(swipeRefreshLayout, new OnLoadListener<String>() {
+            TaskPresenterUntils.lifeful(Constant.profit, jsonObject, new OnLoadLifefulListener<String>(swipeRefreshLayout, new OnLoadListener<String>() {
                 @Override
                 public void onSuccess(String success) {
 
@@ -101,10 +113,10 @@ public class RecordActivity extends BaseActivity {
                         adapterRealize = new AdapterRealize();
                     }
 
-                    Pagebean<Object> objectPagebean = ParseUtils.analysisListTypeDatasAndCount((Activity) context, success, Record[].class, true);
-
-                    page = adapterRealize.AdapterSetListDatas(objectPagebean, page, listView, context, RecordAdapter.class, lifeful);//返回第几页
+                    Pagebean<Object> objectPagebean = ParseUtils.analysisListTypeDatasAndCount((Activity) context, success, GainRecording[].class, true);
                     LogUtils.i("======钱包======" + success + objectPagebean.getStringMap().get(KeyValueConstants.MSG));
+                    page = adapterRealize.AdapterSetListDatas(objectPagebean, page, listView, context, GainRecordingAdapter.class, lifeful);//返回第几页
+
 
                 }
 
@@ -113,28 +125,6 @@ public class RecordActivity extends BaseActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-    }
-
-    @Override
-    public void initView() {
-        super.initView();
-        publicTitleTv.setText(getString(R.string.record));
-
-
-        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                page = 0;
-                requestDatas();
-            }
-        });
-
-        swipeRefreshLayout.setOnLoadMoreListener(new SwipeRefreshLayout.OnLoadMoreListener() {
-            @Override
-            public void onLoadMore() {
-                requestDatas();
-            }
-        });
     }
 
     @OnClick(R.id.public_back)

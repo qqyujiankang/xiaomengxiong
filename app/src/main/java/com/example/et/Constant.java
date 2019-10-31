@@ -26,6 +26,12 @@ public class Constant {
     public static final String feedback = BASE_URL + "feedback";//意见提交
     public static final String newcontract = BASE_URL + "newcontract";//合约
     public static final String mycontract = BASE_URL + "mycontract";//合约记录
+    public static final String recharge = BASE_URL + "recharge";//充值
+    public static final String userupdate = BASE_URL + "userupdate";//转出
+    public static final String assorder = BASE_URL + "assorder";//资产记录
+    public static final String assetsprders = BASE_URL + "assetsprders";//资产记录
+    public static final String profit = BASE_URL + "profit";//资产记录
+    public static final String shujuliu = BASE_URL + "shujuliu";//首页下面的数据流
 
 
     //

@@ -95,27 +95,27 @@
             android:id="@+id/btn_top_up"
             style="@style/AutoWrapbuttn"
             android:layout_marginLeft="@dimen/icon_width_height_20"
-            android:layout_marginRight="@dimen/icon_width_height_20"
+            android:text="@string/top_up"
 
-            android:text="@string/top_up" />
+           />
 
         <Button
             android:id="@+id/btn_Mention_money"
             style="@style/AutoWrapbuttn"
-             android:layout_marginLeft="@dimen/icon_width_height_20"
+            android:layout_marginStart="@dimen/icon_width_height_20"
             android:layout_marginRight="@dimen/icon_width_height_20"
             android:text="@string/Mention_money" />
 
         <Button
             android:id="@+id/btn_transfer"
             style="@style/AutoWrapbuttn"
-
+            android:layout_marginStart="@dimen/icon_width_height_20"
             android:text="@string/transfer" />
 
         <Button
-            android:layout_marginLeft="@dimen/icon_width_height_20"
             android:id="@+id/btn_record"
             style="@style/AutoWrapbuttn"
+            android:layout_marginLeft="@dimen/icon_width_height_20"
             android:layout_marginRight="@dimen/icon_width_height_20"
             android:text="@string/record" />
 

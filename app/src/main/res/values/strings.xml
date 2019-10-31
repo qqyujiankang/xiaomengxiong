@@ -104,5 +104,13 @@
     <string name="Take_out_the_principal_and_interest_countdown">取出本息倒计时</string>
     <string name="Appointment_success_time">预约成功时间</string>
     <string name="The_contract_amount">合约金额</string>
+    <string name="Enter_security_password">输入安全密码</string>
+    <string name="please_fill_in_the_account_number">请填写对方账号</string>
+    <string name="Please_fill_in_the_transfer_amount">请填写转出金额，不得小于10</string>
+    <string name="currency">币种</string>
+    <string name="Have_people">产生人：</string>
+    <string name="time">时 间</string>
+    <string name="number">账号</string>
+    <string name="Is_binding">已绑定</string>
 
 </resources>

@@ -8,13 +8,14 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.et.R;
+import com.example.et.entnty.DataFlow;
 
 import java.util.List;
 
 public class AutoPollAdapter extends RecyclerView.Adapter<AutoPollAdapter.BaseViewHolder> {
-    private final List<String> mData;
+    private final List<DataFlow> mData;
 
-    public AutoPollAdapter(List<String> list) {
+    public AutoPollAdapter(List<DataFlow> list) {
         this.mData = list;
     }
 
@@ -27,8 +28,10 @@ public class AutoPollAdapter extends RecyclerView.Adapter<AutoPollAdapter.BaseVi
 
     @Override
     public void onBindViewHolder(BaseViewHolder holder, int position) {
-        String data = mData.get(position % mData.size());
-        holder.tv.setText(data);
+        DataFlow data = mData.get(position % mData.size());
+        holder.tvnumber.setText(data.getName());
+        holder.tvmenufind.setText(data.getUsdt());
+        holder.tvtime.setText(data.getTime());
     }
 
     @Override
@@ -36,11 +39,14 @@ public class AutoPollAdapter extends RecyclerView.Adapter<AutoPollAdapter.BaseVi
         return Integer.MAX_VALUE;
     }
 
-    class BaseViewHolder extends RecyclerView.ViewHolder{
-        TextView tv;
+    class BaseViewHolder extends RecyclerView.ViewHolder {
+        TextView tvnumber, tvmenufind, tvtime;
+
         public BaseViewHolder(View itemView) {
             super(itemView);
-            tv = itemView.findViewById(R.id.tv_content);
+            tvnumber = itemView.findViewById(R.id.tv_number);
+            tvmenufind = itemView.findViewById(R.id.tv_menu_find);
+            tvtime = itemView.findViewById(R.id.tv_time);
         }
     }
 }

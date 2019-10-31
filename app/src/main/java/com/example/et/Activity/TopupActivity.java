@@ -7,7 +7,21 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.example.et.Constant;
 import com.example.et.R;
+import com.example.et.Ustlis.ImageLoaderUtil;
+import com.example.et.util.CacheUtils;
+import com.example.et.util.LogUtils;
+import com.example.et.util.TaskPresenterUntils;
+import com.example.et.util.constant.CacheConstants;
+import com.example.et.util.lifeful.OnLoadLifefulListener;
+import com.example.et.util.lifeful.OnLoadListener;
+import com.example.et.util.realize.ParseUtils;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -30,14 +44,29 @@ public class TopupActivity extends BaseActivity {
     RelativeLayout rlBacground;
     @BindView(R.id.public_button)
     Button publicButton;
+    @BindView(R.id.iv_address_img)
+    ImageView ivAddressImg;
+    @BindView(R.id.tv_address)
+    TextView tvAddress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_topup);
         ButterKnife.bind(this);
+        getIntentDatas();
         initView();
     }
+
+    private int id;
+
+    @Override
+    public void getIntentDatas() {
+        super.getIntentDatas();
+        id = getIntent().getIntExtra("id", 0);
+        requestDatas();
+    }
+
 
     @Override
     public void initView() {
@@ -56,4 +85,33 @@ public class TopupActivity extends BaseActivity {
                 break;
         }
     }
+
+    @Override
+    public void requestDatas() {
+        super.requestDatas();
+        try {
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("phone", CacheUtils.getInstance().getString(CacheConstants.PHONE));
+            jsonObject.put("type", id);
+
+
+            TaskPresenterUntils.lifeful(Constant.recharge, jsonObject, new OnLoadLifefulListener<String>(null, new OnLoadListener<String>() {
+                @Override
+                public void onSuccess(String success) {
+                    LogUtils.i("======钱包======" + success);
+
+                    Map<String, Object> objectPagebean = ParseUtils.analysisListTypeDatasAndCount(TopupActivity.this, success, null, false).getStringMap();
+                    tvAddress.setText(objectPagebean.get("address").toString());
+                    ImageLoaderUtil.loadImage(TopupActivity.this,objectPagebean.get("address_img").toString(),ivAddressImg);
+
+
+                }
+
+
+            }, this));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

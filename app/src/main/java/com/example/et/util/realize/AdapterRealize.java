@@ -37,7 +37,7 @@ public class AdapterRealize implements AdapterModel {
                 objectList = objectPagebean.getList();
                 page++;
             } else if (objectList != null) {
-                if (page == 1) {
+                if (page == 0) {
                     objectList.clear();
                 }
                 if (objectPagebean.getList().size() > 0) {

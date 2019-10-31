@@ -1,6 +1,7 @@
 package com.example.et.Activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -58,6 +59,7 @@ public class HopePropertyActivityActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        context = this;
         setContentView(R.layout.activity_hope_property_activity);
         ButterKnife.bind(this);
         getIntentDatas();
@@ -73,7 +75,7 @@ public class HopePropertyActivityActivity extends BaseActivity {
         ass = getIntent().getParcelableExtra("ass");
 
         if (ass.getId() == 8) {
-            btnTransfer.setVisibility(View.GONE);
+            btnTopUp.setVisibility(View.GONE);
         }
         RlBanl.setText(ass.getName());
         tvRental.setText(StringUtils.calculateProfit(Double.valueOf(ass.getNumber())));
@@ -91,21 +93,36 @@ public class HopePropertyActivityActivity extends BaseActivity {
 
     @OnClick({R.id.public_back, R.id.public_other, R.id.btn_top_up, R.id.btn_Mention_money, R.id.btn_transfer, R.id.btn_record})
     public void onViewClicked(View view) {
+        Intent intent = new Intent();
+
+        intent.putExtra("id", ass.getId());
         switch (view.getId()) {
+
             case R.id.public_back:
                 finish();
                 break;
             case R.id.public_other:
+                ActivityUtils.startActivity(AddressbindingActivity.class);
                 break;
             case R.id.btn_top_up:
+                intent.setClass(context, TopupActivity.class);
+                ActivityUtils.startActivity(intent);//RecordActivity
                 break;
             case R.id.btn_Mention_money:
-                break;
-            case R.id.btn_transfer:
-                ActivityUtils.startActivity(TransferActivity.class);
+                ActivityUtils.startActivity(MentionmoneyActivity.class);//
                 break;
             case R.id.btn_record:
+                  intent.setClass(context, RecordActivity.class);
+                ActivityUtils.startActivity(intent);//
                 break;
+            case R.id.btn_transfer:
+                intent.setClass(context, TransferActivity.class);
+                intent.putExtra("name",ass.getName());
+                ActivityUtils.startActivity(intent);//
+                break;
+
+
+            default:
         }
     }
 }

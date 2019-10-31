@@ -140,7 +140,7 @@ public class SafePasswordActivity extends BaseActivity {
             jsonObject.put("phonecode", code);
             jsonObject.put("types", "pay");
             jsonObject.put("pass", OriginalPassword);
-            jsonObject.put("passtwo", "NewPassword");
+            jsonObject.put("passtwo", NewPassword);
 
 
             TaskPresenterUntils.lifeful(Constant.getpass, jsonObject, new OnLoadLifefulListener<String>(null, new OnLoadListener<String>() {
