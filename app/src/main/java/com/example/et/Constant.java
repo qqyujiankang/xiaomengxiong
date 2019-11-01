@@ -32,6 +32,8 @@ public class Constant {
     public static final String assetsprders = BASE_URL + "assetsprders";//资产记录
     public static final String profit = BASE_URL + "profit";//资产记录
     public static final String shujuliu = BASE_URL + "shujuliu";//首页下面的数据流
+    public static final String getgold = BASE_URL + "getgold";//申请提币
+    public static final String todaybaifenbi = BASE_URL + "todaybaifenbi";//查询当日的预付比例
 
 
     //

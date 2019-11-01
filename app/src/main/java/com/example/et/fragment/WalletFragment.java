@@ -3,9 +3,7 @@ package com.example.et.fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.HeaderViewListAdapter;
 import android.widget.ImageView;
@@ -13,20 +11,13 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.resource.bitmap.CircleCrop;
-import com.bumptech.glide.request.RequestOptions;
 import com.example.et.Activity.HopePropertyActivityActivity;
-import com.example.et.Activity.USTDPropertyActivity;
 import com.example.et.Adapter.AssAdaper;
-import com.example.et.Adapter.ContractAdapter;
 import com.example.et.Adapter.ManagerAdapter;
 import com.example.et.Constant;
 import com.example.et.R;
 import com.example.et.Ustlis.ActivityUtils;
 import com.example.et.entnty.Ass;
-import com.example.et.entnty.Contract;
-import com.example.et.entnty.Pagebean;
 import com.example.et.util.CacheUtils;
 import com.example.et.util.JsonUtil;
 import com.example.et.util.LogUtils;
@@ -46,9 +37,6 @@ import java.util.List;
 import java.util.Map;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
-import butterknife.Unbinder;
 
 /**
  * 钱包
@@ -69,22 +57,17 @@ public class WalletFragment extends BaseFragment implements AdapterView.OnItemCl
     @BindView(R.id.listv)
     ListView listv;
     private Context context;
-    Unbinder unbinder;
+
 
     private Lifeful lifeful;
 
+
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    protected void lazyLoad() {
 
-        View view = inflater.inflate(R.layout.fragmnet_wallet, container, false);
-        unbinder = ButterKnife.bind(this, view);
-        initView();
-        requestDatas();
-        LogUtils.i("=====onCreateView===" + "WalletFragment");
-        return view;
+        LogUtils.i("==============钱包===");
+         requestDatas();
     }
-
 
     private AdapterRealize adapterRealize;
 
@@ -107,7 +90,6 @@ public class WalletFragment extends BaseFragment implements AdapterView.OnItemCl
                         List<Ass> asses = JsonUtil.stringToList(objectPagebean.get("ass").toString(), Ass.class);
                         listv.setAdapter(new AssAdaper(context, asses, null));
                     }
-
 
 
                 }
@@ -138,17 +120,12 @@ public class WalletFragment extends BaseFragment implements AdapterView.OnItemCl
 
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        initView();
-        requestDatas();
-    }
+
+
 
     @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        unbinder.unbind();
+    protected int setContentView() {
+        return R.layout.fragmnet_wallet;
     }
 
     @Override

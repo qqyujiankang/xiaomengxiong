@@ -14,13 +14,12 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.example.et.Adapter.AnswerAdapter;
 import com.example.et.Adapter.ManagerAdapter;
-import com.example.et.Adapter.TestCheckOneAdapter;
 import com.example.et.Constant;
 import com.example.et.R;
 import com.example.et.View.AlipayPopuWindow;
 import com.example.et.View.AnswerDiog;
+import com.example.et.View.MyDiog;
 import com.example.et.entnty.Answer;
 import com.example.et.entnty.Contract;
 import com.example.et.util.CacheUtils;
@@ -80,6 +79,7 @@ public class AppointmentcontractActivity extends BaseActivity {
         ButterKnife.bind(this);
         initView();
         requestDatas();
+        new MyDiog(context, CacheUtils.getInstance().getString(CacheConstants.r_gold), 1).show();
     }
 
     @Override
@@ -99,14 +99,11 @@ public class AppointmentcontractActivity extends BaseActivity {
                 finish();
                 break;
             case R.id.ll_contract_amount:
-                alipayPopuWindow = new AlipayPopuWindow((Activity) context, onItemClickListener, lifeful);
+                alipayPopuWindow = new AlipayPopuWindow((Activity) context, onItemClickListener, lifeful, null);
                 alipayPopuWindow.showAtLocation(ll, Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0); //设置layout在PopupWindow中显示的位置
 
                 break;
             case R.id.public_button:
-                //requestDatas();
-//                answerPopuwindow = new AnswerPopuwindow((Activity) context, onClickListener, onClickListener1, lifeful);
-//                answerPopuwindow.showAtLocation(ll, Gravity.CENTER_VERTICAL, 0, 0); //设置layout在PopupWindow中显示的位置
                 new AnswerDiog(this, onClickListener, onClickListener1, problem, answers).show();
 
                 break;

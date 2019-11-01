@@ -22,7 +22,7 @@ public class CountDown {
              */
             @Override
             public void onTick(long millisUntilFinished) {
-                tv_remaining_time.setText(ms2HMS((int) millisUntilFinished));
+                tv_remaining_time.setText(timeParse( millisUntilFinished));
             }
 
             /**

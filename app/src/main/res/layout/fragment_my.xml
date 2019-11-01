@@ -153,6 +153,7 @@
                 </LinearLayout>
                 <!--      android:id="@+id/ll__node_returns"-->
                 <LinearLayout
+                    android:visibility="gone"
                     android:id="@+id/ll_returns"
                     style="@style/MatchWrap.Horizontal"
                     android:layout_marginStart="@dimen/start_or_end_20"
@@ -189,6 +190,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+
                     android:id="@+id/ll_gain_recording"
                     style="@style/MatchWrap.Horizontal"
                     android:layout_marginStart="@dimen/start_or_end_20"

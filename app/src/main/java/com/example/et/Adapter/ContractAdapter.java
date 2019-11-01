@@ -3,8 +3,11 @@ package com.example.et.Adapter;
 import android.content.Context;
 import android.widget.TextView;
 
+import com.example.et.Activity.AppointmentcontractActivity;
+import com.example.et.Activity.HopePropertyActivityActivity;
 import com.example.et.R;
 import com.example.et.entnty.Contract;
+import com.example.et.entnty.Currencyaddress;
 import com.example.et.util.lifeful.Lifeful;
 
 import java.util.List;
@@ -36,8 +39,13 @@ public class ContractAdapter extends ManagerAdapter {
 
         @Override
         public void setViewData(int position, List list) {
-            Contract contract = (Contract) list.get(position);
-            tvName.setText(contract.getNumber() + "USTD");
+            if (context instanceof AppointmentcontractActivity) {
+                Contract contract = (Contract) list.get(position);
+                tvName.setText(contract.getNumber() + "USTD");
+            }else if (context instanceof HopePropertyActivityActivity){
+                Currencyaddress currencyaddress= (Currencyaddress) list.get(position);
+                tvName.setText(currencyaddress.getString());
+            }
         }
     }
 }

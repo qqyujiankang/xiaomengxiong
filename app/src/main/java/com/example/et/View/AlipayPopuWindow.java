@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.FrameLayout;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
@@ -18,6 +17,7 @@ import com.example.et.Adapter.ContractAdapter;
 import com.example.et.Constant;
 import com.example.et.R;
 import com.example.et.entnty.Contract;
+import com.example.et.entnty.Currencyaddress;
 import com.example.et.entnty.Pagebean;
 import com.example.et.util.CacheUtils;
 import com.example.et.util.LogUtils;
@@ -32,6 +32,8 @@ import com.example.et.util.realize.ParseUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.List;
+
 
 /**
  * Created by Administrator on 2018/3/29.
@@ -41,9 +43,9 @@ public class AlipayPopuWindow extends PopupWindow {
     private View mMenuView;
     private ListView listView;
     private AdapterRealize adapterRealize;
-    private TextView tv_cancel;
+    private TextView tv_cancel, tvtite;
 
-    public AlipayPopuWindow(final Activity context, AdapterView.OnItemClickListener itemsOnClick, Lifeful Lifeful) {
+    public AlipayPopuWindow(final Activity context, AdapterView.OnItemClickListener itemsOnClick, Lifeful Lifeful, List<Currencyaddress> currencyaddresses) {
         super(context);
         LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -57,8 +59,17 @@ public class AlipayPopuWindow extends PopupWindow {
 
         listView = mMenuView.findViewById(R.id.listv);
         tv_cancel = mMenuView.findViewById(R.id.tv_cancel);
+        tvtite = mMenuView.findViewById(R.id.tv_tite);
+
         listView.setOnItemClickListener(itemsOnClick);
-        retdata(Lifeful, context, listView);
+        if (Lifeful != null) {
+            tvtite.setText("选择预约金额");
+            retdata(Lifeful, context, listView);
+
+        } else {
+            tvtite.setText("选择地址");
+            listView.setAdapter(new ContractAdapter(context,currencyaddresses,Lifeful));
+        }
         //设置SelectPicPopupWindow的View
         this.setContentView(mMenuView);
 

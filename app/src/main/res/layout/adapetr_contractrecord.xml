@@ -21,15 +21,15 @@
                 style="@style/WrapWrap"
                 android:layout_marginStart="@dimen/icon_width_height_30"
                 android:layout_marginLeft="@dimen/icon_width_height_50"
-                android:textColor="@color/white" />
+                android:textColor="@color/orange" />
 
             <TextView
-                android:layout_marginEnd="@dimen/icon_width_height_30"
-                android:layout_alignParentRight="true"
                 android:id="@+id/tv_jieidian"
                 style="@style/WrapWrap"
-                android:textColor="@color/white"
-                android:layout_marginRight="@dimen/icon_width_height_20" />
+                android:layout_alignParentRight="true"
+                android:layout_marginEnd="@dimen/icon_width_height_30"
+                android:layout_marginRight="@dimen/icon_width_height_20"
+                android:textColor="@color/white" />
         </RelativeLayout>
 
         <LinearLayout

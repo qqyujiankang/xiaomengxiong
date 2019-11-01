@@ -1,7 +1,6 @@
 package com.example.et.fragment;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -41,52 +40,53 @@ import butterknife.Unbinder;
  */
 public class MyFragment extends BaseFragment {
 
-    @BindView(R.id.tv_Friends_share)
-    TextView tvFriendsShare;
-    @BindView(R.id.tv_my_team)
-    TextView tvMyTeam;
-    @BindView(R.id.tv_Node_returns)
-    TextView tvNodeReturns;
-    @BindView(R.id.tv_gain_recording)
-    TextView tvGainRecording;
-    @BindView(R.id.tv_address_binding)
-    TextView tvAddressBinding;
-    @BindView(R.id.tv_apassword)
-    TextView tvApassword;
-    @BindView(R.id.tv_feedback)
-    TextView tvFeedback;
-    @BindView(R.id.tv_version_information)
-    TextView tvVersionInformation;
-    @BindView(R.id.public_button)
-    Button publicButton;
-    @BindView(R.id.Rl_Record)
-    RelativeLayout RlRecord;
-    @BindView(R.id.Ll_Friends_share)
-    LinearLayout LlFriendsShare;
-    @BindView(R.id.ll_my_team)
-    LinearLayout llMyTeam;
-    @BindView(R.id.ll_gain_recording)
-    LinearLayout llGainRecording;
-    @BindView(R.id.ll_set_password)
-    LinearLayout llSetPassword;
-    @BindView(R.id.ll_feedback)
-    LinearLayout llFeedback;
-    @BindView(R.id.ll_version_information)
-    LinearLayout llVersionInformation;
-    @BindView(R.id.ll_returns)
-    LinearLayout llReturns;
-    @BindView(R.id.iv_bank)
-    ImageView ivBank;
-    @BindView(R.id.tv_binding)
-    TextView tvBinding;
-    @BindView(R.id.Ll_USDT_address_binding)
-    LinearLayout LlUSDTAddressBinding;
+
     @BindView(R.id.iv_holder)
     ImageView ivHolder;
     @BindView(R.id.tv_name)
     TextView tvName;
     @BindView(R.id.tv_phone)
     TextView tvPhone;
+    @BindView(R.id.Rl_Record)
+    RelativeLayout RlRecord;
+    @BindView(R.id.tv_Friends_share)
+    TextView tvFriendsShare;
+    @BindView(R.id.Ll_Friends_share)
+    LinearLayout LlFriendsShare;
+    @BindView(R.id.tv_my_team)
+    TextView tvMyTeam;
+    @BindView(R.id.ll_my_team)
+    LinearLayout llMyTeam;
+    @BindView(R.id.tv_Node_returns)
+    TextView tvNodeReturns;
+    @BindView(R.id.ll_returns)
+    LinearLayout llReturns;
+    @BindView(R.id.tv_gain_recording)
+    TextView tvGainRecording;
+    @BindView(R.id.ll_gain_recording)
+    LinearLayout llGainRecording;
+    @BindView(R.id.tv_address_binding)
+    TextView tvAddressBinding;
+    @BindView(R.id.iv_bank)
+    ImageView ivBank;
+    @BindView(R.id.tv_binding)
+    TextView tvBinding;
+    @BindView(R.id.Ll_USDT_address_binding)
+    LinearLayout LlUSDTAddressBinding;
+    @BindView(R.id.tv_apassword)
+    TextView tvApassword;
+    @BindView(R.id.ll_set_password)
+    LinearLayout llSetPassword;
+    @BindView(R.id.tv_feedback)
+    TextView tvFeedback;
+    @BindView(R.id.ll_feedback)
+    LinearLayout llFeedback;
+    @BindView(R.id.tv_version_information)
+    TextView tvVersionInformation;
+    @BindView(R.id.ll_version_information)
+    LinearLayout llVersionInformation;
+    @BindView(R.id.public_button)
+    Button publicButton;
     private Context context;
     Unbinder unbinder;
 
@@ -99,22 +99,18 @@ public class MyFragment extends BaseFragment {
         lifeful = (Lifeful) getActivity();
     }
 
+
+
+
     @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        unbinder.unbind();
+    protected int setContentView() {
+        return R.layout.fragment_my;
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    protected void lazyLoad() {
 
-
-        View view = inflater.inflate(R.layout.fragment_my, container, false);
-        unbinder = ButterKnife.bind(this, view);
-        initView();
-        LogUtils.i("=====onCreateView===" + "MyFragment");
-        return view;
+        LogUtils.i("==============wode===");
     }
 
     @Override

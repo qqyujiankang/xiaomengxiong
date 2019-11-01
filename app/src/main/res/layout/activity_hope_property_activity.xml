@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ll"
     style="@style/MatchMatch.Vertical"
     android:background="@color/black"
     tools:context=".Activity.HopePropertyActivityActivity">
@@ -97,20 +98,22 @@
             android:layout_marginLeft="@dimen/icon_width_height_20"
             android:text="@string/top_up"
 
-           />
+            />
 
         <Button
             android:id="@+id/btn_Mention_money"
             style="@style/AutoWrapbuttn"
             android:layout_marginStart="@dimen/icon_width_height_20"
             android:layout_marginRight="@dimen/icon_width_height_20"
-            android:text="@string/Mention_money" />
+            android:text="@string/Mention_money"
+            android:layout_marginLeft="@dimen/icon_width_height_20" />
 
         <Button
             android:id="@+id/btn_transfer"
             style="@style/AutoWrapbuttn"
             android:layout_marginStart="@dimen/icon_width_height_20"
-            android:text="@string/transfer" />
+            android:text="@string/transfer"
+            android:layout_marginLeft="@dimen/icon_width_height_20" />
 
         <Button
             android:id="@+id/btn_record"
@@ -123,9 +126,13 @@
     </LinearLayout>
 
     <ListView
+        android:id="@+id/lv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/icon_width_height_20">
+        android:layout_marginTop="@dimen/icon_width_height_20"
+        android:background="@color/black_p"
+        android:divider="@color/black"
+        android:dividerHeight="1dp">
 
     </ListView>
 </LinearLayout>

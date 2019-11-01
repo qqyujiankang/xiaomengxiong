@@ -9,80 +9,150 @@ import androidx.fragment.app.Fragment;
 
 import com.example.et.R;
 
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
+
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
  * to handle interaction events.
- * Use the {@link BaseFragment#newInstance} factory method to
+ * Use the {@link BaseFragment#} factory method to
  * create an instance of this fragment.
  */
-public class BaseFragment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+public abstract class BaseFragment extends Fragment {
 
 
-    public BaseFragment() {
-        // Required empty public constructor
+    protected boolean isInit = false;
+    protected boolean isLoad = false;
+    protected final String TAG = "BaseFragment";
+    private View view;
+    Unbinder unbinder;
+
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        isCanLoadData();
     }
 
     /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment BaseFragment.
+     * 是否可以加载数据
+     * 可以加载数据的条件：
+     * 1.视图已经初始化
+     * 2.视图对用户可见
      */
-    // TODO: Rename and change types and number of parameters
-    public static BaseFragment newInstance(String param1, String param2) {
-        BaseFragment fragment = new BaseFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
+    private void isCanLoadData() {
+        if (!isInit) {
+            return;
+        }
+        if (getUserVisibleHint()) {
+            lazyLoad();
+            isLoad = true;
+        } else {
+            if (isLoad) {
+                stopLoad();
+            }
+        }
     }
 
+
+    /**
+     * 视图销毁的时候讲Fragment是否初始化的状态变为false
+     */
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+    public void onDestroyView() {
+        super.onDestroyView();
+        isInit = false;
+        isLoad = false;
+        unbinder.unbind();
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_base, container, false);
-    }
-    /**
-     *  页面 初始化布局
-     */
-    public  void initView(){
+        view = inflater.inflate(setContentView(), container, false);
+        unbinder = ButterKnife.bind(this, view);
+        isInit = true;
+        /**初始化的时候去加载数据**/
+        initView();
+        isCanLoadData();
 
-    };
+        return view;
+    }
+
+    /**
+     * 获取设置的布局
+     *
+     * @return
+     */
+    protected View getContentView() {
+        return view;
+    }
+
+    /**
+     * 找出对应的控件
+     *
+     * @param id
+     * @param <T>
+     * @return
+     */
+    protected <T extends View> T findViewById(int id) {
+
+        return (T) getContentView().findViewById(id);
+    }
+
+
+    /**
+     * 设置Fragment要显示的布局
+     *
+     * @return 布局的layoutId
+     */
+    protected abstract int setContentView();
+
+    /**
+     * 页面 初始化布局
+     */
+    public void initView() {
+
+    }
+
+    ;
+
     public void getIntentDatas() {
     }
 
     /**
      * 请求数据
      */
-    public  void requestDatas(){
+    public void requestDatas() {
 
-    };
-    public  void requestDatas2(){
+    }
 
-    };
+    ;
+
+    public void requestDatas2() {
+
+    }
+
+    ;
+
+    public void requestDatas3() {
+
+    }
+
+    ;
+
+    /**
+     * 当视图初始化并且对用户可见的时候去真正的加载数据
+     */
+    protected abstract void lazyLoad();
+
+    /**
+     * 当视图已经对用户不可见并且加载过数据，如果需要在切换到其他页面时停止加载数据，可以调用此方法
+     */
+    protected void stopLoad() {
+    }
 
 
 }

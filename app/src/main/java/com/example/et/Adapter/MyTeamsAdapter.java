@@ -47,9 +47,9 @@ public class MyTeamsAdapter extends ManagerAdapter {
         public void setViewData(int position, List list) {
             MyTeam myTeam = (MyTeam) list.get(position);
             tvName.setText(myTeam.getName() + "(" + myTeam.getPhone() + ")");
-            tvTeam.setText(myTeam.getTeam_pp()+"");//团队人数
-            tvPerformance.setText(myTeam.getAchievement()+"");//业绩
-            tvActiveMember.setText(myTeam.getTeam_okpp()+"");//有效人数
+            tvTeam.setText(myTeam.getTeam_pp()+"人");//团队人数
+            tvPerformance.setText(myTeam.getAchievement()+"人");//业绩
+            tvActiveMember.setText(myTeam.getTeam_okpp()+"人");//有效人数
 
         }
     }

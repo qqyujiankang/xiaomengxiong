@@ -67,6 +67,8 @@ public class AddressbindingActivity extends BaseActivity {
     private Context context;
     private Lifeful lifeful;
     private int id;
+    private String addressbinding;
+
 
     @Override
 
@@ -87,6 +89,7 @@ public class AddressbindingActivity extends BaseActivity {
     public void getIntentDatas() {
         super.getIntentDatas();
         id = getIntent().getIntExtra("id", 0);
+        addressbinding = getIntent().getStringExtra("name");
     }
 
     @Override
@@ -95,9 +98,16 @@ public class AddressbindingActivity extends BaseActivity {
         publicTitleTv.setText(getString(R.string.USDT_address_binding));
         publicButton.setText(getString(R.string.confirm));
         if (CacheUtils.getInstance().getString(CacheConstants.usdtaddress) != null) {
-            llBindingUsDt.setVisibility(View.GONE);
-            tvAddressBinding.setText(CacheUtils.getInstance().getString(CacheConstants.usdtaddress));
-            publicOther.setText(getString(R.string.revision_Binding_address));
+            if (id == 0) {
+                llBindingUsDt.setVisibility(View.GONE);
+                tvAddressBinding.setText(CacheUtils.getInstance().getString(CacheConstants.usdtaddress));
+                publicOther.setText(getString(R.string.revision_Binding_address));
+            } else {
+                llUSDT.setVisibility(View.GONE);
+                llBindingUsDt.setVisibility(View.VISIBLE);
+                etPassword.setText(addressbinding);
+            }
+
         }
 
     }

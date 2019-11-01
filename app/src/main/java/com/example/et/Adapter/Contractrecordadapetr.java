@@ -6,6 +6,8 @@ import android.widget.TextView;
 import com.example.et.R;
 import com.example.et.entnty.Contractrecord;
 import com.example.et.util.CountDown;
+import com.example.et.util.LogUtils;
+import com.example.et.util.TimeUtils;
 import com.example.et.util.lifeful.Lifeful;
 
 import java.util.List;
@@ -46,13 +48,22 @@ public class Contractrecordadapetr extends ManagerAdapter {
         @Override
         public void setViewData(int position, List list) {
             Contractrecord contractrecord = (Contractrecord) list.get(position);
-            tvTeam.setText(contractrecord.getNumber());
-          //  tvTeam.setText(contractrecord.getHour24() + "");
-            tvActiveMember.setText(contractrecord.getTime());
-            tvJieidian.setText(contractrecord.getTimename());
+//            tvTeam.setText(contractrecord.getNumber()+);
+//            tvTeam.setText(contractrecord.getHour24() + "");
+//
+//            tvJieidian.setText(contractrecord.getTimename());
+//
             tvName.setText("USDT");
-            CountDown countDown=new CountDown(tvPerformance,contractrecord.getHour24());
-            countDown.timerStart();
+            tvJieidian.setText(contractrecord.getTimename());
+            tvTeam.setText(contractrecord.getNumber());
+            tvActiveMember.setText(contractrecord.getTime());
+            if (!contractrecord.getHour24().equals("")) {
+
+
+                CountDown countDown = new CountDown(tvPerformance,
+                        Long.parseLong(contractrecord.getHour24()) - (TimeUtils.getNowMills()/1000));
+                countDown.timerStart();
+            }
 
 
         }

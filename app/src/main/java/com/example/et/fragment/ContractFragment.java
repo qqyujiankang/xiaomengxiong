@@ -18,6 +18,7 @@ import com.example.et.util.CacheUtils;
 import com.example.et.util.CountDown;
 import com.example.et.util.LogUtils;
 import com.example.et.util.TaskPresenterUntils;
+import com.example.et.util.TimeUtils;
 import com.example.et.util.constant.CacheConstants;
 import com.example.et.util.constant.KeyValueConstants;
 import com.example.et.util.lifeful.Lifeful;
@@ -28,6 +29,8 @@ import com.example.et.util.realize.ParseUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Map;
 
 import butterknife.BindView;
@@ -68,13 +71,13 @@ public class ContractFragment extends BaseFragment {
 
     private Lifeful lifeful;
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        initView();
-        requestDatas();
-    }
 
+    @Override
+    protected void lazyLoad() {
+        LogUtils.i("==============合约===");
+        requestDatas();
+
+    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -83,18 +86,6 @@ public class ContractFragment extends BaseFragment {
         lifeful = (Lifeful) getActivity();
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-
-
-        View view = inflater.inflate(R.layout.fragment_contract, container, false);
-        unbinder = ButterKnife.bind(this, view);
-        initView();
-        LogUtils.i("=====onCreateView===" + "ContractFragment");
-
-        return view;
-    }
 
     @Override
     public void requestDatas() {
@@ -111,14 +102,16 @@ public class ContractFragment extends BaseFragment {
                     //adapterRealize = new AdapterRealize();
 
                     Map<String, Object> objectPagebean = ParseUtils.analysisListTypeDatasAndCount(getActivity(), success, null, false).getStringMap();
-
+                    LogUtils.i("======newcontract======" + objectPagebean.get(KeyValueConstants.MSG));
                     if (objectPagebean.get(KeyValueConstants.CODE).equals("200")) {
-                          LogUtils.i("======newcontract======" + objectPagebean.get("state").toString());
+                        LogUtils.i("======newcontract======" + objectPagebean.get("state").toString());
                         if (objectPagebean.get("state").toString().equals("0")) {//预约中
                             tvState.setText(getString(R.string.To_make_an_appointment_in));
                             // getCountDownTime(Long.parseLong(objectPagebean.get("yytime_daojishi").toString()));
-                            CountDown countDown = new CountDown(tvTime, Long.parseLong(objectPagebean.get("yytime_daojishi").toString()));
+                            CountDown countDown = new CountDown(tvYyTime,
+                                    Long.parseLong(objectPagebean.get("yytime_daojishi").toString()) - TimeUtils.getNowMills());
                             countDown.timerStart();
+
                         }
                         tvPrice.setText(objectPagebean.get("pre_cur_money").toString());
                         tvCurrency.setText(objectPagebean.get("pre_cur").toString());
@@ -136,6 +129,7 @@ public class ContractFragment extends BaseFragment {
         }
     }
 
+
     @Override
     public void initView() {
 
@@ -149,10 +143,10 @@ public class ContractFragment extends BaseFragment {
 
     }
 
+
     @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        unbinder.unbind();
+    protected int setContentView() {
+        return R.layout.fragment_contract;
     }
 
 

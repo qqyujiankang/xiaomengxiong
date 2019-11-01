@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_marginTop="@dimen/icon_width_height_20"
+            android:layout_marginBottom="@dimen/icon_width_height_20"
+            style="@style/MatchWrap.Vertical"
+            android:layout_marginStart="@dimen/icon_width_height_20"
+            android:layout_marginLeft="@dimen/icon_width_height_20"
+            android:layout_marginEnd="@dimen/icon_width_height_20"
+            android:layout_toLeftOf="@+id/tv_compile">
+
+            <TextView
+                android:id="@+id/tv_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/p_white_test" />
+
+            <TextView
+                android:id="@+id/tv_address_binding"
+                style="@style/WrapWrap"
+                android:textColor="@color/white" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_compile"
+            style="@style/WrapWrap"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/icon_width_height_20"
+            android:layout_marginRight="@dimen/icon_width_height_20"
+            android:drawableLeft="@mipmap/compile"
+            android:drawablePadding="@dimen/icon_width_height_10"
+            android:text="编辑"
+            android:textColor="@color/p_white_test">
+
+        </TextView>
+    </RelativeLayout>
+</LinearLayout>

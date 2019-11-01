@@ -28,7 +28,9 @@ import com.example.et.Adapter.ManagerAdapter;
 import com.example.et.Constant;
 import com.example.et.R;
 import com.example.et.Ustlis.ActivityUtils;
+import com.example.et.Ustlis.GsonUtil;
 import com.example.et.Ustlis.ListDatasUtils;
+import com.example.et.View.MyDiog;
 import com.example.et.View.MyGridView;
 import com.example.et.entnty.DataFlow;
 import com.example.et.entnty.ListObject;
@@ -103,22 +105,10 @@ public class HeadFragment extends BaseFragment implements AdapterView.OnItemClic
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-    }
-
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // return inflater.inflate(R.layout.fragment_head, null);
         context = getActivity();
         lifeful = (Lifeful) getActivity();
-        View view = inflater.inflate(R.layout.fragment_head, container, false);
-        unbinder = ButterKnife.bind(this, view);
-        initView();
-        LogUtils.i("=====onCreateView===" + "HeadFragment");
-        return view;
     }
+
 
     @Override
     public void initView() {
@@ -146,9 +136,6 @@ public class HeadFragment extends BaseFragment implements AdapterView.OnItemClic
         publicGridView.setOnItemClickListener(this);
 
 
-        requestDatas();
-        requestDatas2();
-
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -158,12 +145,56 @@ public class HeadFragment extends BaseFragment implements AdapterView.OnItemClic
             }
         });
 
+
+    }
+
+
+    @Override
+    protected int setContentView() {
+        return R.layout.fragment_head;
+    }
+
+    private boolean d = false;
+
+    @Override
+    public void requestDatas3() {
+        super.requestDatas3();
+        try {
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("phone", CacheUtils.getInstance().getString(CacheConstants.PHONE));
+            TaskPresenterUntils.lifeful(Constant.todaybaifenbi, jsonObject, new OnLoadLifefulListener<String>(swipeRefreshLayout, new OnLoadListener<String>() {
+                @Override
+                public void onSuccess(String success) {
+                    LogUtils.i("homne====shujuliu=====" + success);
+                    // Pagebean<Object> objectPagebean = ParseUtils.analysisListTypeDatasAndCount((Activity) context, success, null, false);
+                    Map<String, Object> map = GsonUtil.GsonToMaps(success);
+
+                    if (map.get("code").toString().equals("200.0")) {
+                        if (d == false) {
+                            MyDiog myDiog = new MyDiog(context, map.get("data").toString(), 0);
+                            myDiog.show();
+                            d = true;
+                        }
+                    }
+
+                }
+
+
+            }, lifeful));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        unbinder.unbind();
+    protected void lazyLoad() {
+        LogUtils.i("==============s首页===");
+
+        requestDatas();
+        requestDatas2();
+        requestDatas3();
+
+
     }
 
     @Override
@@ -208,6 +239,7 @@ public class HeadFragment extends BaseFragment implements AdapterView.OnItemClic
                     Map<String, Object> resultMap = ParseUtils.analysisListTypeDatasAndCount((Activity) context, success, null, true).getStringMap();
                     LogUtils.i("homne=========" + success + "==========" + resultMap.get(KeyValueConstants.MSG));
                     if (resultMap.get(KeyValueConstants.CODE).equals("200")) {
+
                         tvRGold.setText(CacheUtils.getInstance().getString(CacheConstants.r_gold));
                         tvRHuilv.setText(StringUtils.calculateProfit(Double.parseDouble(CacheUtils.getInstance().getString(CacheConstants.r_huil))));
                         double r_zd = Double.parseDouble(CacheUtils.getInstance().getString(CacheConstants.r_zd));

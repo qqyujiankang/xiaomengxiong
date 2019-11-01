@@ -44,7 +44,7 @@ public final class TimeUtils {
      * @return 时间字符串
      */
     public static String millis2String(final long millis, final DateFormat format) {
-        return format.format(new Date(millis));
+        return format.format(new Date(millis*1000));
     }
 
     /**
@@ -70,6 +70,19 @@ public final class TimeUtils {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss ");
         String time = format.format(new Date(value));
         return time;
+    }
+
+    /**
+     * 将long类型时间转换为Date类型时间
+     *
+     * @param time 需要转换的时间
+     * @return 需要的Date类型时间
+     */
+    public static Date longToDate(long time) {
+
+        Date date = new Date(time);
+
+        return date;
     }
 
     /**

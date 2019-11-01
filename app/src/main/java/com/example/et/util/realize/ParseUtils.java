@@ -63,7 +63,7 @@ public class ParseUtils {
                 if (paramsKeyAll.equals(KeyValueConstants.DATA) && !StringUtils.isEmpty(jsonObject.getString(KeyValueConstants.DATA))) {
                     //String dataJson = new String(Base64.decode(jsonObject.getString(KeyValueConstants.DATA).getBytes(), Base64.DEFAULT));
                     String dataJson = new String(jsonObject.getString(KeyValueConstants.DATA).getBytes());
-                    //  LogUtils.i(activity.getClass() + "解析之后的数据--------" + dataJson);
+                      LogUtils.i(activity.getClass() + "解析之后的数据--------" + dataJson);
                     if (dataJson.startsWith("[") && dataJson.endsWith("]")) {
                         Collections.addAll(objectList, new Gson().fromJson(dataJson, type));
                     } else {

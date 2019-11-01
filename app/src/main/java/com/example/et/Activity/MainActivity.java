@@ -62,17 +62,17 @@ public class MainActivity extends BaseActivity {
         ButterKnife.bind(this);
 
         mFragments = new ArrayList<>();
-        mFragments.add(new HeadFragment());
-        mFragments.add(new WalletFragment());
-        mFragments.add(new ContractFragment());
-
-
-        mFragments.add(new MyFragment());
+        if (mFragments.size() == 0) {
+            mFragments.add(new HeadFragment());
+            mFragments.add(new WalletFragment());
+            mFragments.add(new ContractFragment());
+            mFragments.add(new MyFragment());
+        }
         // init view pager
         mAdapter = new MyFragmentPagerAdapter(getSupportFragmentManager(), mFragments);
         mViewPager.setAdapter(mAdapter);
-        // register listener
-        //  mViewPager.addOnPageChangeListener(mPageChangeListener);
+        mViewPager.setOffscreenPageLimit(0);
+
         mTabRadioGroup.setOnCheckedChangeListener(mOnCheckedChangeListener);
 
     }
@@ -109,11 +109,11 @@ public class MainActivity extends BaseActivity {
         }
     };
 
-//    @Override
-//    protected void onDestroy() {
-//        super.onDestroy();
-//        mViewPager.removeOnPageChangeListener(mPageChangeListener);
-//    }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mViewPager.removeOnPageChangeListener(mPageChangeListener);
+    }
 
     private int fragment_flag;
 

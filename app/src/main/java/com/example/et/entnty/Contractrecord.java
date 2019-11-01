@@ -2,13 +2,14 @@ package com.example.et.entnty;
 
 public class Contractrecord {
 
+
     /**
      * number : 300.0000
      * id : 5
-     * state : 0
-     * timename : 预约中
+     * state : 96
+     * timename : 合约失效
      * time :
-     * hour24 : 1572406191
+     * hour24 :
      */
 
     private String number;
@@ -16,7 +17,7 @@ public class Contractrecord {
     private int state;
     private String timename;
     private String time;
-    private int hour24;
+    private String hour24;
 
     public String getNumber() {
         return number;
@@ -58,11 +59,11 @@ public class Contractrecord {
         this.time = time;
     }
 
-    public int getHour24() {
+    public String getHour24() {
         return hour24;
     }
 
-    public void setHour24(int hour24) {
+    public void setHour24(String hour24) {
         this.hour24 = hour24;
     }
 }
