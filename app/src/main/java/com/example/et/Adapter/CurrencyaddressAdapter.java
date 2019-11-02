@@ -38,7 +38,7 @@ public class CurrencyaddressAdapter extends ManagerAdapter {
         @Override
         public void setViewData(int position, List list) {
             Currencyaddress currencyaddress = (Currencyaddress) list.get(position);
-            tvAddress.setText(currencyaddress.getStringname() + "地址");
+            tvAddress.setText(currencyaddress.getStringname() + context.getString(R.string.site));
             tvAddressBinding.setText(currencyaddress.getString());
 
         }

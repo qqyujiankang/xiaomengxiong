@@ -1,11 +1,20 @@
 package com.example.et.Activity;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.example.et.Adapter.NodeReturnsAdapter;
 import com.example.et.R;
+import com.example.et.entnty.NodeReturns;
+import com.example.et.util.CacheUtils;
+import com.example.et.util.constant.CacheConstants;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -26,13 +35,30 @@ public class NodeReturnsActivity extends BaseActivity {
     ImageView ivPublicOther;
     @BindView(R.id.rl_bacground)
     RelativeLayout rlBacground;
+    @BindView(R.id.list_item)
+    ListView listItem;
+    private List<NodeReturns> nodeReturns = new ArrayList<>();
+    private Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        context = this;
         setContentView(R.layout.activity_node_returns);
         ButterKnife.bind(this);
         initView();
+        requestDatas();
+
+    }
+
+    @Override
+    public void requestDatas() {
+        super.requestDatas();
+        nodeReturns.add(new NodeReturns(getString(R.string.Revenue_generated), CacheUtils.getInstance().getString(CacheConstants.ycs_profit), CacheUtils.getInstance().getString(CacheConstants.ycs_profit_cny)));
+        nodeReturns.add(new NodeReturns(getString(R.string.Revenue_being_booked), CacheUtils.getInstance().getString(CacheConstants.yyz_profit), CacheUtils.getInstance().getString(CacheConstants.yyz_profit_cny)));
+        nodeReturns.add(new NodeReturns(getString(R.string.Cancelled_earnings), CacheUtils.getInstance().getString(CacheConstants.yqx_profit), CacheUtils.getInstance().getString(CacheConstants.yqx_profit_cny)));
+        listItem.setAdapter(new NodeReturnsAdapter(context, nodeReturns, null));
+
     }
 
     @Override
@@ -43,5 +69,6 @@ public class NodeReturnsActivity extends BaseActivity {
 
     @OnClick(R.id.public_back)
     public void onViewClicked() {
+        finish();
     }
 }

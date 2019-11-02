@@ -39,6 +39,14 @@ public class CacheConstants {
     public static final String r_huil = "r_huil";
     public static final String r_zd = "r_zd";
     public static final String newd = "new";
+    public static final String ycs_profit = "ycs_profit";
+    public static final String ycs_profit_cny = "ycs_profit_cny";
+    public static final String yyz_profit = "yyz_profit";
+    public static final String yyz_profit_cny = "yyz_profit_cny";
+    public static final String yqx_profit = "yqx_profit";
+    public static final String yqx_profit_cny = "yqx_profit_cny";
+
+
 
 
 

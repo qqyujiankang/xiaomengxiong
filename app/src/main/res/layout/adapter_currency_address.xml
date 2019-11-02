@@ -39,7 +39,7 @@
             android:layout_marginRight="@dimen/icon_width_height_20"
             android:drawableLeft="@mipmap/compile"
             android:drawablePadding="@dimen/icon_width_height_10"
-            android:text="编辑"
+            android:text="@string/compile"
             android:textColor="@color/p_white_test">
 
         </TextView>

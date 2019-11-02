@@ -67,7 +67,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/icon_width_height_20"
                     android:layout_marginLeft="@dimen/icon_width_height_20"
-                    android:text="HOPE"
+                    android:text="@string/HOPE"
                     android:textColor="@color/orange" />
 
                 <ImageView style="@style/WrapWrap.ImageView_bank" />

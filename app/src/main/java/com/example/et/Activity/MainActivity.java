@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -18,6 +19,8 @@ import com.example.et.fragment.ContractFragment;
 import com.example.et.fragment.HeadFragment;
 import com.example.et.fragment.MyFragment;
 import com.example.et.fragment.WalletFragment;
+import com.meiqia.core.callback.OnInitCallback;
+import com.meiqia.meiqiasdk.util.MQConfig;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -74,6 +77,18 @@ public class MainActivity extends BaseActivity {
         mViewPager.setOffscreenPageLimit(0);
 
         mTabRadioGroup.setOnCheckedChangeListener(mOnCheckedChangeListener);
+        MQConfig.init(this, "372713903d6abcc17515b00475bc2f04", new OnInitCallback() {
+            @Override
+            public void onSuccess(String clientId) {
+               // Toast.makeText(MainActivity.this, "init success", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onFailure(int code, String message) {
+             //   Toast.makeText(MainActivity.this, "int failure", Toast.LENGTH_SHORT).show();
+            }
+        });
+
 
     }
 

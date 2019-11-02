@@ -60,14 +60,12 @@
                                 android:id="@+id/tv_name"
                                 style="@style/WrapWrap"
                                 android:layout_centerVertical="true"
-                                android:text="4544545"
                                 android:textColor="@color/white" />
 
                             <TextView
                                 android:id="@+id/tv_phone"
                                 style="@style/WrapWrap"
                                 android:layout_below="@+id/tv_name"
-                                android:text="65656"
                                 android:textColor="@color/white" />
 
                             <ImageView

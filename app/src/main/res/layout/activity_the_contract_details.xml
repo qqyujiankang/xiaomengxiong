@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/MatchMatch.Vertical"
+    android:background="@color/black"
+    tools:context=".Activity.TheContractDetailsActivity">
+
+    <include layout="@layout/public_title" />
+
+    <LinearLayout
+        android:id="@+id/Rl_no"
+        style="@style/MatchWrap.Vertical">
+
+
+        <RelativeLayout
+
+
+            android:layout_width="match_parent"
+            android:layout_height="230dp"
+            android:background="@mipmap/contract">
+
+            <RelativeLayout
+                android:id="@+id/Rl_state"
+                style="@style/MatchWrap"
+                android:layout_marginStart="@dimen/icon_width_height_20"
+                android:layout_marginLeft="@dimen/icon_width_height_20"
+                android:layout_marginTop="@dimen/icon_width_height_20"
+                android:layout_marginEnd="@dimen/icon_width_height_20">
+
+                <TextView
+                    android:id="@+id/tv_state"
+                    style="@style/WrapWrap"
+                    android:layout_marginTop="@dimen/icon_width_height_10"
+                    android:text="@string/To_make_an_appointment_in"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size_16" />
+
+
+            </RelativeLayout>
+
+            <LinearLayout
+                style="@style/WrapWrap.Vertical"
+                android:layout_below="@+id/Rl_state"
+                android:layout_marginStart="@dimen/icon_width_height_20"
+                android:layout_marginLeft="@dimen/icon_width_height_20"
+                android:layout_marginTop="@dimen/text_size_40">
+
+                <TextView
+                    style="@style/WrapWrap"
+                    android:text="@string/The_contract_amount"
+                    android:textColor="@color/white" />
+
+                <TextView
+                    android:id="@+id/tv_money"
+                    style="@style/WrapWrap"
+                    android:text=" 13123 "
+                    android:textColor="@color/white" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_prospective"
+                style="@style/WrapWrap.Vertical"
+                android:layout_below="@+id/Rl_state"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/icon_width_height_20"
+                android:layout_marginLeft="@dimen/icon_width_height_20"
+                android:layout_marginTop="@dimen/text_size_40">
+
+                <TextView
+                    android:id="@+id/tv"
+                    style="@style/WrapWrap"
+                    android:text="预期收益"
+                    android:textColor="@color/white" />
+
+                <TextView
+                    android:id="@+id/tv_prospective"
+                    style="@style/WrapWrap"
+                    android:text="13123 "
+                    android:textColor="@color/white" />
+            </LinearLayout>
+
+            <RelativeLayout
+                style="@style/MatchWrap"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="@dimen/icon_width_height_20"
+                android:layout_marginEnd="@dimen/icon_width_height_20"
+
+                android:background="@drawable/bg_radius5_white_bottom_left">
+
+                <TextView
+                    android:id="@+id/tv_1"
+                    style="@style/WrapWrap"
+                    android:layout_marginStart="@dimen/icon_width_height_10"
+                    android:layout_marginLeft="@dimen/icon_width_height_10"
+                    android:padding="@dimen/icon_width_height_10"
+                    android:textColor="@color/p_white_test" />
+
+                <TextView
+                    android:id="@+id/tv_price"
+                    style="@style/WrapWrap"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="@dimen/icon_width_height_20"
+                    android:layout_marginRight="@dimen/icon_width_height_20"
+                    android:text="4646"
+                    android:textColor="@color/white" />
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="-1dp"
+            android:background="@drawable/dottde_line" />
+
+        <LinearLayout
+            style="@style/MatchWrap.Vertical"
+            android:layout_marginStart="@dimen/icon_width_height_20"
+            android:layout_marginTop="3dp"
+            android:layout_marginEnd="@dimen/icon_width_height_20"
+            android:background="@drawable/bg_radius5_white_top_ret">
+
+            <include layout="@layout/public_line_01" />
+
+            <RelativeLayout style="@style/MatchWrap">
+
+                <TextView
+                    android:id="@+id/tv2"
+                    style="@style/WrapWrap"
+                    android:layout_marginStart="@dimen/icon_width_height_10"
+                    android:layout_marginLeft="@dimen/icon_width_height_10"
+                    android:padding="@dimen/icon_width_height_10"
+                    android:textColor="@color/p_white_test" />
+
+                <TextView
+                    android:id="@+id/tv_currency"
+                    style="@style/WrapWrap"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="@dimen/icon_width_height_20"
+                    android:layout_marginRight="@dimen/icon_width_height_20"
+                    android:text="ETH"
+                    android:textColor="@color/white" />
+            </RelativeLayout>
+
+            <include layout="@layout/public_line_01" />
+
+            <RelativeLayout style="@style/MatchWrap">
+
+                <TextView
+                    android:id="@+id/tv_3"
+                    style="@style/WrapWrap"
+                    android:layout_marginStart="@dimen/icon_width_height_10"
+                    android:layout_marginLeft="@dimen/icon_width_height_10"
+                    android:padding="@dimen/icon_width_height_10"
+                    android:textColor="@color/p_white_test" />
+
+                <TextView
+                    android:id="@+id/tv_quantity"
+                    style="@style/WrapWrap"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="@dimen/icon_width_height_20"
+                    android:layout_marginRight="@dimen/icon_width_height_20"
+                    android:text="1000"
+                    android:textColor="@color/white" />
+            </RelativeLayout>
+
+            <include layout="@layout/public_line_01" />
+
+            <RelativeLayout
+                style="@style/MatchWrap"
+             >
+
+                <TextView
+                    android:id="@+id/tv_4"
+                    style="@style/WrapWrap"
+                    android:layout_marginStart="@dimen/icon_width_height_10"
+                    android:layout_marginLeft="@dimen/icon_width_height_10"
+                    android:padding="@dimen/icon_width_height_10"
+                    android:textColor="@color/p_white_test" />
+
+                <TextView
+                    android:id="@+id/tv_time"
+                    style="@style/WrapWrap"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="@dimen/icon_width_height_20"
+                    android:layout_marginRight="@dimen/icon_width_height_20"
+                    android:text="08-13 12:40:30"
+                    android:textColor="@color/white" />
+            </RelativeLayout>
+
+            <include layout="@layout/public_line_01" />
+
+            <RelativeLayout
+                android:id="@+id/Rl_1"
+                style="@style/MatchWrap">
+
+                <TextView
+                    android:id="@+id/tv_5"
+                    style="@style/WrapWrap"
+                    android:layout_marginStart="@dimen/icon_width_height_10"
+                    android:layout_marginLeft="@dimen/icon_width_height_10"
+                    android:padding="@dimen/icon_width_height_10"
+                    android:textColor="@color/p_white_test" />
+
+                <TextView
+                    android:id="@+id/tv_payment"
+                    style="@style/WrapWrap"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="@dimen/icon_width_height_20"
+                    android:layout_marginRight="@dimen/icon_width_height_20"
+                    android:text="08-13 12:40:30"
+                    android:textColor="@color/white" />
+            </RelativeLayout>
+
+            <include layout="@layout/public_line_01" />
+
+            <RelativeLayout
+                android:id="@+id/Rl_3"
+                style="@style/MatchWrap">
+
+                <TextView
+                    android:id="@+id/tv_7"
+                    style="@style/WrapWrap"
+                    android:layout_marginStart="@dimen/icon_width_height_10"
+                    android:layout_marginLeft="@dimen/icon_width_height_10"
+                    android:padding="@dimen/icon_width_height_10"
+                    android:textColor="@color/p_white_test" />
+
+                <TextView
+                    android:id="@+id/tv_time_1"
+                    style="@style/WrapWrap"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="@dimen/icon_width_height_20"
+                    android:layout_marginRight="@dimen/icon_width_height_20"
+                    android:text="08-13 12:40:30"
+                    android:textColor="@color/white" />
+            </RelativeLayout>
+
+            <include layout="@layout/public_line_01" />
+
+            <RelativeLayout
+                android:id="@+id/Rl_2"
+                style="@style/MatchWrap">
+
+                <TextView
+                    android:id="@+id/tv_6"
+                    style="@style/WrapWrap"
+                    android:layout_marginStart="@dimen/icon_width_height_10"
+                    android:layout_marginLeft="@dimen/icon_width_height_10"
+                    android:padding="@dimen/icon_width_height_10"
+                    android:textColor="@color/p_white_test" />
+
+                <TextView
+                    android:id="@+id/tv_time_0"
+                    style="@style/WrapWrap"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="@dimen/icon_width_height_20"
+                    android:layout_marginRight="@dimen/icon_width_height_20"
+                    android:text="08-13 12:40:30"
+                    android:textColor="@color/white" />
+            </RelativeLayout>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+</LinearLayout>

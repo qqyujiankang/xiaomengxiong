@@ -91,7 +91,6 @@ public class RecordActivity extends BaseActivity {
             jsonObject.put("gid", id);
             jsonObject.put("page", page);
 
-            LogUtils.i("======钱包======"+jsonObject);
             TaskPresenterUntils.lifeful(Constant.assorder, jsonObject, new OnLoadLifefulListener<String>(swipeRefreshLayout, new OnLoadListener<String>() {
                 @Override
                 public void onSuccess(String success) {
@@ -104,7 +103,6 @@ public class RecordActivity extends BaseActivity {
                     Pagebean<Object> objectPagebean = ParseUtils.analysisListTypeDatasAndCount((Activity) context, success, Record[].class, true);
 
                     page = adapterRealize.AdapterSetListDatas(objectPagebean, page, listView, context, RecordAdapter.class, lifeful);//返回第几页
-                    LogUtils.i("======钱包======" + success + objectPagebean.getStringMap().get(KeyValueConstants.MSG));
 
                 }
 

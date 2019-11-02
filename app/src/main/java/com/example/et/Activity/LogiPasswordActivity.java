@@ -138,7 +138,7 @@ public class LogiPasswordActivity extends BaseActivity {
             TaskPresenterUntils.lifeful(Constant.uppass, jsonObject, new OnLoadLifefulListener<String>(null, new OnLoadListener<String>() {
                 @Override
                 public void onSuccess(String success) {
-                    LogUtils.i("======钱包======" + success);
+
 
 
                     Map<String, Object> stringMap = ParseUtils.analysisListTypeDatasAndCount((Activity) context, success, null, false).getStringMap();

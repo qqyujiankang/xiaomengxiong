@@ -9,6 +9,6 @@
         android:id="@+id/tvLoad"
         style="@style/WrapWrap"
         android:layout_gravity="center"
-        android:text="正在加载" />
+        android:text="@string/loading" />
 
 </LinearLayout>

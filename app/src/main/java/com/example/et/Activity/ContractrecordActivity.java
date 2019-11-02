@@ -1,15 +1,21 @@
 package com.example.et.Activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.HeaderViewListAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.et.Adapter.Contractrecordadapetr;
+import com.example.et.Adapter.ManagerAdapter;
 import com.example.et.Constant;
 import com.example.et.R;
+import com.example.et.Ustlis.ActivityUtils;
 import com.example.et.entnty.Contract;
 import com.example.et.entnty.Contractrecord;
 import com.example.et.entnty.Pagebean;
@@ -66,6 +72,34 @@ public class ContractrecordActivity extends BaseActivity {
     public void initView() {
         super.initView();
         publicTitleTv.setText(getString(R.string.Contract_record));
+        lvContern.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int i, long l) {
+
+                ManagerAdapter managerAdapter = null;
+                if (parent.getAdapter() instanceof HeaderViewListAdapter) {
+                    HeaderViewListAdapter ha = (HeaderViewListAdapter) parent.getAdapter();
+                    managerAdapter = (ManagerAdapter) ha.getWrappedAdapter();
+                } else if (parent.getAdapter() instanceof ManagerAdapter) {
+                    managerAdapter = (ManagerAdapter) parent.getAdapter();
+                }
+                Contractrecord contractrecord = (Contractrecord) managerAdapter.getItem(i);
+                Intent intent = new Intent();
+                if (contractrecord.getState() == 0 || contractrecord.getState() == 1 || contractrecord.getState() == 2) {
+                    intent.setClass(ContractrecordActivity.this, MainActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    intent.putExtra("fragment_flag", 2);
+                    ActivityUtils.startActivity(intent);
+                } else if (contractrecord.getState() == 3 || contractrecord.getState() == 4 || contractrecord.getState() == 5) {
+                    intent.setClass(context,TheContractDetailsActivity.class);
+                    intent.putExtra("id", contractrecord.getId());
+                    ActivityUtils.startActivity(intent);
+                }
+
+
+            }
+        });
+
     }
 
     @Override
@@ -77,7 +111,6 @@ public class ContractrecordActivity extends BaseActivity {
             TaskPresenterUntils.lifeful(Constant.mycontract, jsonObject, new OnLoadLifefulListener<String>(null, new OnLoadListener<String>() {
                 @Override
                 public void onSuccess(String success) {
-                    LogUtils.i("=======合约记录====" + success);
                     if (adapterRealize == null) {
                         adapterRealize = new AdapterRealize();
                     }

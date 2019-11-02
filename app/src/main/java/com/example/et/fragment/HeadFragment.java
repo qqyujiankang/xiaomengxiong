@@ -20,6 +20,7 @@ import com.example.et.Activity.AppointmentcontractActivity;
 import com.example.et.Activity.Contentoftheannouncementctivity;
 import com.example.et.Activity.ContractrecordActivity;
 import com.example.et.Activity.LoginActivity;
+import com.example.et.Activity.MainActivity;
 import com.example.et.Activity.ToperformthecontractActivity;
 import com.example.et.Adapter.AutoPollAdapter;
 import com.example.et.Adapter.AutoPollRecyclerView;
@@ -48,6 +49,7 @@ import com.example.et.util.lifeful.OnLoadLifefulListener;
 import com.example.et.util.lifeful.OnLoadListener;
 import com.example.et.util.realize.ParseUtils;
 import com.gyf.immersionbar.ImmersionBar;
+import com.meiqia.meiqiasdk.util.MQIntentBuilder;
 import com.youth.banner.Banner;
 
 import org.json.JSONException;
@@ -295,6 +297,8 @@ public class HeadFragment extends BaseFragment implements AdapterView.OnItemClic
         Intent intent = new Intent();
         switch (view.getId()) {
             case R.id.service:
+                Intent intent2 = new MQIntentBuilder(getActivity()).build();
+                startActivity(intent2);
 
                 break;
             case R.id.ll_announcement:
@@ -303,6 +307,7 @@ public class HeadFragment extends BaseFragment implements AdapterView.OnItemClic
 
                 ActivityUtils.startActivity(intent);
                 break;
+            default:
         }
     }
 
@@ -330,7 +335,11 @@ public class HeadFragment extends BaseFragment implements AdapterView.OnItemClic
         if (objectList.getName().equals(context.getString(R.string.Appointment_contract))) {
             intent.setClass(context, AppointmentcontractActivity.class);//ToperformthecontractActivity
         } else if (objectList.getName().equals(context.getString(R.string.To_perform_the_contract))) {
-            intent.setClass(context, ToperformthecontractActivity.class);//ContractrecordActivity
+            intent.setClass(getActivity(), MainActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            intent.putExtra("fragment_flag", 2);
+            startActivity(intent);
+            // intent.setClass(context, ToperformthecontractActivity.class);//ContractrecordActivity
         } else if (objectList.getName().equals(context.getString(R.string.Contract_record))) {
             intent.setClass(context, ContractrecordActivity.class);//ContractrecordActivity
         }

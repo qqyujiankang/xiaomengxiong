@@ -63,11 +63,11 @@ public class AlipayPopuWindow extends PopupWindow {
 
         listView.setOnItemClickListener(itemsOnClick);
         if (Lifeful != null) {
-            tvtite.setText("选择预约金额");
+            tvtite.setText(R.string.Select_reservation_amount);
             retdata(Lifeful, context, listView);
 
         } else {
-            tvtite.setText("选择地址");
+            tvtite.setText(R.string.select);
             listView.setAdapter(new ContractAdapter(context,currencyaddresses,Lifeful));
         }
         //设置SelectPicPopupWindow的View

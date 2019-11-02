@@ -60,7 +60,6 @@
                 android:id="@+id/et_code"
                 style="@style/WrapWrap"
                 android:background="@null"
-                android:hint="可转出余额500USDT"
                 android:inputType="number"
                 android:textColor="@color/white"
                 android:textColorHint="@color/silver"
@@ -71,7 +70,7 @@
                 style="@style/WrapWrap"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:text="全部"
+                android:text="@string/all"
                 android:textColor="@color/orange"
                 android:textSize="@dimen/text_size_16" />
 
@@ -85,7 +84,7 @@
         android:layout_marginStart="30dp"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="@dimen/icon_width_height_10"
-        android:text="注：转出需支付0.5%手续费"
+        android:text="@string/service_charge"
         android:textColor="@color/orange" />
 
 

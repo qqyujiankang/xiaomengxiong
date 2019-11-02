@@ -48,22 +48,16 @@ public class Contractrecordadapetr extends ManagerAdapter {
         @Override
         public void setViewData(int position, List list) {
             Contractrecord contractrecord = (Contractrecord) list.get(position);
-//            tvTeam.setText(contractrecord.getNumber()+);
-//            tvTeam.setText(contractrecord.getHour24() + "");
-//
-//            tvJieidian.setText(contractrecord.getTimename());
-//
             tvName.setText("USDT");
             tvJieidian.setText(contractrecord.getTimename());
             tvTeam.setText(contractrecord.getNumber());
             tvActiveMember.setText(contractrecord.getTime());
             if (!contractrecord.getHour24().equals("")) {
-
-
                 CountDown countDown = new CountDown(tvPerformance,
                         Long.parseLong(contractrecord.getHour24()) - (TimeUtils.getNowMills()/1000));
                 countDown.timerStart();
             }
+
 
 
         }

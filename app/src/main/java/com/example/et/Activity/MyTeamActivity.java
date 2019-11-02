@@ -78,7 +78,6 @@ public class MyTeamActivity extends BaseActivity {
         tvTeam.setText(CacheUtils.getInstance().getString(CacheConstants.team_pp));//团队人数
         tvPerformance.setText(CacheUtils.getInstance().getString(CacheConstants.achievement));//业绩
         tvActiveMember.setText(CacheUtils.getInstance().getString(CacheConstants.team_okpp));//有效人数
-        LogUtils.i("========tunadui======" + CacheUtils.getInstance().getString(CacheConstants.team));
         List<MyTeam> myTeams = GsonUtil.jsonToList(CacheUtils.getInstance().getString(CacheConstants.team), MyTeam.class);
         listItem.setAdapter(new MyTeamsAdapter(context, myTeams, null));
 

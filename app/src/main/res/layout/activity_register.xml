@@ -28,21 +28,22 @@
                 android:layout_marginEnd="@dimen/icon_width_height_30">
 
                 <CheckBox
+                    android:id="@+id/cb_phone"
                     style="@style/WrapWrap"
                     android:layout_alignParentLeft="true"
                     android:button="@null"
-                    android:checked="true"
-                    android:text="手机注册"
-                    android:textColor="@color/bottom_test"
+                    android:text="@string/Mobile_phone_registered"
+                    android:textColor="@color/tab_text_color_selector"
                     android:textSize="@dimen/text_size_18"
                     android:textStyle="bold" />
 
                 <CheckBox
+                    android:id="@+id/cb_check"
                     style="@style/WrapWrap"
                     android:layout_alignParentRight="true"
                     android:button="@null"
-                    android:text="邮箱注册"
-                    android:textColor="@color/orange"
+                    android:text="@string/Registered_mail"
+                    android:textColor="@color/tab_text_color_selector"
                     android:textSize="@dimen/text_size_18"
                     android:textStyle="bold" />
 
@@ -56,7 +57,7 @@
 
                 <TextView
                     style="@style/WrapWrap"
-                    android:text="昵称"
+                    android:text="@string/nickname"
                     android:textColor="@color/white" />
 
                 <EditText
@@ -86,6 +87,7 @@
                 android:layout_marginEnd="@dimen/icon_width_height_30">
 
                 <TextView
+                    android:id="@+id/tv_phone"
                     style="@style/WrapWrap"
                     android:text="@string/phone"
                     android:textColor="@color/white" />

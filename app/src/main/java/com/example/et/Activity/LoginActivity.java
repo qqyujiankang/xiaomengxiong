@@ -123,9 +123,9 @@ public class LoginActivity extends BaseActivity {
 
 
             }
-            LogUtils.i("exp======登录===" + jsonObject + "==========" + url);
 
-            //"phone="+phone+"&quhao="+86+"&types="+1
+
+
             TaskPresenterUntils.lifeful(url, jsonObject, new OnLoadLifefulListener<String>(null, new OnLoadListener<String>() {
                 @Override
                 public void onSuccess(String success) {
@@ -146,8 +146,6 @@ public class LoginActivity extends BaseActivity {
                         finish();
 
                     }
-                    LogUtils.i("登录========" + resultMap.get(KeyValueConstants.MSG).toString());
-                    LogUtils.i("登录========" + CacheUtils.getInstance().getString("token"));
                     ToastUtils.showShort(resultMap.get(KeyValueConstants.MSG).toString());
 
                 }

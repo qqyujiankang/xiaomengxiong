@@ -2,18 +2,20 @@ package com.example.et.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.os.CountDownTimer;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
+import com.example.et.Activity.AppointmentcontractActivity;
 import com.example.et.Constant;
 import com.example.et.R;
+import com.example.et.Ustlis.ActivityUtils;
+import com.example.et.View.PayDialog;
 import com.example.et.util.CacheUtils;
 import com.example.et.util.CountDown;
 import com.example.et.util.LogUtils;
@@ -29,12 +31,10 @@ import com.example.et.util.realize.ParseUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Map;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
+import butterknife.OnClick;
 import butterknife.Unbinder;
 
 /**
@@ -66,11 +66,51 @@ public class ContractFragment extends BaseFragment {
     TextView tvTime;
     @BindView(R.id.public_button1)
     Button publicButton1;
+    @BindView(R.id.Rl_no)
+    LinearLayout RlNo;
+    @BindView(R.id.tv_money)
+    TextView tvMoney;
+    @BindView(R.id.tv_prospective)
+    TextView tvProspective;
+    @BindView(R.id.ll_prospective)
+    LinearLayout llProspective;
+    @BindView(R.id.tv_1)
+    TextView tv1;
+    @BindView(R.id.tv2)
+    TextView tv2;
+    @BindView(R.id.tv_3)
+    TextView tv3;
+    @BindView(R.id.tv_4)
+    TextView tv4;
+    @BindView(R.id.Rl_1)
+    RelativeLayout Rl1;
+    @BindView(R.id.tv_5)
+    TextView tv5;
+    @BindView(R.id.tv_payment)
+    TextView tvPayment;
+    @BindView(R.id.tv_6)
+    TextView tv6;
+    @BindView(R.id.tv_time_0)
+    TextView tvTime0;
+    @BindView(R.id.Rl_2)
+    RelativeLayout Rl2;
+    @BindView(R.id.Rl_public_button1)
+    RelativeLayout RlPublicButton1;
+    @BindView(R.id.tv_day)
+    TextView tvDay;
+    @BindView(R.id.tv_7)
+    TextView tv7;
+    @BindView(R.id.tv_time_1)
+    TextView tvTime1;
+    @BindView(R.id.Rl_3)
+    RelativeLayout Rl3;
+    @BindView(R.id.tv_o)
+    TextView tvO;
     private Context context;
     Unbinder unbinder;
 
     private Lifeful lifeful;
-
+    private String oid = "", pay_pass;
 
     @Override
     protected void lazyLoad() {
@@ -94,7 +134,6 @@ public class ContractFragment extends BaseFragment {
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("phone", CacheUtils.getInstance().getString(CacheConstants.PHONE));
 
-
             TaskPresenterUntils.lifeful(Constant.newcontract, jsonObject, new OnLoadLifefulListener<String>(null, new OnLoadListener<String>() {
                 @Override
                 public void onSuccess(String success) {
@@ -104,19 +143,73 @@ public class ContractFragment extends BaseFragment {
                     Map<String, Object> objectPagebean = ParseUtils.analysisListTypeDatasAndCount(getActivity(), success, null, false).getStringMap();
                     LogUtils.i("======newcontract======" + objectPagebean.get(KeyValueConstants.MSG));
                     if (objectPagebean.get(KeyValueConstants.CODE).equals("200")) {
+                        Rl.setVisibility(View.GONE);
+                        RlNo.setVisibility(View.VISIBLE);
                         LogUtils.i("======newcontract======" + objectPagebean.get("state").toString());
                         if (objectPagebean.get("state").toString().equals("0")) {//预约中
+                            oid = objectPagebean.get("id").toString();
                             tvState.setText(getString(R.string.To_make_an_appointment_in));
-                            // getCountDownTime(Long.parseLong(objectPagebean.get("yytime_daojishi").toString()));
-                            CountDown countDown = new CountDown(tvYyTime,
-                                    Long.parseLong(objectPagebean.get("yytime_daojishi").toString()) - TimeUtils.getNowMills());
+                            long p = Long.parseLong(objectPagebean.get("yytime_daojishi").toString()) * 1000;
+                            CountDown countDown = new CountDown(tvYyTime, p - TimeUtils.getNowMills());
                             countDown.timerStart();
-
+                            tvPrice.setText(objectPagebean.get("pre_cur_money").toString());
+                            tvCurrency.setText(objectPagebean.get("pre_cur").toString());
+                            tvQuantity.setText(objectPagebean.get("pre_cur_number").toString());
+                            tvTime.setText(objectPagebean.get("yytime").toString());
+                        } else if (objectPagebean.get("state").toString().equals("1")) {
+                            RlPublicButton1.setVisibility(View.GONE);
+                            tvState.setText(getString(R.string.To_make_an_appointment_in_1));
+                            llProspective.setVisibility(View.VISIBLE);
+                            tvProspective.setText(objectPagebean.get("static").toString());
+                            tv1.setText(R.string.Open_contract_currency);
+                            tvPrice.setText(objectPagebean.get("pre_cur").toString());
+                            tv2.setText(R.string.maximum_execution_time);
+                            tvCurrency.setText("10天");
+                            tv3.setText(R.string.daily_return_rate);
+                            tvQuantity.setText(objectPagebean.get("day_shouyilv").toString());
+                            tv4.setText(R.string.The_reservation_deposit);
+                            tvTime.setText(objectPagebean.get("dingjin").toString());
+                            Rl1.setVisibility(View.VISIBLE);
+                            tv5.setText(R.string.payment);
+                            tvPayment.setText(objectPagebean.get("weikuan").toString());
+                            Rl2.setVisibility(View.VISIBLE);
+                            tv6.setText(R.string.Appointment_success_time);
+                            tvTime0.setText(objectPagebean.get("pre_cur_time").toString());
+                            tvDay.setText(R.string.Successful_reservation_days);
+                            tvYyTime.setText(objectPagebean.get("okdays").toString() + "天");
+                        } else if (objectPagebean.get("state").toString().equals("2")) {
+                            tvState.setText(R.string.The_match_is_successful);
+                            tvDay.setText(R.string.Countdown_to_execution);
+                            tvYyTime.setText(objectPagebean.get("okdays").toString());
+                            llProspective.setVisibility(View.VISIBLE);
+                            tvProspective.setText(objectPagebean.get("static").toString());
+                            tv1.setText(R.string.Execute_the_contract_currency);
+                            tvPrice.setText(objectPagebean.get("sup_cur_money").toString());
+                            tv2.setText(R.string.Days_of_actual_earnings);
+                            tvCurrency.setText(objectPagebean.get("sjsy_day").toString());
+                            tv3.setText(R.string.Strike_price);
+                            tvQuantity.setText(objectPagebean.get("sup_cur_money").toString());
+                            tv4.setText(R.string.Execute_contract_price_countdown);
+                            tvTime.setText(objectPagebean.get("yhzx_cur_time").toString());
+                            Rl1.setVisibility(View.VISIBLE);
+                            tv5.setText(R.string.Quantity_of_executed_contract_currency);
+                            tvPayment.setText(objectPagebean.get("sup_cur_number").toString());
+                            Rl2.setVisibility(View.VISIBLE);
+                            tv6.setText(R.string.Appointment_success_time);
+                            tvTime0.setText(objectPagebean.get("pre_cur_time").toString());
+                            Rl3.setVisibility(View.VISIBLE);
+                            tv7.setText(R.string.Matching_success_time);
+                            tvTime1.setText(objectPagebean.get("pp_cur_time").toString());
+                            publicButton.setText(R.string.To_perform_the_contract);
+                            tvO.setVisibility(View.VISIBLE);
                         }
-                        tvPrice.setText(objectPagebean.get("pre_cur_money").toString());
-                        tvCurrency.setText(objectPagebean.get("pre_cur").toString());
-                        tvQuantity.setText(objectPagebean.get("pre_cur_number").toString());
-                        tvTime.setText(objectPagebean.get("yytime").toString());
+                        tvMoney.setText(objectPagebean.get("money").toString() + getString(R.string.USDT));
+
+
+                    } else {
+                        Rl.setVisibility(View.VISIBLE);
+                        RlNo.setVisibility(View.GONE);
+
                     }
 
 
@@ -133,7 +226,7 @@ public class ContractFragment extends BaseFragment {
     @Override
     public void initView() {
 
-        publicButton.setText("确认预约");
+        publicButton.setText(R.string.Confirm_an_appointment);
     }
 
     @Override
@@ -147,6 +240,78 @@ public class ContractFragment extends BaseFragment {
     @Override
     protected int setContentView() {
         return R.layout.fragment_contract;
+    }
+
+
+    @OnClick({R.id.public_button1, R.id.public_button})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.public_button1:
+                ActivityUtils.startActivity(AppointmentcontractActivity.class);
+
+
+                break;
+            case R.id.public_button:
+                PayDialog payDialog = new PayDialog(context) {
+                    @Override
+                    public void clickCallBack(String str) {
+                        pay_pass = str;
+
+                        requestDatas2();
+                    }
+
+                    @Override
+                    public void clickBack() {
+
+                    }
+                };
+                payDialog.setCancelable(false);
+                payDialog.setView(new EditText(context));
+                payDialog.show();
+                break;
+
+            default:
+        }
+    }
+
+    private String url;
+
+    @Override
+    public void requestDatas2() {
+        super.requestDatas();
+        try {
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("phone", CacheUtils.getInstance().getString(CacheConstants.PHONE));
+            if (!oid.equals("")) {
+                jsonObject.put("oid", oid);
+                url = Constant.paycontract;
+            } else {
+                url = Constant.tocontractok;
+            }
+
+            jsonObject.put("pay_pass", pay_pass);
+
+
+            TaskPresenterUntils.lifeful(url, jsonObject, new OnLoadLifefulListener<String>(null, new OnLoadListener<String>() {
+                @Override
+                public void onSuccess(String success) {
+                    LogUtils.i("======newcontract======" + success);
+                    //adapterRealize = new AdapterRealize();
+
+                    Map<String, Object> objectPagebean = ParseUtils.analysisListTypeDatasAndCount(getActivity(), success, null, false).getStringMap();
+                    LogUtils.i("======newcontract======" + objectPagebean.get(KeyValueConstants.MSG));
+                    if (objectPagebean.get(KeyValueConstants.CODE).equals("200")) {
+                        requestDatas();
+                    }
+
+
+                }
+
+
+            }, lifeful));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
 

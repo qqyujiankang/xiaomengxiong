@@ -32,8 +32,6 @@
     <string name="Please_enter_the_invitation_code">请输入邀请码</string>
     <string name="Please_enter_your_cell_phone_number">请输入手机号</string>
     <string name="confirm_password">确认密码</string>
-
-
     <string name="launchGallery">图库选取</string>
     <string name="lanuchCapture">拍照选取</string>
     <string name="dialog_cancel">取消</string>
@@ -41,7 +39,6 @@
     <string name="permission_write_storage_rationale1">拍照时需要相机权限</string>
     <string name="permission_read_storage_rationale">选择图片时需要读取权限</string>
     <string name="permissions_prohibited">权限被禁止</string>
-
     <string name="permission_text_a0">提示</string>
     <string name="permission_text_a1">取消</string>
     <string name="permission_text_a2">权限设置</string>
@@ -101,6 +98,7 @@
     <string name="Active_member">有效会员</string>
     <string name="performance">业绩</string>
     <string name="To_make_an_appointment_in">预约中</string>
+    <string name="To_make_an_appointment_in_1">预约成功，匹配中</string>
     <string name="Take_out_the_principal_and_interest_countdown">取出本息倒计时</string>
     <string name="Appointment_success_time">预约成功时间</string>
     <string name="The_contract_amount">合约金额</string>
@@ -113,5 +111,53 @@
     <string name="number">账号</string>
     <string name="Is_binding">已绑定</string>
     <string name="Please_enter_amount">请输入金额</string>
+    <string name="Matching_success_time">匹配成功时间</string>
+    <string name="Execution_success_time">执行成功时间</string>
+    <string name="Contract_completion_time">合约完成时间</string>
+    <string name="Contract_completed">合约已完成</string>
+    <string name="words_remaining">剩余字数：</string>
+    <string name="USDT">USDT</string>
+    <string name="HOPE">HOPE</string>
+    <string name="The_balance_can_be_transferred_out">可转出余额</string>
+    <string name="Revenue_generated">已产生的收益</string>
+    <string name="Revenue_being_booked">正在预约中的收益</string>
+    <string name="Cancelled_earnings">已取消的收益</string>
+    <string name="message">公告内容</string>
+    <string name="Minimum_password_length">密码长度最低6位数</string>
+    <string name="The_two_payment_passwords_are_inconsistent">两次支付密码不一致</string>
+    <string name="Paymentpassword_length_minimum_6_digits">支付密码长度最低6位数</string>
+    <string name="site">地址</string>
+    <string name="Open_contract_currency">预约合约币种</string>
+    <string name="maximum_execution_time">最长执行时间</string>
+    <string name="daily_return_rate">日收益率</string>
+    <string name="The_reservation_deposit">预约定金</string>
+    <string name="payment">尾款</string>
+    <string name="Successful_reservation_days">预约成功天数</string>
+    <string name="The_match_is_successful">匹配成功，请执行合约</string>
+    <string name="Countdown_to_execution">执行合约倒计时</string>
+    <string name="Execute_the_contract_currency">执行合约币种</string>
+    <string name="Days_of_actual_earnings">实际收益天数</string>
+    <string name="Strike_price">执行合约价格</string>
+    <string name="Execute_contract_price_countdown">执行合约价格倒计时</string>
+    <string name="Quantity_of_executed_contract_currency">执行合约币种数量</string>
+    <string name="Confirm_an_appointment">确认预约</string>
+    <string name="Select_reservation_amount">选择预约金额</string>
+    <string name="select">选择地址</string>
+    <string name="all">全部</string>
+    <string name="service_charge">注：转出需支付0.5%手续费</string>
+    <string name="head_portrait">头像</string>
+    <string name="Mobile_phone_registered">手机注册</string>
+    <string name="Registered_mail">邮箱注册</string>
+    <string name="nickname">昵称</string>
+    <string name="Confirm_security_password">确认安全密码</string>
+    <string name="compile">编辑</string>
+    <string name="an_appointment">暂无合约，请预约</string>
+    <string name="Union_community">ET 联盟社区</string>
+    <string name="The_latest_contract">最新合约</string>
+    <string name="Give_it_a_try">在试一试</string>
+    <string name="loading">正在加载</string>
+    <string name="Working_on_loading">正在努力加载中...</string>
+    <string name="mailbox">邮箱</string>
+    <string name="Please_enter_email">请输入邮箱</string>
 
 </resources>

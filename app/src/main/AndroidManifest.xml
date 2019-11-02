@@ -13,13 +13,12 @@
         android:roundIcon="@mipmap/icon"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <!--收益记录-->
+        <activity android:name=".Activity.TheContractDetailsActivity"></activity>
+        <!-- 收益记录 -->
         <activity
             android:name=".Activity.GainRecordingActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme" />
-
-        <!-- 忘记密码 -->
+            android:theme="@style/AppTheme" /> <!-- 忘记密码 -->
         <activity
             android:name=".Activity.ForgetThePasswordActivity"
             android:screenOrientation="portrait"

@@ -33,7 +33,7 @@
         <TextView
             style="@style/MatchWrap"
             android:gravity="center"
-            android:text="钱包地址"
+            android:text="@string/The_wallet_address"
             android:textColor="@color/white" />
 
         <TextView

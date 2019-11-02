@@ -87,7 +87,7 @@ public class FeedbackActivity extends BaseActivity {
             @Override
             public void afterTextChanged(Editable editable) {
                 if (MAX_COUNT - editable.length() >= 0) {
-                    tvCancel.setText("剩余字数：" + (MAX_COUNT - editable.length()));
+                    tvCancel.setText(getString(R.string.words_remaining) + (MAX_COUNT - editable.length()));
                 }
 
             }

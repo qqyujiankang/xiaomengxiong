@@ -5,6 +5,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -58,6 +59,12 @@ public class RegisterActivity extends BaseActivity {
     EditText etPaymentCodeOk;
     @BindView(R.id.et_invitation_code)
     EditText etInvitationCode;
+    @BindView(R.id.cb_phone)
+    CheckBox cbPhone;
+    @BindView(R.id.cb_check)
+    CheckBox cbCheck;
+    @BindView(R.id.tv_phone)
+    TextView tvPhone;
 
     private Context context;
 
@@ -75,6 +82,7 @@ public class RegisterActivity extends BaseActivity {
     public void initView() {
         super.initView();
         publicButton.setText("注册");
+        cbPhone.setChecked(true);
     }
 
 
@@ -85,7 +93,8 @@ public class RegisterActivity extends BaseActivity {
 
     }
 
-    @OnClick({R.id.tv_get_cot, R.id.public_button})
+
+    @OnClick({R.id.tv_get_cot, R.id.public_button, R.id.cb_phone, R.id.cb_check})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.tv_get_cot:
@@ -99,6 +108,21 @@ public class RegisterActivity extends BaseActivity {
                     requestDatas(2);
                 }
 
+                break;
+            case R.id.cb_phone:
+                cbPhone.setChecked(true);
+                cbCheck.setChecked(false);
+                tvPhone.setText(R.string.phone);
+                spinner.setVisibility(View.VISIBLE);
+                etPhone.setHint(R.string.Please_enter_your_cell_phone_number);
+
+                break;
+            case R.id.cb_check:
+                cbCheck.setChecked(true);
+                cbPhone.setChecked(false);
+                tvPhone.setText(R.string.mailbox);
+                spinner.setVisibility(View.GONE);
+                 etPhone.setHint(R.string.Please_enter_email);
                 break;
             default:
         }
@@ -132,9 +156,7 @@ public class RegisterActivity extends BaseActivity {
                 jsonObject.put("", "4");
                 url = Constant.quhao;
             }
-            LogUtils.i("exp======zhuce===" + jsonObject + "==========" + url);
 
-            //"phone="+phone+"&quhao="+86+"&types="+1
             TaskPresenterUntils.lifeful(url, jsonObject, new OnLoadLifefulListener<String>(null, new OnLoadListener<String>() {
                 @Override
                 public void onSuccess(String success) {
@@ -151,7 +173,6 @@ public class RegisterActivity extends BaseActivity {
 
                     } else if (i == 0) {
                         Pagebean<Object> objectPagebean = ParseUtils.analysisListTypeDatasAndCount((Activity) context, success, Areacode[].class, false);
-                        LogUtils.i("exp==========quanhao" + objectPagebean.getList());
 
                     }
 
@@ -210,24 +231,24 @@ public class RegisterActivity extends BaseActivity {
                 return false;
             }
             if (!PasswordOK.equals(Password)) {
-                ToastUtils.showShort("两次密码不一致");
+                ToastUtils.showShort(R.string.The_two_password_do_not_match);
                 return false;
 
             }
             if (Password.length() <= 6 && PasswordOK.length() <= 6) {
-                ToastUtils.showShort("密码长度最低6位数");
+                ToastUtils.showShort(getString(R.string.Minimum_password_length));
                 return false;
             }
             if (!etPaymentCodeOk.equals(paymentcode)) {
-                ToastUtils.showShort("两次支付密码不一致");
+                ToastUtils.showShort(getString(R.string.The_two_payment_passwords_are_inconsistent));
                 return false;
             }
             if (paymentcode.length() != 6 && etPaymentCodeOk.length() != 6) {
-                ToastUtils.showShort("密码长度最低6位数");
+                ToastUtils.showShort(getString(R.string.Paymentpassword_length_minimum_6_digits));
                 return false;
             }
             if (StringUtils.isEmpty(Password)) {
-                ToastUtils.showShort("密码长度最低6位数");
+                ToastUtils.showShort(R.string.Minimum_password_length);
                 return false;
             }
 
@@ -235,4 +256,6 @@ public class RegisterActivity extends BaseActivity {
 
         return true;
     }
+
+
 }

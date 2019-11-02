@@ -88,7 +88,7 @@ public class MentionmoneyActivity extends BaseActivity {
         publicTitleTv.setText(getString(R.string.Mention_money));
         publicButton.setText(getString(R.string.Mention_money));
         etPassword.setText(name);
-        etCode.setHint("可转出余额" + Number + stringname);
+        etCode.setHint(getString(R.string.The_balance_can_be_transferred_out) + Number + stringname);
     }
 
     @OnClick({R.id.public_back, R.id.tv_get_cot, R.id.public_button})

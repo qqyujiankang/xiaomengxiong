@@ -20,7 +20,7 @@
             style="@style/WrapWrap"
             android:paddingTop="@dimen/start_or_end_5"
             android:paddingBottom="@dimen/start_or_end_5"
-            android:text="账号"
+            android:text="@string/number"
             android:textColor="@color/white" />
 
         <EditText
@@ -68,7 +68,7 @@
             style="@style/MatchWrap"
             android:paddingTop="@dimen/icon_width_height_10"
             android:paddingBottom="@dimen/icon_width_height_10"
-            android:text="HOPE"
+            android:text="@string/HOPE"
             android:textColor="@color/p_white_test" />
 
     </LinearLayout>

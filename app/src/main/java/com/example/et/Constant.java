@@ -34,6 +34,8 @@ public class Constant {
     public static final String shujuliu = BASE_URL + "shujuliu";//首页下面的数据流
     public static final String getgold = BASE_URL + "getgold";//申请提币
     public static final String todaybaifenbi = BASE_URL + "todaybaifenbi";//查询当日的预付比例
+    public static final String paycontract = BASE_URL + "paycontract";//支付预约合约
+    public static final String tocontractok = BASE_URL + "tocontractok";//执行合约
 
 
     //

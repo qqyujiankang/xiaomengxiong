@@ -222,7 +222,7 @@ public class HopePropertyActivityActivity extends BaseActivity {
                 public void onSuccess(String success) {
                     Map<String, Object> map = JsonUtil.parseJSON(success);
                     LogUtils.i("===============" + success + "========");
-                    if (ass.getName().equals("USDT")) {
+                    if (ass.getName().equals(getString(R.string.USDT))) {
 
                         try {
                             JSONArray myJsonObject = new JSONArray(map.get(KeyValueConstants.DATA).toString());
@@ -234,7 +234,7 @@ public class HopePropertyActivityActivity extends BaseActivity {
                         } catch (JSONException e) {
 
                         }
-                    } else if (ass.getName().equals("HOPE")) {
+                    } else if (ass.getName().equals(getString(R.string.HOPE))) {
                         Map<String, Object> stringObjectMap = JsonUtil.parseJSON(map.get(KeyValueConstants.DATA).toString());
                         for (int i = 0; i < stringObjectMap.size(); i++) {
                             if (stringObjectMap.get(i) != null) {

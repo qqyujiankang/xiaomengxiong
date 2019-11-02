@@ -17,6 +17,7 @@ import android.widget.TextView;
 
 import com.example.et.Constant;
 import com.example.et.R;
+import com.example.et.View.MyWebViewClient;
 import com.example.et.util.CacheUtils;
 import com.example.et.util.LogUtils;
 import com.example.et.util.TaskPresenterUntils;
@@ -114,14 +115,13 @@ public class NoticedetailsActivity extends BaseActivity {
     public void getIntentDatas() {
         super.getIntentDatas();
         nid = getIntent().getIntExtra("nid", 0);
-        LogUtils.i("公告详情=======" + nid);
     }
 
     @Override
     public void initView() {
         super.initView();
 
-        publicTitleTv.setText("公告内容");
+        publicTitleTv.setText(R.string.message);
         WebSettings settings = webView.getSettings();
         settings.setJavaScriptEnabled(true);
         settings.setDomStorageEnabled(true);
@@ -143,45 +143,4 @@ public class NoticedetailsActivity extends BaseActivity {
     }
 }
 
-class MyWebViewClient extends WebViewClient {
-    //   private WaitingDialog dialog;
-    private Activity activity;
 
-    public MyWebViewClient(Activity activity) {
-        // dialog = new WaitingDialog(activity);
-        this.activity = activity;
-    }
-
-    @Override
-    public boolean shouldOverrideUrlLoading(WebView view, String url) {
-        //ogUtil.e(url);
-        view.loadUrl(url);
-        return true;
-    }
-
-    @Override
-    public void onPageStarted(WebView view, String url, Bitmap favicon) {
-        super.onPageStarted(view, url, favicon);
-        if (!activity.isFinishing()) {
-            //  dialog.show();
-        }
-    }
-
-    @Override
-    public void onReceivedSslError(WebView view, SslErrorHandler handler, SslError error) {
-        handler.proceed();
-        super.onReceivedSslError(view, handler, error);
-    }
-
-    @Override
-    public void onPageFinished(WebView view, String url) {
-        super.onPageFinished(view, url);
-        view.loadUrl("javascript:function getSub(){alert(\"Welcome\");" + "document.forms[0].submit();};getSub();");
-        view.loadUrl("javascript:function getSub(){" +
-                "document.getElementsByTagName('body')[0].style.background='#15243B'" +
-                "};getSub();");
-
-    }
-
-
-}

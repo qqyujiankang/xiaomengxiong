@@ -102,7 +102,6 @@ public class GainRecordingActivity extends BaseActivity {
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("phone", CacheUtils.getInstance().getString(CacheConstants.PHONE));
             jsonObject.put("page", page);
-            LogUtils.i("收益记录==========" + jsonObject);
 
             TaskPresenterUntils.lifeful(Constant.profit, jsonObject, new OnLoadLifefulListener<String>(swipeRefreshLayout, new OnLoadListener<String>() {
                 @Override
@@ -114,7 +113,6 @@ public class GainRecordingActivity extends BaseActivity {
                     }
 
                     Pagebean<Object> objectPagebean = ParseUtils.analysisListTypeDatasAndCount((Activity) context, success, GainRecording[].class, true);
-                    LogUtils.i("======钱包======" + success + objectPagebean.getStringMap().get(KeyValueConstants.MSG));
                     page = adapterRealize.AdapterSetListDatas(objectPagebean, page, listView, context, GainRecordingAdapter.class, lifeful);//返回第几页
 
 
