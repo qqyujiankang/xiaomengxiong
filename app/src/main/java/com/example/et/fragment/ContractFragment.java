@@ -178,6 +178,7 @@ public class ContractFragment extends BaseFragment {
                             tvDay.setText(R.string.Successful_reservation_days);
                             tvYyTime.setText(objectPagebean.get("okdays").toString() + "天");
                         } else if (objectPagebean.get("state").toString().equals("2")) {
+                          //  oid = objectPagebean.get("id").toString();
                             tvState.setText(R.string.The_match_is_successful);
                             tvDay.setText(R.string.Countdown_to_execution);
                             tvYyTime.setText(objectPagebean.get("okdays").toString());

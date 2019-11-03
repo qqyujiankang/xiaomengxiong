@@ -1,6 +1,7 @@
 package com.example.et.Activity;
 
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.RadioButton;
@@ -80,12 +81,12 @@ public class MainActivity extends BaseActivity {
         MQConfig.init(this, "372713903d6abcc17515b00475bc2f04", new OnInitCallback() {
             @Override
             public void onSuccess(String clientId) {
-               // Toast.makeText(MainActivity.this, "init success", Toast.LENGTH_SHORT).show();
+                // Toast.makeText(MainActivity.this, "init success", Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onFailure(int code, String message) {
-             //   Toast.makeText(MainActivity.this, "int failure", Toast.LENGTH_SHORT).show();
+                //   Toast.makeText(MainActivity.this, "int failure", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -144,5 +145,11 @@ public class MainActivity extends BaseActivity {
             recordTab.setChecked(false);
 
         }
+    }
+
+    public static void reStart(Context context) {
+        Intent intent = new Intent(context, MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        context.startActivity(intent);
     }
 }

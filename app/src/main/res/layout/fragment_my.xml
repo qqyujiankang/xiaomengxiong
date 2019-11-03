@@ -358,6 +358,43 @@
 
                 </LinearLayout>
 
+                <LinearLayout
+                    android:id="@+id/ll_language"
+                    style="@style/MatchWrap.Horizontal"
+                    android:layout_marginStart="@dimen/start_or_end_20"
+                    android:layout_marginLeft="@dimen/start_or_end_20"
+                    android:layout_marginBottom="@dimen/start_or_end_10">
+
+                    <ImageView
+                        style="@style/WrapWrap"
+                        android:layout_gravity="center"
+                        android:src="@mipmap/language_switch" />
+
+                    <RelativeLayout
+                        style="@style/WrapWrap"
+                        android:layout_marginStart="@dimen/start_or_end_20"
+                        android:layout_marginLeft="@dimen/start_or_end_20">
+
+                        <TextView
+                            android:id="@+id/tv_language"
+                            style="@style/WrapWrap"
+                            android:layout_centerVertical="true"
+                            android:text="@string/language_switch"
+                            android:textColor="@color/white" />
+
+                        <ImageView style="@style/WrapWrap.ImageView_bank" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_below="@+id/tv_language"
+                            android:layout_marginTop="@dimen/start_or_end_20"
+                            android:background="@color/textcolor_yellow" />
+                    </RelativeLayout>
+
+
+                </LinearLayout>
+
 
                 <LinearLayout
                     android:id="@+id/ll_version_information"

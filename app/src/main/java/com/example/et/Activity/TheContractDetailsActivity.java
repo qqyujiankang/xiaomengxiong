@@ -2,6 +2,7 @@ package com.example.et.Activity;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -114,7 +115,7 @@ public class TheContractDetailsActivity extends BaseActivity {
     public void initView() {
         super.initView();
         publicTitleTv.setText(R.string.menu_find);
-        rlBacground.setBackgroundColor(ContextCompat.getColor(context,R.color.orange));
+        rlBacground.setBackgroundColor(ContextCompat.getColor(context, R.color.orange));
     }
 
     @Override
@@ -142,15 +143,15 @@ public class TheContractDetailsActivity extends BaseActivity {
                     if (objectPagebean.get(KeyValueConstants.CODE).equals("200")) {
 
                         LogUtils.i("======newcontract======" + objectPagebean.get("state").toString());
-                        if (objectPagebean.get("state").toString().equals("5")) {//预约中
+                        if (objectPagebean.get("state").toString().equals("4")) {//预约中
                             tvState.setText(R.string.Contract_completed);
-                            tv.setText("已产生收益");
+                            tv.setText(R.string.Generated_income);
                             tvProspective.setText(objectPagebean.get("static").toString());
-                            tv1.setText("预约合约币种");
+                            tv1.setText(R.string.Open_contract_currency);
                             tvPrice.setText(objectPagebean.get("pre_cur").toString());
-                            tv2.setText("执行合约币种");
+                            tv2.setText(R.string.Execute_the_contract_currency);
                             tvCurrency.setText(objectPagebean.get("sup_cur").toString());
-                            tv3.setText("实际收益天数");
+                            tv3.setText(R.string.Days_of_actual_earnings);
                             tvQuantity.setText(objectPagebean.get("sjsy_day").toString());
                             tv4.setText(R.string.Appointment_success_time);
                             tvTime.setText(objectPagebean.get("pre_cur_time").toString());
@@ -160,6 +161,22 @@ public class TheContractDetailsActivity extends BaseActivity {
                             tvTime1.setText(objectPagebean.get("yhzx_cur_time").toString());
                             tv6.setText(R.string.Contract_completion_time);
                             tvTime0.setText(objectPagebean.get("ok_cur_time").toString());
+                        } else if (objectPagebean.get("state").toString().equals("3")||objectPagebean.get("state").toString().equals("5")) {
+                            tvState.setText(R.string.Contract_executed_successfully);
+                            tv.setText(R.string.prospective_earnings);
+                            tvProspective.setText(objectPagebean.get("static").toString());
+                            tv1.setText(R.string.Make_an_appointment_to_currency);
+                            tvPrice.setText(objectPagebean.get("pre_cur").toString());
+                            tv2.setText(R.string.To_perform_currency);
+                            tvCurrency.setText(objectPagebean.get("sup_cur").toString());
+                            tv3.setText(R.string.Days_of_actual_earnings);
+                            tv4.setText(R.string.Appointment_success_time);
+                            tvTime.setText(objectPagebean.get("pre_cur_time").toString());
+                            tv5.setText(R.string.Matching_success_time);
+                            tvPayment.setText(objectPagebean.get("pp_cur_time").toString());
+                            tv7.setText(R.string.Execution_success_time);
+                            tvTime1.setText(objectPagebean.get("yhzx_cur_time").toString());
+                            Rl2.setVisibility(View.GONE);
                         }
                         tvMoney.setText(objectPagebean.get("money").toString() + "USDT");
                     }

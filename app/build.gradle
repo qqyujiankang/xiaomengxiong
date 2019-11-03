@@ -1,5 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.jakewharton.butterknife'
+apply plugin: 'multi-languages'
+
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.1"
@@ -21,6 +23,7 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
 }
 
 
@@ -79,7 +82,7 @@ dependencies {
 //Glide的基本使用
     implementation 'com.github.bumptech.glide:glide:4.8.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
-   implementation 'jp.wasabeef:glide-transformations:3.3.0'
+    implementation 'jp.wasabeef:glide-transformations:3.3.0'
 
     // luBan压缩
     implementation 'top.zibin:Luban:1.0.9'
@@ -97,4 +100,15 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.9.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
 
+
+    implementation 'com.just.agentweb:agentweb:4.1.2' // (必选)
+    implementation 'com.just.agentweb:filechooser:4.1.2'// (可选)
+    implementation 'com.download.library:Downloader:4.1.2'// (可选)
+
+    implementation 'com.github.jokar:multi-languages:0.0.5'
+
+
+}
+multiLanguages {
+    enable = true
 }

@@ -13,8 +13,16 @@
         android:roundIcon="@mipmap/icon"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".Activity.TheContractDetailsActivity"></activity>
-        <!-- 收益记录 -->
+        <!--        语言切换-->
+        <activity
+            android:name=".Activity.IanguageSwitchActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
+        <!-- 合约详情 -->
+        <activity
+            android:name=".Activity.TheContractDetailsActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" /> <!-- 收益记录 -->
         <activity
             android:name=".Activity.GainRecordingActivity"
             android:screenOrientation="portrait"

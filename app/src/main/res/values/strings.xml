@@ -102,7 +102,7 @@
     <string name="Take_out_the_principal_and_interest_countdown">取出本息倒计时</string>
     <string name="Appointment_success_time">预约成功时间</string>
     <string name="The_contract_amount">合约金额</string>
-    <string name="Enter_security_password">输入安全密码</string>
+    <string name="Enter_security_password">请输入安全密码</string>
     <string name="please_fill_in_the_account_number">请填写对方账号</string>
     <string name="Please_fill_in_the_transfer_amount">请填写转出金额，不得小于10</string>
     <string name="currency">币种</string>
@@ -159,5 +159,15 @@
     <string name="Working_on_loading">正在努力加载中...</string>
     <string name="mailbox">邮箱</string>
     <string name="Please_enter_email">请输入邮箱</string>
+    <string name="Generated_income">已产生收益</string>
+    <string name="Contract_executed_successfully">合约执行成功</string>
+    <string name="prospective_earnings">预期收益</string>
+    <string name="Make_an_appointment_to_currency">预约币种</string>
+    <string name="To_perform_currency">执行币种</string>
+    <string name="language_switch">语言切换</string>
+    <string name="language_cn">简体中文</string>
+    <string name="language_en">ENGLISH</string>
+    <string name="language_auto">自动</string>
+    <string name="language_traditional">繁體中文</string>
 
 </resources>

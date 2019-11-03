@@ -2,9 +2,7 @@ package com.example.et.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -17,6 +15,7 @@ import com.example.et.Activity.AddressbindingActivity;
 import com.example.et.Activity.FeedbackActivity;
 import com.example.et.Activity.FriendShareActivity;
 import com.example.et.Activity.GainRecordingActivity;
+import com.example.et.Activity.IanguageSwitchActivity;
 import com.example.et.Activity.LoginActivity;
 import com.example.et.Activity.MyTeamActivity;
 import com.example.et.Activity.NodeReturnsActivity;
@@ -31,7 +30,6 @@ import com.example.et.util.constant.CacheConstants;
 import com.example.et.util.lifeful.Lifeful;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
 
@@ -87,6 +85,10 @@ public class MyFragment extends BaseFragment {
     LinearLayout llVersionInformation;
     @BindView(R.id.public_button)
     Button publicButton;
+    @BindView(R.id.tv_language)
+    TextView tvLanguage;
+    @BindView(R.id.ll_language)
+    LinearLayout llLanguage;
     private Context context;
     Unbinder unbinder;
 
@@ -98,8 +100,6 @@ public class MyFragment extends BaseFragment {
         context = getActivity();
         lifeful = (Lifeful) getActivity();
     }
-
-
 
 
     @Override
@@ -131,7 +131,7 @@ public class MyFragment extends BaseFragment {
 
     @OnClick({R.id.Rl_Record,
             R.id.Ll_Friends_share, R.id.ll_my_team, R.id.ll_returns, R.id.ll_gain_recording, R.id.Ll_USDT_address_binding,
-            R.id.ll_set_password, R.id.ll_feedback, R.id.ll_version_information, R.id.public_button})
+            R.id.ll_set_password, R.id.ll_feedback, R.id.ll_version_information, R.id.public_button, R.id.ll_language})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.Rl_Record:
@@ -167,6 +167,9 @@ public class MyFragment extends BaseFragment {
                 ActivityUtils.finishActivity(context);
                 ActivityUtils.startActivity(LoginActivity.class);
 
+                break;
+            case R.id.ll_language:
+                ActivityUtils.startActivity(IanguageSwitchActivity.class);
                 break;
             default:
         }

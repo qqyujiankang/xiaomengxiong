@@ -4,6 +4,7 @@ package com.example.et.Activity;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.ComponentCallbacks2;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -134,5 +135,13 @@ public class BaseActivity extends AppCompatActivity implements Lifeful, Componen
             }
         });
     }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(newBase);
+    }
+
+
+
 
 }
