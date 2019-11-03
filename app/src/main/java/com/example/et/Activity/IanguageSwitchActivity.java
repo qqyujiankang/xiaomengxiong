@@ -1,5 +1,7 @@
 package com.example.et.Activity;
 
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -8,6 +10,8 @@ import android.widget.TextView;
 
 import com.example.et.R;
 import com.example.et.Ustlis.LocalManageUtil;
+
+import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -38,6 +42,7 @@ public class IanguageSwitchActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+      //  initLocaleLanguage();
         setContentView(R.layout.activity_ianguage_switch);
         ButterKnife.bind(this);
         initView();

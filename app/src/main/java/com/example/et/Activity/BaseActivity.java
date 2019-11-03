@@ -26,7 +26,10 @@ public class BaseActivity extends AppCompatActivity implements Lifeful, Componen
     private Activity activity;
     private int guideResourceId;
     private boolean show;
-
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(newBase);
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -136,10 +139,7 @@ public class BaseActivity extends AppCompatActivity implements Lifeful, Componen
         });
     }
 
-    @Override
-    protected void attachBaseContext(Context newBase) {
-        super.attachBaseContext(newBase);
-    }
+
 
 
 

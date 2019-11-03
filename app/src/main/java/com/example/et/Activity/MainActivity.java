@@ -3,6 +3,8 @@ package com.example.et.Activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -25,6 +27,7 @@ import com.meiqia.meiqiasdk.util.MQConfig;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -49,15 +52,19 @@ public class MainActivity extends BaseActivity {
     RadioGroup mTabRadioGroup;
     private List<Fragment> mFragments;
     private FragmentPagerAdapter mAdapter;
-
+    private Context context;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        context=MainActivity.this;
+
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         initView();
 
     }
+
+
 
 
     @Override
