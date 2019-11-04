@@ -1,13 +1,13 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.jakewharton.butterknife'
-apply plugin: 'multi-languages'
+
 
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.1"
     defaultConfig {
         applicationId "com.example.et"
-        minSdkVersion 15
+        minSdkVersion 19
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -104,12 +104,11 @@ dependencies {
 
     implementation 'com.just.agentweb:agentweb:4.1.2' // (必选)
     implementation 'com.just.agentweb:filechooser:4.1.2'// (可选)
-    implementation 'com.download.library:Downloader:4.1.2'// (可选)
-
-    implementation 'com.github.jokar:multi-languages:0.0.5'
+    implementation 'com.download.library:Downloader:4.1.2'
 
 
-}
-multiLanguages {
-    enable = true
+
+
+
+
 }

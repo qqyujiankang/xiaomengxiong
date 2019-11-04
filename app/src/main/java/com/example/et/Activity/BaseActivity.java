@@ -19,23 +19,22 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.et.R;
 import com.example.et.Ustlis.ActivityUtils;
 import com.example.et.Ustlis.ToastUtils;
+import com.example.et.Ustlis.internationalization.LocalManageUtil;
 import com.example.et.util.lifeful.Lifeful;
 
 
 public class BaseActivity extends AppCompatActivity implements Lifeful, ComponentCallbacks2 {
     private Activity activity;
-    private int guideResourceId;
-    private boolean show;
+
+    //国际化
     @Override
     protected void attachBaseContext(Context newBase) {
-        super.attachBaseContext(newBase);
+        super.attachBaseContext(LocalManageUtil.setLocal(newBase));
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        activity = this;
-        //   permissions( );
-        // permissions( );
+        activity = BaseActivity.this;
         // android 7.0系统解决拍照的问题exposed beyond app through ClipData.Item.getUri()
         StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
         StrictMode.setVmPolicy(builder.build());
