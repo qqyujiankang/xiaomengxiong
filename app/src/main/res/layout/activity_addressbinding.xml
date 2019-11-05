@@ -15,6 +15,7 @@
         android:visibility="gone">
 
         <TextView
+            android:id="@+id/tv"
             style="@style/WrapWrap"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="30dp"
@@ -59,6 +60,7 @@
             android:layout_marginEnd="30dp">
 
             <TextView
+                android:id="@+id/tv"
                 style="@style/WrapWrap"
                 android:layout_marginBottom="@dimen/icon_width_height_10"
                 android:text="@string/USDT_address"

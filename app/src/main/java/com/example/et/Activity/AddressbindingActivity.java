@@ -64,10 +64,12 @@ public class AddressbindingActivity extends BaseActivity {
     TextView tvAddressBinding;
     @BindView(R.id.ll_USDT)
     LinearLayout llUSDT;
+    @BindView(R.id.tv)
+    TextView tv;
     private Context context;
     private Lifeful lifeful;
     private int id;
-    private String addressbinding;
+    private String addressbinding, tepy = "";
 
 
     @Override
@@ -90,6 +92,7 @@ public class AddressbindingActivity extends BaseActivity {
         super.getIntentDatas();
         id = getIntent().getIntExtra("id", 0);
         addressbinding = getIntent().getStringExtra("name");
+        tepy = getIntent().getStringExtra("tepy");
     }
 
     @Override
@@ -97,17 +100,25 @@ public class AddressbindingActivity extends BaseActivity {
         super.initView();
         publicTitleTv.setText(getString(R.string.USDT_address_binding));
         publicButton.setText(getString(R.string.confirm));
-        if (CacheUtils.getInstance().getString(CacheConstants.usdtaddress) != null) {
+        if (!CacheUtils.getInstance().getString(CacheConstants.usdtaddress).equals("null")) {
             if (id == 0) {
                 llBindingUsDt.setVisibility(View.GONE);
                 tvAddressBinding.setText(CacheUtils.getInstance().getString(CacheConstants.usdtaddress));
                 publicOther.setText(getString(R.string.revision_Binding_address));
+            } else if (tepy != null) {
+                tv.setText(addressbinding + getString(R.string.site));
+                etPassword.setHint(getString(R.string.please_enter) + addressbinding + getString(R.string.site));
+                llUSDT.setVisibility(View.GONE);
+                llBindingUsDt.setVisibility(View.VISIBLE);
+                publicTitleTv.setText(addressbinding + getString(R.string.address_binding));
             } else {
                 llUSDT.setVisibility(View.GONE);
                 llBindingUsDt.setVisibility(View.VISIBLE);
                 etPassword.setText(addressbinding);
             }
 
+        } else {
+            llBindingUsDt.setVisibility(View.VISIBLE);
         }
 
     }
@@ -120,7 +131,7 @@ public class AddressbindingActivity extends BaseActivity {
                 break;
 
             case R.id.tv_get_cot:
-                new Verification(context, lifeful, Constant.registermessage, tvGetCot, 4);
+                new Verification(context, lifeful, Constant.registermessage, tvGetCot, 4, null);
 
                 break;
             case R.id.public_button:

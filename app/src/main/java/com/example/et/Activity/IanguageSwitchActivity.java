@@ -14,7 +14,9 @@ import com.example.et.HJZApplication;
 import com.example.et.R;
 import com.example.et.Ustlis.ActivityUtils;
 import com.example.et.Ustlis.internationalization.LocalManageUtil;
+import com.example.et.util.CacheUtils;
 import com.example.et.util.LogUtils;
+import com.example.et.util.constant.CacheConstants;
 
 
 import java.util.Locale;
@@ -49,7 +51,7 @@ public class IanguageSwitchActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        context=IanguageSwitchActivity.this;
+        context = IanguageSwitchActivity.this;
         setContentView(R.layout.activity_ianguage_switch);
         ButterKnife.bind(this);
         initView();
@@ -63,7 +65,7 @@ public class IanguageSwitchActivity extends BaseActivity {
 
     @OnClick({R.id.public_back, R.id.Rl_, R.id.Rl_1, R.id.Rl_2})
     public void onViewClicked(View view) {
-                int selectedLanguage = 0;
+        int selectedLanguage = 0;
         switch (view.getId()) {
             case R.id.public_back:
                 finish();
@@ -82,15 +84,21 @@ public class IanguageSwitchActivity extends BaseActivity {
     }
 
 
-
-
     private void selectLanguage(int select) {
+
         LocalManageUtil.saveSelectLanguage(context, select);
 
 
         //保存选择语言吧到本地
         String language = LocalManageUtil.getSelectLanguage(context);
-        LogUtils.i("===========语言=="+language);
+        if (language.equals("ENGLISH")) {//英语  @"en"
+            CacheUtils.getInstance().put(CacheConstants.Lang, "en");
+        } else if (language.equals("简体中文")) {
+            CacheUtils.getInstance().put(CacheConstants.Lang, "zh-Hans");
+        } else if (language.equals("繁體中文")) {
+            CacheUtils.getInstance().put(CacheConstants.Lang, "zh-Hant");
+        }
+        LogUtils.i("===========语言==" + language);
         MainActivity.reStart(this);
 
     }

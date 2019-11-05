@@ -9,6 +9,8 @@ import android.os.Message;
 import android.view.KeyEvent;
 
 import com.example.et.R;
+import com.example.et.Ustlis.StatusBarUtils;
+import com.example.et.util.BarUtils;
 import com.example.et.util.CacheUtils;
 import com.example.et.util.LogUtils;
 
@@ -23,8 +25,11 @@ public class SplashActivity extends AppCompatActivity {
         //  getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-
+        //  BarUtils.setStatusBarVisibility(this,false);
+        StatusBarUtils.with(this)
+                .init();
         handler.sendEmptyMessageDelayed(1, 3000);
+
     }
 
 

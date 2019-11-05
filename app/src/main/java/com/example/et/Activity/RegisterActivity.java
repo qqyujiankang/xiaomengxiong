@@ -4,21 +4,27 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.HeaderViewListAdapter;
 import android.widget.TextView;
 
+import com.example.et.Adapter.ManagerAdapter;
 import com.example.et.Constant;
 import com.example.et.R;
 import com.example.et.Ustlis.CountDownTimerUtils;
 import com.example.et.Ustlis.StringUtils;
 import com.example.et.Ustlis.ToastUtils;
+import com.example.et.Verification;
+import com.example.et.View.AreaDiog;
 import com.example.et.entnty.Areacode;
 import com.example.et.entnty.Pagebean;
 import com.example.et.util.LogUtils;
 import com.example.et.util.TaskPresenterUntils;
 import com.example.et.util.constant.KeyValueConstants;
+import com.example.et.util.lifeful.Lifeful;
 import com.example.et.util.lifeful.OnLoadLifefulListener;
 import com.example.et.util.lifeful.OnLoadListener;
 import com.example.et.util.realize.ParseUtils;
@@ -26,6 +32,8 @@ import com.example.et.util.realize.ParseUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import butterknife.BindView;
@@ -65,13 +73,17 @@ public class RegisterActivity extends BaseActivity {
     CheckBox cbCheck;
     @BindView(R.id.tv_phone)
     TextView tvPhone;
+    @BindView(R.id.spinner1)
+    TextView spinner1;
 
     private Context context;
+    private Lifeful lifeful;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         context = RegisterActivity.this;
+        lifeful = RegisterActivity.this;
         setContentView(R.layout.activity_register);
         ButterKnife.bind(this);
         initView();
@@ -81,28 +93,34 @@ public class RegisterActivity extends BaseActivity {
     @Override
     public void initView() {
         super.initView();
-        publicButton.setText("注册");
+        publicButton.setText(R.string.tet1);
         cbPhone.setChecked(true);
     }
 
+    Pagebean<Object> objectPagebean;
 
     @Override
     public void requestDatas() {
         super.requestDatas();
         requestDatas(0);
-
     }
 
-
-    @OnClick({R.id.tv_get_cot, R.id.public_button, R.id.cb_phone, R.id.cb_check})
+    @OnClick({R.id.tv_get_cot, R.id.public_button, R.id.cb_phone, R.id.cb_check, R.id.spinner})
     public void onViewClicked(View view) {
         switch (view.getId()) {
+            case R.id.spinner:
+                areacodes = ((ArrayList<Areacode>) (ArrayList) objectPagebean.getList());
+                areaDiog = new AreaDiog(context, onItemClickListener, areacodes);
+                areaDiog.show();
+                break;
             case R.id.tv_get_cot:
                 if (CheckTheValidation(1)) {
-                    requestDatas(1);
+                    new Verification(context, lifeful, Constant.registermessage, tvGetCot, 1, phone);
+
                 }
 
                 break;
+
             case R.id.public_button:
                 if (CheckTheValidation(2)) {
                     requestDatas(2);
@@ -114,6 +132,8 @@ public class RegisterActivity extends BaseActivity {
                 cbCheck.setChecked(false);
                 tvPhone.setText(R.string.phone);
                 spinner.setVisibility(View.VISIBLE);
+                spinner1.setVisibility(View.VISIBLE);
+
                 etPhone.setHint(R.string.Please_enter_your_cell_phone_number);
 
                 break;
@@ -122,57 +142,56 @@ public class RegisterActivity extends BaseActivity {
                 cbPhone.setChecked(false);
                 tvPhone.setText(R.string.mailbox);
                 spinner.setVisibility(View.GONE);
-                 etPhone.setHint(R.string.Please_enter_email);
+                spinner1.setVisibility(View.GONE);
+                etPhone.setHint(R.string.Please_enter_email);
                 break;
             default:
         }
     }
+
+    private List<Areacode> areacodes;
+    private String quhao = "86";
+    AreaDiog areaDiog;
 
     private void requestDatas(int i) {
         String url = "";
 
         try {
             JSONObject jsonObject = new JSONObject();
-            if (i == 1 || i == 2) {
-                jsonObject.put("phone", phone);
-                jsonObject.put("quhao", "86");
-                if (i == 1) {
-                    jsonObject.put("types", "1");
-                    url = Constant.registermessage;
-                } else if (i == 2) {
-                    url = Constant.register;
-                    jsonObject.put("pass", Password);
-                    jsonObject.put("passtwo", PasswordOK);
-                    jsonObject.put("pay_pass", paymentcode);
-                    jsonObject.put("pay_passtwo", paymentcodeok);
-                    jsonObject.put("name", nickname);
-                    jsonObject.put("f_code", invitationcode);
-                    jsonObject.put("phonecode", code);
-                    jsonObject.put("photo", "");
-                }
 
-
-            } else {
-                jsonObject.put("", "4");
+            if (i == 0) {
                 url = Constant.quhao;
+                jsonObject.put("", "4");
+            } else if (i == 2) {
+                jsonObject.put("phone", phone);
+                jsonObject.put("quhao", quhao);
+                jsonObject.put("pass", Password);
+                jsonObject.put("passtwo", PasswordOK);
+                jsonObject.put("pay_pass", paymentcode);
+                jsonObject.put("pay_passtwo", paymentcodeok);
+                jsonObject.put("name", nickname);
+                jsonObject.put("f_code", invitationcode);
+                jsonObject.put("phonecode", code);
+                jsonObject.put("photo", "");
+
+                jsonObject.put("", "4");
+                url = Constant.register;
             }
+
 
             TaskPresenterUntils.lifeful(url, jsonObject, new OnLoadLifefulListener<String>(null, new OnLoadListener<String>() {
                 @Override
                 public void onSuccess(String success) {
                     LogUtils.i("exp========", success);
 
-                    if (i == 1) {
+                    if (i == 2) {
                         Map<String, Object> resultMap = ParseUtils.analysisListTypeDatasAndCount((Activity) context, success, null, false).getStringMap();
-
-                        CountDownTimerUtils countDownTimerUtils = new CountDownTimerUtils(tvGetCot, 60, 1000);
-                        countDownTimerUtils.start();
 
                         ToastUtils.showShort(resultMap.get(KeyValueConstants.MSG).toString());
                         finish();
 
                     } else if (i == 0) {
-                        Pagebean<Object> objectPagebean = ParseUtils.analysisListTypeDatasAndCount((Activity) context, success, Areacode[].class, false);
+                        objectPagebean = ParseUtils.analysisListTypeDatasAndCount((Activity) context, success, Areacode[].class, false);
 
                     }
 
@@ -187,6 +206,24 @@ public class RegisterActivity extends BaseActivity {
 
     }
 
+    private AdapterView.OnItemClickListener onItemClickListener = new AdapterView.OnItemClickListener() {
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int i, long l) {
+            ManagerAdapter managerAdapter = null;
+            if (parent.getAdapter() instanceof HeaderViewListAdapter) {
+                HeaderViewListAdapter ha = (HeaderViewListAdapter) parent.getAdapter();
+                managerAdapter = (ManagerAdapter) ha.getWrappedAdapter();
+            } else if (parent.getAdapter() instanceof ManagerAdapter) {
+                managerAdapter = (ManagerAdapter) parent.getAdapter();
+            }
+            Areacode areacode = (Areacode) managerAdapter.getItem(i);
+            quhao = areacode.getMobile_prefix();
+            spinner.setText("+" + quhao);
+            areaDiog.dismiss();
+
+
+        }
+    };
     //手机号
     private String phone;
     //验证码
@@ -239,7 +276,7 @@ public class RegisterActivity extends BaseActivity {
                 ToastUtils.showShort(getString(R.string.Minimum_password_length));
                 return false;
             }
-            if (!etPaymentCodeOk.equals(paymentcode)) {
+            if (!paymentcodeok.equals(paymentcode)) {
                 ToastUtils.showShort(getString(R.string.The_two_payment_passwords_are_inconsistent));
                 return false;
             }

@@ -17,6 +17,7 @@ import com.example.et.Adapter.ManagerAdapter;
 import com.example.et.Constant;
 import com.example.et.R;
 import com.example.et.Ustlis.ActivityUtils;
+import com.example.et.Ustlis.StatusBarUtils;
 import com.example.et.entnty.Ass;
 import com.example.et.util.CacheUtils;
 import com.example.et.util.JsonUtil;
@@ -66,7 +67,10 @@ public class WalletFragment extends BaseFragment implements AdapterView.OnItemCl
     protected void lazyLoad() {
 
         LogUtils.i("==============钱包===");
-         requestDatas();
+        requestDatas();
+        StatusBarUtils.with(getActivity())
+                .setColor(getResources().getColor(R.color.black))
+                .init();
     }
 
     private AdapterRealize adapterRealize;
@@ -119,8 +123,6 @@ public class WalletFragment extends BaseFragment implements AdapterView.OnItemCl
 
 
     }
-
-
 
 
     @Override

@@ -3,7 +3,6 @@
     style="@style/MatchMatch.Vertical"
     android:background="@color/black">
 
-
     <RelativeLayout
         android:id="@+id/Rl_"
         style="@style/MatchMatch"
@@ -42,321 +41,341 @@
         </LinearLayout>
     </RelativeLayout>
 
-    <ScrollView
-        android:layout_width="match_parent"
+    <com.example.et.util.PublicSwipeRefreshLayout.SwipeRefreshLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/swipeRefreshLayout"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
 
-        <LinearLayout
-            android:id="@+id/Rl_no"
-            style="@style/MatchWrap.Vertical"
-            android:visibility="gone">
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
 
-            <RelativeLayout
+            <LinearLayout
+                android:id="@+id/Rl_no"
+                style="@style/MatchWrap.Vertical"
+                android:visibility="gone">
 
-
-                android:layout_width="match_parent"
-                android:layout_height="230dp"
-                android:background="@mipmap/contract">
 
                 <RelativeLayout
-                    android:id="@+id/Rl_state"
-                    style="@style/MatchWrap"
-                    android:layout_marginStart="@dimen/icon_width_height_20"
-                    android:layout_marginLeft="@dimen/icon_width_height_20"
-                    android:layout_marginTop="@dimen/icon_width_height_20"
-                    android:layout_marginEnd="@dimen/icon_width_height_20">
 
+
+                    android:layout_width="match_parent"
+                    android:layout_height="230dp"
+                    android:background="@mipmap/contract">
                     <TextView
-                        android:id="@+id/tv_state"
-                        style="@style/WrapWrap"
-                        android:layout_marginTop="@dimen/icon_width_height_10"
-                        android:text="@string/To_make_an_appointment_in"
+                        android:id="@+id/tvy"
+                        android:paddingTop="@dimen/start_or_end_10"
+                        android:textSize="@dimen/text_size_18"
+                        android:gravity="center"
                         android:textColor="@color/white"
-                        android:textSize="@dimen/text_size_16" />
+                        android:text="@string/menu_find"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                    <RelativeLayout
+                        android:layout_below="@+id/tvy"
+                        android:id="@+id/Rl_state"
+                        style="@style/MatchWrap"
+                        android:layout_marginStart="@dimen/icon_width_height_20"
+                        android:layout_marginLeft="@dimen/icon_width_height_20"
+                        android:layout_marginTop="@dimen/icon_width_height_20"
+                        android:layout_marginEnd="@dimen/icon_width_height_20">
+
+                        <TextView
+                            android:id="@+id/tv_state"
+                            style="@style/WrapWrap"
+                            android:layout_marginTop="@dimen/icon_width_height_10"
+                            android:text="@string/To_make_an_appointment_in"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/text_size_16" />
+
+                        <LinearLayout
+                            style="@style/WrapWrap.Vertical"
+                            android:layout_alignParentRight="true">
+
+                            <TextView
+                                android:id="@+id/tv_day"
+                                style="@style/WrapWrap"
+                                android:text="支付订单倒计时"
+                                android:textColor="@color/white" />
+
+                            <TextView
+                                android:id="@+id/tv_yy_time"
+                                style="@style/MatchWrap"
+                                android:gravity="right"
+                                android:text="40:56"
+                                android:textColor="@color/white" />
+                        </LinearLayout>
+                    </RelativeLayout>
 
                     <LinearLayout
                         style="@style/WrapWrap.Vertical"
-                        android:layout_alignParentRight="true">
+                        android:layout_below="@+id/Rl_state"
+                        android:layout_marginStart="@dimen/icon_width_height_20"
+                        android:layout_marginLeft="@dimen/icon_width_height_20"
+                        android:layout_marginTop="@dimen/text_size_40">
 
                         <TextView
-                            android:id="@+id/tv_day"
                             style="@style/WrapWrap"
-                            android:text="支付订单倒计时"
+                            android:text=" 合约金额 "
                             android:textColor="@color/white" />
 
                         <TextView
-                            android:id="@+id/tv_yy_time"
-                            style="@style/MatchWrap"
-                            android:gravity="right"
-                            android:text="40:56"
+                            android:id="@+id/tv_money"
+                            style="@style/WrapWrap"
+                            android:text=" 13123 "
                             android:textColor="@color/white" />
                     </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_prospective"
+                        style="@style/WrapWrap.Vertical"
+                        android:layout_below="@+id/Rl_state"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="@dimen/icon_width_height_20"
+                        android:layout_marginLeft="@dimen/icon_width_height_20"
+                        android:layout_marginTop="@dimen/text_size_40"
+                        android:visibility="gone">
+
+                        <TextView
+                            style="@style/WrapWrap"
+                            android:text="预期收益"
+                            android:textColor="@color/white" />
+
+                        <TextView
+                            android:id="@+id/tv_prospective"
+                            style="@style/WrapWrap"
+                            android:text="13123 "
+                            android:textColor="@color/white" />
+                    </LinearLayout>
+
+                    <RelativeLayout
+                        style="@style/MatchWrap"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginStart="@dimen/icon_width_height_20"
+                        android:layout_marginEnd="@dimen/icon_width_height_20"
+
+                        android:background="@drawable/bg_radius5_white_bottom_left">
+
+                        <TextView
+                            android:id="@+id/tv_1"
+                            style="@style/WrapWrap"
+                            android:layout_marginStart="@dimen/icon_width_height_10"
+                            android:layout_marginLeft="@dimen/icon_width_height_10"
+                            android:padding="@dimen/icon_width_height_10"
+                            android:text="预约合时币种价格"
+                            android:textColor="@color/p_white_test" />
+
+                        <TextView
+                            android:id="@+id/tv_price"
+                            style="@style/WrapWrap"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="@dimen/icon_width_height_20"
+                            android:layout_marginRight="@dimen/icon_width_height_20"
+                            android:text="4646"
+                            android:textColor="@color/white" />
+                    </RelativeLayout>
+
                 </RelativeLayout>
 
-                <LinearLayout
-                    style="@style/WrapWrap.Vertical"
-                    android:layout_below="@+id/Rl_state"
-                    android:layout_marginStart="@dimen/icon_width_height_20"
-                    android:layout_marginLeft="@dimen/icon_width_height_20"
-                    android:layout_marginTop="@dimen/text_size_40">
-
-                    <TextView
-                        style="@style/WrapWrap"
-                        android:text=" 合约金额 "
-                        android:textColor="@color/white" />
-
-                    <TextView
-                        android:id="@+id/tv_money"
-                        style="@style/WrapWrap"
-                        android:text=" 13123 "
-                        android:textColor="@color/white" />
-                </LinearLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="-1dp"
+                    android:background="@drawable/dottde_line" />
 
                 <LinearLayout
-                    android:id="@+id/ll_prospective"
-                    style="@style/WrapWrap.Vertical"
-                    android:layout_below="@+id/Rl_state"
-                    android:layout_centerHorizontal="true"
-                    android:layout_centerVertical="true"
+                    style="@style/MatchWrap.Vertical"
                     android:layout_marginStart="@dimen/icon_width_height_20"
-                    android:layout_marginLeft="@dimen/icon_width_height_20"
-                    android:layout_marginTop="@dimen/text_size_40"
-                    android:visibility="gone">
-
-                    <TextView
-                        style="@style/WrapWrap"
-                        android:text="预期收益"
-                        android:textColor="@color/white" />
-
-                    <TextView
-                        android:id="@+id/tv_prospective"
-                        style="@style/WrapWrap"
-                        android:text="13123 "
-                        android:textColor="@color/white" />
-                </LinearLayout>
-
-                <RelativeLayout
-                    style="@style/MatchWrap"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginStart="@dimen/icon_width_height_20"
+                    android:layout_marginTop="3dp"
                     android:layout_marginEnd="@dimen/icon_width_height_20"
+                    android:background="@drawable/bg_radius5_white_top_ret">
 
-                    android:background="@drawable/bg_radius5_white_bottom_left">
+                    <include layout="@layout/public_line_01" />
 
-                    <TextView
-                        android:id="@+id/tv_1"
-                        style="@style/WrapWrap"
-                        android:layout_marginStart="@dimen/icon_width_height_10"
-                        android:layout_marginLeft="@dimen/icon_width_height_10"
-                        android:padding="@dimen/icon_width_height_10"
-                        android:text="预约合时币种价格"
-                        android:textColor="@color/p_white_test" />
+                    <RelativeLayout style="@style/MatchWrap">
 
-                    <TextView
-                        android:id="@+id/tv_price"
-                        style="@style/WrapWrap"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginEnd="@dimen/icon_width_height_20"
-                        android:layout_marginRight="@dimen/icon_width_height_20"
-                        android:text="4646"
-                        android:textColor="@color/white" />
-                </RelativeLayout>
+                        <TextView
+                            android:id="@+id/tv2"
+                            style="@style/WrapWrap"
+                            android:layout_marginStart="@dimen/icon_width_height_10"
+                            android:layout_marginLeft="@dimen/icon_width_height_10"
+                            android:padding="@dimen/icon_width_height_10"
+                            android:text="预约合约币种"
+                            android:textColor="@color/p_white_test" />
 
-            </RelativeLayout>
+                        <TextView
+                            android:id="@+id/tv_currency"
+                            style="@style/WrapWrap"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="@dimen/icon_width_height_20"
+                            android:layout_marginRight="@dimen/icon_width_height_20"
+                            android:text="ETH"
+                            android:textColor="@color/white" />
+                    </RelativeLayout>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="-1dp"
-                android:background="@drawable/dottde_line" />
+                    <include layout="@layout/public_line_01" />
 
-            <LinearLayout
-                style="@style/MatchWrap.Vertical"
-                android:layout_marginStart="@dimen/icon_width_height_20"
-                android:layout_marginTop="3dp"
-                android:layout_marginEnd="@dimen/icon_width_height_20"
-                android:background="@drawable/bg_radius5_white_top_ret">
+                    <RelativeLayout style="@style/MatchWrap">
 
-                <include layout="@layout/public_line_01" />
+                        <TextView
+                            android:id="@+id/tv_3"
+                            style="@style/WrapWrap"
+                            android:layout_marginStart="@dimen/icon_width_height_10"
+                            android:layout_marginLeft="@dimen/icon_width_height_10"
+                            android:padding="@dimen/icon_width_height_10"
+                            android:text="预约币种数量"
+                            android:textColor="@color/p_white_test" />
 
-                <RelativeLayout style="@style/MatchWrap">
+                        <TextView
+                            android:id="@+id/tv_quantity"
+                            style="@style/WrapWrap"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="@dimen/icon_width_height_20"
+                            android:layout_marginRight="@dimen/icon_width_height_20"
+                            android:text="1000"
+                            android:textColor="@color/white" />
+                    </RelativeLayout>
 
-                    <TextView
-                        android:id="@+id/tv2"
-                        style="@style/WrapWrap"
-                        android:layout_marginStart="@dimen/icon_width_height_10"
-                        android:layout_marginLeft="@dimen/icon_width_height_10"
-                        android:padding="@dimen/icon_width_height_10"
-                        android:text="预约合约币种"
-                        android:textColor="@color/p_white_test" />
+                    <include layout="@layout/public_line_01" />
 
-                    <TextView
-                        android:id="@+id/tv_currency"
-                        style="@style/WrapWrap"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginEnd="@dimen/icon_width_height_20"
-                        android:layout_marginRight="@dimen/icon_width_height_20"
-                        android:text="ETH"
-                        android:textColor="@color/white" />
-                </RelativeLayout>
+                    <RelativeLayout style="@style/MatchWrap">
 
-                <include layout="@layout/public_line_01" />
+                        <TextView
+                            android:id="@+id/tv_4"
+                            style="@style/WrapWrap"
+                            android:layout_marginStart="@dimen/icon_width_height_10"
+                            android:layout_marginLeft="@dimen/icon_width_height_10"
+                            android:padding="@dimen/icon_width_height_10"
+                            android:text="预约时间"
+                            android:textColor="@color/p_white_test" />
 
-                <RelativeLayout style="@style/MatchWrap">
+                        <TextView
+                            android:id="@+id/tv_time"
+                            style="@style/WrapWrap"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="@dimen/icon_width_height_20"
+                            android:layout_marginRight="@dimen/icon_width_height_20"
+                            android:text="08-13 12:40:30"
+                            android:textColor="@color/white" />
+                    </RelativeLayout>
 
-                    <TextView
-                        android:id="@+id/tv_3"
-                        style="@style/WrapWrap"
-                        android:layout_marginStart="@dimen/icon_width_height_10"
-                        android:layout_marginLeft="@dimen/icon_width_height_10"
-                        android:padding="@dimen/icon_width_height_10"
-                        android:text="预约币种数量"
-                        android:textColor="@color/p_white_test" />
+                    <include layout="@layout/public_line_01" />
 
-                    <TextView
-                        android:id="@+id/tv_quantity"
-                        style="@style/WrapWrap"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginEnd="@dimen/icon_width_height_20"
-                        android:layout_marginRight="@dimen/icon_width_height_20"
-                        android:text="1000"
-                        android:textColor="@color/white" />
-                </RelativeLayout>
+                    <RelativeLayout
+                        android:id="@+id/Rl_1"
+                        style="@style/MatchWrap"
+                        android:visibility="gone">
 
-                <include layout="@layout/public_line_01" />
+                        <TextView
+                            android:id="@+id/tv_5"
+                            style="@style/WrapWrap"
+                            android:layout_marginStart="@dimen/icon_width_height_10"
+                            android:layout_marginLeft="@dimen/icon_width_height_10"
+                            android:padding="@dimen/icon_width_height_10"
+                            android:text="预约时间"
+                            android:textColor="@color/p_white_test" />
 
-                <RelativeLayout style="@style/MatchWrap">
+                        <TextView
+                            android:id="@+id/tv_payment"
+                            style="@style/WrapWrap"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="@dimen/icon_width_height_20"
+                            android:layout_marginRight="@dimen/icon_width_height_20"
+                            android:text="08-13 12:40:30"
+                            android:textColor="@color/white" />
+                    </RelativeLayout>
 
-                    <TextView
-                        android:id="@+id/tv_4"
-                        style="@style/WrapWrap"
-                        android:layout_marginStart="@dimen/icon_width_height_10"
-                        android:layout_marginLeft="@dimen/icon_width_height_10"
-                        android:padding="@dimen/icon_width_height_10"
-                        android:text="预约时间"
-                        android:textColor="@color/p_white_test" />
+                    <include layout="@layout/public_line_01" />
 
-                    <TextView
-                        android:id="@+id/tv_time"
-                        style="@style/WrapWrap"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginEnd="@dimen/icon_width_height_20"
-                        android:layout_marginRight="@dimen/icon_width_height_20"
-                        android:text="08-13 12:40:30"
-                        android:textColor="@color/white" />
-                </RelativeLayout>
+                    <RelativeLayout
+                        android:id="@+id/Rl_3"
+                        style="@style/MatchWrap"
+                        android:visibility="gone">
 
-                <include layout="@layout/public_line_01" />
+                        <TextView
+                            android:id="@+id/tv_7"
+                            style="@style/WrapWrap"
+                            android:layout_marginStart="@dimen/icon_width_height_10"
+                            android:layout_marginLeft="@dimen/icon_width_height_10"
+                            android:padding="@dimen/icon_width_height_10"
+                            android:text="预约时间"
+                            android:textColor="@color/p_white_test" />
 
-                <RelativeLayout
-                    android:id="@+id/Rl_1"
-                    style="@style/MatchWrap"
-                    android:visibility="gone">
+                        <TextView
+                            android:id="@+id/tv_time_1"
+                            style="@style/WrapWrap"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="@dimen/icon_width_height_20"
+                            android:layout_marginRight="@dimen/icon_width_height_20"
+                            android:text="08-13 12:40:30"
+                            android:textColor="@color/white" />
+                    </RelativeLayout>
 
-                    <TextView
-                        android:id="@+id/tv_5"
-                        style="@style/WrapWrap"
-                        android:layout_marginStart="@dimen/icon_width_height_10"
-                        android:layout_marginLeft="@dimen/icon_width_height_10"
-                        android:padding="@dimen/icon_width_height_10"
-                        android:text="预约时间"
-                        android:textColor="@color/p_white_test" />
+                    <include layout="@layout/public_line_01" />
 
-                    <TextView
-                        android:id="@+id/tv_payment"
-                        style="@style/WrapWrap"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginEnd="@dimen/icon_width_height_20"
-                        android:layout_marginRight="@dimen/icon_width_height_20"
-                        android:text="08-13 12:40:30"
-                        android:textColor="@color/white" />
-                </RelativeLayout>
+                    <RelativeLayout
+                        android:id="@+id/Rl_2"
+                        style="@style/MatchWrap"
+                        android:visibility="gone">
 
-                <include layout="@layout/public_line_01" />
+                        <TextView
+                            android:id="@+id/tv_6"
+                            style="@style/WrapWrap"
+                            android:layout_marginStart="@dimen/icon_width_height_10"
+                            android:layout_marginLeft="@dimen/icon_width_height_10"
+                            android:padding="@dimen/icon_width_height_10"
+                            android:text="预约时间"
+                            android:textColor="@color/p_white_test" />
 
-                <RelativeLayout
-                    android:id="@+id/Rl_3"
-                    style="@style/MatchWrap"
-                    android:visibility="gone">
+                        <TextView
+                            android:id="@+id/tv_time_0"
+                            style="@style/WrapWrap"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="@dimen/icon_width_height_20"
+                            android:layout_marginRight="@dimen/icon_width_height_20"
+                            android:text="08-13 12:40:30"
+                            android:textColor="@color/white" />
+                    </RelativeLayout>
 
-                    <TextView
-                        android:id="@+id/tv_7"
-                        style="@style/WrapWrap"
-                        android:layout_marginStart="@dimen/icon_width_height_10"
-                        android:layout_marginLeft="@dimen/icon_width_height_10"
-                        android:padding="@dimen/icon_width_height_10"
-                        android:text="预约时间"
-                        android:textColor="@color/p_white_test" />
-
-                    <TextView
-                        android:id="@+id/tv_time_1"
-                        style="@style/WrapWrap"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginEnd="@dimen/icon_width_height_20"
-                        android:layout_marginRight="@dimen/icon_width_height_20"
-                        android:text="08-13 12:40:30"
-                        android:textColor="@color/white" />
-                </RelativeLayout>
-
-                <include layout="@layout/public_line_01" />
+                </LinearLayout>
 
                 <RelativeLayout
-                    android:id="@+id/Rl_2"
-                    style="@style/MatchWrap"
-                    android:visibility="gone">
+                    android:id="@+id/Rl_public_button1"
+                    style="@style/MatchWrap">
 
-                    <TextView
-                        android:id="@+id/tv_6"
-                        style="@style/WrapWrap"
-                        android:layout_marginStart="@dimen/icon_width_height_10"
-                        android:layout_marginLeft="@dimen/icon_width_height_10"
-                        android:padding="@dimen/icon_width_height_10"
-                        android:text="预约时间"
-                        android:textColor="@color/p_white_test" />
+                    <include layout="@layout/public_button1"></include>
 
-                    <TextView
-                        android:id="@+id/tv_time_0"
-                        style="@style/WrapWrap"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginEnd="@dimen/icon_width_height_20"
-                        android:layout_marginRight="@dimen/icon_width_height_20"
-                        android:text="08-13 12:40:30"
-                        android:textColor="@color/white" />
+
                 </RelativeLayout>
 
+                <TextView
+                    android:id="@+id/tv_o"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="@dimen/start_or_end_10"
+                    android:layout_marginEnd="30dp"
+                    android:layout_marginBottom="@dimen/icon_width_height_20"
+                    android:text="温馨提示 ：12小时未补齐则收益减半，24小时未补齐扣除全部预约金"
+                    android:textColor="#FFE04159"
+                    android:visibility="gone" />
             </LinearLayout>
 
-            <RelativeLayout
-                android:id="@+id/Rl_public_button1"
-                style="@style/MatchWrap">
-
-                <include layout="@layout/public_button1"></include>
+        </ScrollView>
 
 
-            </RelativeLayout>
-
-            <TextView
-                android:id="@+id/tv_o"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="@dimen/start_or_end_10"
-                android:layout_marginEnd="30dp"
-                android:layout_marginBottom="@dimen/icon_width_height_20"
-                android:text="温馨提示 ：12小时未补齐则收益减半，24小时未补齐扣除全部预约金"
-                android:textColor="#FFE04159"
-                android:visibility="gone" />
-        </LinearLayout>
-
-    </ScrollView>
+    </com.example.et.util.PublicSwipeRefreshLayout.SwipeRefreshLayout>
 </LinearLayout>

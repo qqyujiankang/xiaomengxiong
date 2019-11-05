@@ -6,6 +6,7 @@ import android.text.TextUtils;
 
 import androidx.annotation.NonNull;
 
+import com.example.et.Ustlis.internationalization.SPUtil;
 import com.example.et.util.callback.OkCallback;
 import com.example.et.util.constant.CacheConstants;
 
@@ -241,7 +242,9 @@ public class OkHttpUtils {
         }
         if (CacheUtils.getInstance().getString(CacheConstants.TOKEN) != null) {
             builder.addHeader("token", CacheUtils.getInstance().getString(CacheConstants.TOKEN));
-            LogUtils.i("token============" + CacheUtils.getInstance().getString(CacheConstants.TOKEN).toString());
+
+            builder.addHeader("lang", CacheUtils.getInstance().getString(CacheConstants.Lang));
+            LogUtils.i("语言=========="+CacheUtils.getInstance().getString(CacheConstants.Lang));
         }
 
         //

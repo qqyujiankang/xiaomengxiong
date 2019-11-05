@@ -126,4 +126,28 @@
         <item name="android:layout_marginRight">@dimen/icon_width_height_20</item>
         <item name="android:src">@mipmap/bank</item>
     </style>
+    <!--Dialog 底部弹出的动画设置设置-->
+    <style name="DialogBottomAnimationStyle" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/push_bottom_in</item>
+        <item name="android:windowExitAnimation">@anim/push_bottom_out</item>
+    </style>
+
+    <!--Dialog 底部弹出的设置-->
+    <style name="DialogBottomStyle" parent="@android:style/Theme.Dialog">
+        <!-- 设置完全透明 -->
+        <item name="android:windowBackground">@color/p_transparency</item>
+        <!-- 设置无边框 -->
+        <!-- <item name="android:windowFrame">@null</item> -->
+        <!-- 设置无标题 -->
+        <item name="android:windowNoTitle">true</item>
+        <!-- 设置为浮动窗口 -->
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <!-- 设置动画 -->
+<!--        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>-->
+        <!-- 设置屏幕变暗 -->
+        <!-- <item name="android:backgroundDimEnabled">true</item> -->
+    </style>
+
 </resources>

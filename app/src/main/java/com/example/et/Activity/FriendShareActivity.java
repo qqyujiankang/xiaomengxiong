@@ -8,6 +8,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.et.R;
+import com.example.et.util.CacheUtils;
+import com.example.et.util.constant.CacheConstants;
 import com.just.agentweb.AgentWeb;
 
 import butterknife.BindView;
@@ -57,7 +59,7 @@ public class FriendShareActivity extends BaseActivity {
                 .useDefaultIndicator()// 使用默认进度条
                 .createAgentWeb()//
                 .ready()
-                .go("http://e.firefoxchina.cn/");
+                .go(CacheUtils.getInstance().getString(CacheConstants.i_code_img));
 
     }
 

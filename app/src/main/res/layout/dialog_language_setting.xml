@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/tv_user_select"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="简体中文"
+            android:textColor="@android:color/black"
+            android:textSize="11sp"
+            android:visibility="gone" />
+
+
+        <TextView
+            android:id="@+id/btn_traditional"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#1B2234"
+            android:gravity="center"
+            android:padding="15dp"
+            android:text="简体中文"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/fengexian" />
+
+
+        <TextView
+            android:id="@+id/btn_cn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#1B2234"
+            android:gravity="center"
+            android:padding="15dp"
+            android:text="繁體中文"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+           />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/fengexian"
+             />
+
+        <TextView
+            android:id="@+id/btn_en"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#1B2234"
+            android:gravity="center"
+            android:padding="15dp"
+            android:text="English"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/fengexian"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/tv_hangguo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#1B2234"
+            android:gravity="center"
+            android:padding="15dp"
+            android:text="日語"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:visibility="gone" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/fengexian"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/tv_ey"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#1B2234"
+            android:gravity="center"
+            android:padding="15dp"
+            android:text="韩語"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:visibility="gone" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/fengexian"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/tv_py"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#1B2234"
+            android:gravity="center"
+            android:padding="15dp"
+            android:text="俄罗斯"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:visibility="gone" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/btn_cancel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="#1B2234"
+        android:gravity="center"
+        android:padding="15dp"
+        android:text="@string/cancel"
+        android:textColor="@color/white"
+        android:textSize="14sp" />
+
+</LinearLayout>

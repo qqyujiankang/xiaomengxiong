@@ -38,6 +38,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -154,7 +155,11 @@ public class HopePropertyActivityActivity extends BaseActivity {
                 finish();
                 break;
             case R.id.public_other:
-                ActivityUtils.startActivity(AddressbindingActivity.class);
+                intent.setClass(context, AddressbindingActivity.class);
+                intent.putExtra("tepy", "bangding");
+                intent.putExtra("id", ass.getId());
+                intent.putExtra("name", ass.getName());
+                ActivityUtils.startActivity(intent);
                 break;
             case R.id.btn_top_up:
                 intent.setClass(context, TopupActivity.class);
@@ -222,36 +227,65 @@ public class HopePropertyActivityActivity extends BaseActivity {
                 public void onSuccess(String success) {
                     Map<String, Object> map = JsonUtil.parseJSON(success);
                     LogUtils.i("===============" + success + "========");
-                    if (ass.getName().equals(getString(R.string.USDT))) {
+                    if (map.get("code").toString().equals("200")) {
+                        if (ass.getName().equals(getString(R.string.USDT))) {
 
-                        try {
-                            JSONArray myJsonObject = new JSONArray(map.get(KeyValueConstants.DATA).toString());
-                            for (int i = 0; i < myJsonObject.length(); i++) {
-                                currencyaddresses.add(new Currencyaddress(myJsonObject.getString(i), ass.getName(), ass.getId()));
+                            try {
+                                JSONArray myJsonObject = new JSONArray(map.get(KeyValueConstants.DATA).toString());
+                                for (int i = 0; i < myJsonObject.length(); i++) {
+                                    currencyaddresses.add(new Currencyaddress(myJsonObject.getString(i), ass.getName(), ass.getId()));
+                                }
+
+
+                            } catch (JSONException e) {
+
                             }
+                        } else if (ass.getName().equals(getString(R.string.HOPE))) {
+                            Map<String, Object> stringObjectMap = JsonUtil.parseJSON(map.get(KeyValueConstants.DATA).toString());
+
+                            LogUtils.i("========" + stringObjectMap.get("1"));
 
 
-                        } catch (JSONException e) {
+                            currencyaddresses = testMapVoid(stringObjectMap, ass);
 
                         }
-                    } else if (ass.getName().equals(getString(R.string.HOPE))) {
-                        Map<String, Object> stringObjectMap = JsonUtil.parseJSON(map.get(KeyValueConstants.DATA).toString());
-                        for (int i = 0; i < stringObjectMap.size(); i++) {
-                            if (stringObjectMap.get(i) != null) {
-                                currencyaddresses.add(new Currencyaddress(stringObjectMap.get(i).toString(), ass.getName(), ass.getId()));
-                            }
-
+                        if (currencyaddresses.size() != 0) {
+                            lv.setAdapter(new CurrencyaddressAdapter(context, currencyaddresses, null));
+                        } else {
+                            publicOther.setText(getString(R.string.Binding_address));
                         }
-                        LogUtils.i("========" + stringObjectMap.get("1"));
+
                     }
-                    lv.setAdapter(new CurrencyaddressAdapter(context, currencyaddresses, null));
 
                 }
 
             }, this));
-        } catch (JSONException e) {
+        } catch (
+                JSONException e) {
             e.printStackTrace();
         }
 
+    }
+
+    public static List<Currencyaddress> testMapVoid(Map<String, Object> map, Ass ass) {
+        List<Currencyaddress> currencyaddresses = new ArrayList<>();
+        List listKey = new ArrayList();
+        List listValue = new ArrayList();
+        Iterator it = map.keySet().iterator();
+        while (it.hasNext()) {
+            String key = it.next().toString();
+            listKey.add(key);
+            listValue.add(map.get(key));
+        }
+
+
+        for (int i = 0; i < listKey.size(); i++) {
+            if (listValue.get(i) != null&&!listValue.get(i).toString().equals("null")) {
+                currencyaddresses.add(new Currencyaddress(listValue.get(i).toString(), ass.getName(), ass.getId()));
+            }
+
+
+        }
+        return currencyaddresses;
     }
 }

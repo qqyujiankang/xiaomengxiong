@@ -30,21 +30,28 @@ public class Verification {
     private String url;
     private TextView view;
     private int anInt;
+    private String phone;
 
-    public Verification(Context context, Lifeful lifeful, String url, TextView textView, int i) {
+    public Verification(Context context, Lifeful lifeful, String url, TextView textView, int i, String phone) {
         this.context = context;
         this.lifeful = lifeful;
         this.url = url;
         this.view = textView;
         this.anInt = i;
+        this.phone = phone;
         redata();
     }
 
     private void redata() {
         try {
             JSONObject jsonObject = new JSONObject();
-            jsonObject.put("phone", CacheUtils.getInstance().getString(CacheConstants.PHONE));
 
+            if (phone == null) {
+                jsonObject.put("phone", CacheUtils.getInstance().getString(CacheConstants.PHONE));
+
+            }else {
+                jsonObject.put("phone",phone);
+            }
             jsonObject.put("types", anInt);
 
             TaskPresenterUntils.lifeful(url, jsonObject, new OnLoadLifefulListener<String>(null, new OnLoadListener<String>() {

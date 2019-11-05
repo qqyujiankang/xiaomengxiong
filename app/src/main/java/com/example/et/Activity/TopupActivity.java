@@ -1,5 +1,7 @@
 package com.example.et.Activity;
 
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -10,10 +12,12 @@ import android.widget.TextView;
 import com.example.et.Constant;
 import com.example.et.R;
 import com.example.et.Ustlis.ImageLoaderUtil;
+import com.example.et.Ustlis.ToastUtils;
 import com.example.et.util.CacheUtils;
 import com.example.et.util.LogUtils;
 import com.example.et.util.TaskPresenterUntils;
 import com.example.et.util.constant.CacheConstants;
+import com.example.et.util.constant.KeyValueConstants;
 import com.example.et.util.lifeful.OnLoadLifefulListener;
 import com.example.et.util.lifeful.OnLoadListener;
 import com.example.et.util.realize.ParseUtils;
@@ -82,8 +86,19 @@ public class TopupActivity extends BaseActivity {
                 finish();
                 break;
             case R.id.public_button:
+                copy(tvAddress);
                 break;
         }
+    }
+
+    /**
+     * 复制
+     */
+    private void copy(TextView textView) {
+        String copyData = textView.getText().toString();
+        ClipboardManager cmb = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+        cmb.setText(copyData);
+        ToastUtils.showShort(R.string.text69);
     }
 
     @Override
@@ -101,8 +116,12 @@ public class TopupActivity extends BaseActivity {
                     LogUtils.i("======钱包======" + success);
 
                     Map<String, Object> objectPagebean = ParseUtils.analysisListTypeDatasAndCount(TopupActivity.this, success, null, false).getStringMap();
-                    tvAddress.setText(objectPagebean.get("address").toString());
-                    ImageLoaderUtil.loadImage(TopupActivity.this,objectPagebean.get("address_img").toString(),ivAddressImg);
+                    if (objectPagebean.get(KeyValueConstants.CODE).equals("200")) {
+                        tvAddress.setText(objectPagebean.get("address").toString());
+                        ImageLoaderUtil.loadImage(TopupActivity.this, objectPagebean.get("address_img").toString(), ivAddressImg);
+
+                    }
+                    ToastUtils.showShort(objectPagebean.get(KeyValueConstants.MSG).toString());
 
 
                 }

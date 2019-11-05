@@ -33,7 +33,7 @@ public class SPUtil {
 
     public int getSelectLanguage() {
         //设置默认为3，此项目3为英文
-        return mSharedPreferences.getInt(TAG_LANGUAGE, 3);
+        return mSharedPreferences.getInt(TAG_LANGUAGE, 1);
     }
 
 

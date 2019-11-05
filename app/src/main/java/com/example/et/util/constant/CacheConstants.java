@@ -9,6 +9,7 @@ public class CacheConstants {
     //用户数据
 
     public static final String TOKEN = "Set-Cookie1";
+    public static final String Lang = "lang";
 
 
     public static final String messageNo = "personalMsgCount";//-未读消息数量个人
@@ -20,6 +21,7 @@ public class CacheConstants {
     public static final String photo_url = "photo_url";//头像
     public static final String photo = "photo";//头像
     public static final String name = "name";//name
+    public static final String i_code_img = "i_code_img";//name
     /**
      * 手机号
      */
@@ -45,10 +47,6 @@ public class CacheConstants {
     public static final String yyz_profit_cny = "yyz_profit_cny";
     public static final String yqx_profit = "yqx_profit";
     public static final String yqx_profit_cny = "yqx_profit_cny";
-
-
-
-
 
 
 }

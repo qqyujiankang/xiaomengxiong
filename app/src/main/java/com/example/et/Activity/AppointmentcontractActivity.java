@@ -17,6 +17,7 @@ import android.widget.TextView;
 import com.example.et.Adapter.ManagerAdapter;
 import com.example.et.Constant;
 import com.example.et.R;
+import com.example.et.Ustlis.ToastUtils;
 import com.example.et.View.AlipayPopuWindow;
 import com.example.et.View.AnswerDiog;
 import com.example.et.View.MyDiog;
@@ -24,6 +25,7 @@ import com.example.et.entnty.Answer;
 import com.example.et.entnty.Contract;
 import com.example.et.util.CacheUtils;
 import com.example.et.util.LogUtils;
+import com.example.et.util.StringUtils;
 import com.example.et.util.TaskPresenterUntils;
 import com.example.et.util.constant.CacheConstants;
 import com.example.et.util.constant.KeyValueConstants;
@@ -79,7 +81,7 @@ public class AppointmentcontractActivity extends BaseActivity {
         ButterKnife.bind(this);
         initView();
         requestDatas();
-        new MyDiog(context, CacheUtils.getInstance().getString(CacheConstants.r_gold), 1).show();
+
     }
 
     @Override
@@ -87,6 +89,7 @@ public class AppointmentcontractActivity extends BaseActivity {
         super.initView();
         publicTitleTv.setText(getString(R.string.Appointment_contract));
         publicButton.setText(getString(R.string.confirm));
+        new MyDiog(context, CacheUtils.getInstance().getString(CacheConstants.r_gold), 1).show();
     }
 
     AlipayPopuWindow alipayPopuWindow;
@@ -104,8 +107,11 @@ public class AppointmentcontractActivity extends BaseActivity {
 
                 break;
             case R.id.public_button:
-                new AnswerDiog(this, onClickListener, onClickListener1, problem, answers).show();
-
+                if (!StringUtils.isEmpty(tvUSDT.getText().toString().trim())) {
+                    new AnswerDiog(this, onClickListener, onClickListener1, problem, answers).show();
+                }else {
+                      ToastUtils.showShort(R.string.Please_select_contract_amount);
+                }
                 break;
             default:
 
@@ -187,6 +193,7 @@ public class AppointmentcontractActivity extends BaseActivity {
                         }
 
                     }
+                    ToastUtils.showShort(resultMap.get(KeyValueConstants.MSG).toString());
                     LogUtils.i("=======lifeful====" + success + "========" + resultMap.get(KeyValueConstants.MSG));
 
 

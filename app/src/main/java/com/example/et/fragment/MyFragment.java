@@ -24,6 +24,7 @@ import com.example.et.Activity.SecurityCenterconActivity;
 import com.example.et.R;
 import com.example.et.Ustlis.ActivityUtils;
 import com.example.et.Ustlis.ImageLoaderUtil;
+import com.example.et.Ustlis.StatusBarUtils;
 import com.example.et.util.CacheUtils;
 import com.example.et.util.LogUtils;
 import com.example.et.util.constant.CacheConstants;
@@ -111,12 +112,16 @@ public class MyFragment extends BaseFragment {
     protected void lazyLoad() {
 
         LogUtils.i("==============wode===");
+        StatusBarUtils.with(getActivity())
+                .setColor(getResources().getColor(R.color.orange))
+                .init();
+
     }
 
     @Override
     public void initView() {
         super.initView();
-        if (CacheUtils.getInstance().getString(CacheConstants.usdtaddress) != null) {
+        if (!CacheUtils.getInstance().getString(CacheConstants.usdtaddress).equals("null")) {
             // tvBinding.setVisibility(View.GONE);
             tvBinding.setText(getString(R.string.Is_binding));
         }

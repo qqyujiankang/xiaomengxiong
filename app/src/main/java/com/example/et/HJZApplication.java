@@ -9,6 +9,8 @@ import com.example.et.Activity.SplashActivity;
 import com.example.et.Ustlis.SimulatorUtils;
 import com.example.et.Ustlis.Utils;
 import com.example.et.Ustlis.internationalization.LocalManageUtil;
+import com.example.et.util.CacheUtils;
+import com.example.et.util.constant.CacheConstants;
 
 
 public class HJZApplication extends Application {
@@ -19,6 +21,16 @@ public class HJZApplication extends Application {
         super.onCreate();
         if (!SimulatorUtils.isSimulator(this)) {
             Utils.init(this);//工具包相关初始化
+            LocalManageUtil.setApplicationLanguage(this);
+            String language = LocalManageUtil.getSelectLanguage(this);
+            if (language.equals("ENGLISH")) {//英语  @"en"
+                CacheUtils.getInstance().put(CacheConstants.Lang, "en");
+            } else if (language.equals("Simplified Chinese")) {
+                CacheUtils.getInstance().put(CacheConstants.Lang, "zh-Hans");
+            } else if (language.equals("繁體中文")) {
+                CacheUtils.getInstance().put(CacheConstants.Lang, "zh-Hant");
+            }
+
         }
 
 

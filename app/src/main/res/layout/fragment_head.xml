@@ -23,8 +23,9 @@
                 <LinearLayout style="@style/MatchWrap">
 
                     <ImageView
-                        android:layout_width="35dp"
-                        android:layout_height="34dp"
+                        android:layout_marginStart="@dimen/start_or_end_10"
+                        android:layout_width="@dimen/icon_width_height_20"
+                        android:layout_height="21dp"
                         android:src="@mipmap/login_01" />
 
                     <TextView

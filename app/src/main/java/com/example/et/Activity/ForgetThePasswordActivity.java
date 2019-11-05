@@ -78,8 +78,8 @@ public class ForgetThePasswordActivity extends BaseActivity {
         switch (view.getId()) {
             case R.id.tv_get_cot:
                 if (!StringUtils.isEmpty(etPhone.getText().toString().trim())) {
-                    CacheUtils.getInstance().put(CacheConstants.PHONE, etPhone.getText().toString().trim());
-                    new Verification(context, lifeful, Constant.registermessage, tvGetCot, 2);
+
+                    new Verification(context, lifeful, Constant.registermessage, tvGetCot, 2,etPhone.getText().toString().trim());
                 } else {
                     ToastUtils.showShort(R.string.phoenumber_or_email_account);
                 }

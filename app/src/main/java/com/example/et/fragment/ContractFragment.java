@@ -15,10 +15,13 @@ import com.example.et.Activity.AppointmentcontractActivity;
 import com.example.et.Constant;
 import com.example.et.R;
 import com.example.et.Ustlis.ActivityUtils;
+import com.example.et.Ustlis.StatusBarUtils;
+import com.example.et.Ustlis.ToastUtils;
 import com.example.et.View.PayDialog;
 import com.example.et.util.CacheUtils;
 import com.example.et.util.CountDown;
 import com.example.et.util.LogUtils;
+import com.example.et.util.PublicSwipeRefreshLayout.SwipeRefreshLayout;
 import com.example.et.util.TaskPresenterUntils;
 import com.example.et.util.TimeUtils;
 import com.example.et.util.constant.CacheConstants;
@@ -106,6 +109,8 @@ public class ContractFragment extends BaseFragment {
     RelativeLayout Rl3;
     @BindView(R.id.tv_o)
     TextView tvO;
+    @BindView(R.id.swipeRefreshLayout)
+    SwipeRefreshLayout swipeRefreshLayout;
     private Context context;
     Unbinder unbinder;
 
@@ -116,6 +121,9 @@ public class ContractFragment extends BaseFragment {
     protected void lazyLoad() {
         LogUtils.i("==============合约===");
         requestDatas();
+           StatusBarUtils.with(getActivity())
+                .setColor(getResources().getColor(R.color.orange))
+                .init();
 
     }
 
@@ -126,7 +134,6 @@ public class ContractFragment extends BaseFragment {
         lifeful = (Lifeful) getActivity();
     }
 
-
     @Override
     public void requestDatas() {
         super.requestDatas();
@@ -134,7 +141,7 @@ public class ContractFragment extends BaseFragment {
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("phone", CacheUtils.getInstance().getString(CacheConstants.PHONE));
 
-            TaskPresenterUntils.lifeful(Constant.newcontract, jsonObject, new OnLoadLifefulListener<String>(null, new OnLoadListener<String>() {
+            TaskPresenterUntils.lifeful(Constant.newcontract, jsonObject, new OnLoadLifefulListener<String>(swipeRefreshLayout, new OnLoadListener<String>() {
                 @Override
                 public void onSuccess(String success) {
                     LogUtils.i("======newcontract======" + success);
@@ -178,7 +185,7 @@ public class ContractFragment extends BaseFragment {
                             tvDay.setText(R.string.Successful_reservation_days);
                             tvYyTime.setText(objectPagebean.get("okdays").toString() + "天");
                         } else if (objectPagebean.get("state").toString().equals("2")) {
-                          //  oid = objectPagebean.get("id").toString();
+                            //  oid = objectPagebean.get("id").toString();
                             tvState.setText(R.string.The_match_is_successful);
                             tvDay.setText(R.string.Countdown_to_execution);
                             tvYyTime.setText(objectPagebean.get("okdays").toString());
@@ -228,6 +235,14 @@ public class ContractFragment extends BaseFragment {
     public void initView() {
 
         publicButton.setText(R.string.Confirm_an_appointment);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                requestDatas();
+
+
+            }
+        });
     }
 
     @Override
@@ -304,6 +319,7 @@ public class ContractFragment extends BaseFragment {
                     if (objectPagebean.get(KeyValueConstants.CODE).equals("200")) {
                         requestDatas();
                     }
+                    ToastUtils.showShort(objectPagebean.get(KeyValueConstants.MSG).toString());
 
 
                 }

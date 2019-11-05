@@ -31,6 +31,7 @@ public class TaskLoadRealize implements TaskLoadModel {
             @Override
             public void onResponse(String response) {
                 if (listener != null) {
+
                     listener.onSuccess(response);
                 }
             }
@@ -64,6 +65,7 @@ public class TaskLoadRealize implements TaskLoadModel {
             @Override
             public void onResponse(String response) {
                 if (listener != null) {
+
                     listener.onSuccess(response);
                 }
             }

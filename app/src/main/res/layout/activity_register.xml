@@ -66,6 +66,7 @@
                     android:layout_marginTop="@dimen/start_or_end_5"
                     android:background="@null"
                     android:hint="@string/Please_enter_nickname"
+                    android:textColor="@color/white"
                     android:textColorHint="@color/bottom_test"
                     android:textSize="@dimen/text_size_14" />
 
@@ -100,20 +101,28 @@
                         android:id="@+id/spinner"
                         style="@style/WrapWrap"
                         android:layout_gravity="center_vertical"
-                        android:popupBackground="@color/orange"
+
+
                         android:text="+86"
                         android:textColor="@color/orange"
                         android:textSize="@dimen/text_size_16" />
 
+                    <TextView
+                        android:id="@+id/spinner1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingRight="@dimen/start_or_end_10"
+                        android:text="▼"
+                        android:textColor="@color/orange" />
+
                     <EditText
+
                         android:id="@+id/et_phone"
                         style="@style/MatchWrap"
-                        android:layout_marginStart="@dimen/text_size_16"
-                        android:layout_marginLeft="@dimen/text_size_16"
+
                         android:layout_marginTop="@dimen/start_or_end_5"
                         android:background="@null"
                         android:hint="@string/Please_enter_your_cell_phone_number"
-                        android:inputType="number"
                         android:textColor="@color/white"
                         android:textColorHint="@color/bottom_test"
                         android:textSize="@dimen/text_size_14" />
@@ -197,6 +206,7 @@
                     android:layout_marginTop="@dimen/start_or_end_5"
                     android:background="@null"
                     android:hint="@string/enter_your_PIN"
+                    android:textColor="@color/white"
                     android:textColorHint="@color/bottom_test"
                     android:textSize="@dimen/text_size_14" />
 
@@ -227,6 +237,7 @@
                     android:layout_marginTop="@dimen/start_or_end_5"
                     android:background="@null"
                     android:hint="@string/enter_your_PIN_1"
+                    android:textColor="@color/white"
                     android:textColorHint="@color/bottom_test"
                     android:textSize="@dimen/text_size_14" />
 
@@ -257,6 +268,7 @@
                     android:layout_marginTop="@dimen/start_or_end_5"
                     android:background="@null"
                     android:hint="@string/phoenumber_payment_code_ok"
+                    android:textColor="@color/white"
                     android:textColorHint="@color/bottom_test"
                     android:textSize="@dimen/text_size_14" />
 
@@ -287,6 +299,7 @@
                     android:layout_marginTop="@dimen/start_or_end_5"
                     android:background="@null"
                     android:hint="@string/phoenumber_payment_code_ok_0"
+                    android:textColor="@color/white"
                     android:textColorHint="@color/bottom_test"
                     android:textSize="@dimen/text_size_14" />
 
@@ -317,6 +330,7 @@
                     android:layout_marginTop="@dimen/start_or_end_5"
                     android:background="@null"
                     android:hint="@string/Please_enter_the_invitation_code"
+                    android:textColor="@color/white"
                     android:textColorHint="@color/bottom_test"
                     android:textSize="@dimen/text_size_14" />
 

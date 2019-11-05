@@ -91,13 +91,14 @@ public class SafePasswordActivity extends BaseActivity {
 
                 break;
             case R.id.tv_get_cot:
-                new Verification(context, lifeful, Constant.registermessage, tvGetCot, 3);
+                new Verification(context, lifeful, Constant.registermessage, tvGetCot, 3, null);
                 break;
             case R.id.public_button:
                 if (examine()) {
                     redata();
                 }
                 break;
+            default:
         }
     }
 

@@ -7,22 +7,23 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.et.Constant;
 import com.example.et.R;
 import com.example.et.Ustlis.ActivityUtils;
-import com.example.et.Ustlis.CountDownTimerUtils;
 import com.example.et.Ustlis.DeviceUtils;
 import com.example.et.Ustlis.StringUtils;
 import com.example.et.Ustlis.ToastUtils;
-import com.example.et.entnty.Areacode;
-import com.example.et.entnty.Pagebean;
+import com.example.et.Verification;
+import com.example.et.View.LanguageSettingDialog;
 import com.example.et.util.CacheUtils;
 import com.example.et.util.LogUtils;
 import com.example.et.util.TaskPresenterUntils;
 import com.example.et.util.constant.CacheConstants;
 import com.example.et.util.constant.KeyValueConstants;
+import com.example.et.util.lifeful.Lifeful;
 import com.example.et.util.lifeful.OnLoadLifefulListener;
 import com.example.et.util.lifeful.OnLoadListener;
 import com.example.et.util.realize.ParseUtils;
@@ -36,6 +37,9 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
+/**
+ * 登录
+ */
 
 public class LoginActivity extends BaseActivity {
 
@@ -54,16 +58,22 @@ public class LoginActivity extends BaseActivity {
     EditText etPassword;
     @BindView(R.id.et_code)
     EditText etCode;
+    @BindView(R.id.ll_verification_code)
+    LinearLayout llVerificationCode;
+    @BindView(R.id.tv_language)
+    TextView tvLanguage;
     private Context context;
+    private Lifeful lifeful;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         context = LoginActivity.this;
+        lifeful = LoginActivity.this;
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
 
-
+        //初始化view
         initView();
     }
 
@@ -73,14 +83,23 @@ public class LoginActivity extends BaseActivity {
         publicButton.setText(getString(R.string.login));
     }
 
-
-    @OnClick({R.id.tv_get_cot, R.id.public_button, R.id.tv_forget_the_password, R.id.tv_register})
+    /**
+     * 点击事件
+     *
+     * @param view
+     */
+    @OnClick({R.id.tv_get_cot, R.id.public_button, R.id.tv_forget_the_password, R.id.tv_register, R.id.tv_language})
     public void onViewClicked(View view) {
         Intent intent = new Intent();
         switch (view.getId()) {
+            case R.id.tv_language:
+                LanguageSettingDialog dialog = new LanguageSettingDialog(LoginActivity.this, LoginActivity.this);
+                dialog.show();
+                break;
             case R.id.tv_get_cot:
+
                 if (CheckTheValidation(1)) {
-                    requestDatas(1);
+                    new Verification(context, lifeful, Constant.registermessage, tvGetCot, 5, phone);
                 }
                 break;
             case R.id.public_button:
@@ -108,22 +127,13 @@ public class LoginActivity extends BaseActivity {
 
         try {
             JSONObject jsonObject = new JSONObject();
-            if (i == 1 || i == 2) {
-                jsonObject.put("phone", phone);
-
-                if (i == 1) {
-                    jsonObject.put("types", "5");
-                    url = Constant.registermessage;
-                } else if (i == 2) {
-                    url = Constant.login;
-                    jsonObject.put("phonecode", code);
-                    jsonObject.put("pass", Password);
-                    jsonObject.put("equipment", DeviceUtils.getAndroidID());
-                }
+            jsonObject.put("phone", phone);
+            jsonObject.put("phonecode", code);
+            jsonObject.put("pass", Password);
+            jsonObject.put("equipment", DeviceUtils.getAndroidID());
 
 
-            }
-
+            url = Constant.login;
 
 
             TaskPresenterUntils.lifeful(url, jsonObject, new OnLoadLifefulListener<String>(null, new OnLoadListener<String>() {
@@ -132,20 +142,16 @@ public class LoginActivity extends BaseActivity {
                     LogUtils.i("exp========", success + "==============" + i);
                     Map<String, Object> resultMap = ParseUtils.analysisListTypeDatasAndCount((Activity) context, success, null, true).getStringMap();
 
-                    if (i == 1) {
-
-                        CountDownTimerUtils countDownTimerUtils = new CountDownTimerUtils(tvGetCot, 60000, 1000);
-                        countDownTimerUtils.start();
-
-
-                    } else if (i == 2) {
-
+                    if (resultMap.get(KeyValueConstants.CODE).equals("200")) {
                         CacheUtils.getInstance().put(CacheConstants.TOKEN, (CacheUtils.getInstance().getString("token")));
                         CacheUtils.getInstance().put(CacheConstants.PHONE, phone);
                         ActivityUtils.startActivity(MainActivity.class);
                         finish();
-
+                    } else if (resultMap.get(KeyValueConstants.CODE).equals("402")) {
+                        llVerificationCode.setVisibility(View.VISIBLE);
                     }
+
+
                     ToastUtils.showShort(resultMap.get(KeyValueConstants.MSG).toString());
 
                 }

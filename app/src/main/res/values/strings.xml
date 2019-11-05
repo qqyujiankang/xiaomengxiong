@@ -170,4 +170,9 @@
     <string name="language_auto">自动</string>
     <string name="language_traditional">繁體中文</string>
 
+    <string name="text69">复制成功</string>
+    <string name="address_binding">地址绑定</string>
+    <string name="please_enter">请输入</string>
+    <string name="tet1">注册</string>
+
 </resources>

@@ -57,7 +57,6 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         context=MainActivity.this;
-
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         initView();

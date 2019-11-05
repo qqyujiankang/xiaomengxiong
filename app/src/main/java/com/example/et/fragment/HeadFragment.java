@@ -31,6 +31,7 @@ import com.example.et.R;
 import com.example.et.Ustlis.ActivityUtils;
 import com.example.et.Ustlis.GsonUtil;
 import com.example.et.Ustlis.ListDatasUtils;
+import com.example.et.Ustlis.StatusBarUtils;
 import com.example.et.View.MyDiog;
 import com.example.et.View.MyGridView;
 import com.example.et.entnty.DataFlow;
@@ -195,6 +196,9 @@ public class HeadFragment extends BaseFragment implements AdapterView.OnItemClic
         requestDatas();
         requestDatas2();
         requestDatas3();
+        StatusBarUtils.with(getActivity())
+                .setColor(getResources().getColor(R.color.black))
+                .init();
 
 
     }
@@ -241,33 +245,34 @@ public class HeadFragment extends BaseFragment implements AdapterView.OnItemClic
                     Map<String, Object> resultMap = ParseUtils.analysisListTypeDatasAndCount((Activity) context, success, null, true).getStringMap();
                     LogUtils.i("homne=========" + success + "==========" + resultMap.get(KeyValueConstants.MSG));
                     if (resultMap.get(KeyValueConstants.CODE).equals("200")) {
+                        if (!CacheUtils.getInstance().getString(CacheConstants.r_huil).equals("")) {
+                            tvRGold.setText(CacheUtils.getInstance().getString(CacheConstants.r_gold));
+                            tvRHuilv.setText(StringUtils.calculateProfit(Double.parseDouble(CacheUtils.getInstance().getString(CacheConstants.r_huil))));
+                            double r_zd = Double.parseDouble(CacheUtils.getInstance().getString(CacheConstants.r_zd));
+                            tvRZd.setText(StringUtils.calculateProfit(r_zd));
 
-                        tvRGold.setText(CacheUtils.getInstance().getString(CacheConstants.r_gold));
-                        tvRHuilv.setText(StringUtils.calculateProfit(Double.parseDouble(CacheUtils.getInstance().getString(CacheConstants.r_huil))));
-                        double r_zd = Double.parseDouble(CacheUtils.getInstance().getString(CacheConstants.r_zd));
-                        tvRZd.setText(StringUtils.calculateProfit(r_zd));
+                            if (r_zd > 0) {//你输入的是正数
 
-                        if (r_zd > 0) {//你输入的是正数
+                                tvRZd.setTextColor(getResources().getColor(R.color.colorPrimaryDark));
+                            } else if (r_zd < 0) {//你输入的是负数
+                                tvRZd.setTextColor(getResources().getColor(R.color.colorAccent_01));
+                            }
+                            tvSGold.setText(CacheUtils.getInstance().getString(CacheConstants.s_gold));
+                            tvSHuil.setText(StringUtils.calculateProfit(Double.parseDouble(CacheUtils.getInstance().getString(CacheConstants.s_huil))));
+                            double s_zd = Double.parseDouble(CacheUtils.getInstance().getString(CacheConstants.s_zd));
+                            tvSZd.setText(StringUtils.calculateProfit(s_zd));
+                            if (s_zd > 0) {//你输入的是正数
 
-                            tvRZd.setTextColor(getResources().getColor(R.color.colorPrimaryDark));
-                        } else if (r_zd < 0) {//你输入的是负数
-                            tvRZd.setTextColor(getResources().getColor(R.color.colorAccent_01));
+                                tvSZd.setTextColor(getResources().getColor(R.color.colorPrimaryDark));
+                            } else if (s_zd < 0) {//你输入的是负数
+                                tvSZd.setTextColor(getResources().getColor(R.color.colorAccent_01));
+                            }
+
+                            LogUtils.i("homne======1===" + CacheUtils.getInstance().getString(CacheConstants.newd));
+                            Map<String, Object> stringObjectMap;
+                            stringObjectMap = JsonUtil.parseJSON(CacheUtils.getInstance().getString(CacheConstants.newd));
+                            tvNewName.setText(stringObjectMap.get("name").toString());
                         }
-                        tvSGold.setText(CacheUtils.getInstance().getString(CacheConstants.s_gold));
-                        tvSHuil.setText(StringUtils.calculateProfit(Double.parseDouble(CacheUtils.getInstance().getString(CacheConstants.s_huil))));
-                        double s_zd = Double.parseDouble(CacheUtils.getInstance().getString(CacheConstants.s_zd));
-                        tvSZd.setText(StringUtils.calculateProfit(s_zd));
-                        if (s_zd > 0) {//你输入的是正数
-
-                            tvSZd.setTextColor(getResources().getColor(R.color.colorPrimaryDark));
-                        } else if (s_zd < 0) {//你输入的是负数
-                            tvSZd.setTextColor(getResources().getColor(R.color.colorAccent_01));
-                        }
-
-                        LogUtils.i("homne======1===" + CacheUtils.getInstance().getString(CacheConstants.newd));
-                        Map<String, Object> stringObjectMap;
-                        stringObjectMap = JsonUtil.parseJSON(CacheUtils.getInstance().getString(CacheConstants.newd));
-                        tvNewName.setText(stringObjectMap.get("name").toString());
 
                     } else {
                         ActivityUtils.startActivity(LoginActivity.class);
