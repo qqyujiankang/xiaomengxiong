@@ -26,15 +26,12 @@
                 android:textColor="@color/white"
                 android:textSize="@dimen/text_size_12" />
 
-            <EditText
+            <TextView
                 android:id="@+id/et_password"
-                style="@style/MatchWrap"
-                android:layout_marginBottom="@dimen/icon_width_height_10"
-                android:background="@null"
+                style="@style/MatchWrap.et_1"
                 android:hint="@string/Please_enter_your_wallet_address"
-                android:textColor="@color/white"
-                android:textColorHint="@color/silver"
-                android:textSize="@dimen/text_size_16" />
+                android:layout_marginBottom="@dimen/start_or_end_10"
+                />
 
 
         </LinearLayout>
@@ -42,6 +39,7 @@
         <include layout="@layout/public_line" />
 
         <TextView
+            android:id="@+id/tv_Withdrawal_amount"
             style="@style/WrapWrap"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="10dp"
@@ -57,13 +55,12 @@
 
 
             <EditText
+                android:layout_toLeftOf="@+id/tv_get_cot"
                 android:id="@+id/et_code"
-                style="@style/WrapWrap"
-                android:background="@null"
+                style="@style/MatchWrap.et_1"
                 android:inputType="number"
-                android:textColor="@color/white"
-                android:textColorHint="@color/silver"
-                android:textSize="@dimen/text_size_16" />
+
+             />
 
             <TextView
                 android:id="@+id/tv_get_cot"

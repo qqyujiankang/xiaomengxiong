@@ -22,14 +22,14 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@color/textcolor_yellow" />
+            android:background="@color/tes" />
 
         <ListView
             android:id="@+id/listv"
             style="@style/MatchWrap"
             android:background="@color/black_01"
-            android:divider="@color/textcolor_yellow"
-            android:dividerHeight="1dp" />
+            android:divider="@color/tes"
+            android:dividerHeight="0.5dp" />
 
 
         <TextView

@@ -5,12 +5,12 @@ import android.app.Application;
 import android.content.Context;
 import android.content.res.Configuration;
 
-import com.example.et.Activity.SplashActivity;
 import com.example.et.Ustlis.SimulatorUtils;
 import com.example.et.Ustlis.Utils;
 import com.example.et.Ustlis.internationalization.LocalManageUtil;
 import com.example.et.util.CacheUtils;
 import com.example.et.util.constant.CacheConstants;
+
 
 
 public class HJZApplication extends Application {
@@ -21,6 +21,8 @@ public class HJZApplication extends Application {
         super.onCreate();
         if (!SimulatorUtils.isSimulator(this)) {
             Utils.init(this);//工具包相关初始化
+
+
             LocalManageUtil.setApplicationLanguage(this);
             String language = LocalManageUtil.getSelectLanguage(this);
             if (language.equals("ENGLISH")) {//英语  @"en"

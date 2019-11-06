@@ -193,8 +193,10 @@ public class AppointmentcontractActivity extends BaseActivity {
                         }
 
                     }
-                    ToastUtils.showShort(resultMap.get(KeyValueConstants.MSG).toString());
-                    LogUtils.i("=======lifeful====" + success + "========" + resultMap.get(KeyValueConstants.MSG));
+                    if (!resultMap.get(KeyValueConstants.MSG).equals("")){
+                         ToastUtils.showShort(resultMap.get(KeyValueConstants.MSG).toString());
+                    }
+
 
 
                 }

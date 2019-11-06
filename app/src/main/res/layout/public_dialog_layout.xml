@@ -6,6 +6,7 @@
     <ProgressBar style="@style/WrapWrap" />
 
     <TextView
+        android:textColor="@color/white"
         android:id="@+id/tvLoad"
         style="@style/WrapWrap"
         android:layout_gravity="center"

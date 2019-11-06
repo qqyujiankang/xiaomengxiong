@@ -15,8 +15,10 @@
     <color name="p_gray">#F0EFF5</color>
     <color name="p_white">#ffffff</color>
     <color name="p_white_test">#6F8AACFF</color>
+    <color name="p_white_test1">#FF6F8AAC</color>
     <color name="p_transparency">#00000000</color>
     <color name="p_green">#FF00CAA1</color>
     <color name="p_green_">#FF2F3E4D</color>
        <color name="fengexian">#364363</color>
+       <color name="tes">#FF253042</color>
 </resources>

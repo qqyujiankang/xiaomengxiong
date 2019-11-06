@@ -145,9 +145,30 @@
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowContentOverlay">@null</item>
         <!-- 设置动画 -->
-<!--        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>-->
+        <!--        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>-->
         <!-- 设置屏幕变暗 -->
         <!-- <item name="android:backgroundDimEnabled">true</item> -->
+    </style>
+    android:layout_marginTop="@dimen/start_or_end_5"
+    android:background="@null"
+    android:hint="@string/enter_your_PIN"
+    android:inputType="textPassword"
+    android:singleLine="true"
+    android:textColor="@color/white"
+    android:textColorHint="@color/bottom_test"
+    android:textSize="@dimen/text_size_14"
+
+    <style name="MatchWrap.et_1">
+        <item name="android:layout_marginTop">@dimen/start_or_end_5</item>
+        <item name="android:background">@null</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textColorHint">@color/bottom_test</item>
+        <item name="android:textSize">@dimen/text_size_14</item>
+
+    </style>
+    <style name="MatchWrap.et_1.inputType">
+        <item name="android:inputType">textPassword</item>
     </style>
 
 </resources>

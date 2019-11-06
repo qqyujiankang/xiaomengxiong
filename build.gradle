@@ -6,6 +6,7 @@ buildscript {
         jcenter()
         mavenCentral()
         maven {url 'https://dl.bintray.com/a10188755550/maven'}
+
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.5.1'
@@ -25,9 +26,11 @@ allprojects {
         maven {url 'https://dl.bintray.com/a10188755550/maven'}
 
     }
+
 }
 
 task clean(type: Delete) {
     delete rootProject.buildDir
+
 }
 

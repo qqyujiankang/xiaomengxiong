@@ -157,7 +157,10 @@ public class MyFragment extends BaseFragment {
                 ActivityUtils.startActivity(GainRecordingActivity.class);
                 break;
             case R.id.Ll_USDT_address_binding:
-                ActivityUtils.startActivity(AddressbindingActivity.class);
+                if (CacheUtils.getInstance().getString(CacheConstants.usdtaddress).equals("null")) {
+                    ActivityUtils.startActivity(AddressbindingActivity.class);
+                }
+
                 break;
             case R.id.ll_set_password:
                 ActivityUtils.startActivity(SecurityCenterconActivity.class);

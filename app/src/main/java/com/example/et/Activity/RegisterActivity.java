@@ -2,6 +2,7 @@ package com.example.et.Activity;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -14,6 +15,7 @@ import android.widget.TextView;
 import com.example.et.Adapter.ManagerAdapter;
 import com.example.et.Constant;
 import com.example.et.R;
+import com.example.et.Ustlis.ActivityUtils;
 import com.example.et.Ustlis.CountDownTimerUtils;
 import com.example.et.Ustlis.StringUtils;
 import com.example.et.Ustlis.ToastUtils;
@@ -78,6 +80,7 @@ public class RegisterActivity extends BaseActivity {
 
     private Context context;
     private Lifeful lifeful;
+    private int anInt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,15 +89,37 @@ public class RegisterActivity extends BaseActivity {
         lifeful = RegisterActivity.this;
         setContentView(R.layout.activity_register);
         ButterKnife.bind(this);
+        getIntentDatas();
         initView();
         requestDatas();
+    }
+
+    @Override
+    public void getIntentDatas() {
+        super.getIntentDatas();
+        anInt = getIntent().getIntExtra("id", 0);
+        if (anInt == 2) {
+            cbCheck.setChecked(true);
+            cbPhone.setChecked(false);
+            tvPhone.setText(R.string.mailbox);
+            spinner.setVisibility(View.GONE);
+            spinner1.setVisibility(View.GONE);
+            etPhone.setHint(R.string.Please_enter_email);
+        } else if (anInt == 1) {
+            cbPhone.setChecked(true);
+            cbCheck.setChecked(false);
+            tvPhone.setText(R.string.phone);
+            spinner.setVisibility(View.VISIBLE);
+            spinner1.setVisibility(View.VISIBLE);
+
+            etPhone.setHint(R.string.Please_enter_your_cell_phone_number);
+        }
     }
 
     @Override
     public void initView() {
         super.initView();
         publicButton.setText(R.string.tet1);
-        cbPhone.setChecked(true);
     }
 
     Pagebean<Object> objectPagebean;
@@ -107,7 +132,10 @@ public class RegisterActivity extends BaseActivity {
 
     @OnClick({R.id.tv_get_cot, R.id.public_button, R.id.cb_phone, R.id.cb_check, R.id.spinner})
     public void onViewClicked(View view) {
+        Intent intent = new Intent();
+        intent.setClass(context, RegisterActivity.class);
         switch (view.getId()) {
+
             case R.id.spinner:
                 areacodes = ((ArrayList<Areacode>) (ArrayList) objectPagebean.getList());
                 areaDiog = new AreaDiog(context, onItemClickListener, areacodes);
@@ -128,22 +156,14 @@ public class RegisterActivity extends BaseActivity {
 
                 break;
             case R.id.cb_phone:
-                cbPhone.setChecked(true);
-                cbCheck.setChecked(false);
-                tvPhone.setText(R.string.phone);
-                spinner.setVisibility(View.VISIBLE);
-                spinner1.setVisibility(View.VISIBLE);
-
-                etPhone.setHint(R.string.Please_enter_your_cell_phone_number);
-
+                intent.putExtra("id", 1);
+                ActivityUtils.startActivity(intent);
+                finish();
                 break;
             case R.id.cb_check:
-                cbCheck.setChecked(true);
-                cbPhone.setChecked(false);
-                tvPhone.setText(R.string.mailbox);
-                spinner.setVisibility(View.GONE);
-                spinner1.setVisibility(View.GONE);
-                etPhone.setHint(R.string.Please_enter_email);
+                intent.putExtra("id", 2);
+                ActivityUtils.startActivity(intent);
+                finish();
                 break;
             default:
         }
@@ -186,9 +206,11 @@ public class RegisterActivity extends BaseActivity {
 
                     if (i == 2) {
                         Map<String, Object> resultMap = ParseUtils.analysisListTypeDatasAndCount((Activity) context, success, null, false).getStringMap();
+                        if (resultMap.get(KeyValueConstants.CODE).equals("200")) {
 
+                            finish();
+                        }
                         ToastUtils.showShort(resultMap.get(KeyValueConstants.MSG).toString());
-                        finish();
 
                     } else if (i == 0) {
                         objectPagebean = ParseUtils.analysisListTypeDatasAndCount((Activity) context, success, Areacode[].class, false);
@@ -255,10 +277,23 @@ public class RegisterActivity extends BaseActivity {
         paymentcodeok = etPaymentCodeOk.getText().toString();
         invitationcode = etInvitationCode.getText().toString();
         if (StringUtils.isEmpty(phone)) {
-            ToastUtils.showShort(R.string.Please_enter_your_cell_phone_number);
+            if (cbPhone.isChecked()) {
+                ToastUtils.showShort(R.string.Please_enter_your_cell_phone_number);
+            } else {
+                ToastUtils.showShort(R.string.Please_enter_email);
+            }
+
             return false;
         }
         if (i == 2) {
+            if (StringUtils.isEmpty(code)) {
+                ToastUtils.showShort(R.string.Please_enter_verification_code);
+                return false;
+            }
+            if (StringUtils.isEmpty(invitationcode)) {
+                ToastUtils.showShort(R.string.Please_enter_the_invitation_code);
+                return false;
+            }
             if (StringUtils.isEmpty(nickname)) {
                 ToastUtils.showShort(R.string.Please_enter_nickname);
                 return false;

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">ET</string>
+    <string name="app_name">ET爸爸</string>
     <string name="login_ID">登录账号</string>
     <string name="Mobile_phone_number_email">手机号/邮箱</string>
     <string name="password">密码</string>
@@ -51,7 +51,7 @@
     <string name="balance">余额</string>
     <string name="rental">总额</string>
     <string name="usable">可用</string>
-    <string name="convert">折合(CNY)</string>
+    <string name="convert">折合(USDT)</string>
     <string name="top_up">充值</string>
     <string name="Mention_money">提币</string>
     <string name="record">记录</string>
@@ -65,7 +65,7 @@
     <string name="Copy_the_address">复制地址</string>
     <string name="The_wallet_address">钱包地址</string>
     <string name="Please_enter_your_wallet_address">请输入钱包地址</string>
-    <string name="Withdrawal_amount">提币金额（USDT）</string>
+    <string name="Withdrawal_amount">提币金额</string>
     <string name="my_team">我的团队</string>
     <string name="Friends_share">分享好友</string>
     <string name="personal_data">个人资料</string>
@@ -163,7 +163,7 @@
     <string name="Please_enter_email">请输入邮箱</string>
     <string name="Generated_income">已产生收益</string>
     <string name="Contract_executed_successfully">合约执行成功</string>
-    <string name="prospective_earnings">预期收益</string>
+    <string name="prospective_earnings">预期收益</string>F
     <string name="Make_an_appointment_to_currency">预约币种</string>
     <string name="To_perform_currency">执行币种</string>
     <string name="language_switch">语言切换</string>
@@ -175,4 +175,5 @@
     <string name="address_binding">地址绑定</string>
     <string name="please_enter">请输入</string>
     <string name="tet1">注册</string>
+    <string name="ts1">&#037;</string>
 </resources>

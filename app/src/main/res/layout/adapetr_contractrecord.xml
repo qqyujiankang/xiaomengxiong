@@ -9,18 +9,16 @@
         android:background="@color/black_01">
 
         <RelativeLayout
+            android:layout_marginEnd="@dimen/start_or_end_10"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/icon_width_height_20"
-            android:paddingStart="@dimen/icon_width_height_20"
-            android:paddingLeft="@dimen/icon_width_height_20">
+            android:layout_marginStart="@dimen/start_or_end_10"
+            android:layout_marginTop="@dimen/icon_width_height_20">
 
             <TextView
-
                 android:id="@+id/tv_name"
                 style="@style/WrapWrap"
-                android:layout_marginStart="@dimen/icon_width_height_30"
-                android:layout_marginLeft="@dimen/icon_width_height_50"
+                android:gravity="left"
                 android:textColor="@color/orange" />
 
             <TextView
@@ -33,13 +31,14 @@
         </RelativeLayout>
 
         <LinearLayout
-
             style="@style/MatchWrap.Horizontal"
-            android:layout_marginTop="@dimen/icon_width_height_10">
+            android:layout_marginStart="@dimen/start_or_end_10"
+            android:layout_marginTop="@dimen/icon_width_height_10"
+            android:layout_marginEnd="@dimen/start_or_end_10">
 
             <TextView
                 style="@style/AutoWrap"
-                android:gravity="center"
+                android:gravity="left"
                 android:text="@string/The_contract_amount"
                 android:textColor="@color/p_white_test" />
 
@@ -58,33 +57,38 @@
 
         </LinearLayout>
 
-        <LinearLayout
+        <RelativeLayout
             style="@style/MatchWrap.Horizontal"
+            android:layout_marginStart="@dimen/start_or_end_10"
             android:layout_marginTop="@dimen/icon_width_height_10"
+            android:layout_marginEnd="@dimen/start_or_end_10"
             android:layout_marginBottom="@dimen/icon_width_height_20">
 
             <TextView
                 android:id="@+id/tv_team"
-                style="@style/AutoWrap"
+                style="@style/WrapWrap"
                 android:gravity="center"
                 android:text=""
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_14" />
 
             <TextView
                 android:id="@+id/tv_Active_member"
-                style="@style/AutoWrap"
+                style="@style/WrapWrap"
+                android:layout_centerHorizontal="true"
                 android:gravity="center"
                 android:text=""
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_14" />
 
             <TextView
-
                 android:id="@+id/tv_performance"
-                style="@style/AutoWrap"
-                android:gravity="center"
+                style="@style/WrapWrap"
+                android:layout_alignParentRight="true"
                 android:text=""
-                android:textColor="@color/p_green" />
+                android:textColor="@color/p_green"
+                android:textSize="@dimen/text_size_14" />
 
-        </LinearLayout>
+        </RelativeLayout>
     </LinearLayout>
 </LinearLayout>

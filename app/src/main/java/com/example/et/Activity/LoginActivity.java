@@ -115,6 +115,7 @@ public class LoginActivity extends BaseActivity {
                 break;
             case R.id.tv_register:
                 intent.setClass(LoginActivity.this, RegisterActivity.class);
+                intent.putExtra("id",1);
                 ActivityUtils.startActivity(intent);
                 break;
 

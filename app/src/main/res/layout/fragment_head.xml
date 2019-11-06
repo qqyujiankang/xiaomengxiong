@@ -61,13 +61,13 @@
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp">
 
-                <TextView
+                <ImageView
+                    android:layout_gravity="center_vertical"
                     android:id="@+id/textView2"
                     style="@style/WrapWrap"
                     android:layout_marginStart="20dp"
                     android:layout_marginLeft="20dp"
-                    android:text="@string/announcement"
-                    android:textColor="@color/orange"
+                    android:src="@mipmap/tbbc"
                     android:textSize="@dimen/text_size_18"
                     android:typeface="monospace" />
 
@@ -159,7 +159,7 @@
 
                     <TextView
                         style="@style/WrapWrap"
-                        android:text="@string/Quantity_of_executed_contract_currency"
+                        android:text="@string/Execute_the_contract_currency"
                         android:textColor="@color/white" />
 
                     <TextView

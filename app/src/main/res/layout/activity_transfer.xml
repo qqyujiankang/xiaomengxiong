@@ -12,7 +12,6 @@
         style="@style/MatchWrap.Vertical"
         android:layout_marginTop="@dimen/icon_width_height_10"
         android:background="@color/black_p"
-
         android:paddingStart="@dimen/icon_width_height_20"
         android:paddingLeft="@dimen/icon_width_height_20">
 
@@ -24,6 +23,7 @@
             android:textColor="@color/white" />
 
         <EditText
+            android:singleLine="true"
             android:id="@+id/et_account_number"
             style="@style/MatchWrap"
             android:background="@null"
@@ -44,6 +44,7 @@
             android:textColor="@color/white" />
 
         <EditText
+             android:singleLine="true"
             android:id="@+id/et_transfer_amount"
             style="@style/MatchWrap"
             android:background="@null"

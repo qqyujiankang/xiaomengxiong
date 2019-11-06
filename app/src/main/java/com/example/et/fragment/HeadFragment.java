@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -72,7 +73,7 @@ public class HeadFragment extends BaseFragment implements AdapterView.OnItemClic
     @BindView(R.id.banner)
     Banner banner;
     @BindView(R.id.textView2)
-    TextView textView2;
+    ImageView textView2;
     @BindView(R.id.iv_bank)
     ImageView ivBank;
     @BindView(R.id.public_grid_view)
@@ -196,6 +197,7 @@ public class HeadFragment extends BaseFragment implements AdapterView.OnItemClic
         requestDatas();
         requestDatas2();
         requestDatas3();
+
         StatusBarUtils.with(getActivity())
                 .setColor(getResources().getColor(R.color.black))
                 .init();
@@ -247,9 +249,9 @@ public class HeadFragment extends BaseFragment implements AdapterView.OnItemClic
                     if (resultMap.get(KeyValueConstants.CODE).equals("200")) {
                         if (!CacheUtils.getInstance().getString(CacheConstants.r_huil).equals("")) {
                             tvRGold.setText(CacheUtils.getInstance().getString(CacheConstants.r_gold));
-                            tvRHuilv.setText(StringUtils.calculateProfit(Double.parseDouble(CacheUtils.getInstance().getString(CacheConstants.r_huil))));
+                            tvRHuilv.setText(StringUtils.calculateProfit(Double.parseDouble(CacheUtils.getInstance().getString(CacheConstants.r_huil)), 3));
                             double r_zd = Double.parseDouble(CacheUtils.getInstance().getString(CacheConstants.r_zd));
-                            tvRZd.setText(StringUtils.calculateProfit(r_zd));
+                            tvRZd.setText(StringUtils.calculateProfit(r_zd, 3) + getString(R.string.ts1));
 
                             if (r_zd > 0) {//你输入的是正数
 
@@ -258,9 +260,9 @@ public class HeadFragment extends BaseFragment implements AdapterView.OnItemClic
                                 tvRZd.setTextColor(getResources().getColor(R.color.colorAccent_01));
                             }
                             tvSGold.setText(CacheUtils.getInstance().getString(CacheConstants.s_gold));
-                            tvSHuil.setText(StringUtils.calculateProfit(Double.parseDouble(CacheUtils.getInstance().getString(CacheConstants.s_huil))));
+                            tvSHuil.setText(StringUtils.calculateProfit(Double.parseDouble(CacheUtils.getInstance().getString(CacheConstants.s_huil)), 3));
                             double s_zd = Double.parseDouble(CacheUtils.getInstance().getString(CacheConstants.s_zd));
-                            tvSZd.setText(StringUtils.calculateProfit(s_zd));
+                            tvSZd.setText(StringUtils.calculateProfit(s_zd, 3) + getString(R.string.ts1));
                             if (s_zd > 0) {//你输入的是正数
 
                                 tvSZd.setTextColor(getResources().getColor(R.color.colorPrimaryDark));

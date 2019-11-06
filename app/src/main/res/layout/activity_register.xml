@@ -7,6 +7,7 @@
     tools:context=".Activity.RegisterActivity">
 
     <ScrollView
+        android:layout_marginBottom="@dimen/icon_width_height_30"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -18,7 +19,7 @@
                 android:layout_height="@dimen/icon_width_height_30"
                 android:layout_marginStart="30dp"
                 android:layout_marginLeft="30dp"
-                android:layout_marginTop="100dp"
+                android:layout_marginTop="@dimen/icon_width_height_50"
                 android:background="@mipmap/login_01" />
 
             <RelativeLayout
@@ -62,13 +63,8 @@
 
                 <EditText
                     android:id="@+id/et_nickname"
-                    style="@style/MatchWrap"
-                    android:layout_marginTop="@dimen/start_or_end_5"
-                    android:background="@null"
-                    android:hint="@string/Please_enter_nickname"
-                    android:textColor="@color/white"
-                    android:textColorHint="@color/bottom_test"
-                    android:textSize="@dimen/text_size_14" />
+                    style="@style/MatchWrap.et_1"
+                    android:hint="@string/Please_enter_nickname" />
 
                 <LinearLayout
                     style="@style/MatchWrap"
@@ -118,14 +114,8 @@
                     <EditText
 
                         android:id="@+id/et_phone"
-                        style="@style/MatchWrap"
-
-                        android:layout_marginTop="@dimen/start_or_end_5"
-                        android:background="@null"
-                        android:hint="@string/Please_enter_your_cell_phone_number"
-                        android:textColor="@color/white"
-                        android:textColorHint="@color/bottom_test"
-                        android:textSize="@dimen/text_size_14" />
+                        style="@style/MatchWrap.et_1"
+                        android:hint="@string/Please_enter_your_cell_phone_number" />
                 </LinearLayout>
 
 
@@ -157,15 +147,9 @@
 
                     <EditText
                         android:id="@+id/et_code"
-                        style="@style/WrapWrap"
-                        android:layout_width="268dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/start_or_end_5"
-                        android:background="@null"
-                        android:hint="@string/Please_enter_verification_code"
-                        android:textColor="@color/white"
-                        android:textColorHint="@color/bottom_test"
-                        android:textSize="@dimen/text_size_14" />
+                        style="@style/MatchWrap.et_1"
+                        android:layout_toLeftOf="@+id/tv_get_cot"
+                        android:hint="@string/Please_enter_verification_code" />
 
                     <TextView
 
@@ -202,13 +186,8 @@
 
                 <EditText
                     android:id="@+id/et_password"
-                    style="@style/MatchWrap"
-                    android:layout_marginTop="@dimen/start_or_end_5"
-                    android:background="@null"
-                    android:hint="@string/enter_your_PIN"
-                    android:textColor="@color/white"
-                    android:textColorHint="@color/bottom_test"
-                    android:textSize="@dimen/text_size_14" />
+                    style="@style/MatchWrap.et_1.inputType"
+                    android:hint="@string/enter_your_PIN" />
 
                 <LinearLayout
                     style="@style/MatchWrap"
@@ -233,13 +212,10 @@
 
                 <EditText
                     android:id="@+id/et_password_ok"
-                    style="@style/MatchWrap"
-                    android:layout_marginTop="@dimen/start_or_end_5"
-                    android:background="@null"
+                    style="@style/MatchWrap.et_1.inputType"
                     android:hint="@string/enter_your_PIN_1"
-                    android:textColor="@color/white"
-                    android:textColorHint="@color/bottom_test"
-                    android:textSize="@dimen/text_size_14" />
+
+                    />
 
                 <LinearLayout
                     style="@style/MatchWrap"
@@ -264,13 +240,8 @@
 
                 <EditText
                     android:id="@+id/et_payment_code"
-                    style="@style/MatchWrap"
-                    android:layout_marginTop="@dimen/start_or_end_5"
-                    android:background="@null"
-                    android:hint="@string/phoenumber_payment_code_ok"
-                    android:textColor="@color/white"
-                    android:textColorHint="@color/bottom_test"
-                    android:textSize="@dimen/text_size_14" />
+                    style="@style/MatchWrap.et_1.inputType"
+                    android:hint="@string/phoenumber_payment_code_ok" />
 
                 <LinearLayout
                     style="@style/MatchWrap"
@@ -295,13 +266,8 @@
 
                 <EditText
                     android:id="@+id/et_payment_code_ok"
-                    style="@style/MatchWrap"
-                    android:layout_marginTop="@dimen/start_or_end_5"
-                    android:background="@null"
-                    android:hint="@string/phoenumber_payment_code_ok_0"
-                    android:textColor="@color/white"
-                    android:textColorHint="@color/bottom_test"
-                    android:textSize="@dimen/text_size_14" />
+                    style="@style/MatchWrap.et_1.inputType"
+                    android:hint="@string/phoenumber_payment_code_ok_0" />
 
                 <LinearLayout
                     style="@style/MatchWrap"
@@ -326,13 +292,9 @@
 
                 <EditText
                     android:id="@+id/et_invitation_code"
-                    style="@style/MatchWrap"
-                    android:layout_marginTop="@dimen/start_or_end_5"
-                    android:background="@null"
-                    android:hint="@string/Please_enter_the_invitation_code"
-                    android:textColor="@color/white"
-                    android:textColorHint="@color/bottom_test"
-                    android:textSize="@dimen/text_size_14" />
+                    style="@style/MatchWrap.et_1"
+
+                    android:hint="@string/Please_enter_the_invitation_code" />
 
                 <LinearLayout
                     style="@style/MatchWrap"
@@ -347,10 +309,19 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="-20dp">
+                android:layout_marginTop="-30dp">
 
-                <include layout="@layout/public_button1"></include>
+                <include layout="@layout/public_button1">
+
+                </include>
             </LinearLayout>
+
+            <TextView
+                android:layout_marginTop="@dimen/start_or_end_10"
+                android:text="已有账号，立即登录"
+                android:gravity="center"
+                style="@style/MatchWrap"
+                android:textColor="@color/orange" />
         </LinearLayout>
     </ScrollView>
 

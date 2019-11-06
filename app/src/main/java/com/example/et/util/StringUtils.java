@@ -9,10 +9,11 @@ import java.text.DecimalFormat;
 import java.util.Properties;
 
 /**
-
+ *
  */
 public final class StringUtils {
     private static final String configPath = "url.properties";
+
     private StringUtils() {
         throw new UnsupportedOperationException("u can't instantiate me...");
     }
@@ -220,17 +221,21 @@ public final class StringUtils {
 
     /**
      * 获得请求全链接
+     *
      * @param context
      * @param key
      * @return
      */
-    public static String getRequestUrl1(Context context, String key){
-        return getConfigProperty1(context, "URL") +getConfigProperty1(context, key);
+    public static String getRequestUrl1(Context context, String key) {
+        return getConfigProperty1(context, "URL") + getConfigProperty1(context, key);
 
     }
-    /** 读取配置文件下的某个节点信息 */
+
+    /**
+     * 读取配置文件下的某个节点信息
+     */
     public static String getConfigProperty1(Context context, String key) {
-        if(context == null){
+        if (context == null) {
             return "";
         }
         InputStream in;
@@ -247,27 +252,46 @@ public final class StringUtils {
     }
 
 
-   /**
+    /**
      * 获取double数据小数点后两位不进行四舍五入
+     *
      * @param doubleValue
      * @return -1 , double
      */
-   public static String calculateProfit(double doubleValue) {
-        // 保留4位小数
-        DecimalFormat df = new DecimalFormat("0.0000");
+    public static String calculateProfit(double doubleValue, int i) {
+
+     // 保留4位小数
+        java.text.DecimalFormat df = null;
+        if (i==5){
+            df = new java.text.DecimalFormat("#.0000");
+        }else if (i==3){
+             df = new java.text.DecimalFormat("#.00");
+        }
         String result = df.format(doubleValue);
+
+        // 截取第一位
+        String index = result.substring(0, 1);
+
+        if (".".equals(index)) {
+            result = "0" + result;
+        }
+
         // 获取小数 . 号第一次出现的位置
         int inde = firstIndexOf(result, ".");
+
         // 字符串截断
-        return result.substring(0, inde + 5);
+
+        return result.substring(0, inde + i);
     }
+
     /**
      * 获取小数点的位数
+     *
      * @param str
      * @param pattern
      * @return i , -1
      */
-   public static int firstIndexOf(String str, String pattern) {
+    public static int firstIndexOf(String str, String pattern) {
         for (int i = 0; i < (str.length() - pattern.length()); i++) {
             int j = 0;
             while (j < pattern.length()) {

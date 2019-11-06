@@ -9,24 +9,30 @@
         android:layout_height="wrap_content">
 
         <TextView
+            android:textSize="@dimen/text_size_14"
             android:id="@+id/tv_number"
             style="@style/AutoWrap"
             android:gravity="center"
+            android:singleLine="true"
             android:text="@string/number"
-            android:textColor="@color/bottom_test" />
+            android:textColor="@color/white" />
 
         <TextView
+                     android:textSize="@dimen/text_size_14"
             android:id="@+id/tv_menu_find"
             style="@style/AutoWrap"
             android:gravity="center"
+            android:singleLine="true"
             android:text="@string/menu_find"
-            android:textColor="@color/bottom_test" />
+            android:textColor="@color/white" />
 
         <TextView
+                     android:textSize="@dimen/text_size_14"
             android:id="@+id/tv_time"
             style="@style/AutoWrap"
             android:gravity="center"
+            android:singleLine="true"
             android:text="@string/time"
-            android:textColor="@color/bottom_test" />
+            android:textColor="@color/white" />
     </LinearLayout>
 </LinearLayout>

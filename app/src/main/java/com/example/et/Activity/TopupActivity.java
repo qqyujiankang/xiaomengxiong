@@ -121,7 +121,7 @@ public class TopupActivity extends BaseActivity {
                         ImageLoaderUtil.loadImage(TopupActivity.this, objectPagebean.get("address_img").toString(), ivAddressImg);
 
                     }
-                    ToastUtils.showShort(objectPagebean.get(KeyValueConstants.MSG).toString());
+
 
 
                 }

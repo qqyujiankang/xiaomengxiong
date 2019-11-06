@@ -173,7 +173,7 @@ public class ContractFragment extends BaseFragment {
                             tv2.setText(R.string.maximum_execution_time);
                             tvCurrency.setText("10天");
                             tv3.setText(R.string.daily_return_rate);
-                            tvQuantity.setText(objectPagebean.get("day_shouyilv").toString());
+                            tvQuantity.setText(objectPagebean.get("day_shouyilv").toString()+getString(R.string.ts1));
                             tv4.setText(R.string.The_reservation_deposit);
                             tvTime.setText(objectPagebean.get("dingjin").toString());
                             Rl1.setVisibility(View.VISIBLE);

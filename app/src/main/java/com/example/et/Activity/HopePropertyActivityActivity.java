@@ -108,11 +108,19 @@ public class HopePropertyActivityActivity extends BaseActivity {
 
         if (ass.getId() == 8) {
             btnTopUp.setVisibility(View.GONE);
+            RlBan2.setVisibility(View.GONE);
+            RlBanl.setVisibility(View.GONE);
+            tvRental.setTextColor(getResources().getColor(R.color.orange));
+            tvRental.setText(ass.getName());
+            tvUsable.setText(getString(R.string.balance));
+            tvConvert.setText(StringUtils.calculateProfit(Double.valueOf(ass.getNumber()), 3));
+        } else {
+            RlBanl.setText(ass.getName());
+            tvRental.setText(StringUtils.calculateProfit(Double.valueOf(ass.getNumber()), 3));
+            tvUsable.setText(StringUtils.calculateProfit(Double.valueOf(ass.getNewnumber()), 3));
+            tvConvert.setText(StringUtils.calculateProfit(Double.valueOf(ass.getCny()), 3));
         }
-        RlBanl.setText(ass.getName());
-        tvRental.setText(StringUtils.calculateProfit(Double.valueOf(ass.getNumber())));
-        tvUsable.setText(StringUtils.calculateProfit(Double.valueOf(ass.getNewnumber())));
-        tvConvert.setText(StringUtils.calculateProfit(Double.valueOf(ass.getCny())));
+
 
     }
 
@@ -201,7 +209,7 @@ public class HopePropertyActivityActivity extends BaseActivity {
             Intent intent = new Intent();
             intent.setClass(context, MentionmoneyActivity.class);
             intent.putExtra("id", currencyaddress.getId());
-            intent.putExtra("Number", StringUtils.calculateProfit(Double.valueOf(ass.getNumber())));
+            intent.putExtra("Number", StringUtils.calculateProfit(Double.valueOf(ass.getNumber()), 3));
             intent.putExtra("stringname", currencyaddress.getStringname());
             intent.putExtra("name", currencyaddress.getString());
             ActivityUtils.startActivity(intent);
@@ -236,7 +244,11 @@ public class HopePropertyActivityActivity extends BaseActivity {
                                     currencyaddresses.add(new Currencyaddress(myJsonObject.getString(i), ass.getName(), ass.getId()));
                                 }
 
-
+                                if (currencyaddresses.size() != 0) {
+                                    lv.setAdapter(new CurrencyaddressAdapter(context, currencyaddresses, null));
+                                } else {
+                                    publicOther.setText(getString(R.string.Binding_address));
+                                }
                             } catch (JSONException e) {
 
                             }
@@ -248,12 +260,13 @@ public class HopePropertyActivityActivity extends BaseActivity {
 
                             currencyaddresses = testMapVoid(stringObjectMap, ass);
 
-                        }
-                        if (currencyaddresses.size() != 0) {
+
                             lv.setAdapter(new CurrencyaddressAdapter(context, currencyaddresses, null));
-                        } else {
+
                             publicOther.setText(getString(R.string.Binding_address));
+
                         }
+
 
                     }
 
@@ -280,7 +293,7 @@ public class HopePropertyActivityActivity extends BaseActivity {
 
 
         for (int i = 0; i < listKey.size(); i++) {
-            if (listValue.get(i) != null&&!listValue.get(i).toString().equals("null")) {
+            if (listValue.get(i) != null && !listValue.get(i).toString().equals("null")) {
                 currencyaddresses.add(new Currencyaddress(listValue.get(i).toString(), ass.getName(), ass.getId()));
             }
 

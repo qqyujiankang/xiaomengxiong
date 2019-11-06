@@ -68,13 +68,13 @@ public class AssAdaper extends ManagerAdapter {
             if (ass.getId() == 8) {
                 RLHope.setVisibility(View.GONE);
                 tvName.setText(ass.getName());
-                tvNumber.setText(StringUtils.calculateProfit(Double.valueOf(ass.getNumber())));
+                tvNumber.setText(StringUtils.calculateProfit(Double.valueOf(ass.getNumber()),5));
             } else if (ass.getId() == 7) {
                 tvNameHOPE.setText(ass.getName());
                 RLUsdt.setVisibility(View.GONE);
-                tvBalance.setText(StringUtils.calculateProfit(Double.valueOf(ass.getNumber())));
-                tvMake.setText(StringUtils.calculateProfit(Double.valueOf(ass.getNewnumber())));
-                tvConvertInit.setText(StringUtils.calculateProfit(Double.valueOf(ass.getCny())));
+                tvBalance.setText(StringUtils.calculateProfit(Double.valueOf(ass.getNumber()),5));
+                tvMake.setText(StringUtils.calculateProfit(Double.valueOf(ass.getNewnumber()),5));
+                tvConvertInit.setText(StringUtils.calculateProfit(Double.valueOf(ass.getCny()),5));
 
             }
         }

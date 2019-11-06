@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.example.et.Constant;
 import com.example.et.R;
+import com.example.et.Ustlis.ActivityUtils;
 import com.example.et.Ustlis.ToastUtils;
 import com.example.et.util.CacheUtils;
 import com.example.et.util.LogUtils;
@@ -140,10 +141,13 @@ public class LogiPasswordActivity extends BaseActivity {
                 public void onSuccess(String success) {
 
 
-
                     Map<String, Object> stringMap = ParseUtils.analysisListTypeDatasAndCount((Activity) context, success, null, false).getStringMap();
                     if (stringMap.get(KeyValueConstants.CODE).equals("200")) {
                         finish();
+                        CacheUtils.getInstance().put(CacheConstants.TOKEN, "");
+                        ActivityUtils.finishActivity(context);
+                        ActivityUtils.startActivity(LoginActivity.class);
+
                     }
                     ToastUtils.showShort(stringMap.get(KeyValueConstants.MSG).toString());
 

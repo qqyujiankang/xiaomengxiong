@@ -16,7 +16,6 @@ import com.example.et.Ustlis.ToastUtils;
 import com.example.et.View.PayDialog;
 import com.example.et.util.CacheUtils;
 import com.example.et.util.LogUtils;
-import com.example.et.util.StringUtils;
 import com.example.et.util.TaskPresenterUntils;
 import com.example.et.util.constant.CacheConstants;
 import com.example.et.util.constant.KeyValueConstants;
@@ -49,13 +48,15 @@ public class MentionmoneyActivity extends BaseActivity {
     @BindView(R.id.rl_bacground)
     RelativeLayout rlBacground;
     @BindView(R.id.et_password)
-    EditText etPassword;
+    TextView etPassword;
     @BindView(R.id.et_code)
     EditText etCode;
     @BindView(R.id.tv_get_cot)
     TextView tvGetCot;
     @BindView(R.id.public_button)
     Button publicButton;
+    @BindView(R.id.tv_Withdrawal_amount)
+    TextView tvWithdrawalAmount;
     private String name, Number, stringname, pay_pass;
 
     private int id;
@@ -89,6 +90,7 @@ public class MentionmoneyActivity extends BaseActivity {
         publicButton.setText(getString(R.string.Mention_money));
         etPassword.setText(name);
         etCode.setHint(getString(R.string.The_balance_can_be_transferred_out) + Number + stringname);
+        tvWithdrawalAmount.setText(getString(R.string.Withdrawal_amount)+stringname);
     }
 
     @OnClick({R.id.public_back, R.id.tv_get_cot, R.id.public_button})
@@ -101,7 +103,8 @@ public class MentionmoneyActivity extends BaseActivity {
                 etCode.setText(Number);
                 break;
             case R.id.public_button:
-                if (!StringUtils.isEmpty(etCode.getText().toString().trim())) {
+
+                if (Integer.parseInt(etCode.getText().toString()) >= 100) {
 
                     PayDialog payDialog = new PayDialog(context) {
                         @Override
@@ -120,7 +123,7 @@ public class MentionmoneyActivity extends BaseActivity {
                     payDialog.show();
 
                 } else {
-                    ToastUtils.showShort(R.string.Please_enter_amount);
+                    ToastUtils.showShort(getString(R.string.tets1));
                 }
                 break;
             default:
@@ -128,6 +131,10 @@ public class MentionmoneyActivity extends BaseActivity {
 
 
     }
+
+    private String add;
+    private String munn;
+
 
     @Override
     public void requestDatas() {
