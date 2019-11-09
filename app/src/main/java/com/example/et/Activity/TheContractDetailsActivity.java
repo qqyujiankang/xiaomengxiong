@@ -170,6 +170,7 @@ public class TheContractDetailsActivity extends BaseActivity {
                             tv2.setText(R.string.To_perform_currency);
                             tvCurrency.setText(objectPagebean.get("sup_cur").toString());
                             tv3.setText(R.string.Days_of_actual_earnings);
+                            tvQuantity.setText(objectPagebean.get("sjsy_day").toString());
                             tv4.setText(R.string.Appointment_success_time);
                             tvTime.setText(objectPagebean.get("pre_cur_time").toString());
                             tv5.setText(R.string.Matching_success_time);

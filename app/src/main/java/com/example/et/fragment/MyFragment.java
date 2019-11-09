@@ -25,6 +25,7 @@ import com.example.et.R;
 import com.example.et.Ustlis.ActivityUtils;
 import com.example.et.Ustlis.ImageLoaderUtil;
 import com.example.et.Ustlis.StatusBarUtils;
+import com.example.et.util.AppUtils;
 import com.example.et.util.CacheUtils;
 import com.example.et.util.LogUtils;
 import com.example.et.util.constant.CacheConstants;
@@ -90,6 +91,12 @@ public class MyFragment extends BaseFragment {
     TextView tvLanguage;
     @BindView(R.id.ll_language)
     LinearLayout llLanguage;
+    @BindView(R.id.tvtv_version_information)
+    TextView tvtvVersionInformation;
+    @BindView(R.id.iv_bank_01)
+    ImageView ivBank01;
+    @BindView(R.id.iv_jiedian)
+    ImageView ivJiedian;
     private Context context;
     Unbinder unbinder;
 
@@ -131,6 +138,15 @@ public class MyFragment extends BaseFragment {
                 + CacheUtils.getInstance().getString(CacheConstants.photo), ivHolder);
         tvName.setText(CacheUtils.getInstance().getString(CacheConstants.name));
         tvPhone.setText(CacheUtils.getInstance().getString(CacheConstants.PHONE));
+        tvtvVersionInformation.setText(AppUtils.getAppVersionName());
+        if (CacheUtils.getInstance().getString(CacheConstants.jiedian).equals("1")) {
+            ivJiedian.setVisibility(View.GONE);
+            llReturns.setVisibility(View.GONE);
+        } else if (CacheUtils.getInstance().getString(CacheConstants.jiedian).equals("2")) {
+            ivJiedian.setImageDrawable(getResources().getDrawable(R.mipmap.node));
+        } else if (CacheUtils.getInstance().getString(CacheConstants.jiedian).equals("3")) {
+            ivJiedian.setImageDrawable(getResources().getDrawable(R.mipmap.chaojijiedian));
+        }
 
     }
 

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/ll"
     style="@style/MatchMatch.Vertical"
-    android:background="@color/black_01"
+    android:background="@color/black"
     tools:context=".Activity.AppointmentcontractActivity">
 
     <include layout="@layout/public_title" />
@@ -13,7 +13,7 @@
         android:id="@+id/ll_contract_amount"
         style="@style/MatchWrap.Vertical"
         android:layout_marginTop="@dimen/start_or_end_10"
-        android:background="@color/black_p"
+        android:background="@color/black_b"
         android:paddingTop="@dimen/start_or_end_10"
         android:paddingBottom="@dimen/start_or_end_10">
 

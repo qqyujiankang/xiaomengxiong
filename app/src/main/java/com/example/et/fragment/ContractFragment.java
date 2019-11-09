@@ -22,6 +22,7 @@ import com.example.et.util.CacheUtils;
 import com.example.et.util.CountDown;
 import com.example.et.util.LogUtils;
 import com.example.et.util.PublicSwipeRefreshLayout.SwipeRefreshLayout;
+import com.example.et.util.StringUtils;
 import com.example.et.util.TaskPresenterUntils;
 import com.example.et.util.TimeUtils;
 import com.example.et.util.constant.CacheConstants;
@@ -111,6 +112,12 @@ public class ContractFragment extends BaseFragment {
     TextView tvO;
     @BindView(R.id.swipeRefreshLayout)
     SwipeRefreshLayout swipeRefreshLayout;
+    @BindView(R.id.tvy)
+    TextView tvy;
+    @BindView(R.id.ll_a)
+    LinearLayout llA;
+    @BindView(R.id.ll_public_line_01)
+    LinearLayout llPublicLine01;
     private Context context;
     Unbinder unbinder;
 
@@ -121,9 +128,7 @@ public class ContractFragment extends BaseFragment {
     protected void lazyLoad() {
         LogUtils.i("==============合约===");
         requestDatas();
-           StatusBarUtils.with(getActivity())
-                .setColor(getResources().getColor(R.color.orange))
-                .init();
+
 
     }
 
@@ -153,55 +158,76 @@ public class ContractFragment extends BaseFragment {
                         Rl.setVisibility(View.GONE);
                         RlNo.setVisibility(View.VISIBLE);
                         LogUtils.i("======newcontract======" + objectPagebean.get("state").toString());
+                        if (objectPagebean.get("state").toString().equals("0") || objectPagebean.get("state").toString().equals("1") || objectPagebean.get("state").toString().equals("2")) {
+                            StatusBarUtils.with(getActivity())
+                                    .setColor(getResources().getColor(R.color.orange))
+                                    .init();
+
+                        }
                         if (objectPagebean.get("state").toString().equals("0")) {//预约中
+                            llPublicLine01.setVisibility(View.GONE);
                             oid = objectPagebean.get("id").toString();
                             tvState.setText(getString(R.string.To_make_an_appointment_in));
                             long p = Long.parseLong(objectPagebean.get("yytime_daojishi").toString()) * 1000;
-                            CountDown countDown = new CountDown(tvYyTime, p - TimeUtils.getNowMills());
+                            CountDown countDown = new CountDown(tvYyTime, p - TimeUtils.getNowMills(),0);
                             countDown.timerStart();
-                            tvPrice.setText(objectPagebean.get("pre_cur_money").toString());
+
+                            tvPrice.setText(StringUtils.calculateProfit(Double.parseDouble(objectPagebean.get("pre_cur_money").toString()), 5));
                             tvCurrency.setText(objectPagebean.get("pre_cur").toString());
-                            tvQuantity.setText(objectPagebean.get("pre_cur_number").toString());
+
+                            tvQuantity.setText(StringUtils.calculateProfit(Double.parseDouble(objectPagebean.get("pre_cur_number").toString()), 5));
                             tvTime.setText(objectPagebean.get("yytime").toString());
                         } else if (objectPagebean.get("state").toString().equals("1")) {
+                            llPublicLine01.setVisibility(View.VISIBLE);
                             RlPublicButton1.setVisibility(View.GONE);
                             tvState.setText(getString(R.string.To_make_an_appointment_in_1));
                             llProspective.setVisibility(View.VISIBLE);
-                            tvProspective.setText(objectPagebean.get("static").toString());
+                            tvProspective.setText(objectPagebean.get("sjsy_day").toString());
                             tv1.setText(R.string.Open_contract_currency);
                             tvPrice.setText(objectPagebean.get("pre_cur").toString());
                             tv2.setText(R.string.maximum_execution_time);
                             tvCurrency.setText("10天");
                             tv3.setText(R.string.daily_return_rate);
-                            tvQuantity.setText(objectPagebean.get("day_shouyilv").toString()+getString(R.string.ts1));
+                            tvQuantity.setText(objectPagebean.get("day_shouyilv").toString() + getString(R.string.ts1));
                             tv4.setText(R.string.The_reservation_deposit);
-                            tvTime.setText(objectPagebean.get("dingjin").toString());
+                            tvTime.setText(objectPagebean.get("dingjin").toString() + getString(R.string.USDT));
                             Rl1.setVisibility(View.VISIBLE);
                             tv5.setText(R.string.payment);
-                            tvPayment.setText(objectPagebean.get("weikuan").toString());
+                            tvPayment.setText(objectPagebean.get("weikuan").toString() + getString(R.string.USDT));
                             Rl2.setVisibility(View.VISIBLE);
                             tv6.setText(R.string.Appointment_success_time);
                             tvTime0.setText(objectPagebean.get("pre_cur_time").toString());
                             tvDay.setText(R.string.Successful_reservation_days);
                             tvYyTime.setText(objectPagebean.get("okdays").toString() + "天");
                         } else if (objectPagebean.get("state").toString().equals("2")) {
+                            llPublicLine01.setVisibility(View.VISIBLE);
+                               RlPublicButton1.setVisibility(View.VISIBLE);
                             //  oid = objectPagebean.get("id").toString();
                             tvState.setText(R.string.The_match_is_successful);
                             tvDay.setText(R.string.Countdown_to_execution);
-                            tvYyTime.setText(objectPagebean.get("okdays").toString());
+                            long p1 = Long.parseLong(objectPagebean.get("hour24").toString()) * 1000;
+                            CountDown countDown = new CountDown(tvYyTime, p1-TimeUtils.getNowMills(),1 );
+                            countDown.timerStart();
+                          //  tvYyTime.setText(objectPagebean.get("okdays").toString());
                             llProspective.setVisibility(View.VISIBLE);
                             tvProspective.setText(objectPagebean.get("static").toString());
                             tv1.setText(R.string.Execute_the_contract_currency);
-                            tvPrice.setText(objectPagebean.get("sup_cur_money").toString());
+                            tvPrice.setText(objectPagebean.get("zx_gold_type").toString());
                             tv2.setText(R.string.Days_of_actual_earnings);
                             tvCurrency.setText(objectPagebean.get("sjsy_day").toString());
                             tv3.setText(R.string.Strike_price);
-                            tvQuantity.setText(objectPagebean.get("sup_cur_money").toString());
+                            tvQuantity.setText(objectPagebean.get("zx_usdt").toString());
                             tv4.setText(R.string.Execute_contract_price_countdown);
+                            LogUtils.i("==========="+TimeUtils.millis2String(Long.parseLong(objectPagebean.get("hour24").toString())));
+                             long p = Long.parseLong(objectPagebean.get("zx_gold_time").toString()) * 1000;
+                             LogUtils.i("============="+p);
+                            CountDown countDown1 = new CountDown(tvTime, p-TimeUtils.getNowMills() ,0);
+                            countDown1.timerStart();
                             tvTime.setText(objectPagebean.get("yhzx_cur_time").toString());
                             Rl1.setVisibility(View.VISIBLE);
                             tv5.setText(R.string.Quantity_of_executed_contract_currency);
-                            tvPayment.setText(objectPagebean.get("sup_cur_number").toString());
+
+                            tvPayment.setText( StringUtils.calculateProfit(Double.parseDouble(objectPagebean.get("zx_gold_miney").toString()), 3));
                             Rl2.setVisibility(View.VISIBLE);
                             tv6.setText(R.string.Appointment_success_time);
                             tvTime0.setText(objectPagebean.get("pre_cur_time").toString());
@@ -272,8 +298,12 @@ public class ContractFragment extends BaseFragment {
                     @Override
                     public void clickCallBack(String str) {
                         pay_pass = str;
+                        if (!StringUtils.isEmpty(pay_pass)){
+                             requestDatas2();
+                        }else {
+                            ToastUtils.showShort(R.string.phoenumber_payment_code_ok);
+                        }
 
-                        requestDatas2();
                     }
 
                     @Override
@@ -317,7 +347,7 @@ public class ContractFragment extends BaseFragment {
                     Map<String, Object> objectPagebean = ParseUtils.analysisListTypeDatasAndCount(getActivity(), success, null, false).getStringMap();
                     LogUtils.i("======newcontract======" + objectPagebean.get(KeyValueConstants.MSG));
                     if (objectPagebean.get(KeyValueConstants.CODE).equals("200")) {
-                        requestDatas();
+                        lazyLoad();
                     }
                     ToastUtils.showShort(objectPagebean.get(KeyValueConstants.MSG).toString());
 

@@ -133,6 +133,8 @@ public class NoticedetailsActivity extends BaseActivity {
         } else {
             settings.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.NORMAL);
         }
+        webView.setBackgroundColor(0); // 设置背景色
+        webView.getBackground().setAlpha(0); // 设置填充透明度 范围：0-255
 
 
     }

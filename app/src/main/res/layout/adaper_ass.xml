@@ -12,7 +12,9 @@
 
         <RelativeLayout
             android:id="@+id/RL_Usdt"
-            style="@style/MatchWrap">
+            style="@style/MatchWrap"
+            android:paddingTop="@dimen/start_or_end_10"
+            android:paddingBottom="@dimen/start_or_end_10">
 
 
             <TextView
@@ -39,11 +41,11 @@
 
 
             <TextView
-                android:layout_centerVertical="true"
-                android:layout_centerHorizontal="true"
                 android:id="@+id/textView3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
                 android:text="@string/balance"
                 android:textColor="@color/white" />
 
@@ -84,20 +86,24 @@
                 <TextView
                     style="@style/WrapWrap"
                     android:text="@string/balance"
-                    android:textColor="@color/p_white_test" />
+                    android:textColor="@color/p_white_test"
+                    android:textSize="@dimen/text_size_12" />
 
                 <TextView
                     style="@style/WrapWrap"
                     android:layout_centerHorizontal="true"
                     android:text="@string/make"
-                    android:textColor="@color/p_white_test" />
+                    android:textColor="@color/p_white_test"
+                    android:textSize="@dimen/text_size_12" />
 
                 <TextView
+                    android:gravity="right"
                     style="@style/WrapWrap"
                     android:layout_alignParentRight="true"
-                    android:layout_marginRight="@dimen/icon_width_height_20"
+                    android:layout_marginRight="@dimen/start_or_end_10"
                     android:text="@string/convert_init"
-                    android:textColor="@color/p_white_test" />
+                    android:textColor="@color/p_white_test"
+                    android:textSize="@dimen/text_size_12" />
             </RelativeLayout>
 
             <RelativeLayout

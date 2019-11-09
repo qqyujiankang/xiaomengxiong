@@ -9,8 +9,10 @@
     <include layout="@layout/public_title" />
 
     <ListView
+        android:dividerHeight="0.5dp"
+        android:divider="#FF192754"
         android:id="@+id/lv_contern"
-        android:background="@color/black_01"
+        android:background="#FF121E2E"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/icon_width_height_10" />

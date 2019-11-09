@@ -41,9 +41,9 @@ public class ContractAdapter extends ManagerAdapter {
         public void setViewData(int position, List list) {
             if (context instanceof AppointmentcontractActivity) {
                 Contract contract = (Contract) list.get(position);
-                tvName.setText(contract.getNumber() + "USTD");
-            }else if (context instanceof HopePropertyActivityActivity){
-                Currencyaddress currencyaddress= (Currencyaddress) list.get(position);
+                tvName.setText(contract.getNumber() + "USDT");
+            } else if (context instanceof HopePropertyActivityActivity) {
+                Currencyaddress currencyaddress = (Currencyaddress) list.get(position);
                 tvName.setText(currencyaddress.getString());
             }
         }

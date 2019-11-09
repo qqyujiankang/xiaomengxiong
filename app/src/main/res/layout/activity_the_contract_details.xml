@@ -62,10 +62,10 @@
                 android:id="@+id/ll_prospective"
                 style="@style/WrapWrap.Vertical"
                 android:layout_below="@+id/Rl_state"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+
                 android:layout_marginStart="@dimen/icon_width_height_20"
-                android:layout_marginLeft="@dimen/icon_width_height_20"
+                android:layout_marginEnd="@dimen/icon_width_height_150"
                 android:layout_marginTop="@dimen/text_size_40">
 
                 <TextView
@@ -171,9 +171,7 @@
 
             <include layout="@layout/public_line_01" />
 
-            <RelativeLayout
-                style="@style/MatchWrap"
-             >
+            <RelativeLayout style="@style/MatchWrap">
 
                 <TextView
                     android:id="@+id/tv_4"

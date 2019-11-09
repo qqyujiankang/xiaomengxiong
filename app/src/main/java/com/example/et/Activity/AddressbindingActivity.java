@@ -69,7 +69,7 @@ public class AddressbindingActivity extends BaseActivity {
     private Context context;
     private Lifeful lifeful;
     private int id;
-    private String addressbinding, tepy = "";
+    private String addressbinding, tepy = "", stringname, xiugan;
 
 
     @Override
@@ -93,12 +93,19 @@ public class AddressbindingActivity extends BaseActivity {
         id = getIntent().getIntExtra("id", 0);
         addressbinding = getIntent().getStringExtra("name");
         tepy = getIntent().getStringExtra("tepy");
+        stringname = getIntent().getStringExtra("stringname");
+        xiugan = getIntent().getStringExtra("xiugan");
     }
 
     @Override
     public void initView() {
         super.initView();
-        publicTitleTv.setText(getString(R.string.USDT_address_binding));
+        if (xiugan != null) {
+            publicTitleTv.setText(stringname + getString(R.string.revision_Binding_address));
+            tv.setText(stringname + getString(R.string.site));
+        } else {
+            publicTitleTv.setText(getString(R.string.USDT_address_binding));
+        }
         publicButton.setText(getString(R.string.confirm));
         if (!CacheUtils.getInstance().getString(CacheConstants.usdtaddress).equals("null")) {
             if (id == 0) {
@@ -152,6 +159,8 @@ public class AddressbindingActivity extends BaseActivity {
         }
     }
 
+    String url;
+
     private void datat() {
         try {
             JSONObject jsonObject = new JSONObject();
@@ -162,16 +171,23 @@ public class AddressbindingActivity extends BaseActivity {
             } else {
                 jsonObject.put("type", id);
             }
-
+            if (xiugan != null) {
+                jsonObject.put("yaddress", addressbinding);
+                url = Constant.upgoldaddress1;
+            } else {
+                url = Constant.upgoldaddress;
+            }
             jsonObject.put("address", etPassword.getText().toString().trim());
             jsonObject.put("code", etCode.getText().toString());
 
-            TaskPresenterUntils.lifeful(Constant.upgoldaddress, jsonObject, new OnLoadLifefulListener<String>(null, new OnLoadListener<String>() {
+
+            TaskPresenterUntils.lifeful(url, jsonObject, new OnLoadLifefulListener<String>(null, new OnLoadListener<String>() {
                 @Override
                 public void onSuccess(String success) {
                     Map<String, Object> resultMap = ParseUtils.analysisListTypeDatasAndCount((Activity) context, success, null, true).getStringMap();
                     if (resultMap.get(KeyValueConstants.CODE).equals("200")) {
                         CacheUtils.getInstance().put(CacheConstants.usdtaddress, etPassword.getText().toString().trim());
+                        HopePropertyActivityActivity.aBoolean=true;
                         finish();
                     }
                     ToastUtils.showShort(resultMap.get(KeyValueConstants.MSG).toString());

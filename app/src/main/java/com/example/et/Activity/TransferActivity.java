@@ -100,7 +100,11 @@ public class TransferActivity extends BaseActivity {
                         public void clickCallBack(String str) {
                             pay_pass = str;
 
-                            requestDatas();
+                            if (!StringUtils.isEmpty(pay_pass)) {
+                                requestDatas();
+                            } else {
+                                ToastUtils.showShort(R.string.phoenumber_payment_code_ok);
+                            }
                         }
 
                         @Override
@@ -142,7 +146,7 @@ public class TransferActivity extends BaseActivity {
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("phone", CacheUtils.getInstance().getString(CacheConstants.PHONE));
             jsonObject.put("glodtype", id);
-            jsonObject.put("money", "50");
+            jsonObject.put("money", TransferAmount);
             jsonObject.put("pay_pass", pay_pass);
             jsonObject.put("touser", AccountNumber);
 

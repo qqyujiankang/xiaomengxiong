@@ -3,12 +3,22 @@ package com.example.et.Activity;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.PopupWindow;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.et.Constant;
 import com.example.et.R;
@@ -31,6 +41,8 @@ import com.example.et.util.realize.ParseUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import butterknife.BindView;
@@ -62,8 +74,20 @@ public class LoginActivity extends BaseActivity {
     LinearLayout llVerificationCode;
     @BindView(R.id.tv_language)
     TextView tvLanguage;
+    @BindView(R.id.tva)
+    TextView tva;
+    @BindView(R.id.Rl)
+    RelativeLayout Rl;
+    @BindView(R.id.remember)
+    CheckBox remember;
     private Context context;
     private Lifeful lifeful;
+    private SharedPreferences sPreferences;
+    private Map<String, String> map;
+    private ListView listView;
+    private PopupWindow pw;
+    private int width, i;
+    private LinearLayout  option;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,6 +105,65 @@ public class LoginActivity extends BaseActivity {
     public void initView() {
         super.initView();
         publicButton.setText(getString(R.string.login));
+
+
+        //读取已经记住的用户名与密码
+        sPreferences = getSharedPreferences("session", MODE_PRIVATE);
+        map = (Map<String, String>) sPreferences.getAll();
+        List<String> list = new ArrayList<String>();
+
+        for (int i = 0; i < (map.size() / 2); i++) {
+            String name = sPreferences.getString("name" + i, "");
+            list.add(name);
+        }
+
+
+        // 用4个参数的指定，哪个listview中的textview
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                R.layout.items, R.id.item, list);
+        option = (LinearLayout) getLayoutInflater().inflate(R.layout.simple_item,
+                null);
+        // 要在这个linearLayout里面找listView......
+        listView = (ListView) option.findViewById(R.id.lv);
+        listView.setAdapter(adapter);
+
+
+        //获取屏幕的宽度并设置popupwindow的宽度为width,我这里是根据布局控件所占的权重
+        WindowManager wManager = (WindowManager) getSystemService(this.WINDOW_SERVICE);
+        width = wManager.getDefaultDisplay().getWidth() * 4 / 5;
+
+
+        //实例化一个popupwindow对象
+        pw = new PopupWindow(option, width, WindowManager.LayoutParams.WRAP_CONTENT, true);
+        ColorDrawable dw = new ColorDrawable(00000);
+        pw.setBackgroundDrawable(dw);
+        pw.setOutsideTouchable(true);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view,
+                                    int position, long id) {
+
+                // 获取选中项内容及从sharePreferences中获取对应的密码
+                String username = adapterView.getItemAtPosition(position)
+                        .toString();
+                String pwd = sPreferences.getString("pwd" + position, "");
+
+                etPhone.setText(username);
+                etPassword.setText(pwd);
+
+                // 选择后，popupwindow自动消失
+                pw.dismiss();
+            }
+
+        });
+        tva.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                pw.showAsDropDown(Rl, 15, -4);
+            }
+        });
     }
 
     /**
@@ -115,7 +198,7 @@ public class LoginActivity extends BaseActivity {
                 break;
             case R.id.tv_register:
                 intent.setClass(LoginActivity.this, RegisterActivity.class);
-                intent.putExtra("id",1);
+                intent.putExtra("id", 1);
                 ActivityUtils.startActivity(intent);
                 break;
 
@@ -146,6 +229,7 @@ public class LoginActivity extends BaseActivity {
                     if (resultMap.get(KeyValueConstants.CODE).equals("200")) {
                         CacheUtils.getInstance().put(CacheConstants.TOKEN, (CacheUtils.getInstance().getString("token")));
                         CacheUtils.getInstance().put(CacheConstants.PHONE, phone);
+                        login();
                         ActivityUtils.startActivity(MainActivity.class);
                         finish();
                     } else if (resultMap.get(KeyValueConstants.CODE).equals("402")) {
@@ -164,6 +248,29 @@ public class LoginActivity extends BaseActivity {
 
     }
 
+    private void login() {
+
+        // 若是第二次打开软件时，将map在size赋给i,若是不是,则i只要实现i++
+        if (i == 0) {
+            i = map.size()/2;
+        }
+
+        // 若有勾选记住，则保存
+        if (remember.isChecked()) {
+            String name = etPhone.getText().toString().trim();
+            String pwd = etPassword.getText().toString().trim();
+            if (!"".equals(name) && !"".equals(pwd)) {
+
+                sPreferences.edit().putString("name" + i, name)
+                        .putString("pwd" + i, pwd).commit();
+                i++;
+
+
+
+            }
+        }
+
+    }
     /**
      * 检查信息
      */

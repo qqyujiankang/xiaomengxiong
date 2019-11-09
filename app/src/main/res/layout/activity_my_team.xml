@@ -17,15 +17,15 @@
             <include layout="@layout/public_title" />
 
             <LinearLayout
-                android:descendantFocusability="blocksDescendants"
-                style="@style/MatchMatch.Vertical">
+                style="@style/MatchMatch.Vertical"
+                android:descendantFocusability="blocksDescendants">
 
 
                 <LinearLayout
 
                     style="@style/MatchWrap.Vertical"
                     android:layout_height="100dp"
-                    android:background="@color/orange">
+                    android:background="#FFE4B859">
 
 
                 </LinearLayout>
@@ -57,18 +57,22 @@
                             android:layout_marginLeft="@dimen/icon_width_height_10">
 
                             <TextView
+
                                 android:id="@+id/tv_name"
                                 style="@style/WrapWrap"
-                                android:layout_centerVertical="true"
+                                android:text="454545"
                                 android:textColor="@color/white" />
 
                             <TextView
                                 android:id="@+id/tv_phone"
                                 style="@style/WrapWrap"
                                 android:layout_below="@+id/tv_name"
+                                android:layout_marginTop="@dimen/start_or_end_10"
+                                android:text="454454545454545@@"
                                 android:textColor="@color/white" />
 
                             <ImageView
+                                android:id="@+id/tv_jieidian"
                                 style="@style/WrapWrap.ImageView_bank"
                                 android:src="@mipmap/node" />
                         </RelativeLayout>
@@ -76,9 +80,8 @@
                     </LinearLayout>
 
                     <LinearLayout
-
                         style="@style/MatchWrap.Horizontal"
-                        android:layout_marginTop="@dimen/icon_width_height_10">
+                        android:layout_marginTop="@dimen/icon_width_height_20">
 
                         <TextView
                             style="@style/AutoWrap"

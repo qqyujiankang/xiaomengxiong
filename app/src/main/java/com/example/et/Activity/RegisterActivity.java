@@ -10,13 +10,13 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.HeaderViewListAdapter;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.et.Adapter.ManagerAdapter;
 import com.example.et.Constant;
 import com.example.et.R;
 import com.example.et.Ustlis.ActivityUtils;
-import com.example.et.Ustlis.CountDownTimerUtils;
 import com.example.et.Ustlis.StringUtils;
 import com.example.et.Ustlis.ToastUtils;
 import com.example.et.Verification;
@@ -77,6 +77,8 @@ public class RegisterActivity extends BaseActivity {
     TextView tvPhone;
     @BindView(R.id.spinner1)
     TextView spinner1;
+    @BindView(R.id.tv_t)
+    TextView tvT;
 
     private Context context;
     private Lifeful lifeful;
@@ -130,16 +132,20 @@ public class RegisterActivity extends BaseActivity {
         requestDatas(0);
     }
 
-    @OnClick({R.id.tv_get_cot, R.id.public_button, R.id.cb_phone, R.id.cb_check, R.id.spinner})
+    @OnClick({R.id.tv_get_cot, R.id.public_button, R.id.cb_phone, R.id.cb_check, R.id.spinner, R.id.tv_t})
     public void onViewClicked(View view) {
         Intent intent = new Intent();
         intent.setClass(context, RegisterActivity.class);
         switch (view.getId()) {
+            case R.id.tv_t:
+                finish();
+                break;
 
             case R.id.spinner:
                 areacodes = ((ArrayList<Areacode>) (ArrayList) objectPagebean.getList());
                 areaDiog = new AreaDiog(context, onItemClickListener, areacodes);
                 areaDiog.show();
+                areaDiog.getWindow().setLayout(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
                 break;
             case R.id.tv_get_cot:
                 if (CheckTheValidation(1)) {
@@ -170,7 +176,7 @@ public class RegisterActivity extends BaseActivity {
     }
 
     private List<Areacode> areacodes;
-    private String quhao = "86";
+    public static String quhao = "86";
     AreaDiog areaDiog;
 
     private void requestDatas(int i) {

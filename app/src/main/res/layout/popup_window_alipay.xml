@@ -16,7 +16,7 @@
             android:background="@color/black_01"
             android:gravity="center"
             android:padding="10dp"
-            android:textColor="@color/white"
+            android:textColor="@color/p_white_test1"
             android:textSize="16dp" />
 
         <TextView

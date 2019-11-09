@@ -5,19 +5,20 @@ import android.os.Parcelable;
 
 public class Ass implements Parcelable {
 
+
     /**
      * newnumber : 0
      * id : 8
-     * number : 0.0000000000
+     * number : 993890.0000000000
      * name : USDT
-     * cny : 0
+     * cny : 993890
      */
 
     private int newnumber;
     private int id;
     private String number;
     private String name;
-    private int cny;
+    private double cny;
 
     public int getNewnumber() {
         return newnumber;
@@ -51,11 +52,11 @@ public class Ass implements Parcelable {
         this.name = name;
     }
 
-    public int getCny() {
+    public double getCny() {
         return cny;
     }
 
-    public void setCny(int cny) {
+    public void setCny(double cny) {
         this.cny = cny;
     }
 
@@ -70,7 +71,7 @@ public class Ass implements Parcelable {
         dest.writeInt(this.id);
         dest.writeString(this.number);
         dest.writeString(this.name);
-        dest.writeInt(this.cny);
+        dest.writeDouble(this.cny);
     }
 
     public Ass() {
@@ -81,7 +82,7 @@ public class Ass implements Parcelable {
         this.id = in.readInt();
         this.number = in.readString();
         this.name = in.readString();
-        this.cny = in.readInt();
+        this.cny = in.readDouble();
     }
 
     public static final Parcelable.Creator<Ass> CREATOR = new Parcelable.Creator<Ass>() {

@@ -7,9 +7,9 @@
     tools:context=".Activity.RegisterActivity">
 
     <ScrollView
-        android:layout_marginBottom="@dimen/icon_width_height_30"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/icon_width_height_30">
 
         <LinearLayout style="@style/MatchWrap.Vertical">
 
@@ -241,7 +241,8 @@
                 <EditText
                     android:id="@+id/et_payment_code"
                     style="@style/MatchWrap.et_1.inputType"
-                    android:hint="@string/phoenumber_payment_code_ok" />
+                    android:hint="@string/phoenumber_payment_code_ok"
+                    android:maxLength="6" />
 
                 <LinearLayout
                     style="@style/MatchWrap"
@@ -267,7 +268,8 @@
                 <EditText
                     android:id="@+id/et_payment_code_ok"
                     style="@style/MatchWrap.et_1.inputType"
-                    android:hint="@string/phoenumber_payment_code_ok_0" />
+                    android:hint="@string/phoenumber_payment_code_ok_0"
+                    android:maxLength="6" />
 
                 <LinearLayout
                     style="@style/MatchWrap"
@@ -317,10 +319,11 @@
             </LinearLayout>
 
             <TextView
-                android:layout_marginTop="@dimen/start_or_end_10"
-                android:text="已有账号，立即登录"
-                android:gravity="center"
+                android:id="@+id/tv_t"
                 style="@style/MatchWrap"
+                android:layout_marginTop="@dimen/start_or_end_10"
+                android:gravity="center"
+                android:text="已有账号，立即登录"
                 android:textColor="@color/orange" />
         </LinearLayout>
     </ScrollView>

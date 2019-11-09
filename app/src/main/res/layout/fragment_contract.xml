@@ -3,49 +3,48 @@
     style="@style/MatchMatch.Vertical"
     android:background="@color/black">
 
-    <RelativeLayout
-        android:id="@+id/Rl_"
-        style="@style/MatchMatch"
-        android:visibility="gone">
 
-        <ImageView
-            style="@style/WrapWrap"
-            android:layout_above="@+id/tv_not_available"
-            android:layout_centerHorizontal="true"
-            android:src="@mipmap/not_available" />
+        <RelativeLayout
+            android:id="@+id/Rl_"
+            style="@style/MatchMatch"
+            android:visibility="gone">
 
-        <TextView
-            android:id="@+id/tv_not_available"
-            style="@style/WrapWrap"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:text="@string/an_appointment"
-            android:textColor="@color/white" />
+            <ImageView
+                style="@style/WrapWrap"
+                android:layout_above="@+id/tv_not_available"
+                android:layout_centerHorizontal="true"
+                android:src="@mipmap/not_available" />
 
-        <LinearLayout
-            style="@style/MatchWrap"
-            android:layout_below="@+id/tv_not_available"
-            android:layout_marginTop="60dp">
+            <TextView
+                android:id="@+id/tv_not_available"
+                style="@style/WrapWrap"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:text="@string/an_appointment"
+                android:textColor="@color/white" />
 
-            <Button xmlns:android="http://schemas.android.com/apk/res/android"
-                android:id="@+id/public_button1"
+            <LinearLayout
                 style="@style/MatchWrap"
-                android:layout_marginStart="30dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginEnd="30dp"
-                android:background="@drawable/bg_radius5_blue"
-                android:text="@string/Appointment_contract"
-                android:textColor="@color/white"
-                android:textSize="@dimen/text_size_16" />
+                android:layout_below="@+id/tv_not_available"
+                android:layout_marginTop="60dp">
 
-        </LinearLayout>
-    </RelativeLayout>
+                <Button xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:id="@+id/public_button1"
+                    style="@style/MatchWrap"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginEnd="30dp"
+                    android:background="@drawable/bg_radius5_blue"
+                    android:text="@string/Appointment_contract"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size_16" />
 
-    <com.example.et.util.PublicSwipeRefreshLayout.SwipeRefreshLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
+            </LinearLayout>
+        </RelativeLayout>
+    <com.example.et.util.PublicSwipeRefreshLayout.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/swipeRefreshLayout"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
 
@@ -66,19 +65,21 @@
                     android:layout_width="match_parent"
                     android:layout_height="230dp"
                     android:background="@mipmap/contract">
+
                     <TextView
                         android:id="@+id/tvy"
-                        android:paddingTop="@dimen/start_or_end_10"
-                        android:textSize="@dimen/text_size_18"
-                        android:gravity="center"
-                        android:textColor="@color/white"
-                        android:text="@string/menu_find"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:paddingTop="@dimen/start_or_end_10"
+                        android:text="@string/menu_find"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_size_18" />
+
                     <RelativeLayout
-                        android:layout_below="@+id/tvy"
                         android:id="@+id/Rl_state"
                         style="@style/MatchWrap"
+                        android:layout_below="@+id/tvy"
                         android:layout_marginStart="@dimen/icon_width_height_20"
                         android:layout_marginLeft="@dimen/icon_width_height_20"
                         android:layout_marginTop="@dimen/icon_width_height_20"
@@ -93,6 +94,7 @@
                             android:textSize="@dimen/text_size_16" />
 
                         <LinearLayout
+                            android:id="@+id/ll_a"
                             style="@style/WrapWrap.Vertical"
                             android:layout_alignParentRight="true">
 
@@ -134,11 +136,11 @@
                         android:id="@+id/ll_prospective"
                         style="@style/WrapWrap.Vertical"
                         android:layout_below="@+id/Rl_state"
-                        android:layout_centerHorizontal="true"
-                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"
                         android:layout_marginStart="@dimen/icon_width_height_20"
                         android:layout_marginLeft="@dimen/icon_width_height_20"
                         android:layout_marginTop="@dimen/text_size_40"
+                        android:layout_marginEnd="@dimen/icon_width_height_150"
                         android:visibility="gone">
 
                         <TextView
@@ -268,7 +270,15 @@
                             android:textColor="@color/white" />
                     </RelativeLayout>
 
-                    <include layout="@layout/public_line_01" />
+                    <LinearLayout
+
+                        android:id="@+id/ll_public_line_01"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <include layout="@layout/public_line_01" />
+                    </LinearLayout>
+
 
                     <RelativeLayout
                         android:id="@+id/Rl_1"

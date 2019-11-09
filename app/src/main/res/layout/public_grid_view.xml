@@ -2,10 +2,9 @@
 <com.example.et.View.MyGridView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/public_grid_view"
     style="@style/MatchWrap"
-    android:background="@color/black_01"
-    android:listSelector="@color/black_01"
+    android:background="#FF121E2E"
+    android:listSelector="#FF121E2E"
     android:paddingBottom="10dp"
-
     android:paddingTop="10dp"
     android:scrollbars="none">
 

@@ -11,8 +11,8 @@
     <LinearLayout
 
         style="@style/MatchWrap.Vertical"
-        android:layout_marginTop="@dimen/icon_width_height_20"
-        android:background="@color/black_p">
+        android:layout_marginTop="@dimen/icon_width_height_10"
+        android:background="#FF121E2E">
 
         <RelativeLayout
             android:id="@+id/Rl_Change_login_password"

@@ -22,6 +22,7 @@ import com.example.et.entnty.Ass;
 import com.example.et.util.CacheUtils;
 import com.example.et.util.JsonUtil;
 import com.example.et.util.LogUtils;
+import com.example.et.util.PublicSwipeRefreshLayout.SwipeRefreshLayout;
 import com.example.et.util.TaskPresenterUntils;
 import com.example.et.util.constant.CacheConstants;
 import com.example.et.util.constant.KeyValueConstants;
@@ -57,6 +58,9 @@ public class WalletFragment extends BaseFragment implements AdapterView.OnItemCl
     RelativeLayout rlBacground;
     @BindView(R.id.listv)
     ListView listv;
+    @BindView(R.id.swipeRefreshLayout)
+    com.example.et.util.PublicSwipeRefreshLayout.SwipeRefreshLayout swipeRefreshLayout;
+
     private Context context;
 
 
@@ -83,7 +87,7 @@ public class WalletFragment extends BaseFragment implements AdapterView.OnItemCl
             jsonObject.put("phone", CacheUtils.getInstance().getString(CacheConstants.PHONE));
 
 
-            TaskPresenterUntils.lifeful(Constant.assets, jsonObject, new OnLoadLifefulListener<String>(null, new OnLoadListener<String>() {
+            TaskPresenterUntils.lifeful(Constant.assets, jsonObject, new OnLoadLifefulListener<String>(swipeRefreshLayout, new OnLoadListener<String>() {
                 @Override
                 public void onSuccess(String success) {
                     LogUtils.i("======钱包======" + success);
@@ -120,6 +124,23 @@ public class WalletFragment extends BaseFragment implements AdapterView.OnItemCl
         publicBack.setVisibility(View.GONE);
         publicTitleTv.setText(getString(R.string.menu_contact));
         listv.setOnItemClickListener(this);
+//         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+//            @Override
+//            public void onRefresh() {
+//                requestDatas();
+//                requestDatas3();
+//                requestDatas2();
+//
+//
+//            }
+//        });
+
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                 requestDatas();
+            }
+        });
 
 
     }

@@ -1,36 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:background="@color/black_01"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:background="@color/black_01">
 
     <LinearLayout
-
         android:id="@+id/ll_a"
         style="@style/MatchWrap.Vertical"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
+
         android:background="@drawable/bg_gray1"
         android:visibility="gone">
 
         <TextView
+
+            android:layout_marginBottom="@dimen/start_or_end_10"
             style="@style/MatchWrap"
             android:layout_marginTop="@dimen/icon_width_height_10"
             android:gravity="center"
-            android:text="今日预约比例"
-            android:textColor="@color/p_white_test" />
+            android:text="@string/ter"
+            android:textColor="#FF6F8AAC" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:textColor="@color/p_white_test" />
+            android:background="#FF6F8AAC" />
 
         <TextView
+            android:layout_marginTop="@dimen/start_or_end_10"
             android:id="@+id/tv_cone"
             style="@style/MatchWrap"
             android:gravity="center"
-            android:text="10%"
             android:textColor="@color/orange"
             android:textSize="@dimen/text_size_25"
             android:textStyle="bold" />
@@ -39,7 +40,7 @@
         <Button
             android:id="@+id/public_button"
             style="@style/MatchWrap"
-            android:layout_height="42dp"
+            android:layout_height="32dp"
             android:layout_marginStart="30dp"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="20dp"
@@ -49,19 +50,38 @@
             android:text="@string/confirm"
             android:textColor="@color/white"
             android:textSize="@dimen/text_size_16" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/start_or_end_10">
+
+            <CheckBox
+                android:id="@+id/remember"
+                style="@style/WrapWrap"
+                android:layout_alignParentRight="true"
+                android:layout_marginEnd="@dimen/icon_width_height_30"
+                android:button="@drawable/checkbox1"
+                android:paddingLeft="10dip"
+                android:text="@string/ets"
+                android:textColor="@color/orange" />
+            /
+        </RelativeLayout>
     </LinearLayout>
 
     <LinearLayout
-        android:visibility="gone"
         android:id="@+id/ll_b"
         style="@style/MatchWrap.Vertical"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:background="@drawable/bg_gray1">
+        android:background="@drawable/bg_gray1"
+        android:visibility="gone">
 
         <TextView
+
             style="@style/MatchWrap"
             android:layout_marginTop="@dimen/icon_width_height_10"
+            android:layout_marginBottom="@dimen/start_or_end_10"
             android:gravity="center"
             android:text="@string/Appointment_contract"
             android:textColor="@color/p_white_test" />
@@ -69,6 +89,7 @@
         <TextView
             android:id="@+id/tv_cone1"
             style="@style/MatchWrap"
+            android:layout_marginBottom="@dimen/start_or_end_10"
             android:gravity="center"
             android:text="10%"
             android:textColor="@color/orange"
@@ -77,8 +98,8 @@
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:textColor="@color/p_white_test" />
+            android:layout_height="0.5dp"
+            android:background="@color/bottom_test" />
 
         <TextView
             android:id="@+id/tv_compile"

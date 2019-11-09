@@ -3,14 +3,15 @@ package com.example.et.entnty;
 public class MyTeam {
 
     /**
-     * name : 测试1
-     * phone : 15513595601
+     * name : ggggggg
+     * phone : 15535958281@163.com
      * photo : null
-     * reg_time : 2019-09-09 16:13:26
+     * reg_time : 2019-11-07 21:15:31
      * node : 3
-     * team_pp : 8
-     * achievement : 0.00000000
-     * team_okpp : 3
+     * states : 1
+     * team_pp : 0
+     * achievement : 0.0000
+     * team_okpp : 0
      */
 
     private String name;
@@ -18,6 +19,7 @@ public class MyTeam {
     private Object photo;
     private String reg_time;
     private int node;
+    private int states;
     private int team_pp;
     private String achievement;
     private int team_okpp;
@@ -60,6 +62,14 @@ public class MyTeam {
 
     public void setNode(int node) {
         this.node = node;
+    }
+
+    public int getStates() {
+        return states;
+    }
+
+    public void setStates(int states) {
+        this.states = states;
     }
 
     public int getTeam_pp() {

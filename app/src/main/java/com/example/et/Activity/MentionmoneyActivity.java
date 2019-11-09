@@ -15,7 +15,9 @@ import com.example.et.R;
 import com.example.et.Ustlis.ToastUtils;
 import com.example.et.View.PayDialog;
 import com.example.et.util.CacheUtils;
+import com.example.et.util.JsonUtil;
 import com.example.et.util.LogUtils;
+import com.example.et.util.StringUtils;
 import com.example.et.util.TaskPresenterUntils;
 import com.example.et.util.constant.CacheConstants;
 import com.example.et.util.constant.KeyValueConstants;
@@ -57,6 +59,8 @@ public class MentionmoneyActivity extends BaseActivity {
     Button publicButton;
     @BindView(R.id.tv_Withdrawal_amount)
     TextView tvWithdrawalAmount;
+    @BindView(R.id.tv_data)
+    TextView tvData;
     private String name, Number, stringname, pay_pass;
 
     private int id;
@@ -71,6 +75,34 @@ public class MentionmoneyActivity extends BaseActivity {
         getIntentDatas();
 
         initView();
+
+        requestDatas2();
+    }
+
+    @Override
+    public void requestDatas2() {
+        super.requestDatas2();
+        try {
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("phone", CacheUtils.getInstance().getString(CacheConstants.PHONE));
+            jsonObject.put("type", id);
+
+
+            TaskPresenterUntils.lifeful(Constant.getgold_hl, jsonObject, new OnLoadLifefulListener<String>(null, new OnLoadListener<String>() {
+                @Override
+                public void onSuccess(String success) {
+                    LogUtils.i("======getgold_hl========" + success);
+                    Map<String, Object> stringObjectMap = JsonUtil.parseJSON(success);
+                    tvData.setText(getString(R.string.service_charge) + stringObjectMap.get("data").toString() + "手续费");
+
+
+                }
+
+            }, this));
+        } catch (
+                JSONException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -90,7 +122,7 @@ public class MentionmoneyActivity extends BaseActivity {
         publicButton.setText(getString(R.string.Mention_money));
         etPassword.setText(name);
         etCode.setHint(getString(R.string.The_balance_can_be_transferred_out) + Number + stringname);
-        tvWithdrawalAmount.setText(getString(R.string.Withdrawal_amount)+stringname);
+        tvWithdrawalAmount.setText(getString(R.string.Withdrawal_amount) + stringname);
     }
 
     @OnClick({R.id.public_back, R.id.tv_get_cot, R.id.public_button})
@@ -103,27 +135,33 @@ public class MentionmoneyActivity extends BaseActivity {
                 etCode.setText(Number);
                 break;
             case R.id.public_button:
+                if (!StringUtils.isEmpty(etCode.getText().toString())) {
+                    if (Integer.parseInt(etCode.getText().toString()) >= 100) {
 
-                if (Integer.parseInt(etCode.getText().toString()) >= 100) {
+                        PayDialog payDialog = new PayDialog(context) {
+                            @Override
+                            public void clickCallBack(String str) {
+                                pay_pass = str;
+                                if (!StringUtils.isEmpty(pay_pass)) {
+                                    requestDatas();
+                                } else {
+                                    ToastUtils.showShort(R.string.phoenumber_payment_code_ok);
+                                }
 
-                    PayDialog payDialog = new PayDialog(context) {
-                        @Override
-                        public void clickCallBack(String str) {
-                            pay_pass = str;
-                            requestDatas();
-                        }
+                            }
 
-                        @Override
-                        public void clickBack() {
+                            @Override
+                            public void clickBack() {
 
-                        }
-                    };
-                    payDialog.setCancelable(false);
-                    payDialog.setView(new EditText(context));
-                    payDialog.show();
+                            }
+                        };
+                        payDialog.setCancelable(false);
+                        payDialog.setView(new EditText(context));
+                        payDialog.show();
 
-                } else {
-                    ToastUtils.showShort(getString(R.string.tets1));
+                    } else {
+                        ToastUtils.showShort(getString(R.string.tets1));
+                    }
                 }
                 break;
             default:

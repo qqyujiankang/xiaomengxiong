@@ -57,6 +57,17 @@
                         android:text="4544545"
                         android:textColor="@color/white" />
 
+                    <ImageView
+
+                        android:id="@+id/iv_jiedian"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="@dimen/icon_width_height_20"
+                        android:layout_marginLeft="1dp"
+                        android:layout_toLeftOf="@+id/iv"
+                        android:src="@mipmap/chaojijiedian" />
+
                     <TextView
                         android:id="@+id/tv_phone"
                         android:layout_width="wrap_content"
@@ -65,7 +76,9 @@
                         android:text="65656"
                         android:textColor="@color/white" />
 
-                    <ImageView style="@style/WrapWrap.ImageView_bank" />
+                    <ImageView
+                        android:id="@+id/iv"
+                        style="@style/WrapWrap.ImageView_bank" />
                 </RelativeLayout>
             </LinearLayout>
 
@@ -80,11 +93,11 @@
                     style="@style/MatchWrap.Horizontal"
                     android:layout_marginStart="@dimen/start_or_end_20"
                     android:layout_marginLeft="@dimen/start_or_end_20"
-                    android:layout_marginBottom="@dimen/start_or_end_10">
+                >
 
                     <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="@dimen/icon_width_height_20"
+                        android:layout_height="@dimen/icon_width_height_20"
                         android:layout_gravity="center"
                         android:src="@mipmap/fenxiang" />
 
@@ -120,10 +133,11 @@
                     android:layout_marginStart="@dimen/start_or_end_20"
                     android:layout_marginLeft="@dimen/start_or_end_20"
 
-                    android:layout_marginBottom="@dimen/start_or_end_10">
+                  >
 
                     <ImageView
-                        style="@style/WrapWrap"
+                        android:layout_width="@dimen/icon_width_height_20"
+                        android:layout_height="@dimen/icon_width_height_20"
                         android:layout_gravity="center"
                         android:src="@mipmap/fenxianghaoyou" />
 
@@ -189,15 +203,16 @@
                 </LinearLayout>
 
                 <LinearLayout
-
                     android:id="@+id/ll_gain_recording"
                     style="@style/MatchWrap.Horizontal"
                     android:layout_marginStart="@dimen/start_or_end_20"
                     android:layout_marginLeft="@dimen/start_or_end_20"
-                    android:layout_marginBottom="@dimen/start_or_end_10">
+                    android:paddingTop="@dimen/start_or_end_5"
+                    android:paddingBottom="@dimen/start_or_end_5">
 
                     <ImageView
-                        style="@style/WrapWrap"
+                        android:layout_width="@dimen/icon_width_height_20"
+                        android:layout_height="@dimen/icon_width_height_20"
                         android:layout_gravity="center"
                         android:src="@mipmap/message_2" />
 
@@ -234,8 +249,8 @@
                     android:layout_marginBottom="@dimen/start_or_end_10">
 
                     <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="@dimen/icon_width_height_20"
+                        android:layout_height="@dimen/icon_width_height_20"
                         android:layout_gravity="center"
                         android:src="@mipmap/qianbaodizhiguanli" />
 
@@ -282,10 +297,11 @@
                     style="@style/MatchWrap.Horizontal"
                     android:layout_marginStart="@dimen/start_or_end_20"
                     android:layout_marginLeft="@dimen/start_or_end_20"
-                    android:layout_marginBottom="@dimen/start_or_end_10">
+                >
 
                     <ImageView
-                        style="@style/WrapWrap"
+                        android:layout_width="@dimen/icon_width_height_20"
+                        android:layout_height="@dimen/icon_width_height_20"
                         android:layout_gravity="center"
                         android:src="@mipmap/mimao" />
 
@@ -326,10 +342,11 @@
                     style="@style/MatchWrap.Horizontal"
                     android:layout_marginStart="@dimen/start_or_end_20"
                     android:layout_marginLeft="@dimen/start_or_end_20"
-                    android:layout_marginBottom="@dimen/start_or_end_10">
+                   >
 
                     <ImageView
-                        style="@style/WrapWrap"
+                        android:layout_width="@dimen/icon_width_height_20"
+                        android:layout_height="@dimen/icon_width_height_20"
                         android:layout_gravity="center"
                         android:src="@mipmap/yijianfankui" />
 
@@ -363,10 +380,11 @@
                     style="@style/MatchWrap.Horizontal"
                     android:layout_marginStart="@dimen/start_or_end_20"
                     android:layout_marginLeft="@dimen/start_or_end_20"
-                    android:layout_marginBottom="@dimen/start_or_end_10">
+               >
 
                     <ImageView
-                        style="@style/WrapWrap"
+                        android:layout_width="@dimen/icon_width_height_20"
+                        android:layout_height="@dimen/icon_width_height_20"
                         android:layout_gravity="center"
                         android:src="@mipmap/language_switch" />
 
@@ -402,10 +420,11 @@
                     android:layout_marginStart="@dimen/start_or_end_20"
                     android:layout_marginLeft="@dimen/start_or_end_20"
 
-                    android:layout_marginBottom="@dimen/start_or_end_10">
+                  >
 
                     <ImageView
-                        style="@style/WrapWrap"
+                        android:layout_width="@dimen/icon_width_height_20"
+                        android:layout_height="@dimen/icon_width_height_20"
                         android:layout_gravity="center"
                         android:src="@mipmap/banbenxinxi" />
 
@@ -421,7 +440,19 @@
                             android:text="@string/version_information"
                             android:textColor="@color/white" />
 
-                        <ImageView style="@style/WrapWrap.ImageView_bank" />
+                        <TextView
+                            android:id="@+id/tvtv_version_information"
+                            style="@style/WrapWrap"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="@dimen/start_or_end_10"
+                            android:layout_marginEnd="@dimen/start_or_end_10"
+                            android:layout_toLeftOf="@+id/iv_bank_01"
+                            android:textColor="@color/white" />
+
+
+                        <ImageView
+                            android:id="@+id/iv_bank_01"
+                            style="@style/WrapWrap.ImageView_bank" />
 
                         <TextView
                             android:layout_width="match_parent"

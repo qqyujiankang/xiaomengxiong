@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/rl_bacground"
     style="@style/MatchWrap"
-    android:background="@color/black_p"
+    android:background="#FF121E2E"
     android:paddingStart="@dimen/start_or_end_20"
     android:paddingEnd="@dimen/start_or_end_20">
 
@@ -20,7 +20,7 @@
         android:gravity="center"
         android:padding="10dp"
         android:text="@string/biaoti"
-        android:textColor="@color/white"
+        android:textColor="#FFE5EAFF"
         android:textSize="@dimen/text_size_18"
         android:textStyle="bold" />
 
@@ -31,7 +31,7 @@
         android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
         android:gravity="center"
-        android:textColor="@color/white" />
+        android:textColor="#FFE5EAFF" />
 
     <ImageView
         android:id="@+id/iv_public_other"

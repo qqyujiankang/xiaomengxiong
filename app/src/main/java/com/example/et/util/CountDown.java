@@ -3,6 +3,9 @@ package com.example.et.util;
 import android.os.CountDownTimer;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
+import java.util.TimeZone;
+
 /**
  * 倒计时
  */
@@ -11,7 +14,7 @@ public class CountDown {
     private long millisInFuture;
     CountDownTimer timer;
 
-    public CountDown(TextView textView, long millisInFuture) {
+    public CountDown(TextView textView, long millisInFuture, int i) {
         this.tv_remaining_time = textView;
         this.millisInFuture = millisInFuture;
 
@@ -22,7 +25,11 @@ public class CountDown {
              */
             @Override
             public void onTick(long millisUntilFinished) {
-                tv_remaining_time.setText(timeParse( millisUntilFinished));
+                if (i == 0) {
+                    tv_remaining_time.setText(timeParse(millisUntilFinished));
+                } else if (i == 1) {
+                    tv_remaining_time.setText(generateTime(millisUntilFinished));
+                }
             }
 
             /**
@@ -32,9 +39,23 @@ public class CountDown {
             public void onFinish() {
                 tv_remaining_time.setText("00:00");
             }
-        };
+        }
+
+        ;
     }
 
+    /**
+     * 将毫秒转时分秒
+     *
+     * @param time
+     * @return
+     */
+    public static String generateTime(long time) {
+        SimpleDateFormat formatter = new SimpleDateFormat("HH:mm:ss");//这里想要只保留分秒可以写成"mm:ss"
+        formatter.setTimeZone(TimeZone.getTimeZone("GMT+00:00"));
+         String hms = formatter.format(time);
+        return hms;
+    }
 
     /**
      * 将毫秒转化为 分钟：秒 的格式
@@ -61,56 +82,64 @@ public class CountDown {
             }
         }
     }
-/**
+public static String formattime(long time){
+        String min=  (time/(1000*60))+"";
+        String second= (time%(1000*60)/1000)+"";
+        if(min.length()<2){
+            min=0+min;
+        }
+        if(second.length()<2){
+            second=0+second;
+        }
+       return min+":"+second;
+    }
+    /**
      * Android 音乐播放器应用里，读出的音乐时长为 long 类型以毫秒数为单位，例如：将 234736 转化为分钟和秒应为 03:55 （包含四舍五入）
+     *
      * @param duration 音乐时长
      * @return
- *
- *
      */
 
     public static String timeParse(long duration) {
-        String time = "" ;
-        long minute = duration / 60000 ;
-        long seconds = duration % 60000 ;
-        long second = Math.round((float)seconds/1000) ;
-        if( minute < 10 ){
-            time += "0" ;
+        String time = "";
+        long minute = duration / 60000;
+        long seconds = duration % 60000;
+        long second = Math.round((float) seconds / 1000);
+        if (minute < 10) {
+            time += "0";
         }
-        time += minute+":" ;
-        if( second < 10 ){
-            time += "0" ;
+        time += minute + ":";
+        if (second < 10) {
+            time += "0";
         }
-        time += second ;
-        return time ;
+        time += second;
+        return time;
     }
 
-    public static String ms2HMS(int _ms){
+    public static String ms2HMS(int _ms) {
         String HMStime;
-        _ms/=1000;
-        int hour=_ms/3600;
-        int mint=(_ms%3600)/60;
-        int sed=_ms%60;
-        String hourStr=String.valueOf(hour);
-        if(hour<10){
-            hourStr="0"+hourStr;
+        _ms /= 1000;
+        int hour = _ms / 3600;
+        int mint = (_ms % 3600) / 60;
+        int sed = _ms % 60;
+        String hourStr = String.valueOf(hour);
+        if (hour < 10) {
+            hourStr = "0" + hourStr;
         }
-        String mintStr=String.valueOf(mint);
-        if(mint<10){
-            mintStr="0"+mintStr;
+        String mintStr = String.valueOf(mint);
+        if (mint < 10) {
+            mintStr = "0" + mintStr;
         }
-        String sedStr=String.valueOf(sed);
-        if(sed<10){
-            sedStr="0"+sedStr;
+        String sedStr = String.valueOf(sed);
+        if (sed < 10) {
+            sedStr = "0" + sedStr;
         }
-        HMStime=mintStr+":"+sedStr;
+        HMStime = mintStr + ":" + sedStr;
         return HMStime;
     }
 
 
     /**
-
-
      * 取消倒计时
      */
     public void timerCancel() {

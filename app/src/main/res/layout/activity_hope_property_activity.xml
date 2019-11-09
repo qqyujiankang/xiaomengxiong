@@ -37,14 +37,14 @@
             <TextView
 
                 style="@style/WrapWrap"
-                android:text="@string/rental"
+                android:text="@string/balance"
                 android:textColor="@color/p_white_test" />
 
             <TextView
 
                 style="@style/WrapWrap"
                 android:layout_centerHorizontal="true"
-                android:text="@string/balance"
+                android:text="@string/make"
                 android:textColor="@color/p_white_test" />
 
             <TextView
@@ -97,7 +97,9 @@
             android:id="@+id/btn_top_up"
             style="@style/AutoWrapbuttn"
             android:layout_marginLeft="@dimen/icon_width_height_20"
+            android:singleLine="true"
             android:text="@string/top_up"
+            android:textSize="@dimen/text_size_12"
 
             />
 
@@ -105,22 +107,28 @@
             android:id="@+id/btn_Mention_money"
             style="@style/AutoWrapbuttn"
             android:layout_marginStart="@dimen/icon_width_height_20"
+            android:layout_marginLeft="@dimen/icon_width_height_20"
             android:layout_marginRight="@dimen/icon_width_height_20"
+            android:singleLine="true"
             android:text="@string/Mention_money"
-            android:layout_marginLeft="@dimen/icon_width_height_20" />
+            android:textSize="@dimen/text_size_12" />
 
         <Button
+              android:textSize="@dimen/text_size_12"
             android:id="@+id/btn_transfer"
             style="@style/AutoWrapbuttn"
             android:layout_marginStart="@dimen/icon_width_height_20"
-            android:text="@string/transfer"
-            android:layout_marginLeft="@dimen/icon_width_height_20" />
+            android:layout_marginLeft="@dimen/icon_width_height_20"
+            android:singleLine="true"
+            android:text="@string/transfer" />
 
         <Button
+              android:textSize="@dimen/text_size_12"
             android:id="@+id/btn_record"
             style="@style/AutoWrapbuttn"
             android:layout_marginLeft="@dimen/icon_width_height_20"
             android:layout_marginRight="@dimen/icon_width_height_20"
+            android:singleLine="true"
             android:text="@string/record" />
 
 
@@ -131,7 +139,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/icon_width_height_20"
-        android:background="@color/black_p"
+        android:background="@color/black_b"
         android:divider="@color/black"
         android:dividerHeight="1dp">
 

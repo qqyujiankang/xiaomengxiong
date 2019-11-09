@@ -11,6 +11,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.et.R;
+import com.example.et.util.LogUtils;
 
 /**
  * Created by ywl on 2017/2/28.
@@ -18,7 +19,7 @@ import com.example.et.R;
 
 public abstract class PayDialog extends AlertDialog {
 
-    private PayPwdEditText payPwdEditText;
+    private ActivationCodeBox payPwdEditText;
     private Context context;
     private Button public_button;
     private TextView tv_cancel;
@@ -41,16 +42,16 @@ public abstract class PayDialog extends AlertDialog {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.input_dialog_lyaout);
-        payPwdEditText = (PayPwdEditText) findViewById(R.id.ppet);
+        payPwdEditText = (ActivationCodeBox) findViewById(R.id.ppet);
         public_button = findViewById(R.id.public_button);
         tv_cancel = findViewById(R.id.tv_cancel);
         public_button.setText(context.getString(R.string.confirm));
-        payPwdEditText.initStyle(R.color.p_green_, 6, 10.00f, R.color.black_01, android.R.color.black, 20);
-        payPwdEditText.setOnTextFinishListener(new PayPwdEditText.OnTextFinishListener() {
+        payPwdEditText.setInputCompleteListener(new ActivationCodeBox.InputCompleteListener() {
             @Override
-            public void onFinish(String str) {//密码输入完后的回调
-                paypwd = str;
+            public void inputComplete(String code) {
+                LogUtils.i("========密码==="+code);
 
+                paypwd = code;
             }
         });
         tv_cancel.setOnClickListener(new View.OnClickListener() {
@@ -68,13 +69,13 @@ public abstract class PayDialog extends AlertDialog {
         });
 
 
-        payPwdEditText.setShowPwd(true);
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                payPwdEditText.setFocus();
-            }
-        }, 100);
+//        payPwdEditText.setShowPwd(true);
+//        new Handler().postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                payPwdEditText.setFocus();
+//            }
+//        }, 100);
 
     }
 

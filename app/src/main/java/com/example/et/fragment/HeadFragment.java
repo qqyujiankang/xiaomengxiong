@@ -57,7 +57,9 @@ import com.youth.banner.Banner;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.math.RoundingMode;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -123,7 +125,7 @@ public class HeadFragment extends BaseFragment implements AdapterView.OnItemClic
                 .init();
         //设置样式,默认为:Banner.NOT_INDICATOR(不显示指示器和标题)
         //可选样式如下:
-        banner.setBannerStyle(Banner.NOT_INDICATOR);
+        banner.setBannerStyle(Banner.CIRCLE_INDICATOR);
         //设置轮播样式（没有标题默认为右边,有标题时默认左边）
         //可选样式:
         banner.setIndicatorGravity(Banner.CENTER);
@@ -144,6 +146,8 @@ public class HeadFragment extends BaseFragment implements AdapterView.OnItemClic
             @Override
             public void onRefresh() {
                 requestDatas();
+                requestDatas3();
+                requestDatas2();
 
 
             }
@@ -158,7 +162,7 @@ public class HeadFragment extends BaseFragment implements AdapterView.OnItemClic
         return R.layout.fragment_head;
     }
 
-    private boolean d = false;
+    public static boolean d;
 
     @Override
     public void requestDatas3() {
@@ -170,15 +174,16 @@ public class HeadFragment extends BaseFragment implements AdapterView.OnItemClic
                 @Override
                 public void onSuccess(String success) {
                     LogUtils.i("homne====shujuliu=====" + success);
-                    // Pagebean<Object> objectPagebean = ParseUtils.analysisListTypeDatasAndCount((Activity) context, success, null, false);
+                    // HashMap<String,Object> objectPagebean = ParseUtils.analysisListTypeDatasAndCount((Activity) context, success, null, false).getStringMap();
                     Map<String, Object> map = GsonUtil.GsonToMaps(success);
 
                     if (map.get("code").toString().equals("200.0")) {
                         if (d == false) {
                             MyDiog myDiog = new MyDiog(context, map.get("data").toString(), 0);
                             myDiog.show();
-                            d = true;
+                            // d = true;
                         }
+
                     }
 
                 }
@@ -249,20 +254,18 @@ public class HeadFragment extends BaseFragment implements AdapterView.OnItemClic
                     if (resultMap.get(KeyValueConstants.CODE).equals("200")) {
                         if (!CacheUtils.getInstance().getString(CacheConstants.r_huil).equals("")) {
                             tvRGold.setText(CacheUtils.getInstance().getString(CacheConstants.r_gold));
-                            tvRHuilv.setText(StringUtils.calculateProfit(Double.parseDouble(CacheUtils.getInstance().getString(CacheConstants.r_huil)), 3));
+                            tvRHuilv.setText(StringUtils.calculateProfit(Double.parseDouble(CacheUtils.getInstance().getString(CacheConstants.r_huil)), 5));
                             double r_zd = Double.parseDouble(CacheUtils.getInstance().getString(CacheConstants.r_zd));
-                            tvRZd.setText(StringUtils.calculateProfit(r_zd, 3) + getString(R.string.ts1));
-
+                            tvRZd.setText(StringUtils.calculateProfit1(r_zd) + getString(R.string.ts1));
                             if (r_zd > 0) {//你输入的是正数
-
                                 tvRZd.setTextColor(getResources().getColor(R.color.colorPrimaryDark));
                             } else if (r_zd < 0) {//你输入的是负数
                                 tvRZd.setTextColor(getResources().getColor(R.color.colorAccent_01));
                             }
                             tvSGold.setText(CacheUtils.getInstance().getString(CacheConstants.s_gold));
-                            tvSHuil.setText(StringUtils.calculateProfit(Double.parseDouble(CacheUtils.getInstance().getString(CacheConstants.s_huil)), 3));
+                            tvSHuil.setText(StringUtils.calculateProfit(Double.parseDouble(CacheUtils.getInstance().getString(CacheConstants.s_huil)), 5));
                             double s_zd = Double.parseDouble(CacheUtils.getInstance().getString(CacheConstants.s_zd));
-                            tvSZd.setText(StringUtils.calculateProfit(s_zd, 3) + getString(R.string.ts1));
+                            tvSZd.setText(StringUtils.calculateProfit1(s_zd) + getString(R.string.ts1));
                             if (s_zd > 0) {//你输入的是正数
 
                                 tvSZd.setTextColor(getResources().getColor(R.color.colorPrimaryDark));

@@ -8,8 +8,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.et.R;
-import com.example.et.util.CacheUtils;
-import com.example.et.util.constant.CacheConstants;
+import com.example.et.Ustlis.ImageLoaderUtil;
 import com.just.agentweb.AgentWeb;
 
 import butterknife.BindView;
@@ -21,6 +20,7 @@ import butterknife.OnClick;
  */
 public class FriendShareActivity extends BaseActivity {
 
+
     @BindView(R.id.public_back)
     TextView publicBack;
     @BindView(R.id.public_title_tv)
@@ -31,15 +31,10 @@ public class FriendShareActivity extends BaseActivity {
     ImageView ivPublicOther;
     @BindView(R.id.rl_bacground)
     RelativeLayout rlBacground;
-
-
+    @BindView(R.id.mldz_chufanginfo_weblayout)
+    ImageView mldzChufanginfoWeblayout;
     @BindView(R.id.ll)
     LinearLayout ll;
-    @BindView(R.id.mldz_chufanginfo_weblayout)
-    LinearLayout mldzChufanginfoWeblayout;
-
-    private View view;
-    AgentWeb agentWeb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,12 +49,9 @@ public class FriendShareActivity extends BaseActivity {
     public void initView() {
         super.initView();
         publicTitleTv.setText(R.string.Friends_share);
-        agentWeb = AgentWeb.with(FriendShareActivity.this)//传入Activity
-                .setAgentWebParent(mldzChufanginfoWeblayout, new LinearLayout.LayoutParams(-1, -1))//传入AgentWeb 的父控件 ，如果父控件为 RelativeLayout ， 那么第二参数需要传入 RelativeLayout.LayoutParams
-                .useDefaultIndicator()// 使用默认进度条
-                .createAgentWeb()//
-                .ready()
-                .go(CacheUtils.getInstance().getString(CacheConstants.i_code_img));
+
+               // .go("");
+        ImageLoaderUtil.setGlideim(FriendShareActivity.this,mldzChufanginfoWeblayout,"https://etadmin.etac.io/uploads/er1357924680.png");
 
     }
 

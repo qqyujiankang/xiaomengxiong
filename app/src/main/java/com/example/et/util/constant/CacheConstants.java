@@ -33,6 +33,7 @@ public class CacheConstants {
     public static final String achievement = "achievement";//业绩
     public static final String team_okpp = "team_okpp";//有效人数
     public static final String team = "team";//我的团队；
+    public static final String jiedian = "jiedian";//我的团队；
 
     public static final String s_gold = "s_gold";
     public static final String s_huil = "s_huil";

@@ -260,12 +260,12 @@ public final class StringUtils {
      */
     public static String calculateProfit(double doubleValue, int i) {
 
-     // 保留4位小数
+        // 保留4位小数
         java.text.DecimalFormat df = null;
-        if (i==5){
+        if (i == 5) {
             df = new java.text.DecimalFormat("#.0000");
-        }else if (i==3){
-             df = new java.text.DecimalFormat("#.00");
+        } else if (i == 3) {
+            df = new java.text.DecimalFormat("#.00");
         }
         String result = df.format(doubleValue);
 
@@ -283,6 +283,32 @@ public final class StringUtils {
 
         return result.substring(0, inde + i);
     }
+
+    /**
+     * 保留double类型小数后两位，不四舍五入，直接取小数后两位 比如：10.1269 返回：10.12
+     *
+     * @param doubleValue
+     * @return
+     */
+    public static String calculateProfit1(double doubleValue) {
+        // 保留4位小数
+        java.text.DecimalFormat df = new java.text.DecimalFormat("0.0000");
+        String result = df.format(doubleValue);
+
+        // 截取第一位
+        String index = result.substring(0, 1);
+
+        if (".".equals(index)) {
+            result = "0" + result;
+        }
+
+        // 获取小数 . 号第一次出现的位置
+        int inde = firstIndexOf(result, ".");
+
+        // 字符串截断
+        return result.substring(0, inde + 3);
+    }
+
 
     /**
      * 获取小数点的位数

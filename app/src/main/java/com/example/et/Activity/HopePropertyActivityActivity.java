@@ -100,6 +100,16 @@ public class HopePropertyActivityActivity extends BaseActivity {
 
     }
 
+    public static boolean aBoolean;
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (aBoolean == true) {
+            requestDatas();
+        }
+
+    }
 
     @Override
     public void getIntentDatas() {
@@ -113,12 +123,12 @@ public class HopePropertyActivityActivity extends BaseActivity {
             tvRental.setTextColor(getResources().getColor(R.color.orange));
             tvRental.setText(ass.getName());
             tvUsable.setText(getString(R.string.balance));
-            tvConvert.setText(StringUtils.calculateProfit(Double.valueOf(ass.getNumber()), 3));
+            tvConvert.setText(StringUtils.calculateProfit(Double.valueOf(ass.getNumber()), 5));
         } else {
             RlBanl.setText(ass.getName());
-            tvRental.setText(StringUtils.calculateProfit(Double.valueOf(ass.getNumber()), 3));
-            tvUsable.setText(StringUtils.calculateProfit(Double.valueOf(ass.getNewnumber()), 3));
-            tvConvert.setText(StringUtils.calculateProfit(Double.valueOf(ass.getCny()), 3));
+            tvRental.setText(StringUtils.calculateProfit(Double.valueOf(ass.getNumber()), 5));
+            tvUsable.setText(StringUtils.calculateProfit(Double.valueOf(ass.getNewnumber()), 5));
+            tvConvert.setText(StringUtils.calculateProfit(Double.valueOf(ass.getCny()), 5));
         }
 
 
@@ -143,7 +153,10 @@ public class HopePropertyActivityActivity extends BaseActivity {
                 Intent intent = new Intent();
                 intent.setClass(context, AddressbindingActivity.class);
                 intent.putExtra("id", currencyaddress.getId());
+                intent.putExtra("stringname", currencyaddress.getStringname());
                 intent.putExtra("name", currencyaddress.getString());
+                intent.putExtra("xiugan", "321");
+
                 ActivityUtils.startActivity(intent);
 
             }
@@ -209,7 +222,7 @@ public class HopePropertyActivityActivity extends BaseActivity {
             Intent intent = new Intent();
             intent.setClass(context, MentionmoneyActivity.class);
             intent.putExtra("id", currencyaddress.getId());
-            intent.putExtra("Number", StringUtils.calculateProfit(Double.valueOf(ass.getNumber()), 3));
+            intent.putExtra("Number", StringUtils.calculateProfit(Double.valueOf(ass.getNumber()), 5));
             intent.putExtra("stringname", currencyaddress.getStringname());
             intent.putExtra("name", currencyaddress.getString());
             ActivityUtils.startActivity(intent);

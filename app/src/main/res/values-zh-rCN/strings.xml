@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">ET爸爸</string>
+    <string name="app_name">ET 联盟</string>
     <string name="login_ID">登录账号</string>
     <string name="Mobile_phone_number_email">手机号/邮箱</string>
     <string name="password">密码</string>
@@ -101,7 +101,7 @@
     <string name="performance">业绩</string>
     <string name="To_make_an_appointment_in">预约中</string>
     <string name="To_make_an_appointment_in_1">预约成功，匹配中</string>
-    <string name="Take_out_the_principal_and_interest_countdown">取出本息倒计时</string>
+    <string name="Take_out_the_principal_and_interest_countdown">合约状态</string>
     <string name="Appointment_success_time">预约成功时间</string>
     <string name="The_contract_amount">合约金额</string>
     <string name="Enter_security_password">请输入安全密码</string>
@@ -146,7 +146,7 @@
     <string name="Select_reservation_amount">选择预约金额</string>
     <string name="select">选择地址</string>
     <string name="all">全部</string>
-    <string name="service_charge">注：转出需支付0.5%手续费</string>
+    <string name="service_charge">注：转出需支付</string>
     <string name="head_portrait">头像</string>
     <string name="Mobile_phone_registered">手机注册</string>
     <string name="Registered_mail">邮箱注册</string>
@@ -176,4 +176,7 @@
     <string name="please_enter">请输入</string>
     <string name="tet1">注册</string>
     <string name="ts1">&#037;</string>
+     <string name="tets1">最少提币100</string>
+    <string name="ter">今日预约比例</string>
+    <string name="ets">不再提示</string>
 </resources>

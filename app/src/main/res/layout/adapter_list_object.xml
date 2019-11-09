@@ -9,8 +9,8 @@
 
     <ImageView
         android:id="@+id/image_view"
-        android:layout_width="45dp"
-        android:layout_height="45dp" />
+        android:layout_width="@dimen/icon_width_height_50"
+        android:layout_height="@dimen/icon_width_height_50" />
 
     <TextView
         android:textColor="@color/white"

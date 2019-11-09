@@ -1,6 +1,7 @@
 package com.example.et.Adapter;
 
 import android.content.Context;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -37,6 +38,8 @@ public class MyTeamsAdapter extends ManagerAdapter {
         TextView tvActiveMember;
         @BindView(R.id.tv_performance)
         TextView tvPerformance;
+        @BindView(R.id.tv_states)
+        TextView tvStates;
 
         @Override
         protected int getItemLayoutResId() {
@@ -46,10 +49,23 @@ public class MyTeamsAdapter extends ManagerAdapter {
         @Override
         public void setViewData(int position, List list) {
             MyTeam myTeam = (MyTeam) list.get(position);
-            tvName.setText(myTeam.getName() + "(" + myTeam.getPhone() + ")");
-            tvTeam.setText(myTeam.getTeam_pp()+"人");//团队人数
-            tvPerformance.setText(myTeam.getAchievement()+"人");//业绩
-            tvActiveMember.setText(myTeam.getTeam_okpp()+"人");//有效人数
+            tvName.setText(myTeam.getName());
+            tvTeam.setText(myTeam.getTeam_pp() + "人");//团队人数
+            tvPerformance.setText(myTeam.getAchievement() + "");//业绩
+            tvActiveMember.setText(myTeam.getTeam_okpp() + "人");//有效人数
+            if (myTeam.getNode() == 1) {
+                tvJieidian.setVisibility(View.INVISIBLE);
+            } else if (myTeam.getNode() == 2) {
+                tvJieidian.setImageDrawable(context.getResources().getDrawable(R.mipmap.node));
+            } else if (myTeam.getNode() == 3) {
+                tvJieidian.setImageDrawable(context.getResources().getDrawable(R.mipmap.chaojijiedian));
+            }
+            if (myTeam.getStates() == 1) {
+                    tvStates.setText("未激活");
+            }else if (myTeam.getStates()==2){
+                 tvStates.setText("已激活");
+            }
+
 
         }
     }

@@ -6,8 +6,6 @@
     android:background="@color/black">
 
     <com.example.et.util.PublicSwipeRefreshLayout.SwipeRefreshLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/swipeRefreshLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
@@ -23,9 +21,9 @@
                 <LinearLayout style="@style/MatchWrap">
 
                     <ImageView
-                        android:layout_marginStart="@dimen/start_or_end_10"
                         android:layout_width="@dimen/icon_width_height_20"
                         android:layout_height="21dp"
+                        android:layout_marginStart="@dimen/start_or_end_10"
                         android:src="@mipmap/login_01" />
 
                     <TextView
@@ -49,22 +47,27 @@
                     android:src="@mipmap/service" />
             </RelativeLayout>
 
-            <com.youth.banner.Banner
+            <com.youth.banner.Banner xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/banner"
                 android:layout_width="match_parent"
-                android:layout_height="150dp" />
+                android:layout_height="160dp"
+                app:indicator_drawable_selected="@drawable/selected_radius"
+                app:indicator_drawable_unselected="@drawable/unselected_radius"
+                app:indicator_height="8dp"
+                app:indicator_margin="4dp"
+                app:indicator_width="20dp" />
 
             <LinearLayout
                 android:id="@+id/ll_announcement"
                 style="@style/MatchWrap"
-                android:background="@color/black_p"
+                android:background="#FF121E2E"
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp">
 
                 <ImageView
-                    android:layout_gravity="center_vertical"
                     android:id="@+id/textView2"
                     style="@style/WrapWrap"
+                    android:layout_gravity="center_vertical"
                     android:layout_marginStart="20dp"
                     android:layout_marginLeft="20dp"
                     android:src="@mipmap/tbbc"
@@ -75,7 +78,7 @@
                     android:layout_width="1dp"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="10dp"
-                    android:background="#CCCCCC" />
+                    android:background="#FFCCCCCC" />
 
                 <RelativeLayout
                     style="@style/MatchWrap"
@@ -87,7 +90,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_toLeftOf="@+id/iv_bank"
-                        android:textColor="#E5EAFF" />
+                        android:textColor="#FFE5EAFF" />
 
                     <ImageView
                         android:id="@+id/iv_bank"
@@ -97,7 +100,7 @@
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
+                android:layout_height="0.5dp"
                 android:background="#192754" />
 
             <include layout="@layout/public_grid_view" />
@@ -116,38 +119,49 @@
                     android:gravity="center"
                     android:padding="5dp">
 
-                    <TextView
-                        style="@style/WrapWrap"
-                        android:text="@string/Open_contract_currency"
-                        android:textColor="@color/white" />
-
-                    <TextView
-                        android:id="@+id/tv_r_gold"
-                        style="@style/WrapWrap"
-                        android:text="USDT"
-                        android:textColor="@color/orange"
-                        android:textSize="@dimen/text_size_18"
-                        android:textStyle="bold" />
-
-                    <LinearLayout
-                        style="@style/WrapWrap.Horizontal"
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:gravity="center">
 
+
                         <TextView
-                            android:id="@+id/tv_r_huilv"
+                            android:id="@+id/tv_1"
                             style="@style/WrapWrap"
-                            android:text="78.08"
+                            android:singleLine="true"
+                            android:text="@string/Open_contract_currency"
                             android:textColor="@color/white" />
 
                         <TextView
-                            android:id="@+id/tv_r_zd"
+                            android:id="@+id/tv_r_gold"
                             style="@style/WrapWrap"
-                            android:layout_marginStart="15dp"
-                            android:layout_marginLeft="15dp"
-                            android:text="+78.08"
-                            android:textSize="13dp" />
+                            android:layout_below="@+id/tv_1"
+                            android:text="USDT"
+                            android:textColor="@color/orange"
+                            android:textSize="@dimen/text_size_18"
+                            android:textStyle="bold" />
 
-                    </LinearLayout>
+                        <LinearLayout
+                            style="@style/WrapWrap.Horizontal"
+                            android:layout_below="@+id/tv_r_gold"
+                  >
+
+                            <TextView
+                                android:id="@+id/tv_r_huilv"
+                                style="@style/WrapWrap"
+                                android:text="78.08"
+                                android:textColor="@color/white" />
+
+                            <TextView
+                                android:id="@+id/tv_r_zd"
+                                style="@style/WrapWrap"
+                                android:layout_marginStart="15dp"
+                                android:layout_marginLeft="15dp"
+                                android:text="+78.08"
+                                android:textSize="13dp" />
+
+                        </LinearLayout>
+                    </RelativeLayout>
                 </LinearLayout>
 
                 <LinearLayout
@@ -157,51 +171,62 @@
                     android:gravity="center"
                     android:padding="5dp">
 
-                    <TextView
-                        style="@style/WrapWrap"
-                        android:text="@string/Execute_the_contract_currency"
-                        android:textColor="@color/white" />
-
-                    <TextView
-                        android:id="@+id/tv_s_gold"
-                        style="@style/WrapWrap"
-                        android:layout_width="wrap_content"
-                        android:text="USDT"
-                        android:textColor="@color/orange"
-                        android:textSize="@dimen/text_size_18"
-                        android:textStyle="bold" />
-
-                    <LinearLayout
-                        style="@style/MatchWrap.Horizontal"
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:gravity="center">
 
                         <TextView
-                            android:id="@+id/tv_s_huil"
+                            android:id="@+id/tv_2"
                             style="@style/WrapWrap"
-                            android:text="78.08"
+                            android:singleLine="true"
+                            android:text="@string/Execute_the_contract_currency"
                             android:textColor="@color/white" />
 
                         <TextView
-                            android:id="@+id/tv_s_zd"
+                            android:layout_below="@+id/tv_2"
+                            android:id="@+id/tv_s_gold"
                             style="@style/WrapWrap"
-                            android:layout_marginStart="15dp"
-                            android:layout_marginLeft="15dp"
-                            android:text="-78.08" />
+                            android:layout_width="wrap_content"
+                            android:paddingRight="@dimen/icon_width_height_30"
+                            android:text="USDT"
+                            android:textColor="@color/orange"
+                            android:textSize="@dimen/text_size_18"
+                            android:textStyle="bold" />
 
-                    </LinearLayout>
+                        <LinearLayout
+                            android:layout_below="@+id/tv_s_gold"
+                            style="@style/WrapWrap.Horizontal"
+                         >
+
+                            <TextView
+                                android:id="@+id/tv_s_huil"
+                                style="@style/WrapWrap"
+                                android:text="78.08"
+                                android:textColor="@color/white" />
+
+                            <TextView
+                                android:id="@+id/tv_s_zd"
+                                style="@style/WrapWrap"
+                                android:layout_marginStart="15dp"
+                                android:layout_marginLeft="15dp"
+                                android:text="-78.08" />
+
+                        </LinearLayout>
+                    </RelativeLayout>
                 </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
                 style="@style/MatchWrap"
                 android:layout_marginTop="10dp"
-                android:background="@color/black_p"
-                android:paddingTop="10dp"
-                android:paddingBottom="10dp">
+                android:background="#FF121E2E"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp">
 
 
                 <TextView
-                    android:layout_width="1dp"
+                    android:layout_width="2dp"
                     android:layout_height="match_parent"
                     android:layout_marginStart="20dp"
                     android:layout_marginLeft="10dp"
@@ -209,11 +234,11 @@
 
                 <TextView
                     style="@style/WrapWrap"
-                    android:layout_marginStart="20dp"
+                    android:layout_marginStart="10dp"
                     android:layout_marginLeft="20dp"
                     android:text="@string/The_latest_contract"
                     android:textColor="@color/orange"
-                    android:textSize="@dimen/text_size_18"
+                    android:textSize="@dimen/text_size_14"
                     android:typeface="monospace" />
 
 
@@ -226,25 +251,26 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/start_or_end_10">
 
                 <TextView
                     style="@style/AutoWrap"
                     android:gravity="center"
                     android:text="@string/number"
-                    android:textColor="@color/bottom_test" />
+                    android:textColor="@color/bottom_tes1" />
 
                 <TextView
                     style="@style/AutoWrap"
                     android:gravity="center"
                     android:text="@string/menu_find"
-                    android:textColor="@color/bottom_test" />
+                    android:textColor="@color/bottom_tes1" />
 
                 <TextView
                     style="@style/AutoWrap"
                     android:gravity="center"
                     android:text="@string/time"
-                    android:textColor="@color/bottom_test" />
+                    android:textColor="@color/bottom_tes1" />
             </LinearLayout>
 
             <com.example.et.Adapter.AutoPollRecyclerView

@@ -79,9 +79,48 @@ public class AppointmentcontractActivity extends BaseActivity {
         lifeful = this;
         setContentView(R.layout.activity_appointmentcontract);
         ButterKnife.bind(this);
-        initView();
-        requestDatas();
 
+        requestDatas2();
+
+    }
+
+    @Override
+    public void requestDatas2() {
+        super.requestDatas();
+        try {
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("phone", CacheUtils.getInstance().getString(CacheConstants.PHONE));
+
+            TaskPresenterUntils.lifeful(Constant.newcontract, jsonObject, new OnLoadLifefulListener<String>(null, new OnLoadListener<String>() {
+                @Override
+                public void onSuccess(String success) {
+                    LogUtils.i("======newcontract======" + success);
+                    //adapterRealize = new AdapterRealize();
+
+                    Map<String, Object> objectPagebean = ParseUtils.analysisListTypeDatasAndCount((Activity) context, success, null, false).getStringMap();
+                    LogUtils.i("======newcontract======" + objectPagebean.get(KeyValueConstants.MSG));
+                    if (objectPagebean.get(KeyValueConstants.CODE).equals("200")) {
+                        Intent i = new Intent();
+                        i.setClass(AppointmentcontractActivity.this, MainActivity.class);
+                        i.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        i.putExtra("fragment_flag", 2);
+                        startActivity(i);
+                        finish();
+
+                    } else {
+                        initView();
+                        requestDatas();
+
+                    }
+
+
+                }
+
+
+            }, lifeful));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -109,8 +148,8 @@ public class AppointmentcontractActivity extends BaseActivity {
             case R.id.public_button:
                 if (!StringUtils.isEmpty(tvUSDT.getText().toString().trim())) {
                     new AnswerDiog(this, onClickListener, onClickListener1, problem, answers).show();
-                }else {
-                      ToastUtils.showShort(R.string.Please_select_contract_amount);
+                } else {
+                    ToastUtils.showShort(R.string.Please_select_contract_amount);
                 }
                 break;
             default:
@@ -193,10 +232,9 @@ public class AppointmentcontractActivity extends BaseActivity {
                         }
 
                     }
-                    if (!resultMap.get(KeyValueConstants.MSG).equals("")){
-                         ToastUtils.showShort(resultMap.get(KeyValueConstants.MSG).toString());
+                    if (!resultMap.get(KeyValueConstants.MSG).equals("")) {
+                        ToastUtils.showShort(resultMap.get(KeyValueConstants.MSG).toString());
                     }
-
 
 
                 }
@@ -237,7 +275,7 @@ public class AppointmentcontractActivity extends BaseActivity {
 
             Contract contract = (Contract) managerAdapter.getItem(position);
             id = contract.getId();
-            tvUSDT.setText(contract.getNumber() + "USTD");
+            tvUSDT.setText(contract.getNumber() + getString(R.string.USDT));
             alipayPopuWindow.dismiss();
         }
     };

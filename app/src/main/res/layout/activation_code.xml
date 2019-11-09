@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/ll_code"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/start_or_end_10"
+        android:layout_marginRight="@dimen/start_or_end_10"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_code1"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginRight="@dimen/start_or_end_5"
+            android:background="@drawable/bg_s"
+            android:gravity="center"
+            android:inputType="textPassword"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_14" />
+
+
+        <TextView
+            android:id="@+id/tv_code2"
+             android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="@dimen/start_or_end_5"
+            android:layout_marginRight="@dimen/start_or_end_5"
+            android:background="@drawable/bg_s"
+            android:gravity="center"
+            android:inputType="textPassword"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_14" />
+
+
+        <TextView
+            android:id="@+id/tv_code3"
+             android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="@dimen/start_or_end_5"
+            android:layout_marginRight="@dimen/start_or_end_5"
+            android:background="@drawable/bg_s"
+            android:gravity="center"
+            android:inputType="textPassword"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_14" />
+
+
+        <TextView
+            android:id="@+id/tv_code4"
+             android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="@dimen/start_or_end_5"
+            android:background="@drawable/bg_s"
+            android:gravity="center"
+            android:inputType="textPassword"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_14" />
+
+        <TextView
+            android:id="@+id/tv_code5"
+           android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="@dimen/start_or_end_10"
+            android:background="@drawable/bg_s"
+            android:gravity="center"
+            android:inputType="textPassword"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_14" />
+
+        <TextView
+            android:id="@+id/tv_code6"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="@dimen/start_or_end_10"
+            android:background="@drawable/bg_s"
+            android:gravity="center"
+            android:inputType="textPassword"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_14" />
+
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/et_code"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/ll_code"
+        android:layout_alignBottom="@+id/ll_code"
+        android:background="@android:color/transparent"
+        android:cursorVisible="false"
+        android:inputType="textPassword"
+        android:textColor="@android:color/transparent" />
+
+    <TextView
+        android:id="@+id/tv_tip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ll_code"
+
+        android:layout_margin="6dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:visibility="gone" />
+</RelativeLayout>

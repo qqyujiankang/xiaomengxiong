@@ -42,7 +42,7 @@ public class MyWebViewClient extends WebViewClient {
         super.onPageFinished(view, url);
         view.loadUrl("javascript:function getSub(){alert(\"Welcome\");" + "document.forms[0].submit();};getSub();");
         view.loadUrl("javascript:function getSub(){" +
-                "document.getElementsByTagName('body')[0].style.background='#15243B'" +
+                "document.getElementsByTagName('body')[0].style.background='#FF121E2E'" +
                 "};getSub();");
 
     }

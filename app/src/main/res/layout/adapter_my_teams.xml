@@ -17,9 +17,17 @@
             <TextView
                 android:id="@+id/tv_name"
                 style="@style/WrapWrap"
-                android:layout_marginStart="@dimen/icon_width_height_30"
-                android:layout_marginLeft="@dimen/icon_width_height_50"
+                android:gravity="left"
                 android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/tv_states"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/icon_width_height_50"
+                android:layout_toLeftOf="@+id/tv_jieidian"
+                android:textColor="@color/white" />
+
 
             <ImageView
                 android:id="@+id/tv_jieidian"
@@ -36,20 +44,20 @@
                 style="@style/AutoWrap"
                 android:gravity="center"
                 android:text="@string/team"
-                android:textColor="@color/p_white_test" />
+                android:textColor="#FF6F8AAC" />
 
             <TextView
 
                 style="@style/AutoWrap"
                 android:gravity="center"
                 android:text="@string/Active_member"
-                android:textColor="@color/p_white_test" />
+                android:textColor="#FF6F8AAC" />
 
             <TextView
                 style="@style/AutoWrap"
                 android:gravity="center"
                 android:text="@string/performance"
-                android:textColor="@color/p_white_test" />
+                android:textColor="#FF6F8AAC" />
 
         </LinearLayout>
 

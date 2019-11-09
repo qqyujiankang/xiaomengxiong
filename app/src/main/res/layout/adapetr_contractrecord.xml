@@ -22,11 +22,11 @@
                 android:textColor="@color/orange" />
 
             <TextView
+                android:gravity="right"
+                android:text="45456"
                 android:id="@+id/tv_jieidian"
                 style="@style/WrapWrap"
                 android:layout_alignParentRight="true"
-                android:layout_marginEnd="@dimen/icon_width_height_30"
-                android:layout_marginRight="@dimen/icon_width_height_20"
                 android:textColor="@color/white" />
         </RelativeLayout>
 
@@ -51,7 +51,7 @@
 
             <TextView
                 style="@style/AutoWrap"
-                android:gravity="center"
+                android:gravity="right"
                 android:text="@string/Take_out_the_principal_and_interest_countdown"
                 android:textColor="@color/p_white_test" />
 
@@ -82,6 +82,7 @@
                 android:textSize="@dimen/text_size_14" />
 
             <TextView
+                android:gravity="right"
                 android:id="@+id/tv_performance"
                 style="@style/WrapWrap"
                 android:layout_alignParentRight="true"

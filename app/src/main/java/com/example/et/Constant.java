@@ -36,6 +36,8 @@ public class Constant {
     public static final String todaybaifenbi = BASE_URL + "todaybaifenbi";//查询当日的预付比例
     public static final String paycontract = BASE_URL + "paycontract";//支付预约合约
     public static final String tocontractok = BASE_URL + "tocontractok";//执行合约
+    public static final String getgold_hl = BASE_URL + "getgold_hl";//提币手续费
+    public static final String upgoldaddress1 = BASE_URL + "upgoldaddress1";//upgoldaddress1
 
 
     //

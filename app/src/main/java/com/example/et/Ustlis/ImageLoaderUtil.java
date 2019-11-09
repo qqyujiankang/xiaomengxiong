@@ -3,11 +3,14 @@ package com.example.et.Ustlis;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import androidx.annotation.Nullable;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.Priority;
 import com.bumptech.glide.load.DataSource;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.engine.GlideException;
@@ -15,8 +18,11 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.FutureTarget;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.RequestOptions;
+import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.target.Target;
+import com.bumptech.glide.request.transition.Transition;
 import com.example.et.R;
+import com.example.et.util.LogUtils;
 
 import java.io.File;
 
@@ -26,8 +32,8 @@ import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
 
 public class ImageLoaderUtil {
 
-    public static final int placeholderSoWhite = R.color.white;
-    public static final int errorSoWhite = R.color.white;
+    public static final int placeholderSoWhite = R.drawable.selected_radius;
+    public static final int errorSoWhite = R.drawable.selected_radius;
     // public static final int soWhite = R.color.white;
 
     /*
@@ -58,15 +64,36 @@ public class ImageLoaderUtil {
     public static void loadImageSize(Context context, String url, ImageView imageView, int width, int height) {
         RequestOptions options = new RequestOptions()
                 .centerCrop()
-                .placeholder(placeholderSoWhite) //占位图
+                .placeholder(R.color.white) //占位图
                 .error(R.color.white)       //错误图
                 .override(width, height)
-                // .priority(Priority.HIGH)
+                .priority(Priority.HIGH)
                 .diskCacheStrategy(DiskCacheStrategy.ALL);
         Glide.with(context).load(url).apply(options).into(imageView);
 
     }
 
+    /**
+     * Glide 设置图片适应屏幕
+     *
+     * @param context
+     * @param view
+     * @param url
+     */
+    public static void setGlideim(Context context, final View view, String url) {
+        Glide.with(context).load(url).into(new SimpleTarget<Drawable>() {
+            @Override
+            public void onResourceReady(Drawable resource, Transition<? super Drawable> transition) {
+                int w = resource.getMinimumWidth();
+                int h = resource.getMinimumHeight();
+                LogUtils.w("手机----------w" + ScreenUtils.getScreenWidth(), "33-----------w---" + w + "---------h--------" + h);
+                view.setLayoutParams(new LinearLayout.LayoutParams(ScreenUtils.getScreenWidth(), (ScreenUtils.getScreenWidth() * h) / w));//720*365
+                view.setBackground(resource);
+
+            }
+
+        });
+    }
 
     /**
      * 禁用内存缓存功能
@@ -236,7 +263,7 @@ public class ImageLoaderUtil {
                             .load(url)
                             .submit();
                     final File imageFile = target.get();
-                    Log.d("logcat", "下载好的图片文件路径="+imageFile.getPath());
+                    Log.d("logcat", "下载好的图片文件路径=" + imageFile.getPath());
 //                    runOnUiThread(new Runnable() {
 //                        @Override
 //                        public void run() {

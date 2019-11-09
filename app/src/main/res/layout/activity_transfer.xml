@@ -11,7 +11,7 @@
     <LinearLayout
         style="@style/MatchWrap.Vertical"
         android:layout_marginTop="@dimen/icon_width_height_10"
-        android:background="@color/black_p"
+        android:background="@color/black_b"
         android:paddingStart="@dimen/icon_width_height_20"
         android:paddingLeft="@dimen/icon_width_height_20">
 
@@ -23,13 +23,14 @@
             android:textColor="@color/white" />
 
         <EditText
-            android:singleLine="true"
+
             android:id="@+id/et_account_number"
             style="@style/MatchWrap"
             android:background="@null"
             android:hint="@string/please_fill_in_the_account_number"
             android:paddingTop="@dimen/start_or_end_5"
             android:paddingBottom="@dimen/start_or_end_5"
+            android:singleLine="true"
             android:textColor="@color/white"
             android:textColorHint="@color/p_white_test"
             android:textSize="@dimen/text_size_14" />
@@ -44,13 +45,14 @@
             android:textColor="@color/white" />
 
         <EditText
-             android:singleLine="true"
             android:id="@+id/et_transfer_amount"
             style="@style/MatchWrap"
             android:background="@null"
             android:hint="@string/Please_fill_in_the_transfer_amount"
+            android:inputType="number"
             android:paddingTop="@dimen/start_or_end_5"
             android:paddingBottom="@dimen/start_or_end_5"
+            android:singleLine="true"
             android:textColor="@color/white"
             android:textColorHint="@color/p_white_test"
             android:textSize="@dimen/text_size_14" />

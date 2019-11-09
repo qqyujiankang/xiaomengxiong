@@ -52,12 +52,20 @@ public class Contractrecordadapetr extends ManagerAdapter {
             tvJieidian.setText(contractrecord.getTimename());
             tvTeam.setText(contractrecord.getNumber());
             tvActiveMember.setText(contractrecord.getTime());
-            if (!contractrecord.getHour24().equals("")) {
-                CountDown countDown = new CountDown(tvPerformance,
-                        Long.parseLong(contractrecord.getHour24()) - (TimeUtils.getNowMills()/1000));
-                countDown.timerStart();
-            }
+            if (contractrecord.getState() == 0) {
+                if (contractrecord.getHour24().equals("null")) {
+                    tvPerformance.setText("时间已终止");
+                } else {
+                    CountDown countDown = new CountDown(tvPerformance,
+                            Long.parseLong(contractrecord.getHour24()) - (TimeUtils.getNowMills() / 1000), 0);
+                    countDown.timerStart();
+                }
 
+            } else if (contractrecord.getState() == 1) {
+                tvPerformance.setText("匹配中");
+            } else if (contractrecord.getState() == 3) {
+                tvPerformance.setText("时间已终止");
+            }
 
 
         }

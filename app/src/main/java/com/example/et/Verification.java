@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.widget.TextView;
 
+import com.example.et.Activity.RegisterActivity;
 import com.example.et.Ustlis.ActivityUtils;
 import com.example.et.Ustlis.CountDownTimerUtils;
 import com.example.et.Ustlis.ToastUtils;
@@ -50,6 +51,7 @@ public class Verification {
                 jsonObject.put("phone", CacheUtils.getInstance().getString(CacheConstants.PHONE));
 
             }else {
+                jsonObject.put("quhao", RegisterActivity.quhao);
                 jsonObject.put("phone",phone);
             }
             jsonObject.put("types", anInt);

@@ -28,12 +28,16 @@
             android:layout_marginRight="@dimen/icon_width_height_20">
 
             <ImageView
+                android:layout_marginEnd="@dimen/icon_width_height_20"
+                android:layout_marginTop="@dimen/start_or_end_10"
+                android:layout_marginBottom="@dimen/start_or_end_10"
                 android:id="@+id/iv_holder"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginRight="@dimen/icon_width_height_10" />
 
             <ImageView
+
                 style="@style/WrapWrap"
                 android:layout_gravity="center_vertical"
                 android:src="@mipmap/bank" />
