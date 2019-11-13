@@ -14,6 +14,7 @@
             android:focusableInTouchMode="false" />
 
         <TextView
+            android:textSize="@dimen/text_size_12"
             android:id="@+id/tv_name"
             style="@style/WrapWrap"
             android:layout_marginStart="@dimen/icon_width_height_20"

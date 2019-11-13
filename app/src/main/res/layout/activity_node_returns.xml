@@ -12,7 +12,7 @@
         android:id="@+id/list_item"
         style="@style/MatchWrap"
         android:layout_marginTop="@dimen/start_or_end_10"
-        android:background="@color/black_01"
+        android:background="#121E2E"
         android:divider="@color/textcolor_yellow"
         android:dividerHeight="1dp" />
 

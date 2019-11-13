@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="@color/black_01">
 
     <LinearLayout
@@ -64,7 +64,7 @@
                 android:button="@drawable/checkbox1"
                 android:paddingLeft="10dip"
                 android:text="@string/ets"
-                android:textColor="@color/orange" />
+                android:textColor="#6F8AAC" />
             /
         </RelativeLayout>
     </LinearLayout>

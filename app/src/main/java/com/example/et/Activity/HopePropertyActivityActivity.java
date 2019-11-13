@@ -106,6 +106,7 @@ public class HopePropertyActivityActivity extends BaseActivity {
     protected void onResume() {
         super.onResume();
         if (aBoolean == true) {
+            currencyaddresses = new ArrayList<>();
             requestDatas();
         }
 
@@ -124,6 +125,7 @@ public class HopePropertyActivityActivity extends BaseActivity {
             tvRental.setText(ass.getName());
             tvUsable.setText(getString(R.string.balance));
             tvConvert.setText(StringUtils.calculateProfit(Double.valueOf(ass.getNumber()), 5));
+            publicOther.setVisibility(View.GONE);
         } else {
             RlBanl.setText(ass.getName());
             tvRental.setText(StringUtils.calculateProfit(Double.valueOf(ass.getNumber()), 5));
@@ -254,7 +256,12 @@ public class HopePropertyActivityActivity extends BaseActivity {
                             try {
                                 JSONArray myJsonObject = new JSONArray(map.get(KeyValueConstants.DATA).toString());
                                 for (int i = 0; i < myJsonObject.length(); i++) {
-                                    currencyaddresses.add(new Currencyaddress(myJsonObject.getString(i), ass.getName(), ass.getId()));
+                                    if (currencyaddresses.size() == 0) {
+                                        currencyaddresses.add(new Currencyaddress(myJsonObject.getString(i), ass.getName(), ass.getId()));
+                                    }else {
+
+                                        currencyaddresses.remove(i);
+                                    }
                                 }
 
                                 if (currencyaddresses.size() != 0) {

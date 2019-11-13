@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <string name="app_name">ET爸爸</string>
+    <string name="app_name">ET联盟</string>
     <string name="login_ID">登录账号</string>
     <string name="Mobile_phone_number_email">手机号/邮箱</string>
     <string name="password">密码</string>
@@ -109,7 +108,7 @@
     <string name="Please_fill_in_the_transfer_amount">請填寫轉出金額，不得小於10</string>
     <string name="currency">幣種</string>
     <string name="Have_people">產生人：</string>
-    <string name="time">時間</string>
+    <string name="time">時間:</string>
     <string name="number">帳號</string>
     <string name="Is_binding">已綁定</string>
     <string name="Please_enter_amount">請輸入金額</string>
@@ -179,5 +178,12 @@
     <string name="tets1">最少提币100</string>
     <string name="ter">今日预约比例</string>
     <string name="ets">不再提示</string>
+    <string name="t1">动态收益</string>
+    <string name="t2">节点</string>
+    <string name="t4">超级节点</string>
+    <string name="t6">推荐超级节点</string>
+    <string name="t3">合约本金</string>
+    <string name="test2">已有账号，立即登录</string>
+    <string name="terd">静态收益</string>
 
 </resources>

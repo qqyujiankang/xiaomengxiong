@@ -18,12 +18,14 @@
             android:layout_toLeftOf="@+id/tv_compile">
 
             <TextView
+                android:textSize="@dimen/text_size_11"
                 android:id="@+id/tv_address"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/p_white_test" />
 
             <TextView
+                android:textSize="@dimen/text_size_14"
                 android:id="@+id/tv_address_binding"
                 style="@style/WrapWrap"
                 android:textColor="@color/white" />
@@ -31,6 +33,7 @@
         </LinearLayout>
 
         <TextView
+            android:textSize="@dimen/text_size_11"
             android:id="@+id/tv_compile"
             style="@style/WrapWrap"
             android:layout_alignParentRight="true"

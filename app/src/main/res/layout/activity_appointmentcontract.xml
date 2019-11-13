@@ -19,29 +19,38 @@
 
         <TextView
             style="@style/WrapWrap"
-            android:layout_marginStart="@dimen/start_or_end_20"
-            android:layout_marginLeft="@dimen/start_or_end_20"
+            android:layout_marginStart="@dimen/panding_or_margin_15"
+            android:layout_marginLeft="@dimen/panding_or_margin_15"
             android:text="@string/money"
-            android:textColor="@color/white" />
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_11" />
 
         <RelativeLayout
-            android:layout_marginTop="@dimen/start_or_end_10"
             style="@style/MatchWrap"
-            android:layout_marginStart="@dimen/start_or_end_20"
-            android:layout_marginLeft="@dimen/start_or_end_20">
+            android:layout_marginStart="@dimen/panding_or_margin_15"
+            android:layout_marginLeft="@dimen/panding_or_margin_15"
+            android:layout_marginTop="@dimen/start_or_end_10">
 
             <TextView
                 android:id="@+id/tvUSDT"
                 style="@style/MatchWrap"
                 android:hint="@string/Please_select_contract_amount"
                 android:textColor="@color/white"
-                android:textColorHint="@color/white" />
+                android:textColorHint="@color/white"
+                android:textSize="@dimen/text_size_14" />
 
             <ImageView style="@style/WrapWrap.ImageView_bank" />
         </RelativeLayout>
 
     </LinearLayout>
 
-    <include layout="@layout/public_button1" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp">
+
+        <include layout="@layout/public_button1" />
+    </LinearLayout>
+
 
 </LinearLayout>

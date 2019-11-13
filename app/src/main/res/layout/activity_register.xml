@@ -59,12 +59,15 @@
                 <TextView
                     style="@style/WrapWrap"
                     android:text="@string/nickname"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size_11" />
 
                 <EditText
                     android:id="@+id/et_nickname"
+
                     style="@style/MatchWrap.et_1"
-                    android:hint="@string/Please_enter_nickname" />
+                    android:hint="@string/Please_enter_nickname"
+                    android:textSize="@dimen/text_size_14" />
 
                 <LinearLayout
                     style="@style/MatchWrap"
@@ -87,7 +90,8 @@
                     android:id="@+id/tv_phone"
                     style="@style/WrapWrap"
                     android:text="@string/phone"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size_11" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -138,7 +142,8 @@
                 <TextView
                     style="@style/WrapWrap"
                     android:text="@string/verification_code"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size_11" />
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -149,7 +154,8 @@
                         android:id="@+id/et_code"
                         style="@style/MatchWrap.et_1"
                         android:layout_toLeftOf="@+id/tv_get_cot"
-                        android:hint="@string/Please_enter_verification_code" />
+                        android:hint="@string/Please_enter_verification_code"
+                        android:textSize="@dimen/text_size_14" />
 
                     <TextView
 
@@ -159,7 +165,7 @@
                         android:layout_centerVertical="true"
                         android:text="@string/get_cot"
                         android:textColor="@color/orange"
-                        android:textSize="@dimen/text_size_14" />
+                        android:textSize="@dimen/text_size_11" />
                 </RelativeLayout>
 
 
@@ -182,12 +188,14 @@
                 <TextView
                     style="@style/WrapWrap"
                     android:text="@string/password"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textSize="11sp" />
 
                 <EditText
                     android:id="@+id/et_password"
                     style="@style/MatchWrap.et_1.inputType"
-                    android:hint="@string/enter_your_PIN" />
+                    android:hint="@string/enter_your_PIN"
+                    android:textSize="@dimen/text_size_14" />
 
                 <LinearLayout
                     style="@style/MatchWrap"
@@ -208,12 +216,14 @@
                 <TextView
                     style="@style/WrapWrap"
                     android:text="@string/password"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size_11" />
 
                 <EditText
                     android:id="@+id/et_password_ok"
                     style="@style/MatchWrap.et_1.inputType"
                     android:hint="@string/enter_your_PIN_1"
+                    android:textSize="@dimen/text_size_14"
 
                     />
 
@@ -236,13 +246,15 @@
                 <TextView
                     style="@style/WrapWrap"
                     android:text="@string/payment_code"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size_11" />
 
                 <EditText
                     android:id="@+id/et_payment_code"
                     style="@style/MatchWrap.et_1.inputType"
                     android:hint="@string/phoenumber_payment_code_ok"
-                    android:maxLength="6" />
+                    android:maxLength="6"
+                    android:textSize="@dimen/text_size_14" />
 
                 <LinearLayout
                     style="@style/MatchWrap"
@@ -263,13 +275,15 @@
                 <TextView
                     style="@style/WrapWrap"
                     android:text="@string/payment_code_ok"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size_11" />
 
                 <EditText
                     android:id="@+id/et_payment_code_ok"
                     style="@style/MatchWrap.et_1.inputType"
                     android:hint="@string/phoenumber_payment_code_ok_0"
-                    android:maxLength="6" />
+                    android:maxLength="6"
+                    android:textSize="@dimen/text_size_14" />
 
                 <LinearLayout
                     style="@style/MatchWrap"
@@ -290,13 +304,15 @@
                 <TextView
                     style="@style/WrapWrap"
                     android:text="@string/Invitation_code"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size_11" />
 
                 <EditText
                     android:id="@+id/et_invitation_code"
                     style="@style/MatchWrap.et_1"
+                    android:hint="@string/Please_enter_the_invitation_code"
 
-                    android:hint="@string/Please_enter_the_invitation_code" />
+                    android:textSize="@dimen/text_size_14" />
 
                 <LinearLayout
                     style="@style/MatchWrap"
@@ -323,8 +339,9 @@
                 style="@style/MatchWrap"
                 android:layout_marginTop="@dimen/start_or_end_10"
                 android:gravity="center"
-                android:text="已有账号，立即登录"
-                android:textColor="@color/orange" />
+                android:text="@string/test2"
+                android:textColor="@color/orange"
+                android:textSize="@dimen/text_size_14" />
         </LinearLayout>
     </ScrollView>
 

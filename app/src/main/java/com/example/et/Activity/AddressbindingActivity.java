@@ -40,6 +40,7 @@ import butterknife.OnClick;
  */
 public class AddressbindingActivity extends BaseActivity {
 
+
     @BindView(R.id.public_back)
     TextView publicBack;
     @BindView(R.id.public_title_tv)
@@ -54,18 +55,14 @@ public class AddressbindingActivity extends BaseActivity {
     EditText etCode;
     @BindView(R.id.tv_get_cot)
     TextView tvGetCot;
+    @BindView(R.id.tv)
+    TextView tv;
     @BindView(R.id.et_password)
     EditText etPassword;
     @BindView(R.id.public_button)
     Button publicButton;
     @BindView(R.id.ll_binding_usDt)
     LinearLayout llBindingUsDt;
-    @BindView(R.id.tv_address_binding)
-    TextView tvAddressBinding;
-    @BindView(R.id.ll_USDT)
-    LinearLayout llUSDT;
-    @BindView(R.id.tv)
-    TextView tv;
     private Context context;
     private Lifeful lifeful;
     private int id;
@@ -103,31 +100,18 @@ public class AddressbindingActivity extends BaseActivity {
         if (xiugan != null) {
             publicTitleTv.setText(stringname + getString(R.string.revision_Binding_address));
             tv.setText(stringname + getString(R.string.site));
+          //  etPassword.setHint(getString(R.string.please_enter) + stringname + getString(R.string.site));
+            etPassword.setText(addressbinding);
+        } else if (tepy != null) {
+            tv.setText(addressbinding + getString(R.string.site));
+            etPassword.setHint(getString(R.string.please_enter) + addressbinding + getString(R.string.site));
+
+            llBindingUsDt.setVisibility(View.VISIBLE);
+            publicTitleTv.setText(addressbinding + getString(R.string.address_binding));
         } else {
             publicTitleTv.setText(getString(R.string.USDT_address_binding));
         }
         publicButton.setText(getString(R.string.confirm));
-        if (!CacheUtils.getInstance().getString(CacheConstants.usdtaddress).equals("null")) {
-            if (id == 0) {
-                llBindingUsDt.setVisibility(View.GONE);
-                tvAddressBinding.setText(CacheUtils.getInstance().getString(CacheConstants.usdtaddress));
-                publicOther.setText(getString(R.string.revision_Binding_address));
-            } else if (tepy != null) {
-                tv.setText(addressbinding + getString(R.string.site));
-                etPassword.setHint(getString(R.string.please_enter) + addressbinding + getString(R.string.site));
-                llUSDT.setVisibility(View.GONE);
-                llBindingUsDt.setVisibility(View.VISIBLE);
-                publicTitleTv.setText(addressbinding + getString(R.string.address_binding));
-            } else {
-                llUSDT.setVisibility(View.GONE);
-                llBindingUsDt.setVisibility(View.VISIBLE);
-                etPassword.setText(addressbinding);
-            }
-
-        } else {
-            llBindingUsDt.setVisibility(View.VISIBLE);
-        }
-
     }
 
     @OnClick({R.id.public_back, R.id.tv_get_cot, R.id.public_button, R.id.public_other})
@@ -145,13 +129,17 @@ public class AddressbindingActivity extends BaseActivity {
                 if (!StringUtils.isEmpty(etPassword.getText().toString().trim())) {
                     datat();
                 } else {
-                    ToastUtils.showShort(R.string.Please_enter_the_USDT_address);
+                    if (addressbinding != null) {
+                        ToastUtils.showShort(getString(R.string.please_enter) + addressbinding + getString(R.string.site));
+                    } else {
+                        ToastUtils.showShort(R.string.Please_enter_the_USDT_address);
+                    }
                 }
 
                 break;
             case R.id.public_other:
                 llBindingUsDt.setVisibility(View.VISIBLE);
-                llUSDT.setVisibility(View.GONE);
+
                 publicOther.setVisibility(View.GONE);
 
                 break;
@@ -172,22 +160,28 @@ public class AddressbindingActivity extends BaseActivity {
                 jsonObject.put("type", id);
             }
             if (xiugan != null) {
-                jsonObject.put("yaddress", addressbinding);
-                url = Constant.upgoldaddress1;
+                if (id == 8) {
+                    //jsonObject.put("yaddress", addressbinding);
+                    jsonObject.put("type", "usdt");
+                    url = Constant.upgoldaddress;
+                } else if (id == 7) {
+                    jsonObject.put("yaddress", addressbinding);
+                    url = Constant.upgoldaddress1;
+                }
             } else {
                 url = Constant.upgoldaddress;
             }
             jsonObject.put("address", etPassword.getText().toString().trim());
             jsonObject.put("code", etCode.getText().toString());
 
-
+            LogUtils.i("x===========" + url + "====================" + jsonObject);
             TaskPresenterUntils.lifeful(url, jsonObject, new OnLoadLifefulListener<String>(null, new OnLoadListener<String>() {
                 @Override
                 public void onSuccess(String success) {
                     Map<String, Object> resultMap = ParseUtils.analysisListTypeDatasAndCount((Activity) context, success, null, true).getStringMap();
                     if (resultMap.get(KeyValueConstants.CODE).equals("200")) {
                         CacheUtils.getInstance().put(CacheConstants.usdtaddress, etPassword.getText().toString().trim());
-                        HopePropertyActivityActivity.aBoolean=true;
+                        HopePropertyActivityActivity.aBoolean = true;
                         finish();
                     }
                     ToastUtils.showShort(resultMap.get(KeyValueConstants.MSG).toString());

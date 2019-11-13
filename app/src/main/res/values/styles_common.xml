@@ -114,7 +114,7 @@
         <item name="android:layout_weight">1</item>
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">30dp</item>
-        <item name="android:background">@drawable/bg_radius5_blue</item>
+        <item name="android:background">@drawable/bg_gray2</item>
     </style>
     <!--    返回键
 
@@ -122,8 +122,8 @@
     <style name="WrapWrap.ImageView_bank">
         <item name="android:layout_alignParentRight">true</item>
         <item name="android:layout_centerVertical">true</item>
-        <item name="android:layout_marginEnd">@dimen/icon_width_height_20</item>
-        <item name="android:layout_marginRight">@dimen/icon_width_height_20</item>
+        <item name="android:layout_marginEnd">@dimen/panding_or_margin_15</item>
+        <item name="android:layout_marginRight">@dimen/panding_or_margin_15</item>
         <item name="android:src">@mipmap/bank</item>
     </style>
     <!--Dialog 底部弹出的动画设置设置-->

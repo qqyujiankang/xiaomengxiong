@@ -7,7 +7,134 @@
 
     <include layout="@layout/public_title" />
 
-    <include
+    <LinearLayout
+        android:id="@+id/ll"
+        style="@style/MatchWrap.Vertical"
+        android:visibility="gone">
 
-        layout="@layout/pubic_swpie_refres" />
+        <include
+
+            layout="@layout/pubic_swpie_refres" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_a"
+        style="@style/MatchMatch.Vertical"
+        android:background="@color/black_b">
+
+        <RelativeLayout
+            android:id="@+id/_r1"
+            style="@style/MatchWrap"
+            android:layout_marginStart="@dimen/start_or_end_15"
+            android:layout_marginTop="@dimen/start_or_end_10"
+            android:layout_marginEnd="@dimen/start_or_end_15">
+
+            <TextView
+                style="@style/WrapWrap"
+                android:text="@string/terd"
+                android:textColor="@color/orange" />
+
+            <TextView
+                android:id="@+id/tv_jiangtaishuyi"
+                style="@style/WrapWrap"
+                android:layout_alignParentRight="true"
+                android:textColor="@color/white" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/_r2"
+            style="@style/MatchWrap"
+            android:layout_marginStart="@dimen/start_or_end_15"
+            android:layout_marginTop="@dimen/start_or_end_10"
+            android:layout_marginEnd="@dimen/start_or_end_15">
+
+            <TextView
+                style="@style/WrapWrap"
+                android:text="@string/t1"
+                android:textColor="@color/orange" />
+
+            <TextView
+                android:id="@+id/tv_dogntai"
+                style="@style/WrapWrap"
+                android:layout_alignParentRight="true"
+                android:textColor="@color/white" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/_r3"
+            style="@style/MatchWrap"
+            android:layout_marginStart="@dimen/start_or_end_15"
+            android:layout_marginTop="@dimen/start_or_end_10"
+            android:layout_marginEnd="@dimen/start_or_end_15">
+
+            <TextView
+                style="@style/WrapWrap"
+                android:text="@string/t2"
+                android:textColor="@color/orange" />
+
+            <TextView
+                android:id="@+id/tv_jiedian"
+                style="@style/WrapWrap"
+                android:layout_alignParentRight="true"
+                android:textColor="@color/white" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/_r4"
+            style="@style/MatchWrap"
+            android:layout_marginStart="@dimen/start_or_end_15"
+            android:layout_marginTop="@dimen/start_or_end_10"
+            android:layout_marginEnd="@dimen/start_or_end_15">
+
+            <TextView
+                style="@style/WrapWrap"
+                android:text="@string/t3"
+                android:textColor="@color/orange" />
+
+            <TextView
+                android:id="@+id/tv_heyuechentgb"
+                style="@style/WrapWrap"
+                android:layout_alignParentRight="true"
+                android:textColor="@color/white" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/_r5"
+            style="@style/MatchWrap"
+            android:layout_marginStart="@dimen/start_or_end_15"
+            android:layout_marginTop="@dimen/start_or_end_10"
+            android:layout_marginEnd="@dimen/start_or_end_15">
+
+            <TextView
+                style="@style/WrapWrap"
+                android:text="@string/t4"
+                android:textColor="@color/orange" />
+
+            <TextView
+                android:id="@+id/tv_chaojia"
+                style="@style/WrapWrap"
+                android:layout_alignParentRight="true"
+                android:textColor="@color/white" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/_r6"
+            style="@style/MatchWrap"
+            android:layout_marginStart="@dimen/start_or_end_15"
+            android:layout_marginTop="@dimen/start_or_end_10"
+            android:layout_marginEnd="@dimen/start_or_end_15">
+
+            <TextView
+                style="@style/WrapWrap"
+                android:text="@string/t6"
+                android:textColor="@color/orange" />
+
+            <TextView
+                android:id="@+id/tv_tuijainjiangtaishuyi"
+                style="@style/WrapWrap"
+                android:layout_alignParentRight="true"
+                android:textColor="@color/white" />
+        </RelativeLayout>
+    </LinearLayout>
+
 </LinearLayout>

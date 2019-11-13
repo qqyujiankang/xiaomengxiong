@@ -17,14 +17,17 @@
         <RelativeLayout
             android:id="@+id/Rl_Change_login_password"
             style="@style/MatchWrap"
-            android:layout_marginStart="@dimen/icon_width_height_20"
-            android:layout_marginLeft="@dimen/icon_width_height_20"
-            android:padding="@dimen/icon_width_height_10">
+            android:layout_marginStart="@dimen/start_or_end_15"
+            android:layout_marginLeft="@dimen/start_or_end_15"
+            android:padding="@dimen/start_or_end_5">
 
             <TextView
                 style="@style/WrapWrap"
+                android:layout_marginTop="@dimen/start_or_end_10"
+                android:layout_marginBottom="@dimen/start_or_end_10"
                 android:text="@string/Change_login_password"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_14" />
 
             <ImageView style="@style/WrapWrap.ImageView_bank" />
         </RelativeLayout>
@@ -34,14 +37,17 @@
         <RelativeLayout
             android:id="@+id/Rl_Set_security_password"
             style="@style/MatchWrap"
-            android:layout_marginStart="@dimen/icon_width_height_20"
-            android:layout_marginLeft="@dimen/icon_width_height_20"
-            android:padding="@dimen/icon_width_height_10">
+            android:layout_marginStart="@dimen/start_or_end_15"
+            android:layout_marginLeft="@dimen/start_or_end_15"
+            android:padding="@dimen/start_or_end_5">
 
             <TextView
                 style="@style/WrapWrap"
+                android:layout_marginTop="@dimen/start_or_end_10"
+                android:layout_marginBottom="@dimen/start_or_end_10"
                 android:text="@string/Set_security_password"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_14" />
 
             <ImageView style="@style/WrapWrap.ImageView_bank" />
         </RelativeLayout>

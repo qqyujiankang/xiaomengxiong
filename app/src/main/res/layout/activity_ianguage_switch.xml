@@ -16,8 +16,8 @@
         <RelativeLayout
             android:id="@+id/Rl_"
             style="@style/MatchWrap.Vertical"
-            android:layout_marginStart="@dimen/icon_width_height_20"
-            android:layout_marginLeft="@dimen/icon_width_height_20"
+            android:layout_marginStart="@dimen/start_or_end_15"
+            android:layout_marginLeft="@dimen/start_or_end_15"
             android:paddingTop="@dimen/start_or_end_10"
             android:paddingBottom="@dimen/start_or_end_10">
 
@@ -25,7 +25,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/language_cn"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_14" />
 
             <ImageView style="@style/WrapWrap.ImageView_bank" />
 
@@ -48,8 +49,8 @@
         <RelativeLayout
             android:id="@+id/Rl_1"
             style="@style/MatchWrap.Vertical"
-            android:layout_marginStart="@dimen/icon_width_height_20"
-            android:layout_marginLeft="@dimen/icon_width_height_20"
+            android:layout_marginStart="@dimen/start_or_end_15"
+            android:layout_marginLeft="@dimen/start_or_end_15"
             android:paddingTop="@dimen/start_or_end_10"
             android:paddingBottom="@dimen/start_or_end_10">
 
@@ -57,7 +58,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/language_traditional"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_14" />
 
             <ImageView style="@style/WrapWrap.ImageView_bank" />
 
@@ -68,8 +70,8 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_below="@+id/Rl_1"
-            android:layout_marginStart="@dimen/icon_width_height_20"
-            android:layout_marginEnd="@dimen/icon_width_height_20"
+            android:layout_marginStart="@dimen/start_or_end_15"
+            android:layout_marginEnd="@dimen/start_or_end_15"
             android:background="@color/textcolor_yellow" />
     </LinearLayout>
 
@@ -80,8 +82,8 @@
         <RelativeLayout
             android:id="@+id/Rl_2"
             style="@style/MatchWrap.Vertical"
-            android:layout_marginStart="@dimen/icon_width_height_20"
-            android:layout_marginLeft="@dimen/icon_width_height_20"
+            android:layout_marginStart="@dimen/start_or_end_15"
+            android:layout_marginLeft="@dimen/start_or_end_15"
             android:paddingTop="@dimen/start_or_end_10"
             android:paddingBottom="@dimen/start_or_end_10">
 
@@ -89,7 +91,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/language_en"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_14" />
 
             <ImageView style="@style/WrapWrap.ImageView_bank" />
 

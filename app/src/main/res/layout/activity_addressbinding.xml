@@ -11,22 +11,22 @@
 
     <LinearLayout
         android:id="@+id/ll_binding_usDt"
-        style="@style/MatchMatch.Vertical"
-        android:visibility="gone">
+        style="@style/MatchMatch.Vertical">
 
         <TextView
             style="@style/WrapWrap"
-            android:layout_marginLeft="30dp"
+            android:layout_marginLeft="@dimen/start_or_end_15"
             android:layout_marginTop="30dp"
             android:text="@string/verification_code"
             android:textColor="@color/white"
-            android:textSize="@dimen/text_size_12" />
+            android:textSize="@dimen/text_size_11" />
 
         <RelativeLayout
             style="@style/MatchWrap.Horizontal"
-            android:layout_marginStart="30dp"
+            android:layout_marginStart="@dimen/panding_or_margin_15"
+            android:layout_marginTop="@dimen/start_or_end_5"
             android:layout_marginEnd="30dp"
-            android:layout_marginBottom="@dimen/icon_width_height_10">
+            android:layout_marginBottom="@dimen/panding_or_margin_15">
 
 
             <EditText
@@ -37,7 +37,7 @@
                 android:inputType="number"
                 android:textColor="@color/white"
                 android:textColorHint="@color/silver"
-                android:textSize="@dimen/text_size_16" />
+                android:textSize="@dimen/text_size_14" />
 
             <TextView
                 android:id="@+id/tv_get_cot"
@@ -46,7 +46,7 @@
                 android:layout_centerVertical="true"
                 android:text="@string/get_cot"
                 android:textColor="@color/orange"
-                android:textSize="@dimen/text_size_16" />
+                android:textSize="@dimen/text_size_11" />
 
         </RelativeLayout>
 
@@ -54,9 +54,9 @@
 
         <LinearLayout
             style="@style/MatchWrap.Vertical"
-            android:layout_marginStart="30dp"
+            android:layout_marginStart="@dimen/panding_or_margin_15"
             android:layout_marginTop="20dp"
-            android:layout_marginEnd="30dp">
+            android:layout_marginEnd="@dimen/start_or_end_15">
 
             <TextView
                 android:id="@+id/tv"
@@ -64,18 +64,18 @@
                 android:layout_marginBottom="@dimen/icon_width_height_10"
                 android:text="@string/USDT_address"
                 android:textColor="@color/white"
-                android:textSize="@dimen/text_size_12" />
+                android:textSize="@dimen/text_size_11" />
 
             <EditText
-                android:singleLine="true"
                 android:id="@+id/et_password"
                 style="@style/MatchWrap"
                 android:layout_marginBottom="@dimen/icon_width_height_10"
                 android:background="@null"
                 android:hint="@string/Please_enter_the_USDT_address"
+                android:singleLine="true"
                 android:textColor="@color/white"
                 android:textColorHint="@color/silver"
-                android:textSize="@dimen/text_size_16" />
+                android:textSize="@dimen/text_size_14" />
 
 
         </LinearLayout>
@@ -89,29 +89,6 @@
 
             <include layout="@layout/public_button1" />
         </RelativeLayout>
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/ll_USDT"
-        style="@style/MatchWrap.Vertical"
-        android:layout_marginTop="@dimen/icon_width_height_10"
-        android:background="@color/black_p"
-        android:paddingTop="@dimen/icon_width_height_10"
-        android:paddingBottom="@dimen/icon_width_height_10">
-
-        <TextView
-            style="@style/WrapWrap"
-            android:layout_marginStart="@dimen/icon_width_height_20"
-            android:layout_marginLeft="@dimen/icon_width_height_20"
-            android:text="@string/USDT"
-            android:textColor="@color/orange" />
-
-        <TextView
-            android:id="@+id/tv_address_binding"
-            style="@style/MatchWrap"
-            android:layout_marginStart="@dimen/icon_width_height_20"
-            android:layout_marginLeft="@dimen/icon_width_height_20"
-            android:textColor="@color/white" />
     </LinearLayout>
 
 

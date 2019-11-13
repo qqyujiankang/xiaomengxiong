@@ -32,7 +32,9 @@ import com.example.et.R;
 import com.example.et.Ustlis.ActivityUtils;
 import com.example.et.Ustlis.GsonUtil;
 import com.example.et.Ustlis.ListDatasUtils;
+import com.example.et.Ustlis.ScreenUtils;
 import com.example.et.Ustlis.StatusBarUtils;
+import com.example.et.View.GridSpacingItemDecoration;
 import com.example.et.View.MyDiog;
 import com.example.et.View.MyGridView;
 import com.example.et.entnty.DataFlow;
@@ -179,9 +181,13 @@ public class HeadFragment extends BaseFragment implements AdapterView.OnItemClic
 
                     if (map.get("code").toString().equals("200.0")) {
                         if (d == false) {
+//                            MyDiog myDiog = new MyDiog(context, map.get("data").toString(), 0);
+//                            myDiog.show();
+                            // d = true;
                             MyDiog myDiog = new MyDiog(context, map.get("data").toString(), 0);
                             myDiog.show();
-                            // d = true;
+                            myDiog.setCanceledOnTouchOutside(false);
+                            myDiog.getWindow().setLayout(ScreenUtils.getScreenWidth() - 100, LinearLayout.LayoutParams.WRAP_CONTENT);
                         }
 
                     }
@@ -224,7 +230,9 @@ public class HeadFragment extends BaseFragment implements AdapterView.OnItemClic
 
                     if (objectPagebean.getStringMap().get(KeyValueConstants.CODE).equals("200")) {
                         AutoPollAdapter adapter = new AutoPollAdapter((ArrayList<DataFlow>) (ArrayList) objectPagebean.getList());
-                        recycleView.addItemDecoration(new DividerItemDecoration(context, DividerItemDecoration.VERTICAL));
+                        //recycleView.addItemDecoration(new DividerItemDecoration(context, DividerItemDecoration.VERTICAL));
+                        // recycleView.addItemDecoration(new GridSpacingItemDecoration(1, 10, false));
+                     //   recycleView.setBackground(context.getResources().getColor(R.color.white));
                         recycleView.setAdapter(adapter);
                         recycleView.start();
                     }
@@ -256,20 +264,24 @@ public class HeadFragment extends BaseFragment implements AdapterView.OnItemClic
                             tvRGold.setText(CacheUtils.getInstance().getString(CacheConstants.r_gold));
                             tvRHuilv.setText(StringUtils.calculateProfit(Double.parseDouble(CacheUtils.getInstance().getString(CacheConstants.r_huil)), 5));
                             double r_zd = Double.parseDouble(CacheUtils.getInstance().getString(CacheConstants.r_zd));
-                            tvRZd.setText(StringUtils.calculateProfit1(r_zd) + getString(R.string.ts1));
+                            //     double r_zd = 5454.5454534;
+
                             if (r_zd > 0) {//你输入的是正数
+                                tvRZd.setText("+" + StringUtils.calculateProfit1(r_zd) + getString(R.string.ts1));
                                 tvRZd.setTextColor(getResources().getColor(R.color.colorPrimaryDark));
                             } else if (r_zd < 0) {//你输入的是负数
+                                tvRZd.setText(StringUtils.calculateProfit1(r_zd) + getString(R.string.ts1));
                                 tvRZd.setTextColor(getResources().getColor(R.color.colorAccent_01));
                             }
                             tvSGold.setText(CacheUtils.getInstance().getString(CacheConstants.s_gold));
                             tvSHuil.setText(StringUtils.calculateProfit(Double.parseDouble(CacheUtils.getInstance().getString(CacheConstants.s_huil)), 5));
                             double s_zd = Double.parseDouble(CacheUtils.getInstance().getString(CacheConstants.s_zd));
-                            tvSZd.setText(StringUtils.calculateProfit1(s_zd) + getString(R.string.ts1));
-                            if (s_zd > 0) {//你输入的是正数
 
+                            if (s_zd > 0) {//你输入的是正数
+                                tvSZd.setText("+" + StringUtils.calculateProfit1(s_zd) + getString(R.string.ts1));
                                 tvSZd.setTextColor(getResources().getColor(R.color.colorPrimaryDark));
                             } else if (s_zd < 0) {//你输入的是负数
+                                tvSZd.setText(StringUtils.calculateProfit1(s_zd) + getString(R.string.ts1));
                                 tvSZd.setTextColor(getResources().getColor(R.color.colorAccent_01));
                             }
 

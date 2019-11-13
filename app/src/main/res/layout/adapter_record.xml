@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical">
 
     <LinearLayout
@@ -13,12 +13,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/icon_width_height_10"
-            android:padding="@dimen/icon_width_height_10">
+           >
 
             <TextView
+                android:layout_marginTop="@dimen/start_or_end_10"
+                android:layout_marginBottom="@dimen/start_or_end_10"
+                android:text="4124424"
                 android:id="@+id/tv_glod"
                 style="@style/WrapWrap"
-                android:textColor="@color/orange" />
+                android:textColor="@color/orange"
+                android:textSize="@dimen/text_size_18" />
 
             <TextView
                 android:id="@+id/tv_type"
@@ -27,7 +31,8 @@
                 android:layout_marginStart="@dimen/icon_width_height_20"
                 android:layout_marginLeft="@dimen/icon_width_height_20"
                 android:layout_marginEnd="@dimen/icon_width_height_20"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_14" />
         </RelativeLayout>
 
         <LinearLayout
@@ -37,12 +42,14 @@
             <TextView
                 style="@style/WrapWrap"
                 android:text="@string/Have_people"
-                android:textColor="@color/p_white_test" />
+                android:textColor="#E5EAFF"
+                android:textSize="@dimen/text_size_12" />
 
             <TextView
                 android:id="@+id/tv_Have_people"
                 style="@style/WrapWrap"
-                android:textColor="@color/p_white_test" />
+                android:textColor="#E5EAFF"
+                android:textSize="12dp" />
         </LinearLayout>
 
         <LinearLayout
@@ -57,9 +64,15 @@
             <TextView
                 android:id="@+id/tv_time"
                 style="@style/WrapWrap"
-                android:layout_marginStart="@dimen/icon_width_height_20"
-                android:layout_marginLeft="@dimen/icon_width_height_20"
+                android:layout_marginStart="@dimen/start_or_end_10"
+                android:layout_marginLeft="@dimen/start_or_end_10"
                 android:textColor="@color/p_white_test" />
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="#192754" />
     </LinearLayout>
 </LinearLayout>

@@ -2,11 +2,11 @@
 <Button xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/public_button"
     style="@style/MatchWrap"
-    android:layout_marginStart="30dp"
-    android:layout_marginLeft="30dp"
+    android:layout_marginStart="@dimen/icon_width_height_20"
+    android:layout_marginLeft="@dimen/icon_width_height_20"
     android:layout_marginTop="60dp"
-    android:layout_marginEnd="30dp"
+    android:layout_marginEnd="@dimen/icon_width_height_20"
     android:background="@drawable/bg_radius5_blue"
     android:text=""
     android:textColor="@color/white"
-    android:textSize="@dimen/text_size_16" />
+    android:textSize="@dimen/text_size_14" />

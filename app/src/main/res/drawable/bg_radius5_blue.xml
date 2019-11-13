@@ -6,11 +6,11 @@
     <!-- 控件外面边框的颜色和宽度  如果选择不要边框的去掉这个就是了-->
     <stroke android:width="1px" android:color="@color/orange"/>
     <!-- 这是设置渐变色属性的如果设置了solid这个属性和gradient两个设置但是只能显示一个效果。-->
-    <!--<gradient-->
-    <!--android:angle="270"-->
-    <!--android:centerColor="#00FFFF"-->
-    <!--android:centerX="0.5"-->
-    <!--android:centerY="0.5"-->
-    <!--android:endColor="#666666"-->
-    <!--android:startColor="#0099FF" />-->
+    <gradient
+    android:angle="180"
+    android:centerColor="#E4B859"
+    android:centerX="0.5"
+    android:centerY="0.5"
+    android:endColor="#F0AD32"
+    android:startColor="#F0AD32" />
 </shape>

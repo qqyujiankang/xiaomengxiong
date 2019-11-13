@@ -14,19 +14,20 @@
         android:background="@color/black_01">
 
         <EditText
-
+            android:textSize="14sp"
             android:textColor="@color/white"
             android:id="@+id/edit_feedback"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_height="180dp"
             android:background="@null"
             android:gravity="start"
             android:hint="@string/Content_of_the_feedback"
-            android:paddingStart="@dimen/start_or_end_20"
-            android:paddingEnd="@dimen/start_or_end_20"
+            android:paddingStart="@dimen/panding_or_margin_15"
+            android:paddingEnd="@dimen/panding_or_margin_15"
             android:textColorHint="@color/p_white_test" />
 
         <TextView
+            android:textSize="@dimen/text_size_14"
             android:id="@+id/tv_cancel"
             style="@style/MatchWrap"
             android:layout_marginRight="@dimen/icon_width_height_10"

@@ -45,8 +45,6 @@ public class GainRecordingAdapter extends ManagerAdapter {
         public void setViewData(int position, List list) {
             GainRecording gainRecording = (GainRecording) list.get(position);
             tvGlod.setText(gainRecording.getNumber() + "  "+gainRecording.getGlod());
-
-
              tvType.setText( gainRecording.getTypes());
             tvHavePeople.setText(gainRecording.getWho());
             tvTime.setText(gainRecording.getTime());

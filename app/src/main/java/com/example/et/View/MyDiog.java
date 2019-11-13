@@ -44,7 +44,9 @@ public class MyDiog extends AlertDialog {
         if (anInt == 0) {
 
             linearLayout.setVisibility(View.VISIBLE);
-            tv_cone.setText(string + "%");
+            int i = new Double(Double.parseDouble(string)).intValue();
+            tv_cone.setText(i + "%");
+
         } else {
 
             linearLayout1.setVisibility(View.VISIBLE);
@@ -53,9 +55,9 @@ public class MyDiog extends AlertDialog {
         checkBox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (checkBox.isChecked()){
+                if (checkBox.isChecked()) {
                     HeadFragment.d = true;
-                }else {
+                } else {
                     HeadFragment.d = false;
                 }
 

@@ -2,24 +2,17 @@ package com.example.et.Activity;
 
 import android.app.Activity;
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.net.http.SslError;
-import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
-import android.webkit.SslErrorHandler;
-import android.webkit.WebSettings;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
+import android.text.SpannableString;
+import android.text.Spanned;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.et.Constant;
 import com.example.et.R;
-import com.example.et.View.MyWebViewClient;
 import com.example.et.util.CacheUtils;
-import com.example.et.util.LogUtils;
 import com.example.et.util.TaskPresenterUntils;
 import com.example.et.util.constant.CacheConstants;
 import com.example.et.util.lifeful.Lifeful;
@@ -29,6 +22,9 @@ import com.example.et.util.realize.ParseUtils;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.sufficientlysecure.htmltextview.HtmlFormatter;
+import org.sufficientlysecure.htmltextview.HtmlFormatterBuilder;
+import org.sufficientlysecure.htmltextview.HtmlResImageGetter;
 
 import java.util.Map;
 
@@ -40,6 +36,7 @@ import butterknife.OnClick;
  * 公告详情
  */
 public class NoticedetailsActivity extends BaseActivity {
+
 
     @BindView(R.id.public_back)
     TextView publicBack;
@@ -56,7 +53,7 @@ public class NoticedetailsActivity extends BaseActivity {
     @BindView(R.id.tv_time)
     TextView tvTime;
     @BindView(R.id.tv_content)
-    WebView webView;
+    TextView tvContent;
     private int nid;
     private Context context;
     private Lifeful lifeful;
@@ -97,8 +94,11 @@ public class NoticedetailsActivity extends BaseActivity {
                     Map<String, Object> resultMap = ParseUtils.analysisListTypeDatasAndCount((Activity) context, success, null, false).getStringMap();
                     tvName.setText(resultMap.get("name").toString());
                     tvTime.setText(resultMap.get("time").toString());
-                    // tvContent.loadData(Html.fromHtml(resultMap.get("text").toString()).toString(), "text/html", "UTF-8");
-                    webView.loadData(getHtmlData(resultMap.get("text").toString()), "text/html;charset=utf-8", "utf-8");
+                   // tvContent.setText(Html.fromHtml(resultMap.get("text").toString()));
+                   //loads html from string and displays cat_pic.png from the app 's drawable folder
+                    Spanned formattedHtml = HtmlFormatter.formatHtml(new HtmlFormatterBuilder().setHtml(resultMap.get("text").toString()).setImageGetter(new HtmlResImageGetter(tvContent.getContext())));
+                    tvContent.setText(formattedHtml);
+                    //webView.loadData(getHtmlData(resultMap.get("text").toString()), "text/html;charset=utf-8", "utf-8");
 
 
                 }
@@ -122,19 +122,19 @@ public class NoticedetailsActivity extends BaseActivity {
         super.initView();
 
         publicTitleTv.setText(R.string.message);
-        WebSettings settings = webView.getSettings();
-        settings.setJavaScriptEnabled(true);
-        settings.setDomStorageEnabled(true);
-        settings.setUseWideViewPort(true);
-        settings.setLoadWithOverviewMode(true);
-        webView.setWebViewClient(new MyWebViewClient(NoticedetailsActivity.this));
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            settings.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.TEXT_AUTOSIZING);
-        } else {
-            settings.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.NORMAL);
-        }
-        webView.setBackgroundColor(0); // 设置背景色
-        webView.getBackground().setAlpha(0); // 设置填充透明度 范围：0-255
+//        WebSettings settings = webView.getSettings();
+//        settings.setJavaScriptEnabled(true);
+//        settings.setDomStorageEnabled(true);
+//        settings.setUseWideViewPort(true);
+//        settings.setLoadWithOverviewMode(true);
+//        webView.setWebViewClient(new MyWebViewClient(NoticedetailsActivity.this));
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+//            settings.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.TEXT_AUTOSIZING);
+//        } else {
+//            settings.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.NORMAL);
+//        }
+//        webView.setBackgroundColor(0); // 设置背景色
+//        webView.getBackground().setAlpha(0); // 设置填充透明度 范围：0-255
 
 
     }

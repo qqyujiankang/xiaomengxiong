@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -15,6 +16,7 @@ import com.example.et.Activity.AppointmentcontractActivity;
 import com.example.et.Constant;
 import com.example.et.R;
 import com.example.et.Ustlis.ActivityUtils;
+import com.example.et.Ustlis.ScreenUtils;
 import com.example.et.Ustlis.StatusBarUtils;
 import com.example.et.Ustlis.ToastUtils;
 import com.example.et.View.PayDialog;
@@ -49,7 +51,7 @@ public class ContractFragment extends BaseFragment {
 
 
     @BindView(R.id.tv_not_available)
-    TextView tvNotAvailable;
+    ImageView tvNotAvailable;
     @BindView(R.id.public_button)
     Button publicButton;
     @BindView(R.id.Rl_)
@@ -139,6 +141,8 @@ public class ContractFragment extends BaseFragment {
         lifeful = (Lifeful) getActivity();
     }
 
+    CountDown countDown;
+
     @Override
     public void requestDatas() {
         super.requestDatas();
@@ -165,24 +169,27 @@ public class ContractFragment extends BaseFragment {
 
                         }
                         if (objectPagebean.get("state").toString().equals("0")) {//预约中
+
                             llPublicLine01.setVisibility(View.GONE);
                             oid = objectPagebean.get("id").toString();
                             tvState.setText(getString(R.string.To_make_an_appointment_in));
                             long p = Long.parseLong(objectPagebean.get("yytime_daojishi").toString()) * 1000;
-                            CountDown countDown = new CountDown(tvYyTime, p - TimeUtils.getNowMills(),0);
+                            countDown = new CountDown(tvYyTime, p - TimeUtils.getNowMills(), 0);
                             countDown.timerStart();
 
                             tvPrice.setText(StringUtils.calculateProfit(Double.parseDouble(objectPagebean.get("pre_cur_money").toString()), 5));
                             tvCurrency.setText(objectPagebean.get("pre_cur").toString());
 
                             tvQuantity.setText(StringUtils.calculateProfit(Double.parseDouble(objectPagebean.get("pre_cur_number").toString()), 5));
+
                             tvTime.setText(objectPagebean.get("yytime").toString());
                         } else if (objectPagebean.get("state").toString().equals("1")) {
+                            countDown.timerCancel();
                             llPublicLine01.setVisibility(View.VISIBLE);
                             RlPublicButton1.setVisibility(View.GONE);
                             tvState.setText(getString(R.string.To_make_an_appointment_in_1));
                             llProspective.setVisibility(View.VISIBLE);
-                            tvProspective.setText(objectPagebean.get("sjsy_day").toString());
+                            tvProspective.setText(objectPagebean.get("static").toString());
                             tv1.setText(R.string.Open_contract_currency);
                             tvPrice.setText(objectPagebean.get("pre_cur").toString());
                             tv2.setText(R.string.maximum_execution_time);
@@ -201,14 +208,14 @@ public class ContractFragment extends BaseFragment {
                             tvYyTime.setText(objectPagebean.get("okdays").toString() + "天");
                         } else if (objectPagebean.get("state").toString().equals("2")) {
                             llPublicLine01.setVisibility(View.VISIBLE);
-                               RlPublicButton1.setVisibility(View.VISIBLE);
-                            //  oid = objectPagebean.get("id").toString();
+                            RlPublicButton1.setVisibility(View.VISIBLE);
+                            // oid = objectPagebean.get("id").toString();
                             tvState.setText(R.string.The_match_is_successful);
                             tvDay.setText(R.string.Countdown_to_execution);
                             long p1 = Long.parseLong(objectPagebean.get("hour24").toString()) * 1000;
-                            CountDown countDown = new CountDown(tvYyTime, p1-TimeUtils.getNowMills(),1 );
+                            countDown = new CountDown(tvYyTime, p1 - TimeUtils.getNowMills(), 1);
                             countDown.timerStart();
-                          //  tvYyTime.setText(objectPagebean.get("okdays").toString());
+                            //  tvYyTime.setText(objectPagebean.get("okdays").toString());
                             llProspective.setVisibility(View.VISIBLE);
                             tvProspective.setText(objectPagebean.get("static").toString());
                             tv1.setText(R.string.Execute_the_contract_currency);
@@ -218,16 +225,16 @@ public class ContractFragment extends BaseFragment {
                             tv3.setText(R.string.Strike_price);
                             tvQuantity.setText(objectPagebean.get("zx_usdt").toString());
                             tv4.setText(R.string.Execute_contract_price_countdown);
-                            LogUtils.i("==========="+TimeUtils.millis2String(Long.parseLong(objectPagebean.get("hour24").toString())));
-                             long p = Long.parseLong(objectPagebean.get("zx_gold_time").toString()) * 1000;
-                             LogUtils.i("============="+p);
-                            CountDown countDown1 = new CountDown(tvTime, p-TimeUtils.getNowMills() ,0);
+                            LogUtils.i("===========" + TimeUtils.millis2String(Long.parseLong(objectPagebean.get("hour24").toString())));
+                            long p = Long.parseLong(objectPagebean.get("zx_gold_time").toString()) * 1000;
+                            LogUtils.i("=============" + p);
+                            CountDown countDown1 = new CountDown(tvTime, p - TimeUtils.getNowMills(), 0);
                             countDown1.timerStart();
                             tvTime.setText(objectPagebean.get("yhzx_cur_time").toString());
                             Rl1.setVisibility(View.VISIBLE);
                             tv5.setText(R.string.Quantity_of_executed_contract_currency);
 
-                            tvPayment.setText( StringUtils.calculateProfit(Double.parseDouble(objectPagebean.get("zx_gold_miney").toString()), 3));
+                            tvPayment.setText(StringUtils.calculateProfit(Double.parseDouble(objectPagebean.get("zx_gold_miney").toString()), 3));
                             Rl2.setVisibility(View.VISIBLE);
                             tv6.setText(R.string.Appointment_success_time);
                             tvTime0.setText(objectPagebean.get("pre_cur_time").toString());
@@ -236,6 +243,9 @@ public class ContractFragment extends BaseFragment {
                             tvTime1.setText(objectPagebean.get("pp_cur_time").toString());
                             publicButton.setText(R.string.To_perform_the_contract);
                             tvO.setVisibility(View.VISIBLE);
+                        } else if (objectPagebean.get("state").toString().equals("3") || objectPagebean.get("state").toString().equals("4") || objectPagebean.get("state").toString().equals("5")) {
+                            Rl.setVisibility(View.VISIBLE);
+                            RlNo.setVisibility(View.GONE);
                         }
                         tvMoney.setText(objectPagebean.get("money").toString() + getString(R.string.USDT));
 
@@ -298,9 +308,9 @@ public class ContractFragment extends BaseFragment {
                     @Override
                     public void clickCallBack(String str) {
                         pay_pass = str;
-                        if (!StringUtils.isEmpty(pay_pass)){
-                             requestDatas2();
-                        }else {
+                        if (!StringUtils.isEmpty(pay_pass)) {
+                            requestDatas2();
+                        } else {
                             ToastUtils.showShort(R.string.phoenumber_payment_code_ok);
                         }
 
@@ -311,6 +321,7 @@ public class ContractFragment extends BaseFragment {
 
                     }
                 };
+                payDialog.getWindow().setLayout(ScreenUtils.getScreenWidth() - 200, LinearLayout.LayoutParams.WRAP_CONTENT);
                 payDialog.setCancelable(false);
                 payDialog.setView(new EditText(context));
                 payDialog.show();
@@ -347,6 +358,7 @@ public class ContractFragment extends BaseFragment {
                     Map<String, Object> objectPagebean = ParseUtils.analysisListTypeDatasAndCount(getActivity(), success, null, false).getStringMap();
                     LogUtils.i("======newcontract======" + objectPagebean.get(KeyValueConstants.MSG));
                     if (objectPagebean.get(KeyValueConstants.CODE).equals("200")) {
+                        oid = "";
                         lazyLoad();
                     }
                     ToastUtils.showShort(objectPagebean.get(KeyValueConstants.MSG).toString());

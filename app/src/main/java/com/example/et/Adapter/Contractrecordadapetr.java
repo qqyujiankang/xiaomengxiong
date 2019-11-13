@@ -57,7 +57,7 @@ public class Contractrecordadapetr extends ManagerAdapter {
                     tvPerformance.setText("时间已终止");
                 } else {
                     CountDown countDown = new CountDown(tvPerformance,
-                            Long.parseLong(contractrecord.getHour24()) - (TimeUtils.getNowMills() / 1000), 0);
+                            Long.parseLong(contractrecord.getHour24())*1000 - (TimeUtils.getNowMills()), 0);
                     countDown.timerStart();
                 }
 

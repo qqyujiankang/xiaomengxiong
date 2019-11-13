@@ -1,11 +1,11 @@
 package com.example.et.fragment;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -21,6 +21,7 @@ import com.example.et.Activity.MyTeamActivity;
 import com.example.et.Activity.NodeReturnsActivity;
 import com.example.et.Activity.PersonalDataActivity;
 import com.example.et.Activity.SecurityCenterconActivity;
+import com.example.et.Constant;
 import com.example.et.R;
 import com.example.et.Ustlis.ActivityUtils;
 import com.example.et.Ustlis.ImageLoaderUtil;
@@ -28,8 +29,19 @@ import com.example.et.Ustlis.StatusBarUtils;
 import com.example.et.util.AppUtils;
 import com.example.et.util.CacheUtils;
 import com.example.et.util.LogUtils;
+import com.example.et.util.PublicSwipeRefreshLayout.SwipeRefreshLayout;
+import com.example.et.util.TaskPresenterUntils;
 import com.example.et.util.constant.CacheConstants;
+import com.example.et.util.constant.KeyValueConstants;
 import com.example.et.util.lifeful.Lifeful;
+import com.example.et.util.lifeful.OnLoadLifefulListener;
+import com.example.et.util.lifeful.OnLoadListener;
+import com.example.et.util.realize.ParseUtils;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -45,26 +57,40 @@ public class MyFragment extends BaseFragment {
     ImageView ivHolder;
     @BindView(R.id.tv_name)
     TextView tvName;
+    @BindView(R.id.iv_jiedian)
+    ImageView ivJiedian;
     @BindView(R.id.tv_phone)
     TextView tvPhone;
+    @BindView(R.id.iv)
+    ImageView iv;
     @BindView(R.id.Rl_Record)
     RelativeLayout RlRecord;
+    @BindView(R.id.iv_fe)
+    ImageView ivFe;
     @BindView(R.id.tv_Friends_share)
     TextView tvFriendsShare;
     @BindView(R.id.Ll_Friends_share)
-    LinearLayout LlFriendsShare;
+    RelativeLayout LlFriendsShare;
+    @BindView(R.id.iv_2)
+    ImageView iv2;
     @BindView(R.id.tv_my_team)
     TextView tvMyTeam;
     @BindView(R.id.ll_my_team)
-    LinearLayout llMyTeam;
+    RelativeLayout llMyTeam;
+    @BindView(R.id.iv_3)
+    ImageView iv3;
     @BindView(R.id.tv_Node_returns)
     TextView tvNodeReturns;
     @BindView(R.id.ll_returns)
-    LinearLayout llReturns;
+    RelativeLayout llReturns;
+    @BindView(R.id.iv_4)
+    ImageView iv4;
     @BindView(R.id.tv_gain_recording)
     TextView tvGainRecording;
     @BindView(R.id.ll_gain_recording)
-    LinearLayout llGainRecording;
+    RelativeLayout llGainRecording;
+    @BindView(R.id.iv_5)
+    ImageView iv5;
     @BindView(R.id.tv_address_binding)
     TextView tvAddressBinding;
     @BindView(R.id.iv_bank)
@@ -72,31 +98,39 @@ public class MyFragment extends BaseFragment {
     @BindView(R.id.tv_binding)
     TextView tvBinding;
     @BindView(R.id.Ll_USDT_address_binding)
-    LinearLayout LlUSDTAddressBinding;
+    RelativeLayout LlUSDTAddressBinding;
+    @BindView(R.id.iv_6)
+    ImageView iv6;
     @BindView(R.id.tv_apassword)
     TextView tvApassword;
     @BindView(R.id.ll_set_password)
-    LinearLayout llSetPassword;
+    RelativeLayout llSetPassword;
+    @BindView(R.id.iv_7)
+    ImageView iv7;
     @BindView(R.id.tv_feedback)
     TextView tvFeedback;
     @BindView(R.id.ll_feedback)
-    LinearLayout llFeedback;
-    @BindView(R.id.tv_version_information)
-    TextView tvVersionInformation;
-    @BindView(R.id.ll_version_information)
-    LinearLayout llVersionInformation;
-    @BindView(R.id.public_button)
-    Button publicButton;
+    RelativeLayout llFeedback;
+    @BindView(R.id.iv_9)
+    ImageView iv9;
     @BindView(R.id.tv_language)
     TextView tvLanguage;
     @BindView(R.id.ll_language)
-    LinearLayout llLanguage;
+    RelativeLayout llLanguage;
+    @BindView(R.id.iv_10)
+    ImageView iv10;
+    @BindView(R.id.tv_version_information)
+    TextView tvVersionInformation;
     @BindView(R.id.tvtv_version_information)
     TextView tvtvVersionInformation;
     @BindView(R.id.iv_bank_01)
     ImageView ivBank01;
-    @BindView(R.id.iv_jiedian)
-    ImageView ivJiedian;
+    @BindView(R.id.ll_version_information)
+    RelativeLayout llVersionInformation;
+    @BindView(R.id.public_button)
+    Button publicButton;
+    @BindView(R.id.swipeRefreshLayout)
+    SwipeRefreshLayout swipeRefreshLayout;
     private Context context;
     Unbinder unbinder;
 
@@ -131,6 +165,7 @@ public class MyFragment extends BaseFragment {
         if (!CacheUtils.getInstance().getString(CacheConstants.usdtaddress).equals("null")) {
             // tvBinding.setVisibility(View.GONE);
             tvBinding.setText(getString(R.string.Is_binding));
+            tvBinding.setTextColor(getResources().getColor(R.color.white));
         }
         publicButton.setText(getString(R.string.quit));
         //头像
@@ -147,8 +182,65 @@ public class MyFragment extends BaseFragment {
         } else if (CacheUtils.getInstance().getString(CacheConstants.jiedian).equals("3")) {
             ivJiedian.setImageDrawable(getResources().getDrawable(R.mipmap.chaojijiedian));
         }
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                requestDatas();
+
+
+            }
+        });
+    }
+
+    @Override
+    public void requestDatas() {
+        super.requestDatas();
+        try {
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("phone", CacheUtils.getInstance().getString(CacheConstants.PHONE));
+            LogUtils.i("exp======home===" + jsonObject + "==========");
+            TaskPresenterUntils.lifeful(Constant.home, jsonObject, new OnLoadLifefulListener<String>(swipeRefreshLayout, new OnLoadListener<String>() {
+                @Override
+                public void onSuccess(String success) {
+                    LogUtils.i("homne=========" + success);
+                    Map<String, Object> resultMap = ParseUtils.analysisListTypeDatasAndCount((Activity) context, success, null, true).getStringMap();
+                    LogUtils.i("homne=========" + success + "==========" + resultMap.get(KeyValueConstants.MSG));
+                    if (resultMap.get(KeyValueConstants.CODE).equals("200")) {
+                        //头像
+                        ImageLoaderUtil.loadCircleImage(context, CacheUtils.getInstance().getString(CacheConstants.photo_url)
+                                + CacheUtils.getInstance().getString(CacheConstants.photo), ivHolder);
+                        tvName.setText(CacheUtils.getInstance().getString(CacheConstants.name));
+                        tvPhone.setText(CacheUtils.getInstance().getString(CacheConstants.PHONE));
+                        tvtvVersionInformation.setText(AppUtils.getAppVersionName());
+                        if (CacheUtils.getInstance().getString(CacheConstants.jiedian).equals("1")) {
+                            ivJiedian.setVisibility(View.GONE);
+                            llReturns.setVisibility(View.GONE);
+                        } else if (CacheUtils.getInstance().getString(CacheConstants.jiedian).equals("2")) {
+                            ivJiedian.setImageDrawable(getResources().getDrawable(R.mipmap.node));
+                        } else if (CacheUtils.getInstance().getString(CacheConstants.jiedian).equals("3")) {
+                            ivJiedian.setImageDrawable(getResources().getDrawable(R.mipmap.chaojijiedian));
+                        }
+                        if (!CacheUtils.getInstance().getString(CacheConstants.usdtaddress).equals("null")) {
+                            // tvBinding.setVisibility(View.GONE);
+                            tvBinding.setText(getString(R.string.Is_binding));
+                            tvBinding.setTextColor(getResources().getColor(R.color.white));
+                        }
+
+                    } else {
+                        ActivityUtils.startActivity(LoginActivity.class);
+                        ((Activity) context).finish();
+                    }
+
+                }
+
+
+            }, lifeful));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
     }
+
 
     @OnClick({R.id.Rl_Record,
             R.id.Ll_Friends_share, R.id.ll_my_team, R.id.ll_returns, R.id.ll_gain_recording, R.id.Ll_USDT_address_binding,

@@ -17,7 +17,7 @@
         <TextView
             style="@style/WrapWrap"
             android:layout_centerVertical="true"
-            android:layout_marginStart="@dimen/icon_width_height_20"
+            android:layout_marginStart="@dimen/start_or_end_15"
             android:text="@string/head_portrait"
             android:textColor="@color/white"
             android:layout_marginLeft="@dimen/icon_width_height_20" />

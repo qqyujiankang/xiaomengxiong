@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:descendantFocusability="blocksDescendants"
-    style="@style/MatchMatch.Vertical">
+    style="@style/MatchMatch.Vertical"
+    android:descendantFocusability="blocksDescendants">
 
     <LinearLayout
         style="@style/MatchWrap.Horizontal"
-        android:layout_marginStart="@dimen/icon_width_height_20"
-        android:layout_marginLeft="@dimen/icon_width_height_20"
+        android:layout_marginStart="@dimen/start_or_end_10"
+        android:layout_marginLeft="@dimen/start_or_end_10"
         android:padding="@dimen/icon_width_height_10">
 
         <CheckBox
@@ -25,12 +25,14 @@
                 android:id="@+id/tv_name"
                 style="@style/WrapWrap"
                 android:text="sdfs"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_14" />
 
             <TextView
                 android:id="@+id/tv_time"
                 style="@style/WrapWrap"
-                android:textColor="@color/p_white_test" />
+                android:textColor="@color/p_white_test"
+                android:textSize="@dimen/text_size_11" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

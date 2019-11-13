@@ -15,18 +15,19 @@
 
         <LinearLayout
             style="@style/MatchWrap.Vertical"
-            android:layout_marginStart="30dp"
+            android:layout_marginStart="@dimen/start_or_end_15"
             android:layout_marginTop="20dp"
-            android:layout_marginEnd="30dp">
+            >
 
             <TextView
                 style="@style/WrapWrap"
                 android:layout_marginBottom="@dimen/icon_width_height_10"
                 android:text="@string/The_wallet_address"
                 android:textColor="@color/white"
-                android:textSize="@dimen/text_size_12" />
+                android:textSize="@dimen/text_size_11" />
 
             <TextView
+                android:textSize="@dimen/text_size_14"
                 android:id="@+id/et_password"
                 style="@style/MatchWrap.et_1"
                 android:hint="@string/Please_enter_your_wallet_address"
@@ -41,20 +42,21 @@
         <TextView
             android:id="@+id/tv_Withdrawal_amount"
             style="@style/WrapWrap"
-            android:layout_marginLeft="30dp"
+            android:layout_marginLeft="15dp"
             android:layout_marginTop="10dp"
             android:text="@string/Withdrawal_amount"
             android:textColor="@color/white"
-            android:textSize="@dimen/text_size_12" />
+            android:textSize="@dimen/text_size_11" />
 
         <RelativeLayout
             style="@style/MatchWrap.Horizontal"
-            android:layout_marginStart="30dp"
-            android:layout_marginEnd="30dp"
+            android:layout_marginStart="@dimen/start_or_end_15"
+            android:layout_marginEnd="15dp"
             android:layout_marginBottom="@dimen/icon_width_height_10">
 
 
             <EditText
+                android:textSize="@dimen/text_size_14"
                 android:layout_toLeftOf="@+id/tv_get_cot"
                 android:id="@+id/et_code"
                 style="@style/MatchWrap.et_1"
@@ -69,7 +71,7 @@
                 android:layout_centerVertical="true"
                 android:text="@string/all"
                 android:textColor="@color/orange"
-                android:textSize="@dimen/text_size_16" />
+                android:textSize="@dimen/text_size_14" />
 
         </RelativeLayout>
 
@@ -77,10 +79,11 @@
     </LinearLayout>
 
     <TextView
+        android:textSize="@dimen/text_size_11"
         android:id="@+id/tv_data"
         style="@style/WrapWrap"
-        android:layout_marginStart="30dp"
-        android:layout_marginLeft="30dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginLeft="15dp"
         android:layout_marginTop="@dimen/icon_width_height_10"
         android:text="@string/service_charge"
         android:textColor="@color/orange" />

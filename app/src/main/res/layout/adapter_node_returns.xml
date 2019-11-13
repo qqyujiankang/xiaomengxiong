@@ -3,20 +3,20 @@
     style="@style/MatchMatch.Vertical">
 
     <LinearLayout
-        style="@style/MatchMatch.Vertical"
+        style="@style/MatchWrap.Vertical"
         android:layout_marginStart="@dimen/icon_width_height_20"
         android:layout_marginEnd="@dimen/icon_width_height_20">
 
         <TextView
-            android:layout_marginTop="@dimen/start_or_end_5"
             android:id="@+id/tv_name"
             style="@style/WrapWrap"
+            android:layout_marginTop="13sp"
             android:textColor="@color/orange" />
 
         <RelativeLayout
             style="@style/MatchWrap.Horizontal"
-            android:layout_marginTop="@dimen/start_or_end_5"
-            android:layout_marginBottom="@dimen/start_or_end_5">
+            android:layout_marginTop="@dimen/start_or_end_20"
+            android:layout_marginBottom="@dimen/icon_width_height_30">
 
             <TextView
                 android:id="@+id/tv1"
@@ -36,18 +36,20 @@
             <TextView
                 android:id="@+id/tv2"
                 style="@style/WrapWrap"
-                android:layout_toLeftOf="@+id/tv_convertinto"
+               android:layout_alignParentRight="true"
+                android:layout_marginEnd="102dp"
                 android:text="@string/convert"
                 android:textColor="@color/p_white_test" />
 
             <TextView
-                android:layout_marginStart="@dimen/start_or_end_10"
+                android:layout_marginEnd="40dp"
                 android:id="@+id/tv_convertinto"
                 style="@style/WrapWrap"
                 android:layout_alignParentRight="true"
+                android:layout_marginStart="@dimen/start_or_end_10"
+                android:layout_marginLeft="@dimen/start_or_end_10"
                 android:layout_marginRight="@dimen/icon_width_height_50"
-                android:textColor="@color/white"
-                android:layout_marginLeft="@dimen/start_or_end_10" />
+                android:textColor="@color/white" />
         </RelativeLayout>
     </LinearLayout>
 </LinearLayout>

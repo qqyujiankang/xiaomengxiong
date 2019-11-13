@@ -2,11 +2,13 @@
 <resources>
     <!--字体大小-->
     <dimen name="text_size_12">12sp</dimen>
+    <dimen name="text_size_11">11sp</dimen>
     <dimen name="text_size_14">14sp</dimen>
     <dimen name="text_size_16">16sp</dimen>
     <dimen name="text_size_18">18sp</dimen>
     <dimen name="text_size_25">25sp</dimen>
     <dimen name="text_size_40">40sp</dimen>
+    <dimen name="text_size_19">19sp</dimen>
 
     <!--距离边缘的距离-->
     <dimen name="start_or_end_5">5dp</dimen>

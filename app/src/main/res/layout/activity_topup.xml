@@ -33,6 +33,7 @@
         android:layout_marginTop="@dimen/icon_width_height_20">
 
         <TextView
+            android:textSize="@dimen/text_size_14"
             style="@style/MatchWrap"
             android:gravity="center"
             android:text="@string/The_wallet_address"
@@ -45,7 +46,7 @@
             android:gravity="center"
             android:text="ksadjfhjkabksjadfkfskadfjkasdfksajkldf"
             android:textColor="@color/orange"
-            android:textSize="13sp" />
+            android:textSize="14sp" />
 
         <include layout="@layout/public_button1" />
 

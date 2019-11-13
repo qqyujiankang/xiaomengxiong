@@ -18,6 +18,7 @@
 
 
             <TextView
+                android:textSize="@dimen/text_size_14"
                 android:id="@+id/tv_name"
                 style="@style/WrapWrap"
                 android:layout_marginStart="@dimen/icon_width_height_20"
@@ -26,6 +27,7 @@
                 android:textColor="@color/orange" />
 
             <TextView
+
                 android:id="@+id/tv_number"
                 style="@style/WrapWrap"
                 android:layout_marginRight="@dimen/icon_width_height_30"
@@ -84,17 +86,18 @@
                 android:layout_marginTop="@dimen/icon_width_height_10">
 
                 <TextView
+
                     style="@style/WrapWrap"
                     android:text="@string/balance"
                     android:textColor="@color/p_white_test"
-                    android:textSize="@dimen/text_size_12" />
+                    android:textSize="@dimen/text_size_11" />
 
                 <TextView
                     style="@style/WrapWrap"
                     android:layout_centerHorizontal="true"
                     android:text="@string/make"
                     android:textColor="@color/p_white_test"
-                    android:textSize="@dimen/text_size_12" />
+                    android:textSize="@dimen/text_size_11" />
 
                 <TextView
                     android:gravity="right"
@@ -103,7 +106,7 @@
                     android:layout_marginRight="@dimen/start_or_end_10"
                     android:text="@string/convert_init"
                     android:textColor="@color/p_white_test"
-                    android:textSize="@dimen/text_size_12" />
+                    android:textSize="@dimen/text_size_11" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -115,12 +118,14 @@
                 android:paddingBottom="@dimen/icon_width_height_10">
 
                 <TextView
+                    android:textSize="@dimen/text_size_12"
                     android:id="@+id/tv_balance"
                     style="@style/WrapWrap"
                     android:text="@string/balance"
                     android:textColor="@color/p_white" />
 
                 <TextView
+                    android:textSize="@dimen/text_size_12"
                     android:id="@+id/tv_make"
                     style="@style/WrapWrap"
                     android:layout_centerHorizontal="true"
@@ -128,6 +133,7 @@
                     android:textColor="@color/p_white" />
 
                 <TextView
+                    android:textSize="@dimen/text_size_12"
                     android:id="@+id/tv_convert_init"
                     style="@style/WrapWrap"
                     android:layout_alignParentRight="true"

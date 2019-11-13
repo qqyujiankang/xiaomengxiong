@@ -1,6 +1,7 @@
 package com.example.et.Adapter;
 
 import android.content.Context;
+import android.view.View;
 import android.widget.TextView;
 
 import com.example.et.R;
@@ -35,6 +36,8 @@ public class RecordAdapter extends ManagerAdapter {
         TextView tvHavePeople;
         @BindView(R.id.tv_time)
         TextView tvTime;
+        @BindView(R.id.tv_)
+        TextView tv;
 
         @Override
         protected int getItemLayoutResId() {
@@ -49,12 +52,16 @@ public class RecordAdapter extends ManagerAdapter {
             tvTime.setText(record.getTime());
             tvType.setText(record.getTypes());
             tvHavePeople.setText(record.getType());
-            tvGlod.setText(record.getNumber());
-            if (Double.parseDouble(record.getNumber())>0){
 
+            if (Double.parseDouble(record.getNumber()) > 0) {
+                tvGlod.setText("+" + record.getNumber());
                 tvGlod.setTextColor(context.getResources().getColor(R.color.colorPrimaryDark));
-            }else if (Double.parseDouble(record.getNumber())<0){
+            } else if (Double.parseDouble(record.getNumber()) < 0) {
+                tvGlod.setText(record.getNumber());
                 tvGlod.setTextColor(context.getResources().getColor(R.color.colorAccent_01));
+            }
+            if (list.size() - 1 == position) {
+                tv.setVisibility(View.GONE);
             }
 
 

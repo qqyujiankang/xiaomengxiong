@@ -3,8 +3,8 @@
     android:id="@+id/rl_bacground"
     style="@style/MatchWrap"
     android:background="#FF121E2E"
-    android:paddingStart="@dimen/start_or_end_20"
-    android:paddingEnd="@dimen/start_or_end_20">
+    android:paddingStart="@dimen/panding_or_margin_15"
+    android:paddingEnd="@dimen/panding_or_margin_15">
 
     <TextView
         android:id="@+id/public_back"

@@ -17,6 +17,7 @@ import android.widget.TextView;
 import com.example.et.Adapter.ManagerAdapter;
 import com.example.et.Constant;
 import com.example.et.R;
+import com.example.et.Ustlis.ScreenUtils;
 import com.example.et.Ustlis.ToastUtils;
 import com.example.et.View.AlipayPopuWindow;
 import com.example.et.View.AnswerDiog;
@@ -100,12 +101,18 @@ public class AppointmentcontractActivity extends BaseActivity {
                     Map<String, Object> objectPagebean = ParseUtils.analysisListTypeDatasAndCount((Activity) context, success, null, false).getStringMap();
                     LogUtils.i("======newcontract======" + objectPagebean.get(KeyValueConstants.MSG));
                     if (objectPagebean.get(KeyValueConstants.CODE).equals("200")) {
-                        Intent i = new Intent();
-                        i.setClass(AppointmentcontractActivity.this, MainActivity.class);
-                        i.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        i.putExtra("fragment_flag", 2);
-                        startActivity(i);
-                        finish();
+                        if (!objectPagebean.get("state").toString().equals("4")) {
+                            Intent i = new Intent();
+                            i.setClass(AppointmentcontractActivity.this, MainActivity.class);
+                            i.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            i.putExtra("fragment_flag", 2);
+                            startActivity(i);
+                            finish();
+                        } else {
+                            initView();
+                            requestDatas();
+                        }
+
 
                     } else {
                         initView();
@@ -128,7 +135,11 @@ public class AppointmentcontractActivity extends BaseActivity {
         super.initView();
         publicTitleTv.setText(getString(R.string.Appointment_contract));
         publicButton.setText(getString(R.string.confirm));
-        new MyDiog(context, CacheUtils.getInstance().getString(CacheConstants.r_gold), 1).show();
+        MyDiog myDiog = new MyDiog(context, CacheUtils.getInstance().getString(CacheConstants.r_gold), 1);
+        myDiog.show();
+        myDiog.getWindow().setLayout(ScreenUtils.getScreenWidth()-200 , LinearLayout.LayoutParams.WRAP_CONTENT);
+
+
     }
 
     AlipayPopuWindow alipayPopuWindow;
@@ -147,7 +158,9 @@ public class AppointmentcontractActivity extends BaseActivity {
                 break;
             case R.id.public_button:
                 if (!StringUtils.isEmpty(tvUSDT.getText().toString().trim())) {
-                    new AnswerDiog(this, onClickListener, onClickListener1, problem, answers).show();
+                    AnswerDiog answerDiog=new AnswerDiog(this,onClickListener, onClickListener1, problem, answers);
+                    answerDiog.show();
+                    answerDiog.getWindow().setLayout(ScreenUtils.getScreenWidth()-100 , LinearLayout.LayoutParams.WRAP_CONTENT);
                 } else {
                     ToastUtils.showShort(R.string.Please_select_contract_amount);
                 }

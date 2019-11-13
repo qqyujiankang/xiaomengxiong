@@ -16,7 +16,7 @@
             <RelativeLayout
                 style="@style/MatchWrap"
                 android:background="@color/black_p"
-                android:padding="5dp">
+                android:padding="10dp">
 
                 <LinearLayout style="@style/MatchWrap">
 
@@ -86,6 +86,7 @@
                     android:layout_marginLeft="10dp">
 
                     <TextView
+                        android:textSize="@dimen/text_size_14"
                         android:id="@+id/tv_new_name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -126,6 +127,7 @@
 
 
                         <TextView
+                            android:textSize="@dimen/text_size_12"
                             android:id="@+id/tv_1"
                             style="@style/WrapWrap"
                             android:singleLine="true"
@@ -143,22 +145,23 @@
 
                         <LinearLayout
                             style="@style/WrapWrap.Horizontal"
-                            android:layout_below="@+id/tv_r_gold"
-                  >
+                            android:layout_below="@+id/tv_r_gold">
 
                             <TextView
+                                android:textSize="@dimen/text_size_16"
                                 android:id="@+id/tv_r_huilv"
                                 style="@style/WrapWrap"
                                 android:text="78.08"
                                 android:textColor="@color/white" />
 
                             <TextView
+
                                 android:id="@+id/tv_r_zd"
                                 style="@style/WrapWrap"
                                 android:layout_marginStart="15dp"
                                 android:layout_marginLeft="15dp"
                                 android:text="+78.08"
-                                android:textSize="13dp" />
+                                android:textSize="11dp" />
 
                         </LinearLayout>
                     </RelativeLayout>
@@ -177,6 +180,7 @@
                         android:gravity="center">
 
                         <TextView
+                            android:textSize="@dimen/text_size_12"
                             android:id="@+id/tv_2"
                             style="@style/WrapWrap"
                             android:singleLine="true"
@@ -184,10 +188,10 @@
                             android:textColor="@color/white" />
 
                         <TextView
-                            android:layout_below="@+id/tv_2"
                             android:id="@+id/tv_s_gold"
                             style="@style/WrapWrap"
                             android:layout_width="wrap_content"
+                            android:layout_below="@+id/tv_2"
                             android:paddingRight="@dimen/icon_width_height_30"
                             android:text="USDT"
                             android:textColor="@color/orange"
@@ -195,17 +199,18 @@
                             android:textStyle="bold" />
 
                         <LinearLayout
-                            android:layout_below="@+id/tv_s_gold"
                             style="@style/WrapWrap.Horizontal"
-                         >
+                            android:layout_below="@+id/tv_s_gold">
 
                             <TextView
+                                android:textSize="@dimen/text_size_16"
                                 android:id="@+id/tv_s_huil"
                                 style="@style/WrapWrap"
                                 android:text="78.08"
                                 android:textColor="@color/white" />
 
                             <TextView
+                                android:textSize="@dimen/text_size_11"
                                 android:id="@+id/tv_s_zd"
                                 style="@style/WrapWrap"
                                 android:layout_marginStart="15dp"
@@ -221,8 +226,8 @@
                 style="@style/MatchWrap"
                 android:layout_marginTop="10dp"
                 android:background="#FF121E2E"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp">
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp">
 
 
                 <TextView
@@ -252,23 +257,27 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="#FF121E2E"
                 android:paddingTop="@dimen/start_or_end_10">
 
                 <TextView
+                    android:layout_marginStart="@dimen/start_or_end_15"
                     style="@style/AutoWrap"
-                    android:gravity="center"
+                    android:gravity="left"
                     android:text="@string/number"
                     android:textColor="@color/bottom_tes1" />
 
                 <TextView
+
                     style="@style/AutoWrap"
                     android:gravity="center"
                     android:text="@string/menu_find"
                     android:textColor="@color/bottom_tes1" />
 
                 <TextView
+                    android:layout_marginEnd="@dimen/start_or_end_10"
                     style="@style/AutoWrap"
-                    android:gravity="center"
+                    android:gravity="right"
                     android:text="@string/time"
                     android:textColor="@color/bottom_tes1" />
             </LinearLayout>
@@ -276,7 +285,7 @@
             <com.example.et.Adapter.AutoPollRecyclerView
                 android:id="@+id/recycleView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/icon_width_height_150"
                 app:layoutManager="LinearLayoutManager" />
         </LinearLayout>
     </com.example.et.util.PublicSwipeRefreshLayout.SwipeRefreshLayout>

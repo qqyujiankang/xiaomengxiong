@@ -109,7 +109,7 @@
     <string name="Please_fill_in_the_transfer_amount">Please fill in the transfer out amount, not less than 10</string>
     <string name="currency">currency</string>
     <string name="Have_people">Have_people：</string>
-    <string name="time">Time</string>
+    <string name="time">Time:</string>
     <string name="number">account</string>
     <string name="Is_binding">Is binding</string>
     <string name="Please_enter_amount">Please enter the amount</string>
@@ -177,7 +177,14 @@
     <string name="tet1">register</string>
     <string name="ts1">&#037;</string>
 
-     <string name="tets1">Minimum withdrawal 100</string>
+    <string name="tets1">Minimum withdrawal 100</string>
     <string name="ter">Today s rate</string>
     <string name="ets">No longer prompt</string>
+    <string name="t1">Dynamic benefits</string>
+    <string name="t2">node</string>
+    <string name="t4">The super node</string>
+    <string name="t6">Recommended super node</string>
+    <string name="t3">contract cost </string>
+    <string name="test2">Existing ，login</string>
+    <string name="terd">The static gains</string>
 </resources>

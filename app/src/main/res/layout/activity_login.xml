@@ -10,8 +10,8 @@
         android:layout_width="@dimen/icon_width_height_30"
         android:layout_height="@dimen/icon_width_height_30"
         android:layout_marginStart="30dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginLeft="29dp"
+        android:layout_marginTop="105dp"
         android:background="@mipmap/login_01" />
 
     <RelativeLayout
@@ -53,7 +53,7 @@
             style="@style/WrapWrap"
             android:text="@string/Mobile_phone_number_email"
             android:textColor="@color/white"
-            android:textSize="@dimen/text_size_12" />
+            android:textSize="@dimen/text_size_11" />
 
         <RelativeLayout
             android:id="@+id/Rl"
@@ -71,13 +71,13 @@
                 android:singleLine="true"
                 android:textColor="@color/white"
                 android:textColorHint="@color/silver"
-                android:textSize="@dimen/text_size_16" />
+                android:textSize="@dimen/text_size_14" />
 
             <TextView
                 android:id="@+id/tva"
-                android:layout_alignParentRight="true"
                 style="@style/WrapWrap"
-                android:text="\u25B2"
+                android:layout_alignParentRight="true"
+                android:text="\u25BC"
                 android:textColor="@color/orange" />
         </RelativeLayout>
 
@@ -96,10 +96,9 @@
             style="@style/WrapWrap"
             android:text="@string/password"
             android:textColor="@color/white"
-            android:textSize="@dimen/text_size_12" />
+            android:textSize="@dimen/text_size_11" />
 
         <EditText
-            android:singleLine="true"
             android:id="@+id/et_password"
             style="@style/MatchWrap"
             android:layout_marginTop="@dimen/start_or_end_5"
@@ -107,9 +106,10 @@
             android:background="@null"
             android:hint="@string/enter_your_PIN"
             android:inputType="textPassword"
+            android:singleLine="true"
             android:textColor="@color/white"
             android:textColorHint="@color/silver"
-            android:textSize="@dimen/text_size_16" />
+            android:textSize="@dimen/text_size_14" />
 
 
     </LinearLayout>
@@ -138,7 +138,6 @@
 
 
             <EditText
-                android:singleLine="true"
                 android:id="@+id/et_code"
                 style="@style/WrapWrap"
                 android:layout_marginTop="@dimen/start_or_end_5"
@@ -146,6 +145,7 @@
                 android:background="@null"
                 android:hint="@string/Please_enter_verification_code"
                 android:inputType="number"
+                android:singleLine="true"
                 android:textColor="@color/white"
                 android:textColorHint="@color/silver"
                 android:textSize="@dimen/text_size_16" />
@@ -165,15 +165,18 @@
     </LinearLayout>
 
     <CheckBox
-        android:paddingLeft="10dip"
-        android:button="@drawable/checkbox1"
         android:id="@+id/remember"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/icon_width_height_30"
         android:layout_marginTop="@dimen/start_or_end_10"
+        android:button="@drawable/checkbox1"
+        android:paddingLeft="15dp"
+        android:paddingTop="@dimen/start_or_end_10"
+        android:paddingBottom="@dimen/start_or_end_10"
         android:text="记住密码"
-        android:textColor="@color/orange" />
+        android:textColor="@color/orange"
+ />
 
     <include layout="@layout/public_button1" />
 

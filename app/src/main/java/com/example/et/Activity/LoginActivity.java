@@ -1,15 +1,24 @@
 package com.example.et.Activity;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.TextWatcher;
+import android.text.style.ForegroundColorSpan;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -20,6 +29,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.et.Adapter.Lingondadaper;
+import com.example.et.Adapter.ManagerAdapter;
 import com.example.et.Constant;
 import com.example.et.R;
 import com.example.et.Ustlis.ActivityUtils;
@@ -30,6 +41,7 @@ import com.example.et.Verification;
 import com.example.et.View.LanguageSettingDialog;
 import com.example.et.util.CacheUtils;
 import com.example.et.util.LogUtils;
+import com.example.et.util.SharedPreferencesHelper;
 import com.example.et.util.TaskPresenterUntils;
 import com.example.et.util.constant.CacheConstants;
 import com.example.et.util.constant.KeyValueConstants;
@@ -42,6 +54,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -85,9 +98,16 @@ public class LoginActivity extends BaseActivity {
     private SharedPreferences sPreferences;
     private Map<String, String> map;
     private ListView listView;
-    private PopupWindow pw;
+    public static PopupWindow pw;
     private int width, i;
-    private LinearLayout  option;
+    private View option;
+    SharedPreferencesHelper helper;
+    private List<SpannableString> carNumber = new ArrayList<SpannableString>();
+    private PopupWindow popupWindow;
+    private ListView lView;
+    private MyAdapter adapter;
+    List<String> list;
+    private static boolean aBoolean;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,40 +125,35 @@ public class LoginActivity extends BaseActivity {
     public void initView() {
         super.initView();
         publicButton.setText(getString(R.string.login));
-
-
-        //读取已经记住的用户名与密码
-        sPreferences = getSharedPreferences("session", MODE_PRIVATE);
-        map = (Map<String, String>) sPreferences.getAll();
-        List<String> list = new ArrayList<String>();
-
-        for (int i = 0; i < (map.size() / 2); i++) {
-            String name = sPreferences.getString("name" + i, "");
-            list.add(name);
+        if (aBoolean == true) {
+            remember.setChecked(true);
         }
+        lodg();
+        //读取已经记住的用户名与密码
 
+    }
 
-        // 用4个参数的指定，哪个listview中的textview
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                R.layout.items, R.id.item, list);
-        option = (LinearLayout) getLayoutInflater().inflate(R.layout.simple_item,
-                null);
+    public void lodg() {
+
+        data();
+
+        Lingondadaper adapter = new Lingondadaper(context, list, null);
+        option =  getLayoutInflater().inflate(R.layout.simple_item, null);
         // 要在这个linearLayout里面找listView......
         listView = (ListView) option.findViewById(R.id.lv);
         listView.setAdapter(adapter);
 
 
-        //获取屏幕的宽度并设置popupwindow的宽度为width,我这里是根据布局控件所占的权重
-        WindowManager wManager = (WindowManager) getSystemService(this.WINDOW_SERVICE);
-        width = wManager.getDefaultDisplay().getWidth() * 4 / 5;
+
+        ColorDrawable dw = new ColorDrawable(0000000000);
+        // 点back键和其他地方使其消失,设置了这个才能触发OnDismisslistener ，设置其他控件变化等操作
 
 
         //实例化一个popupwindow对象
-        pw = new PopupWindow(option, width, WindowManager.LayoutParams.WRAP_CONTENT, true);
-        ColorDrawable dw = new ColorDrawable(00000);
-        pw.setBackgroundDrawable(dw);
+        pw = new PopupWindow(option, etPhone.getWidth(), WindowManager.LayoutParams.WRAP_CONTENT, true);
+        pw.setBackgroundDrawable(getResources().getDrawable(R.drawable.bg_radius15_gray));
         pw.setOutsideTouchable(true);
-
+        pw.setBackgroundDrawable(dw);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
@@ -148,10 +163,11 @@ public class LoginActivity extends BaseActivity {
                 // 获取选中项内容及从sharePreferences中获取对应的密码
                 String username = adapterView.getItemAtPosition(position)
                         .toString();
-                String pwd = sPreferences.getString("pwd" + position, "");
+                String pwd = (String) helper.getSharedPreference("pwd" + position, "");
 
                 etPhone.setText(username);
                 etPassword.setText(pwd);
+
 
                 // 选择后，popupwindow自动消失
                 pw.dismiss();
@@ -161,10 +177,159 @@ public class LoginActivity extends BaseActivity {
         tva.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                pw.showAsDropDown(Rl, 15, -4);
+                lodg();
+                pw.showAsDropDown(Rl, 0, 0);
             }
         });
+
+//        etPhone.addTextChangedListener(new TextWatcher() {
+//            @Override
+//            public void onTextChanged(CharSequence s, int arg1, int arg2, int arg3) {
+//                // TODO Auto-generated method stub
+//                if (s.length() > 0) {
+//                    if (popupWindow == null) {
+//                        View contentView = View.inflate(context, R.layout.simple_item, null);
+//                        lView = (ListView) contentView.findViewById(R.id.lv);
+//                        popupWindow = new PopupWindow(contentView, etPhone.getWidth(), WindowManager.LayoutParams.WRAP_CONTENT, true);
+//                    }
+//                    carNumber.clear();
+//                    for (String str : list) {
+//                        if (str.startsWith("" + s)) {
+//                            SpannableString ss = new SpannableString(str);
+//                            ss.setSpan(new ForegroundColorSpan(Color.BLUE), 0, s.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+//                            carNumber.add(ss);
+//                        }
+//                    }
+//                    if (carNumber.size() == 0) {
+//                        SpannableString ssString = new SpannableString("");
+//                        ssString.setSpan(new ForegroundColorSpan(Color.RED), 0, ssString.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+//                        carNumber.add(ssString);
+//                    }
+//                    adapter.notifyDataSetChanged();
+//                    lView.setAdapter(adapter);
+//                    popupWindow.setOutsideTouchable(true);
+//                    popupWindow.setFocusable(false);
+//                    popupWindow.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+//                    popupWindow.showAsDropDown(etPhone, 0, 0);
+//                    if (carNumber.size() >= 5) {
+//                        popupWindow.update(etPhone.getWidth(), 250);
+//                    } else {
+//                        popupWindow.update(etPhone.getWidth(), WindowManager.LayoutParams.WRAP_CONTENT);
+//                    }
+//                    lView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//
+//                        @Override
+//                        public void onItemClick(AdapterView<?> arg0, View arg1,
+//                                                int arg2, long arg3) {
+//                            // TODO Auto-generated method stub
+//                            etPhone.setText(carNumber.get(arg2).toString());
+//                            String pwd = (String) helper.getSharedPreference("pwd" + arg2, "");
+//
+//                            etPassword.setText(pwd);
+//                            if (popupWindow != null && popupWindow.isShowing()) {
+//                                popupWindow.dismiss();
+//                            }
+//                        }
+//                    });
+//                }
+//            }
+//
+//            @Override
+//            public void beforeTextChanged(CharSequence arg0, int arg1, int arg2,
+//                                          int arg3) {
+//                // TODO Auto-generated method stub
+//
+//            }
+//
+//            @Override
+//            public void afterTextChanged(Editable arg0) {
+//                // TODO Auto-generated method stub
+//
+//            }
+//        });
+
     }
+
+
+    private void data() {
+        helper = new SharedPreferencesHelper(context, "user");
+        map = (Map<String, String>) helper.getAll();
+
+        //创建一个新的map2
+        Map<String, String> map2 = new HashMap<String, String>();
+        for (String key : map.keySet()) {
+            if (!map2.containsValue(map.get(key))) {
+                map2.put(key, map.get(key));
+            }
+
+
+        }
+        list = new ArrayList<String>();
+
+        for (int i = 0; i < (map2.size() / 2); i++) {
+            String name = (String) helper.getSharedPreference("name" + i, "");
+            list.add(name);
+
+
+        }
+        adapter = new MyAdapter(this, carNumber);
+    }
+
+
+    /**
+     * 适配器
+     *
+     * @author Administrator
+     */
+    private class MyAdapter extends BaseAdapter {
+        private Context context;
+        private List<SpannableString> carList;
+
+        public MyAdapter(Context context, List<SpannableString> carList) {
+            super();
+            this.context = context;
+            this.carList = carList;
+        }
+
+        @Override
+        public int getCount() {
+            // TODO Auto-generated method stub
+            return carList.size();
+        }
+
+        @Override
+        public Object getItem(int arg0) {
+            // TODO Auto-generated method stub
+            return null;
+        }
+
+        @Override
+        public long getItemId(int arg0) {
+            // TODO Auto-generated method stub
+            return 0;
+        }
+
+        @Override
+        public View getView(int arg0, View arg1, ViewGroup arg2) {
+            // TODO Auto-generated method stub
+            ViewHoler holer = null;
+            if (arg1 == null) {
+                holer = new ViewHoler();
+                arg1 = View.inflate(context, R.layout.items, null);
+                holer.tv_name = (TextView) arg1.findViewById(R.id.item);
+                arg1.setTag(holer);
+            } else {
+                holer = (ViewHoler) arg1.getTag();
+            }
+            holer.tv_name.setText(carList.get(arg0));
+            return arg1;
+        }
+
+        class ViewHoler {
+            private TextView tv_name;
+        }
+    }
+
 
     /**
      * 点击事件
@@ -229,7 +394,12 @@ public class LoginActivity extends BaseActivity {
                     if (resultMap.get(KeyValueConstants.CODE).equals("200")) {
                         CacheUtils.getInstance().put(CacheConstants.TOKEN, (CacheUtils.getInstance().getString("token")));
                         CacheUtils.getInstance().put(CacheConstants.PHONE, phone);
-                        login();
+                        if (remember.isChecked()) {
+
+                            login();
+
+                        }
+
                         ActivityUtils.startActivity(MainActivity.class);
                         finish();
                     } else if (resultMap.get(KeyValueConstants.CODE).equals("402")) {
@@ -252,25 +422,20 @@ public class LoginActivity extends BaseActivity {
 
         // 若是第二次打开软件时，将map在size赋给i,若是不是,则i只要实现i++
         if (i == 0) {
-            i = map.size()/2;
+            i = map.size() / 2;
         }
 
-        // 若有勾选记住，则保存
-        if (remember.isChecked()) {
-            String name = etPhone.getText().toString().trim();
-            String pwd = etPassword.getText().toString().trim();
-            if (!"".equals(name) && !"".equals(pwd)) {
 
-                sPreferences.edit().putString("name" + i, name)
-                        .putString("pwd" + i, pwd).commit();
-                i++;
+        helper = new SharedPreferencesHelper(context, "user");
+        helper.put("name" + i, phone);
+        helper.put("pwd" + i, Password);
+        i++;
+        aBoolean = true;
 
-
-
-            }
-        }
 
     }
+
+
     /**
      * 检查信息
      */
@@ -307,4 +472,7 @@ public class LoginActivity extends BaseActivity {
         super.requestDatas();
 
     }
+
+
 }
+

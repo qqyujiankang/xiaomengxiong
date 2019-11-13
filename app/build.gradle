@@ -109,5 +109,7 @@ dependencies {
     implementation 'com.just.agentweb:filechooser:4.1.2'// (可选)
     implementation 'com.download.library:Downloader:4.1.2'
 
+       implementation 'org.sufficientlysecure:html-textview:3.8'
+
 
 }

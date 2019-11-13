@@ -9,24 +9,26 @@
         android:background="@color/black_01">
 
         <RelativeLayout
-            android:layout_marginEnd="@dimen/start_or_end_10"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/start_or_end_10"
-            android:layout_marginTop="@dimen/icon_width_height_20">
+            android:layout_marginTop="@dimen/icon_width_height_20"
+            android:layout_marginEnd="@dimen/start_or_end_10">
 
             <TextView
                 android:id="@+id/tv_name"
                 style="@style/WrapWrap"
                 android:gravity="left"
-                android:textColor="@color/orange" />
+                android:textColor="@color/orange"
+                android:textSize="@dimen/text_size_14" />
 
             <TextView
-                android:gravity="right"
-                android:text="45456"
+                android:textSize="@dimen/text_size_14"
                 android:id="@+id/tv_jieidian"
                 style="@style/WrapWrap"
                 android:layout_alignParentRight="true"
+                android:gravity="right"
+                android:text="45456"
                 android:textColor="@color/white" />
         </RelativeLayout>
 
@@ -40,20 +42,22 @@
                 style="@style/AutoWrap"
                 android:gravity="left"
                 android:text="@string/The_contract_amount"
-                android:textColor="@color/p_white_test" />
+                android:textColor="@color/p_white_test"
+                android:textSize="@dimen/text_size_11" />
 
             <TextView
-
                 style="@style/AutoWrap"
                 android:gravity="center"
                 android:text="@string/Appointment_success_time"
-                android:textColor="@color/p_white_test" />
+                android:textColor="@color/p_white_test"
+                android:textSize="@dimen/text_size_11" />
 
             <TextView
                 style="@style/AutoWrap"
                 android:gravity="right"
                 android:text="@string/Take_out_the_principal_and_interest_countdown"
-                android:textColor="@color/p_white_test" />
+                android:textColor="@color/p_white_test"
+                android:textSize="@dimen/text_size_11" />
 
         </LinearLayout>
 
@@ -82,13 +86,13 @@
                 android:textSize="@dimen/text_size_14" />
 
             <TextView
-                android:gravity="right"
                 android:id="@+id/tv_performance"
                 style="@style/WrapWrap"
                 android:layout_alignParentRight="true"
+                android:gravity="right"
                 android:text=""
                 android:textColor="@color/p_green"
-                android:textSize="@dimen/text_size_14" />
+                android:textSize="@dimen/text_size_12" />
 
         </RelativeLayout>
     </LinearLayout>

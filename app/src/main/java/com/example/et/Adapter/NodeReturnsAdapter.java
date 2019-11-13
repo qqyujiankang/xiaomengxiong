@@ -1,10 +1,13 @@
 package com.example.et.Adapter;
 
 import android.content.Context;
+import android.text.Html;
 import android.widget.TextView;
 
 import com.example.et.R;
 import com.example.et.entnty.NodeReturns;
+import com.example.et.util.CacheUtils;
+import com.example.et.util.StringUtils;
 import com.example.et.util.lifeful.Lifeful;
 
 import java.util.List;
@@ -39,8 +42,10 @@ public class NodeReturnsAdapter extends ManagerAdapter {
         public void setViewData(int position, List list) {
             NodeReturns nodeReturns = (NodeReturns) list.get(position);
             tvName.setText(nodeReturns.getName());
-            tvTotal.setText(nodeReturns.getTotal());
-            tvConvertinto.setText(nodeReturns.getConvertinto());
+
+            //String str2 = context.getString(R.string.convert)+"<font color='#ffffff'>"+"    "+StringUtils.calculateProfit(Double.parseDouble(nodeReturns.getConvertinto()), 5)+"</font>";
+            tvTotal.setText(StringUtils.calculateProfit(Double.parseDouble(nodeReturns.getTotal()), 5));
+            tvConvertinto.setText(StringUtils.calculateProfit(Double.parseDouble(nodeReturns.getConvertinto()), 5));
 
 
         }

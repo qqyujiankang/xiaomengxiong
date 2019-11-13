@@ -12,10 +12,11 @@
         style="@style/MatchWrap.Vertical"
         android:layout_marginTop="@dimen/icon_width_height_10"
         android:background="@color/black_b"
-        android:paddingStart="@dimen/icon_width_height_20"
-        android:paddingLeft="@dimen/icon_width_height_20">
+        android:paddingStart="@dimen/start_or_end_15"
+        android:paddingLeft="@dimen/start_or_end_15">
 
         <TextView
+            android:textSize="@dimen/text_size_11"
             style="@style/WrapWrap"
             android:paddingTop="@dimen/start_or_end_5"
             android:paddingBottom="@dimen/start_or_end_5"
@@ -38,6 +39,7 @@
         <include layout="@layout/public_line_01" />
 
         <TextView
+            android:textSize="@dimen/text_size_11"
             style="@style/WrapWrap"
             android:paddingTop="@dimen/start_or_end_5"
             android:paddingBottom="@dimen/start_or_end_5"
@@ -60,6 +62,7 @@
         <include layout="@layout/public_line_01" />
 
         <TextView
+            android:textSize="@dimen/text_size_11"
             style="@style/WrapWrap"
             android:paddingTop="@dimen/start_or_end_5"
             android:paddingBottom="@dimen/start_or_end_5"

@@ -7,11 +7,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.et.Constant;
 import com.example.et.R;
+import com.example.et.Ustlis.ScreenUtils;
 import com.example.et.Ustlis.ToastUtils;
 import com.example.et.View.PayDialog;
 import com.example.et.util.CacheUtils;
@@ -155,6 +157,7 @@ public class MentionmoneyActivity extends BaseActivity {
 
                             }
                         };
+                        payDialog.getWindow().setLayout(ScreenUtils.getScreenWidth()-200 , LinearLayout.LayoutParams.WRAP_CONTENT);
                         payDialog.setCancelable(false);
                         payDialog.setView(new EditText(context));
                         payDialog.show();

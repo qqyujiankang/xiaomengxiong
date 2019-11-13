@@ -4,44 +4,48 @@
     android:background="@color/black">
 
 
-        <RelativeLayout
-            android:id="@+id/Rl_"
-            style="@style/MatchMatch"
-            android:visibility="gone">
+    <RelativeLayout
+        android:id="@+id/Rl_"
+        style="@style/MatchMatch"
+        android:visibility="gone">
 
-            <ImageView
-                style="@style/WrapWrap"
-                android:layout_above="@+id/tv_not_available"
-                android:layout_centerHorizontal="true"
-                android:src="@mipmap/not_available" />
+        <ImageView
+            android:layout_centerVertical="true"
+            android:id="@+id/tv_not_available"
+            style="@style/WrapWrap"
+            android:layout_centerHorizontal="true"
+            android:src="@mipmap/not_available" />
 
-            <TextView
-                android:id="@+id/tv_not_available"
-                style="@style/WrapWrap"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:text="@string/an_appointment"
-                android:textColor="@color/white" />
+        <TextView
+            style="@style/WrapWrap"
 
-            <LinearLayout
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="@string/an_appointment"
+            android:textColor="@color/white"
+            android:visibility="gone" />
+
+        <LinearLayout
+            style="@style/MatchWrap"
+            android:layout_below="@+id/tv_not_available"
+            android:layout_marginTop="60dp">
+
+            <Button xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/public_button1"
                 style="@style/MatchWrap"
-                android:layout_below="@+id/tv_not_available"
-                android:layout_marginTop="60dp">
+                android:layout_marginStart="30dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginEnd="30dp"
+                android:background="@drawable/bg_radius5_blue"
+                android:text="@string/Appointment_contract"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_16" />
 
-                <Button xmlns:android="http://schemas.android.com/apk/res/android"
-                    android:id="@+id/public_button1"
-                    style="@style/MatchWrap"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginEnd="30dp"
-                    android:background="@drawable/bg_radius5_blue"
-                    android:text="@string/Appointment_contract"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/text_size_16" />
+        </LinearLayout>
+    </RelativeLayout>
 
-            </LinearLayout>
-        </RelativeLayout>
-    <com.example.et.util.PublicSwipeRefreshLayout.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <com.example.et.util.PublicSwipeRefreshLayout.SwipeRefreshLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/swipeRefreshLayout"
         android:layout_width="match_parent"

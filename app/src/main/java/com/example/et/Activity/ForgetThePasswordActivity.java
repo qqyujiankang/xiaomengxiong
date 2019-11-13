@@ -73,13 +73,16 @@ public class ForgetThePasswordActivity extends BaseActivity {
         publicButton.setText(getString(R.string.confirm));
     }
 
-    @OnClick({R.id.tv_get_cot, R.id.public_button})
+    @OnClick({R.id.tv_get_cot, R.id.public_button, R.id.tv_t})
     public void onViewClicked(View view) {
         switch (view.getId()) {
+            case R.id.tv_t:
+                finish();
+                break;
             case R.id.tv_get_cot:
                 if (!StringUtils.isEmpty(etPhone.getText().toString().trim())) {
 
-                    new Verification(context, lifeful, Constant.registermessage, tvGetCot, 2,etPhone.getText().toString().trim());
+                    new Verification(context, lifeful, Constant.registermessage, tvGetCot, 2, etPhone.getText().toString().trim());
                 } else {
                     ToastUtils.showShort(R.string.phoenumber_or_email_account);
                 }

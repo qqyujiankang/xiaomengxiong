@@ -21,33 +21,35 @@
             style="@style/WrapWrap"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/icon_width_height_20"
-            android:layout_marginLeft="@dimen/icon_width_height_20"
+            android:layout_marginStart="@dimen/start_or_end_15"
+            android:layout_marginLeft="@dimen/start_or_end_15"
             android:text="@string/HOPE"
-            android:textColor="@color/orange" />
+            android:textColor="@color/orange"
+            android:textSize="@dimen/text_size_14" />
 
         <RelativeLayout
             android:id="@+id/Rl_ban2"
             style="@style/MatchWrap"
             android:layout_below="@+id/Rl_banl"
-            android:layout_marginStart="@dimen/icon_width_height_20"
-            android:layout_marginLeft="@dimen/icon_width_height_20"
+            android:layout_marginStart="@dimen/start_or_end_15"
+            android:layout_marginLeft="@dimen/start_or_end_15"
             android:layout_marginTop="@dimen/icon_width_height_10">
 
             <TextView
-
                 style="@style/WrapWrap"
                 android:text="@string/balance"
-                android:textColor="@color/p_white_test" />
+                android:textColor="@color/p_white_test"
+                android:textSize="@dimen/text_size_11" />
 
             <TextView
-
                 style="@style/WrapWrap"
                 android:layout_centerHorizontal="true"
                 android:text="@string/make"
-                android:textColor="@color/p_white_test" />
+                android:textColor="@color/p_white_test"
+                android:textSize="@dimen/text_size_11" />
 
             <TextView
+                 android:textSize="@dimen/text_size_11"
                 style="@style/WrapWrap"
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="@dimen/icon_width_height_20"
@@ -58,8 +60,8 @@
         <RelativeLayout
             style="@style/MatchWrap"
             android:layout_below="@+id/Rl_ban2"
-            android:layout_marginStart="@dimen/icon_width_height_20"
-            android:layout_marginLeft="@dimen/icon_width_height_20"
+            android:layout_marginStart="@dimen/start_or_end_15"
+            android:layout_marginLeft="@dimen/start_or_end_15"
             android:layout_marginTop="@dimen/icon_width_height_10"
             android:paddingBottom="@dimen/icon_width_height_10">
 
@@ -96,7 +98,7 @@
         <Button
             android:id="@+id/btn_top_up"
             style="@style/AutoWrapbuttn"
-            android:layout_marginLeft="@dimen/icon_width_height_20"
+            android:layout_marginLeft="@dimen/start_or_end_15"
             android:singleLine="true"
             android:text="@string/top_up"
             android:textSize="@dimen/text_size_12"
@@ -106,30 +108,30 @@
         <Button
             android:id="@+id/btn_Mention_money"
             style="@style/AutoWrapbuttn"
-            android:layout_marginStart="@dimen/icon_width_height_20"
-            android:layout_marginLeft="@dimen/icon_width_height_20"
-            android:layout_marginRight="@dimen/icon_width_height_20"
+            android:layout_marginStart="@dimen/start_or_end_15"
+            android:layout_marginLeft="@dimen/start_or_end_15"
+            android:layout_marginRight="@dimen/start_or_end_15"
             android:singleLine="true"
             android:text="@string/Mention_money"
             android:textSize="@dimen/text_size_12" />
 
         <Button
-              android:textSize="@dimen/text_size_12"
             android:id="@+id/btn_transfer"
             style="@style/AutoWrapbuttn"
-            android:layout_marginStart="@dimen/icon_width_height_20"
-            android:layout_marginLeft="@dimen/icon_width_height_20"
+            android:layout_marginStart="@dimen/start_or_end_15"
+            android:layout_marginLeft="@dimen/start_or_end_15"
             android:singleLine="true"
-            android:text="@string/transfer" />
+            android:text="@string/transfer"
+            android:textSize="@dimen/text_size_12" />
 
         <Button
-              android:textSize="@dimen/text_size_12"
             android:id="@+id/btn_record"
             style="@style/AutoWrapbuttn"
-            android:layout_marginLeft="@dimen/icon_width_height_20"
-            android:layout_marginRight="@dimen/icon_width_height_20"
+            android:layout_marginLeft="@dimen/start_or_end_15"
+            android:layout_marginRight="@dimen/start_or_end_15"
             android:singleLine="true"
-            android:text="@string/record" />
+            android:text="@string/record"
+            android:textSize="@dimen/text_size_12" />
 
 
     </LinearLayout>
