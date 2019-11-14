@@ -40,6 +40,7 @@ import com.example.et.View.MyGridView;
 import com.example.et.entnty.DataFlow;
 import com.example.et.entnty.ListObject;
 import com.example.et.entnty.Pagebean;
+import com.example.et.util.BarUtils;
 import com.example.et.util.CacheUtils;
 import com.example.et.util.JsonUtil;
 import com.example.et.util.LogUtils;
@@ -157,7 +158,15 @@ public class HeadFragment extends BaseFragment implements AdapterView.OnItemClic
 
 
     }
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+        if (!hidden) {
+            BarUtils.setStatusBarAlpha(getActivity(), 0);
+        }
 
+
+    }
 
     @Override
     protected int setContentView() {

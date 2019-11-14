@@ -19,6 +19,7 @@ import com.example.et.R;
 import com.example.et.Ustlis.ActivityUtils;
 import com.example.et.Ustlis.StatusBarUtils;
 import com.example.et.entnty.Ass;
+import com.example.et.util.BarUtils;
 import com.example.et.util.CacheUtils;
 import com.example.et.util.JsonUtil;
 import com.example.et.util.LogUtils;
@@ -72,11 +73,20 @@ public class WalletFragment extends BaseFragment implements AdapterView.OnItemCl
 
         LogUtils.i("==============钱包===");
         requestDatas();
-        StatusBarUtils.with(getActivity())
-                .setColor(getResources().getColor(R.color.black))
-                .init();
+//        StatusBarUtils.with(getActivity())
+//                .setColor(getResources().getColor(R.color.black))
+//                .init();
     }
+  @Override
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+        if (!hidden) {
+            BarUtils.setStatusBarAlpha(getActivity(), 0);
+             BarUtils.addMarginTopEqualStatusBarHeight(swipeRefreshLayout);// 其实这个只需要调用一次即可
+        }
 
+
+    }
     private AdapterRealize adapterRealize;
 
     @Override

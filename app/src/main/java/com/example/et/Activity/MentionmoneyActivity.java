@@ -95,7 +95,7 @@ public class MentionmoneyActivity extends BaseActivity {
                 public void onSuccess(String success) {
                     LogUtils.i("======getgold_hl========" + success);
                     Map<String, Object> stringObjectMap = JsonUtil.parseJSON(success);
-                    tvData.setText(getString(R.string.service_charge) + stringObjectMap.get("data").toString() + "手续费");
+                    tvData.setText(getString(R.string.service_charge) + stringObjectMap.get("data").toString() + getString(R.string.shouxufen));
 
 
                 }
@@ -138,7 +138,7 @@ public class MentionmoneyActivity extends BaseActivity {
                 break;
             case R.id.public_button:
                 if (!StringUtils.isEmpty(etCode.getText().toString())) {
-                    if (Integer.parseInt(etCode.getText().toString()) >= 100) {
+                    if (Double.parseDouble(etCode.getText().toString()) >= 100) {
 
                         PayDialog payDialog = new PayDialog(context) {
                             @Override

@@ -51,7 +51,7 @@
     <string name="balance">Balance</string>
     <string name="rental">lump sum</string>
     <string name="usable">available</string>
-    <string name="convert">Equivalent (USDT)</string>
+    <string name="convert">convert (USDT)</string>
     <string name="top_up">recharge</string>
     <string name="Mention_money">money</string>
     <string name="record">Record</string>
@@ -93,7 +93,7 @@
     <string name="announcement">notice</string>
     <string name="not_bound">not bound</string>
     <string name="make">In the appointment</string>
-    <string name="convert_init">Equivalent (usdt)</string>
+    <string name="convert_init">zy(usdt)</string>
     <string name="The_two_password_do_not_match">Two passwords are inconsistent</string>
     <string name="Content_of_the_feedback">Please input the feedback, we will provide better service for you.</string>
     <string name="team">team</string>
@@ -103,7 +103,7 @@
     <string name="To_make_an_appointment_in_1">Appointment succeeded, matching</string>
     <string name="Take_out_the_principal_and_interest_countdown">Contract status</string>
     <string name="Appointment_success_time">TimeAppointment</string>
-    <string name="The_contract_amount">The contract amount</string>
+    <string name="The_contract_amount">contract</string>
     <string name="Enter_security_password">Enter security password</string>
     <string name="please_fill_in_the_account_number">Please fill in the other party s account number</string>
     <string name="Please_fill_in_the_transfer_amount">Please fill in the transfer out amount, not less than 10</string>
@@ -163,7 +163,7 @@
     <string name="Please_enter_email">Enter email account</string>
     <string name="Generated_income">Generated revenue</string>
     <string name="Contract_executed_successfully">Successful contract execution</string>
-    <string name="prospective_earnings">expected profits</string>
+    <string name="prospective_earnings">expected</string>
     <string name="Make_an_appointment_to_currency">Make an appointment to currency</string>
     <string name="To_perform_currency">Execution currency</string>
     <string name="language_switch">Language switching</string>
@@ -187,5 +187,17 @@
     <string name="t3">contract cost </string>
     <string name="test2">Existing ，login</string>
     <string name="terd">The static gains</string>
-        <string name="time1">Time</string>
+    <string name="time1">Time</string>
+    <string name="bizhong">currency</string>
+    <string name="shouxufen">service charge </string>
+    <string name="code">seconds</string>
+    <string name="chongxin">regain</string>
+    <string name="terad">Payment order countdown</string>
+    <string name="tesd">Booking time currency price</string>
+    <string name="erda">Reserve currency quantity</string>
+    <string name="ette">appointment time</string>
+    <string name="te245">Warm tip: if you do not make up for 12 hours, the profit will be halved. If you do not make up for 24 hours, you will deduct all the reservation fees</string>
+    <string name="p1">Edisabled</string>
+    <string name="p2">Time expired</string>
+    <string name="zayt">Press again to exit the program</string>
 </resources>

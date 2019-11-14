@@ -187,4 +187,9 @@
      <string name="test2">已有账号，立即登录</string>
     <string name="terd">静态收益</string>
       <string name="time1">时 间</string>
+    <string name="bizhong">币种</string>
+    <string name="shouxufen">手续费</string>
+    <string name="code">秒后可重发</string>
+    <string name="chongxin">重新获取验证码</string>
+    <string name="zayt">再按一次退出程序</string>
 </resources>

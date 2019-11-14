@@ -19,9 +19,9 @@ android {
         }
 
         manifestPlaceholders = [
-            JPUSH_PKGNAME : applicationId,
-            JPUSH_APPKEY : "dbae3b4f561bf958c2b9e8cc", //JPush上注册的包名对应的appkey.
-            JPUSH_CHANNEL : "developer-default", //暂时填写默认值即可.
+                JPUSH_PKGNAME: applicationId,
+                JPUSH_APPKEY : "dbae3b4f561bf958c2b9e8cc", //JPush上注册的包名对应的appkey.
+                JPUSH_CHANNEL: "developer-default", //暂时填写默认值即可.
         ]
     }
     buildTypes {
@@ -120,11 +120,13 @@ dependencies {
     implementation 'com.just.agentweb:filechooser:4.1.2'// (可选)
     implementation 'com.download.library:Downloader:4.1.2'
 
-       implementation 'org.sufficientlysecure:html-textview:3.8'
+    implementation 'org.sufficientlysecure:html-textview:3.8'
 
 
     implementation 'cn.jiguang.sdk:jpush:3.3.4'  // 此处以JPush 3.3.4 版本为例。
     implementation 'cn.jiguang.sdk:jcore:2.1.0'  // 此处以JCore 2.1.0 版本为例。
+
+
 
 
 }

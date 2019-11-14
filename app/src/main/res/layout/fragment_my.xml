@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:android_custom="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/ll_1"
     style="@style/MatchMatch.Vertical"
     android:background="@color/black">
 
@@ -16,7 +18,7 @@
 
 
                 <LinearLayout
-
+                    android:id="@+id/ll5"
                     style="@style/MatchWrap.Vertical"
                     android:layout_height="120dp"
                     android:background="@drawable/resource">
@@ -426,10 +428,10 @@
 
 
                         <TextView
-                            android:layout_marginStart="@dimen/start_or_end_10"
                             android:id="@+id/tv_version_information"
                             style="@style/WrapWrap"
                             android:layout_centerVertical="true"
+                            android:layout_marginStart="@dimen/start_or_end_10"
                             android:layout_marginTop="@dimen/start_or_end_10"
                             android:layout_toRightOf="@+id/iv_10"
                             android:text="@string/version_information"

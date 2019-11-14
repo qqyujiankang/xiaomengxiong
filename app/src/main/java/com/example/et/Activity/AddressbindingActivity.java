@@ -100,7 +100,7 @@ public class AddressbindingActivity extends BaseActivity {
         if (xiugan != null) {
             publicTitleTv.setText(stringname + getString(R.string.revision_Binding_address));
             tv.setText(stringname + getString(R.string.site));
-          //  etPassword.setHint(getString(R.string.please_enter) + stringname + getString(R.string.site));
+            //  etPassword.setHint(getString(R.string.please_enter) + stringname + getString(R.string.site));
             etPassword.setText(addressbinding);
         } else if (tepy != null) {
             tv.setText(addressbinding + getString(R.string.site));
@@ -122,19 +122,17 @@ public class AddressbindingActivity extends BaseActivity {
                 break;
 
             case R.id.tv_get_cot:
+
                 new Verification(context, lifeful, Constant.registermessage, tvGetCot, 4, null);
+//
+
 
                 break;
             case R.id.public_button:
-                if (!StringUtils.isEmpty(etPassword.getText().toString().trim())) {
+                if (ischeis()) {
                     datat();
-                } else {
-                    if (addressbinding != null) {
-                        ToastUtils.showShort(getString(R.string.please_enter) + addressbinding + getString(R.string.site));
-                    } else {
-                        ToastUtils.showShort(R.string.Please_enter_the_USDT_address);
-                    }
                 }
+
 
                 break;
             case R.id.public_other:
@@ -145,6 +143,24 @@ public class AddressbindingActivity extends BaseActivity {
                 break;
             default:
         }
+    }
+
+    private boolean ischeis() {
+        if (StringUtils.isEmpty(etPassword.getText().toString().trim())) {
+            if (addressbinding != null) {
+                ToastUtils.showShort(getString(R.string.please_enter) + addressbinding + getString(R.string.site));
+                return false;
+            } else {
+                ToastUtils.showShort(R.string.Please_enter_the_USDT_address);
+                return false;
+            }
+
+        }
+        if (StringUtils.isEmpty(etCode.getText().toString().trim())) {
+            ToastUtils.showShort(R.string.Please_enter_verification_code);
+            return false;
+        }
+        return true;
     }
 
     String url;

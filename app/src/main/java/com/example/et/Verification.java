@@ -61,7 +61,7 @@ public class Verification {
                 public void onSuccess(String success) {
                     Map<String, Object> resultMap = ParseUtils.analysisListTypeDatasAndCount((Activity) context, success, null, true).getStringMap();
                     if (resultMap.get(KeyValueConstants.CODE).equals("200")) {
-                        CountDownTimerUtils countDownTimerUtils = new CountDownTimerUtils(view, 60000, 1000);
+                        CountDownTimerUtils countDownTimerUtils = new CountDownTimerUtils(context,view, 60000, 1000);
                         countDownTimerUtils.start();
                     }
                     ToastUtils.showShort(resultMap.get(KeyValueConstants.MSG).toString());

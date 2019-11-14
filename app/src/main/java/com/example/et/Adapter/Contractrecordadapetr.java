@@ -62,9 +62,9 @@ public class Contractrecordadapetr extends ManagerAdapter {
                 }
 
             } else if (contractrecord.getState() == 1) {
-                tvPerformance.setText("匹配中");
+                tvPerformance.setText(R.string.p1);
             } else if (contractrecord.getState() == 3) {
-                tvPerformance.setText("时间已终止");
+                tvPerformance.setText(R.string.p2);
             }
 
 

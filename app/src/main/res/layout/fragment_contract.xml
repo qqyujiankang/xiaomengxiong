@@ -105,7 +105,7 @@
                             <TextView
                                 android:id="@+id/tv_day"
                                 style="@style/WrapWrap"
-                                android:text="支付订单倒计时"
+                                android:text="@string/terad"
                                 android:textColor="@color/white" />
 
                             <TextView
@@ -126,13 +126,12 @@
 
                         <TextView
                             style="@style/WrapWrap"
-                            android:text=" 合约金额 "
+                            android:text="@string/The_contract_amount"
                             android:textColor="@color/white" />
 
                         <TextView
                             android:id="@+id/tv_money"
                             style="@style/WrapWrap"
-                            android:text=" 13123 "
                             android:textColor="@color/white" />
                     </LinearLayout>
 
@@ -149,13 +148,12 @@
 
                         <TextView
                             style="@style/WrapWrap"
-                            android:text="预期收益"
+                            android:text="@string/prospective_earnings"
                             android:textColor="@color/white" />
 
                         <TextView
                             android:id="@+id/tv_prospective"
                             style="@style/WrapWrap"
-                            android:text="13123 "
                             android:textColor="@color/white" />
                     </LinearLayout>
 
@@ -173,7 +171,7 @@
                             android:layout_marginStart="@dimen/icon_width_height_10"
                             android:layout_marginLeft="@dimen/icon_width_height_10"
                             android:padding="@dimen/icon_width_height_10"
-                            android:text="预约合时币种价格"
+                            android:text="@string/tesd"
                             android:textColor="@color/p_white_test" />
 
                         <TextView
@@ -183,7 +181,6 @@
                             android:layout_centerVertical="true"
                             android:layout_marginEnd="@dimen/icon_width_height_20"
                             android:layout_marginRight="@dimen/icon_width_height_20"
-                            android:text="4646"
                             android:textColor="@color/white" />
                     </RelativeLayout>
 
@@ -212,7 +209,7 @@
                             android:layout_marginStart="@dimen/icon_width_height_10"
                             android:layout_marginLeft="@dimen/icon_width_height_10"
                             android:padding="@dimen/icon_width_height_10"
-                            android:text="预约合约币种"
+                            android:text="@string/Open_contract_currency"
                             android:textColor="@color/p_white_test" />
 
                         <TextView
@@ -236,7 +233,7 @@
                             android:layout_marginStart="@dimen/icon_width_height_10"
                             android:layout_marginLeft="@dimen/icon_width_height_10"
                             android:padding="@dimen/icon_width_height_10"
-                            android:text="预约币种数量"
+                            android:text="@string/erda"
                             android:textColor="@color/p_white_test" />
 
                         <TextView
@@ -260,7 +257,7 @@
                             android:layout_marginStart="@dimen/icon_width_height_10"
                             android:layout_marginLeft="@dimen/icon_width_height_10"
                             android:padding="@dimen/icon_width_height_10"
-                            android:text="预约时间"
+                            android:text="@string/ette"
                             android:textColor="@color/p_white_test" />
 
                         <TextView
@@ -359,7 +356,6 @@
                             android:layout_centerVertical="true"
                             android:layout_marginEnd="@dimen/icon_width_height_20"
                             android:layout_marginRight="@dimen/icon_width_height_20"
-                            android:text="08-13 12:40:30"
                             android:textColor="@color/white" />
                     </RelativeLayout>
 
@@ -383,7 +379,7 @@
                     android:layout_marginTop="@dimen/start_or_end_10"
                     android:layout_marginEnd="30dp"
                     android:layout_marginBottom="@dimen/icon_width_height_20"
-                    android:text="温馨提示 ：12小时未补齐则收益减半，24小时未补齐扣除全部预约金"
+                    android:text="@string/te245"
                     android:textColor="#FFE04159"
                     android:visibility="gone" />
             </LinearLayout>

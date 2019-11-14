@@ -186,5 +186,17 @@
     <string name="terd">静态收益</string>
     <string name="t4">超级节点</string>
     <string name="t6">推荐超级节点</string>
+    <string name="bizhong">币种</string>
+    <string name="shouxufen">手续费</string>
+    <string name="code">秒后可重发</string>
+    <string name="chongxin">重新获取验证码</string>
+    <string name="terad">支付订单倒计时</string>
+    <string name="tesd">预约合时币种价格</string>
+    <string name="erda">预约币种数量</string>
+    <string name="ette">预约时间</string>
+    <string name="te245">温馨提示 ：12小时未补齐则收益减半，24小时未补齐扣除全部预约金</string>
+    <string name="p1">匹配中</string>
+    <string name="p2">时间已终止</string>
+    <string name="zayt">再按一次退出程序</string>
 
 </resources>

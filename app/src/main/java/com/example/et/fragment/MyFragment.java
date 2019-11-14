@@ -27,6 +27,7 @@ import com.example.et.Ustlis.ActivityUtils;
 import com.example.et.Ustlis.ImageLoaderUtil;
 import com.example.et.Ustlis.StatusBarUtils;
 import com.example.et.util.AppUtils;
+import com.example.et.util.BarUtils;
 import com.example.et.util.CacheUtils;
 import com.example.et.util.LogUtils;
 import com.example.et.util.PublicSwipeRefreshLayout.SwipeRefreshLayout;
@@ -154,9 +155,10 @@ public class MyFragment extends BaseFragment {
 
         LogUtils.i("==============wode===");
         StatusBarUtils.with(getActivity())
+
                 .setColor(getResources().getColor(R.color.orange))
                 .init();
-
+       // BarUtils.setStatusBarLightMode(getActivity(),true);
     }
 
     @Override
@@ -295,5 +297,15 @@ public class MyFragment extends BaseFragment {
                 break;
             default:
         }
+    }
+
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+        if (!hidden) {
+            BarUtils.setStatusBarAlpha(getActivity(), 0);
+        }
+
+
     }
 }

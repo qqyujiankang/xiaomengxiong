@@ -66,7 +66,7 @@
             style="@style/WrapWrap"
             android:paddingTop="@dimen/start_or_end_5"
             android:paddingBottom="@dimen/start_or_end_5"
-            android:text="币种"
+            android:text="@string/bizhong"
             android:textColor="@color/white" />
 
         <TextView

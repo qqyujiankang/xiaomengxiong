@@ -1,8 +1,12 @@
 package com.example.et.fragment;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -172,7 +176,7 @@ public class ContractFragment extends BaseFragment {
                         LogUtils.i("======newcontract======" + objectPagebean.get("state").toString());
                         if (objectPagebean.get("state").toString().equals("0") || objectPagebean.get("state").toString().equals("1") || objectPagebean.get("state").toString().equals("2")) {
                             StatusBarUtils.with(getActivity())
-                                    .setColor(getResources().getColor(R.color.orange))
+                                    .setColor(getResources().getColor(R.color.E3B54F))
                                     .init();
 
                         }
@@ -192,7 +196,13 @@ public class ContractFragment extends BaseFragment {
 
                             tvTime.setText(objectPagebean.get("yytime").toString());
                         } else if (objectPagebean.get("state").toString().equals("1")) {
-                            countDown.timerCancel();
+                            if (countDown == null) {
+                                countDown = new CountDown(tvYyTime, 0 - TimeUtils.getNowMills(), 0);
+                            } else {
+                                countDown.timerCancel();
+                                ;
+                            }
+
                             llPublicLine01.setVisibility(View.VISIBLE);
                             RlPublicButton1.setVisibility(View.GONE);
                             tvState.setText(getString(R.string.To_make_an_appointment_in_1));

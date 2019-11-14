@@ -14,7 +14,9 @@ public class ExampleUnitTest {
     public void addition_isCorrect() {
         //assertEquals(4, 2 + 2);
         System.out.println("======="+calculateProfit1(1564.41544123));
-        ;
+        if (Double.parseDouble("0.0000")>=100){
+
+        }
     }
 
     /**

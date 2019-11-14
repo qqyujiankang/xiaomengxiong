@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import androidx.fragment.app.Fragment;
 
 import com.example.et.R;
+import com.example.et.util.BarUtils;
+import com.example.et.util.LogUtils;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -65,13 +67,19 @@ public abstract class BaseFragment extends Fragment {
         isInit = false;
         isLoad = false;
         unbinder.unbind();
+        if (view != null) {
+			((ViewGroup) view.getParent()).removeView(view);
+		}
 
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        view = inflater.inflate(setContentView(), container, false);
+        if (view == null) {
+            LogUtils.i("==========="+view);
+            view = inflater.inflate(setContentView(), container, false);
+        }
         unbinder = ButterKnife.bind(this, view);
         isInit = true;
         /**初始化的时候去加载数据**/

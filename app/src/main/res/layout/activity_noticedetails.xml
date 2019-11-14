@@ -19,7 +19,6 @@
             style="@style/MatchWrap"
             android:layout_marginStart="@dimen/start_or_end_10"
             android:gravity="left"
-            android:text="321"
             android:textColor="@color/white" />
 
         <TextView
@@ -29,7 +28,6 @@
             android:layout_marginStart="@dimen/start_or_end_10"
             android:layout_marginRight="@dimen/start_or_end_10"
             android:gravity="left"
-            android:text="321"
             android:textColor="@color/white" />
 
         <TextView

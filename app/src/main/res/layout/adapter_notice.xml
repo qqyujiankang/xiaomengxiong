@@ -24,7 +24,6 @@
             <TextView
                 android:id="@+id/tv_name"
                 style="@style/WrapWrap"
-                android:text="sdfs"
                 android:textColor="@color/white"
                 android:textSize="@dimen/text_size_14" />
 

@@ -1,5 +1,6 @@
 package com.example.et.Ustlis;
 
+import android.content.Context;
 import android.graphics.Color;
 import android.os.CountDownTimer;
 import android.text.Spannable;
@@ -14,6 +15,7 @@ import com.example.et.R;
  */
 public class CountDownTimerUtils extends CountDownTimer {
     private TextView mTextView;
+    private Context context;
 
     /**
      * @param textView          The TextView
@@ -23,15 +25,17 @@ public class CountDownTimerUtils extends CountDownTimer {
      * @param countDownInterval The interval along the way to receiver
      *                          {@link #onTick(long)} callbacks.
      */
-    public CountDownTimerUtils(TextView textView, long millisInFuture, long countDownInterval) {
+    public CountDownTimerUtils(Context context,TextView textView, long millisInFuture, long countDownInterval) {
         super(millisInFuture, countDownInterval);
         this.mTextView = textView;
+        this.context = context;
+
     }
 
     @Override
     public void onTick(long millisUntilFinished) {
         mTextView.setClickable(false); //设置不可点击
-        mTextView.setText(millisUntilFinished / 1000 + "秒后可重发");  //设置倒计时时间
+        mTextView.setText(millisUntilFinished / 1000 +context. getString(R.string.code));  //设置倒计时时间
         // mTextView.setBackgroundResource(R.color.orange); //设置按钮为灰色，这时是不能点击的
 //
 //        /**
@@ -58,7 +62,7 @@ public class CountDownTimerUtils extends CountDownTimer {
 
     @Override
     public void onFinish() {
-        mTextView.setText("重新获取验证码");
+        mTextView.setText(R.string.chongxin);
         mTextView.setClickable(true);//重新获得点击
         //  mTextView.setBackgroundResource(R.color.orange);  //还原背景色
     }

@@ -233,7 +233,7 @@
                 <TextView
                     android:layout_width="2dp"
                     android:layout_height="match_parent"
-                    android:layout_marginStart="20dp"
+                    android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
                     android:background="@color/orange" />
 
@@ -286,7 +286,7 @@
             <com.example.et.Adapter.AutoPollRecyclerView
                 android:id="@+id/recycleView"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/icon_width_height_150"
+                android:layout_height="match_parent"
                 app:layoutManager="LinearLayoutManager" />
         </LinearLayout>
     </com.example.et.util.PublicSwipeRefreshLayout.SwipeRefreshLayout>
