@@ -154,11 +154,8 @@ public class MyFragment extends BaseFragment {
     protected void lazyLoad() {
 
         LogUtils.i("==============wode===");
-        StatusBarUtils.with(getActivity())
 
-                .setColor(getResources().getColor(R.color.orange))
-                .init();
-       // BarUtils.setStatusBarLightMode(getActivity(),true);
+
     }
 
     @Override
@@ -303,7 +300,11 @@ public class MyFragment extends BaseFragment {
     public void onHiddenChanged(boolean hidden) {
         super.onHiddenChanged(hidden);
         if (!hidden) {
-            BarUtils.setStatusBarAlpha(getActivity(), 0);
+
+          StatusBarUtils.with(getActivity())
+
+                .setColor(getResources().getColor(R.color.orange))
+                .init();
         }
 
 

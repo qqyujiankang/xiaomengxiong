@@ -158,11 +158,15 @@ public class HeadFragment extends BaseFragment implements AdapterView.OnItemClic
 
 
     }
+
     @Override
     public void onHiddenChanged(boolean hidden) {
         super.onHiddenChanged(hidden);
         if (!hidden) {
             BarUtils.setStatusBarAlpha(getActivity(), 0);
+            StatusBarUtils.with(getActivity())
+                    .setColor(getResources().getColor(R.color.black))
+                    .init();
         }
 
 
@@ -241,7 +245,7 @@ public class HeadFragment extends BaseFragment implements AdapterView.OnItemClic
                         AutoPollAdapter adapter = new AutoPollAdapter((ArrayList<DataFlow>) (ArrayList) objectPagebean.getList());
                         //recycleView.addItemDecoration(new DividerItemDecoration(context, DividerItemDecoration.VERTICAL));
                         // recycleView.addItemDecoration(new GridSpacingItemDecoration(1, 10, false));
-                     //   recycleView.setBackground(context.getResources().getColor(R.color.white));
+                        //   recycleView.setBackground(context.getResources().getColor(R.color.white));
                         recycleView.setAdapter(adapter);
                         recycleView.start();
                     }

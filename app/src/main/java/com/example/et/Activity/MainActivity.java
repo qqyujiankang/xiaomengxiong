@@ -3,30 +3,20 @@ package com.example.et.Activity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Configuration;
-import android.content.res.Resources;
-import android.net.Uri;
 import android.os.Bundle;
-import android.text.TextUtils;
-import android.view.Gravity;
 import android.view.KeyEvent;
-import android.view.View;
-import android.widget.ImageView;
+import android.widget.FrameLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
-import androidx.viewpager.widget.ViewPager;
 
 import com.example.et.Adapter.MyFragmentPagerAdapter;
 import com.example.et.R;
 import com.example.et.Ustlis.ListDatasUtils;
-import com.example.et.Ustlis.ToastUtils;
-import com.example.et.View.CustomScrollViewPager;
+import com.example.et.Ustlis.StatusBarUtil;
 import com.example.et.entnty.VersionInfo;
 import com.example.et.fragment.ContractFragment;
 import com.example.et.fragment.HeadFragment;
@@ -39,19 +29,18 @@ import com.meiqia.meiqiasdk.util.MQConfig;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+import static com.example.et.Ustlis.StatusBarUtil.setRootViewFitsSystemWindows;
+
 /**
  * 主框架
  */
-public class MainActivity extends BaseActivity {
+public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedChangeListener {
 
 
-    @BindView(R.id.fragment_vp)
-    CustomScrollViewPager mViewPager;
     @BindView(R.id.today_tab)
     RadioButton todayTab;
     @BindView(R.id.record_tab)
@@ -62,15 +51,20 @@ public class MainActivity extends BaseActivity {
     RadioButton settingsTab;
     @BindView(R.id.tabs_rg)
     RadioGroup mTabRadioGroup;
-    private List<Fragment> mFragments;
-    private FragmentPagerAdapter mAdapter;
+
+
     private Context context;
     private int curIndex = 0;
+    private ArrayList<Fragment> fragments;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         context = MainActivity.this;
         setContentView(R.layout.activity_main);
+        setRootViewFitsSystemWindows(this, false);
+        //设置状态栏透明
+        StatusBarUtil.setTranslucentStatus(this);
         ButterKnife.bind(this);
         if (savedInstanceState != null) {
             curIndex = savedInstanceState.getInt("curIndex");
@@ -79,27 +73,23 @@ public class MainActivity extends BaseActivity {
 
     }
 
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt("curIndex", curIndex);
+    }
 
     @Override
     public void initView() {
         super.initView();
         ButterKnife.bind(this);
 
-        mFragments = new ArrayList<>();
-        if (mFragments.size() == 0) {
-            mFragments.add(new HeadFragment());
-            mFragments.add(new WalletFragment());
-            mFragments.add(new ContractFragment());
-            mFragments.add(new MyFragment());
-        }
+
         // init view pager
-         mFragments = ListDatasUtils.getListFragmentMainActivity();
-        mAdapter = new MyFragmentPagerAdapter(getSupportFragmentManager(), mFragments);
-        mViewPager.setAdapter(mAdapter);
-       //mViewPager.setOffscreenPageLimit(3);
+        fragments = ListDatasUtils.getListFragmentMainActivity();
+        FragmentUtils.add(getSupportFragmentManager(), fragments, R.id.fragmentLayout, curIndex);
+        mTabRadioGroup.setOnCheckedChangeListener(this);
 
-
-        mTabRadioGroup.setOnCheckedChangeListener(mOnCheckedChangeListener);
         MQConfig.init(this, "372713903d6abcc17515b00475bc2f04", new OnInitCallback() {
             @Override
             public void onSuccess(String clientId) {
@@ -116,43 +106,6 @@ public class MainActivity extends BaseActivity {
     }
 
 
-    private ViewPager.OnPageChangeListener mPageChangeListener = new ViewPager.OnPageChangeListener() {
-        @Override
-        public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-        }
-
-        @Override
-        public void onPageSelected(int position) {
-            RadioButton radioButton = (RadioButton) mTabRadioGroup.getChildAt(position);
-            radioButton.setChecked(true);
-        }
-
-        @Override
-        public void onPageScrollStateChanged(int state) {
-
-        }
-    };
-
-
-    private RadioGroup.OnCheckedChangeListener mOnCheckedChangeListener = new RadioGroup.OnCheckedChangeListener() {
-        @Override
-        public void onCheckedChanged(RadioGroup group, int checkedId) {
-            for (int i = 0; i < group.getChildCount(); i++) {
-                if (group.getChildAt(i).getId() == checkedId) {
-                    mViewPager.setCurrentItem(i);
-                    return;
-                }
-            }
-        }
-    };
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        mViewPager.removeOnPageChangeListener(mPageChangeListener);
-    }
-
     private int fragment_flag;
 
     @Override
@@ -160,7 +113,7 @@ public class MainActivity extends BaseActivity {
         super.onNewIntent(intent);
         fragment_flag = intent.getIntExtra("fragment_flag", 0);
         if (fragment_flag == 2) { // 我的
-            mViewPager.setCurrentItem(2);
+            // mViewPager.setCurrentItem(2);
             contactTab.setChecked(true);
             todayTab.setChecked(false);
             settingsTab.setChecked(false);
@@ -177,7 +130,7 @@ public class MainActivity extends BaseActivity {
 
     private void showCurrentFragment(int index) {
         if (index != curIndex) {
-            FragmentUtils.showHide(curIndex = index, mFragments);
+            FragmentUtils.showHide(curIndex = index, fragments);
         }
     }
 
@@ -213,6 +166,60 @@ public class MainActivity extends BaseActivity {
             return true;
         }
         return super.onKeyDown(keyCode, event);
+
+    }
+
+    @Override
+    public void onCheckedChanged(RadioGroup radioGroup, int i) {
+        switch (i) {
+            case R.id.today_tab:
+                showCurrentFragment(0);
+                setBottomView(0);
+                break;
+            case R.id.record_tab:
+                showCurrentFragment(1);
+                setBottomView(1);
+                break;
+            case R.id.contact_tab:
+                showCurrentFragment(2);
+                setBottomView(2);
+                break;
+            case R.id.settings_tab:
+                showCurrentFragment(3);
+                setBottomView(3);
+                break;
+            default:
+        }
+    }
+
+    private void setBottomView(int i) {
+        switch (i) {
+            case 0:
+                todayTab.setChecked(true);
+                contactTab.setChecked(false);
+                settingsTab.setChecked(false);
+                recordTab.setChecked(false);
+                break;
+            case 1:
+                todayTab.setChecked(false);
+                contactTab.setChecked(false);
+                settingsTab.setChecked(false);
+                recordTab.setChecked(true);
+                break;
+            case 2:
+                todayTab.setChecked(false);
+                contactTab.setChecked(true);
+                settingsTab.setChecked(false);
+                recordTab.setChecked(false);
+                break;
+            case 3:
+                todayTab.setChecked(false);
+                contactTab.setChecked(false);
+                settingsTab.setChecked(true);
+                recordTab.setChecked(false);
+                break;
+            default:
+        }
 
     }
 }

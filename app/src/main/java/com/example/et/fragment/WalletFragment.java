@@ -73,20 +73,23 @@ public class WalletFragment extends BaseFragment implements AdapterView.OnItemCl
 
         LogUtils.i("==============钱包===");
         requestDatas();
-//        StatusBarUtils.with(getActivity())
-//                .setColor(getResources().getColor(R.color.black))
-//                .init();
+
     }
-  @Override
+
+    @Override
     public void onHiddenChanged(boolean hidden) {
         super.onHiddenChanged(hidden);
         if (!hidden) {
             BarUtils.setStatusBarAlpha(getActivity(), 0);
-             BarUtils.addMarginTopEqualStatusBarHeight(swipeRefreshLayout);// 其实这个只需要调用一次即可
+            // BarUtils.addMarginTopEqualStatusBarHeight(swipeRefreshLayout);// 其实这个只需要调用一次即可
+            StatusBarUtils.with(getActivity())
+                    .setColor(getResources().getColor(R.color.black))
+                    .init();
         }
 
 
     }
+
     private AdapterRealize adapterRealize;
 
     @Override
@@ -148,7 +151,7 @@ public class WalletFragment extends BaseFragment implements AdapterView.OnItemCl
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                 requestDatas();
+                requestDatas();
             }
         });
 

@@ -24,6 +24,7 @@ import com.example.et.Ustlis.ScreenUtils;
 import com.example.et.Ustlis.StatusBarUtils;
 import com.example.et.Ustlis.ToastUtils;
 import com.example.et.View.PayDialog;
+import com.example.et.util.BarUtils;
 import com.example.et.util.CacheUtils;
 import com.example.et.util.CountDown;
 import com.example.et.util.LogUtils;
@@ -134,9 +135,7 @@ public class ContractFragment extends BaseFragment {
     protected void lazyLoad() {
         LogUtils.i("==============合约===");
         requestDatas();
-        StatusBarUtils.with(getActivity())
-                .setColor(getResources().getColor(R.color.black))
-                .init();
+
 
     }
 
@@ -302,7 +301,12 @@ public class ContractFragment extends BaseFragment {
     @Override
     public void onHiddenChanged(boolean hidden) {
         super.onHiddenChanged(hidden);
-
+        if (!hidden) {
+            BarUtils.setStatusBarAlpha(getActivity(), 0);
+            StatusBarUtils.with(getActivity())
+                    .setColor(getResources().getColor(R.color.black))
+                    .init();
+        }
 
     }
 
