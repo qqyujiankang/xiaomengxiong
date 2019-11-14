@@ -14,6 +14,8 @@ import com.example.et.util.BarUtils;
 import com.example.et.util.CacheUtils;
 import com.example.et.util.LogUtils;
 
+import cn.jpush.android.api.JPushInterface;
+
 /**
  * 启动页
  */
@@ -40,6 +42,8 @@ public class SplashActivity extends AppCompatActivity {
         @Override
         public boolean handleMessage(Message message) {
             if (message.what == 1) {
+               // JPushInterface.setAlias(SplashActivity.this,  sequence,  alias);
+
                 LogUtils.i("登录========" + CacheUtils.getInstance().getString("token"));
                 Intent intent = new Intent();
                 if (!CacheUtils.getInstance().getString("token").equals("")) {

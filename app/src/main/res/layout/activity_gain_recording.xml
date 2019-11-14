@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/MatchMatch.Vertical"
+    android:background="@color/black"
     tools:context=".Activity.GainRecordingActivity">
 
     <include layout="@layout/public_title" />
@@ -20,7 +21,8 @@
     <LinearLayout
         android:id="@+id/ll_a"
         style="@style/MatchMatch.Vertical"
-        android:background="@color/black_b">
+        android:background="@color/black_b"
+        android:visibility="gone">
 
         <RelativeLayout
             android:id="@+id/_r1"

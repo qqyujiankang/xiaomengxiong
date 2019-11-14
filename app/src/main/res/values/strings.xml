@@ -108,6 +108,7 @@
     <string name="currency">币种</string>
     <string name="Have_people">类型：</string>
     <string name="time">时 间:</string>
+    <string name="time1">时 间</string>
     <string name="number">账号</string>
     <string name="Is_binding">已绑定</string>
     <string name="Please_enter_amount">请输入金额</string>

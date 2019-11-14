@@ -150,9 +150,11 @@ public class GainRecordingActivity extends BaseActivity {
 
                     objectPagebean = ParseUtils.analysisListTypeDatasAndCount((Activity) context, success, GainRecording[].class, true);
                     if (objectPagebean.getList().size() != 0) {
+                        llA.setVisibility(View.GONE);
                         ll.setVisibility(View.VISIBLE);
                         page = adapterRealize.AdapterSetListDatas(objectPagebean, page, listView, context, GainRecordingAdapter.class, lifeful);//返回第几页
                     } else {
+                           llA.setVisibility(View.VISIBLE);
                         ll.setVisibility(View.GONE);
                         requestDatas2();
                     }
@@ -192,33 +194,33 @@ public class GainRecordingActivity extends BaseActivity {
                         if (!objectPagebean.get("jingtai").toString().equals("0")) {
                             tvJiangtaishuyi.setText(StringUtils.calculateProfit(Double.parseDouble(objectPagebean.get("jingtai").toString()), 5));
                         } else {
-                              R2.setVisibility(View.GONE);
+                            R2.setVisibility(View.GONE);
 
                         }
                         if (!objectPagebean.get("dongtai").toString().equals("0")) {
                             tvDogntai.setText(StringUtils.calculateProfit(Double.parseDouble(objectPagebean.get("dongtai").toString()), 5));
                         } else {
-                               R3.setVisibility(View.GONE);
+                            R3.setVisibility(View.GONE);
 
                         }
                         if (!objectPagebean.get("jiedian").toString().equals("0")) {
                             tvJiedian.setText(StringUtils.calculateProfit(Double.parseDouble(objectPagebean.get("jiedian").toString()), 5));
                         } else {
-                              R4.setVisibility(View.GONE);
+                            R4.setVisibility(View.GONE);
 
                         }
 
                         if (!objectPagebean.get("heyue").toString().equals("0")) {
                             tvHeyuechentgb.setText(StringUtils.calculateProfit(Double.parseDouble(objectPagebean.get("heyue").toString()), 5));
                         } else {
-                              R5.setVisibility(View.GONE);
+                            R5.setVisibility(View.GONE);
                             tvHeyuechentgb.setText("0");
                         }
 
                         if (!objectPagebean.get("tuijianchaojijiedian").toString().equals("0")) {
                             tvTuijainjiangtaishuyi.setText(StringUtils.calculateProfit(Double.parseDouble(objectPagebean.get("tuijianchaojijiedian").toString()), 5));
                         } else {
-
+                            R6.setVisibility(View.GONE);
                             tvTuijainjiangtaishuyi.setText("0");
                         }
 

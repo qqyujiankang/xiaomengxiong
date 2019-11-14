@@ -3,14 +3,17 @@
     android:id="@+id/rl_bacground"
     style="@style/MatchWrap"
     android:background="#FF121E2E"
+
     android:paddingStart="@dimen/panding_or_margin_15"
     android:paddingEnd="@dimen/panding_or_margin_15">
 
     <TextView
+
         android:id="@+id/public_back"
         style="@style/WrapWrap"
         android:layout_centerVertical="true"
-        android:background="@mipmap/back" />
+        android:background="@mipmap/back"
+         />
 
 
     <TextView
@@ -28,8 +31,11 @@
     <TextView
         android:id="@+id/public_other"
         style="@style/WrapWrap"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
+        android:layout_marginEnd="15dp"
         android:gravity="center"
         android:textColor="#FFE5EAFF" />
 

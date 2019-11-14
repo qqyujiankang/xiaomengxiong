@@ -130,7 +130,9 @@ public class ContractFragment extends BaseFragment {
     protected void lazyLoad() {
         LogUtils.i("==============合约===");
         requestDatas();
-
+        StatusBarUtils.with(getActivity())
+                .setColor(getResources().getColor(R.color.black))
+                .init();
 
     }
 
@@ -139,6 +141,12 @@ public class ContractFragment extends BaseFragment {
         super.onCreate(savedInstanceState);
         context = getActivity();
         lifeful = (Lifeful) getActivity();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        LogUtils.i("=========123=====wode===");
     }
 
     CountDown countDown;

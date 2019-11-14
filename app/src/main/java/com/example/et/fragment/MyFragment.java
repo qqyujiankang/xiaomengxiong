@@ -160,6 +160,12 @@ public class MyFragment extends BaseFragment {
     }
 
     @Override
+    public void onDestroy() {
+        super.onDestroy();
+        LogUtils.i("==============wode===");
+    }
+
+    @Override
     public void initView() {
         super.initView();
         if (!CacheUtils.getInstance().getString(CacheConstants.usdtaddress).equals("null")) {

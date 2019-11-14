@@ -11,6 +11,7 @@ import com.example.et.Ustlis.internationalization.LocalManageUtil;
 import com.example.et.util.CacheUtils;
 import com.example.et.util.constant.CacheConstants;
 
+import cn.jpush.android.api.JPushInterface;
 
 
 public class HJZApplication extends Application {
@@ -32,6 +33,8 @@ public class HJZApplication extends Application {
             } else if (language.equals("繁體中文")) {
                 CacheUtils.getInstance().put(CacheConstants.Lang, "zh-Hant");
             }
+            JPushInterface.setDebugMode(true);
+            JPushInterface.init(this);
 
         }
 

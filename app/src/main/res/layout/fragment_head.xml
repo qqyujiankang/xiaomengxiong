@@ -258,6 +258,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#FF121E2E"
+                android:paddingBottom="@dimen/start_or_end_10"
                 android:paddingTop="@dimen/start_or_end_10">
 
                 <TextView
@@ -278,7 +279,7 @@
                     android:layout_marginEnd="@dimen/start_or_end_10"
                     style="@style/AutoWrap"
                     android:gravity="right"
-                    android:text="@string/time"
+                    android:text="@string/time1"
                     android:textColor="@color/bottom_tes1" />
             </LinearLayout>
 
