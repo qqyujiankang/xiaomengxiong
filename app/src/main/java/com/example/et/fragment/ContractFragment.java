@@ -131,19 +131,19 @@ public class ContractFragment extends BaseFragment {
     private Lifeful lifeful;
     private String oid = "", pay_pass;
 
-    @Override
-    protected void lazyLoad() {
-        LogUtils.i("==============合约===");
-        requestDatas();
 
 
-    }
+
+
+
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         context = getActivity();
         lifeful = (Lifeful) getActivity();
+        requestDatas();
     }
 
     @Override
@@ -174,9 +174,7 @@ public class ContractFragment extends BaseFragment {
                         RlNo.setVisibility(View.VISIBLE);
                         LogUtils.i("======newcontract======" + objectPagebean.get("state").toString());
                         if (objectPagebean.get("state").toString().equals("0") || objectPagebean.get("state").toString().equals("1") || objectPagebean.get("state").toString().equals("2")) {
-                            StatusBarUtils.with(getActivity())
-                                    .setColor(getResources().getColor(R.color.E3B54F))
-                                    .init();
+
 
                         }
                         if (objectPagebean.get("state").toString().equals("0")) {//预约中
@@ -298,17 +296,19 @@ public class ContractFragment extends BaseFragment {
         });
     }
 
-    @Override
-    public void onHiddenChanged(boolean hidden) {
-        super.onHiddenChanged(hidden);
-        if (!hidden) {
-            BarUtils.setStatusBarAlpha(getActivity(), 0);
-            StatusBarUtils.with(getActivity())
-                    .setColor(getResources().getColor(R.color.black))
-                    .init();
-        }
-
-    }
+//    @Override
+//    public void onHiddenChanged(boolean hidden) {
+//        super.onHiddenChanged(hidden);
+//        if (!hidden) {
+//
+//            BarUtils.setStatusBarAlpha(getActivity(), 0);
+//            StatusBarUtils.with(getActivity())
+//                    .setColor(getResources().getColor(R.color.black))
+//                    .init();
+//
+//        }
+//
+//    }
 
 
     @Override
@@ -381,7 +381,7 @@ public class ContractFragment extends BaseFragment {
                     LogUtils.i("======newcontract======" + objectPagebean.get(KeyValueConstants.MSG));
                     if (objectPagebean.get(KeyValueConstants.CODE).equals("200")) {
                         oid = "";
-                        lazyLoad();
+                        requestDatas();
                     }
                     ToastUtils.showShort(objectPagebean.get(KeyValueConstants.MSG).toString());
 

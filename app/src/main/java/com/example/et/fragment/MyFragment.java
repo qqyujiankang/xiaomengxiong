@@ -150,13 +150,7 @@ public class MyFragment extends BaseFragment {
         return R.layout.fragment_my;
     }
 
-    @Override
-    protected void lazyLoad() {
 
-        LogUtils.i("==============wode===");
-
-
-    }
 
     @Override
     public void onDestroy() {
@@ -296,17 +290,17 @@ public class MyFragment extends BaseFragment {
         }
     }
 
-    @Override
-    public void onHiddenChanged(boolean hidden) {
-        super.onHiddenChanged(hidden);
-        if (!hidden) {
-
-          StatusBarUtils.with(getActivity())
-
-                .setColor(getResources().getColor(R.color.orange))
-                .init();
-        }
-
-
-    }
+//    @Override
+//    public void onHiddenChanged(boolean hidden) {
+//        super.onHiddenChanged(hidden);
+//        if (!hidden) {
+//
+//          StatusBarUtils.with(getActivity())
+//
+//                .setColor(getResources().getColor(R.color.orange))
+//                .init();
+//        }
+//
+//
+//    }
 }

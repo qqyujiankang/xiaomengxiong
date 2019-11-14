@@ -126,6 +126,15 @@ public class HeadFragment extends BaseFragment implements AdapterView.OnItemClic
                 .statusBarColor(R.color.black)
                 .fitsSystemWindows(true)  //使用该属性必须指定状态栏的颜色，不然状态栏透明，很难看
                 .init();
+
+        requestDatas();
+        requestDatas2();
+        requestDatas3();
+
+        StatusBarUtils.with(getActivity())
+                .setColor(getResources().getColor(R.color.black))
+                .init();
+
         //设置样式,默认为:Banner.NOT_INDICATOR(不显示指示器和标题)
         //可选样式如下:
         banner.setBannerStyle(Banner.CIRCLE_INDICATOR);
@@ -159,18 +168,18 @@ public class HeadFragment extends BaseFragment implements AdapterView.OnItemClic
 
     }
 
-    @Override
-    public void onHiddenChanged(boolean hidden) {
-        super.onHiddenChanged(hidden);
-        if (!hidden) {
-            BarUtils.setStatusBarAlpha(getActivity(), 0);
-            StatusBarUtils.with(getActivity())
-                    .setColor(getResources().getColor(R.color.black))
-                    .init();
-        }
-
-
-    }
+//    @Override
+//    public void onHiddenChanged(boolean hidden) {
+//        super.onHiddenChanged(hidden);
+//        if (!hidden) {
+//            BarUtils.setStatusBarAlpha(getActivity(), 0);
+//            StatusBarUtils.with(getActivity())
+//                    .setColor(getResources().getColor(R.color.black))
+//                    .init();
+//        }
+//
+//
+//    }
 
     @Override
     protected int setContentView() {
@@ -214,20 +223,11 @@ public class HeadFragment extends BaseFragment implements AdapterView.OnItemClic
         }
     }
 
-    @Override
-    protected void lazyLoad() {
-        LogUtils.i("==============s首页===");
-
-        requestDatas();
-        requestDatas2();
-        requestDatas3();
-
-        StatusBarUtils.with(getActivity())
-                .setColor(getResources().getColor(R.color.black))
-                .init();
 
 
-    }
+
+
+
 
     @Override
     public void requestDatas2() {

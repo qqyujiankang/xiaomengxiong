@@ -68,13 +68,7 @@ public class WalletFragment extends BaseFragment implements AdapterView.OnItemCl
     private Lifeful lifeful;
 
 
-    @Override
-    protected void lazyLoad() {
 
-        LogUtils.i("==============钱包===");
-        requestDatas();
-
-    }
 
     @Override
     public void onHiddenChanged(boolean hidden) {
@@ -133,7 +127,7 @@ public class WalletFragment extends BaseFragment implements AdapterView.OnItemCl
     @Override
     public void initView() {
         super.initView();
-
+        requestDatas();
         publicBack.setVisibility(View.GONE);
         publicTitleTv.setText(getString(R.string.menu_contact));
         listv.setOnItemClickListener(this);

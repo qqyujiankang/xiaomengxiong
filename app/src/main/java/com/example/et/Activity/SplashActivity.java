@@ -30,7 +30,7 @@ public class SplashActivity extends AppCompatActivity {
         //  BarUtils.setStatusBarVisibility(this,false);
         StatusBarUtils.with(this)
                 .init();
-        handler.sendEmptyMessageDelayed(1, 6000);
+        handler.sendEmptyMessageDelayed(1, 3000);
 
     }
 
