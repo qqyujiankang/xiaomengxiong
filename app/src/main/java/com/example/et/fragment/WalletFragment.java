@@ -6,10 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.HeaderViewListAdapter;
-import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 import com.example.et.Activity.HopePropertyActivityActivity;
 import com.example.et.Adapter.AssAdaper;
@@ -17,9 +14,7 @@ import com.example.et.Adapter.ManagerAdapter;
 import com.example.et.Constant;
 import com.example.et.R;
 import com.example.et.Ustlis.ActivityUtils;
-import com.example.et.Ustlis.StatusBarUtils;
 import com.example.et.entnty.Ass;
-import com.example.et.util.BarUtils;
 import com.example.et.util.CacheUtils;
 import com.example.et.util.JsonUtil;
 import com.example.et.util.LogUtils;
@@ -47,42 +42,30 @@ import butterknife.BindView;
 public class WalletFragment extends BaseFragment implements AdapterView.OnItemClickListener {
 
 
-    @BindView(R.id.public_back)
-    TextView publicBack;
-    @BindView(R.id.public_title_tv)
-    TextView publicTitleTv;
-    @BindView(R.id.public_other)
-    TextView publicOther;
-    @BindView(R.id.iv_public_other)
-    ImageView ivPublicOther;
-    @BindView(R.id.rl_bacground)
-    RelativeLayout rlBacground;
     @BindView(R.id.listv)
     ListView listv;
     @BindView(R.id.swipeRefreshLayout)
-    com.example.et.util.PublicSwipeRefreshLayout.SwipeRefreshLayout swipeRefreshLayout;
-
+    SwipeRefreshLayout swipeRefreshLayout;
     private Context context;
 
 
     private Lifeful lifeful;
 
 
-
-
-    @Override
-    public void onHiddenChanged(boolean hidden) {
-        super.onHiddenChanged(hidden);
-        if (!hidden) {
-            BarUtils.setStatusBarAlpha(getActivity(), 0);
-            // BarUtils.addMarginTopEqualStatusBarHeight(swipeRefreshLayout);// 其实这个只需要调用一次即可
-            StatusBarUtils.with(getActivity())
-                    .setColor(getResources().getColor(R.color.black))
-                    .init();
-        }
-
-
-    }
+//
+//    @Override
+//    public void onHiddenChanged(boolean hidden) {
+//        super.onHiddenChanged(hidden);
+//        if (!hidden) {
+//            BarUtils.setStatusBarAlpha(getActivity(), 0);
+//            // BarUtils.addMarginTopEqualStatusBarHeight(swipeRefreshLayout);// 其实这个只需要调用一次即可
+//            StatusBarUtils.with(getActivity())
+//                    .setColor(getResources().getColor(R.color.black))
+//                    .init();
+//        }
+//
+//
+//    }
 
     private AdapterRealize adapterRealize;
 
@@ -128,8 +111,7 @@ public class WalletFragment extends BaseFragment implements AdapterView.OnItemCl
     public void initView() {
         super.initView();
         requestDatas();
-        publicBack.setVisibility(View.GONE);
-        publicTitleTv.setText(getString(R.string.menu_contact));
+
         listv.setOnItemClickListener(this);
 //         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
 //            @Override

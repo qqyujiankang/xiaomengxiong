@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
+import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -56,6 +57,7 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
     private Context context;
     private int curIndex = 0;
     private ArrayList<Fragment> fragments;
+    HeadFragment headFragment=new HeadFragment();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +66,7 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
         setContentView(R.layout.activity_main);
         setRootViewFitsSystemWindows(this, false);
         //设置状态栏透明
-       StatusBarUtil.setTranslucentStatus(this);
+        StatusBarUtil.setTranslucentStatus(this);
         ButterKnife.bind(this);
         if (savedInstanceState != null) {
             curIndex = savedInstanceState.getInt("curIndex");
@@ -89,7 +91,13 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
         fragments = ListDatasUtils.getListFragmentMainActivity();
         FragmentUtils.add(getSupportFragmentManager(), fragments, R.id.fragmentLayout, curIndex);
         mTabRadioGroup.setOnCheckedChangeListener(this);
-
+//        headFragment.setOnButtonClick(new HeadFragment.OnButtonClick() {
+//            @Override
+//            public void onClick(View view) {
+//                showCurrentFragment(2);
+//                setBottomView(2);
+//            }
+//        });
         MQConfig.init(this, "372713903d6abcc17515b00475bc2f04", new OnInitCallback() {
             @Override
             public void onSuccess(String clientId) {

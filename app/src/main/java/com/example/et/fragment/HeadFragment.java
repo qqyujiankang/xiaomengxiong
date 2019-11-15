@@ -1,6 +1,7 @@
 package com.example.et.fragment;
 
 import android.app.Activity;
+import android.app.FragmentManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DividerItemDecoration;
 
 import com.bumptech.glide.Glide;
@@ -42,6 +44,7 @@ import com.example.et.entnty.ListObject;
 import com.example.et.entnty.Pagebean;
 import com.example.et.util.BarUtils;
 import com.example.et.util.CacheUtils;
+import com.example.et.util.FragmentUtils;
 import com.example.et.util.JsonUtil;
 import com.example.et.util.LogUtils;
 import com.example.et.util.PublicSwipeRefreshLayout.SwipeRefreshLayout;
@@ -110,6 +113,7 @@ public class HeadFragment extends BaseFragment implements AdapterView.OnItemClic
 
     private Lifeful lifeful;
     Integer[] images = {R.mipmap.bank_01, R.mipmap.bank_02, R.mipmap.bank_03};
+    private OnButtonClick onButtonClick;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -118,22 +122,34 @@ public class HeadFragment extends BaseFragment implements AdapterView.OnItemClic
         lifeful = (Lifeful) getActivity();
     }
 
+    public OnButtonClick getOnButtonClick() {
+        return onButtonClick;
+    }
+
+    public void setOnButtonClick(OnButtonClick onButtonClick) {
+        this.onButtonClick = onButtonClick;
+    }
+
+    public interface OnButtonClick {
+        public void onClick(View view);
+    }
 
     @Override
     public void initView() {
         super.initView();
-        ImmersionBar.with(this)
-                .statusBarColor(R.color.black)
-                .fitsSystemWindows(true)  //使用该属性必须指定状态栏的颜色，不然状态栏透明，很难看
-                .init();
+//        ImmersionBar.with(this)
+//                .statusBarColor(R.color.black)
+//                .fitsSystemWindows(true)  //使用该属性必须指定状态栏的颜色，不然状态栏透明，很难看
+//                .init();
 
         requestDatas();
         requestDatas2();
         requestDatas3();
+        requestDatas4();
 
-        StatusBarUtils.with(getActivity())
-                .setColor(getResources().getColor(R.color.black))
-                .init();
+//        StatusBarUtils.with(getActivity())
+//                .setColor(getResources().getColor(R.color.black))
+//                .init();
 
         //设置样式,默认为:Banner.NOT_INDICATOR(不显示指示器和标题)
         //可选样式如下:
@@ -224,11 +240,6 @@ public class HeadFragment extends BaseFragment implements AdapterView.OnItemClic
     }
 
 
-
-
-
-
-
     @Override
     public void requestDatas2() {
         super.requestDatas2();
@@ -247,6 +258,7 @@ public class HeadFragment extends BaseFragment implements AdapterView.OnItemClic
                         // recycleView.addItemDecoration(new GridSpacingItemDecoration(1, 10, false));
                         //   recycleView.setBackground(context.getResources().getColor(R.color.white));
                         recycleView.setAdapter(adapter);
+
                         recycleView.start();
                     }
 
@@ -368,7 +380,16 @@ public class HeadFragment extends BaseFragment implements AdapterView.OnItemClic
         ListObject objectList = (ListObject) managerAdapter.getItem(position);
         Intent intent = new Intent();
         if (objectList.getName().equals(context.getString(R.string.Appointment_contract))) {
-            intent.setClass(context, AppointmentcontractActivity.class);//ToperformthecontractActivity
+            if (state.equals("")) {
+                intent.setClass(context, AppointmentcontractActivity.class);//ToperformthecontractActivity
+            } else {
+                //onButtonClick.onClick(view);
+                intent.setClass(getActivity(), MainActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.putExtra("fragment_flag", 2);
+                startActivity(intent);
+            }
+
         } else if (objectList.getName().equals(context.getString(R.string.To_perform_the_contract))) {
             intent.setClass(getActivity(), MainActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -381,5 +402,39 @@ public class HeadFragment extends BaseFragment implements AdapterView.OnItemClic
         ActivityUtils.startActivity(intent);
     }
 
+    private String state = "1";
+
+    @Override
+    public void requestDatas4() {
+        super.requestDatas();
+        try {
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("phone", CacheUtils.getInstance().getString(CacheConstants.PHONE));
+
+            TaskPresenterUntils.lifeful(Constant.newcontract, jsonObject, new OnLoadLifefulListener<String>(null, new OnLoadListener<String>() {
+                @Override
+                public void onSuccess(String success) {
+                    LogUtils.i("======newcontract======" + success);
+                    //adapterRealize = new AdapterRealize();
+
+                    Map<String, Object> objectPagebean = ParseUtils.analysisListTypeDatasAndCount((Activity) context, success, null, false).getStringMap();
+                    LogUtils.i("======newcontract======" + objectPagebean.get(KeyValueConstants.MSG));
+                    if (objectPagebean.get(KeyValueConstants.CODE).equals("200")) {
+                        state = objectPagebean.get("state").toString();
+
+
+                    } else {
+                        state = "";
+                    }
+
+
+                }
+
+
+            }, lifeful));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
 
 }

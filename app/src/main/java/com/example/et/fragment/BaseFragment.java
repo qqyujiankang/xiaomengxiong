@@ -95,7 +95,9 @@ public abstract class BaseFragment extends Fragment {
     public void requestDatas3() {
 
     }
+    public void requestDatas4() {
 
+    }
 
 
 

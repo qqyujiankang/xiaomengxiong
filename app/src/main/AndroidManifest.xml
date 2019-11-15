@@ -136,7 +136,7 @@
         <activity android:name=".Activity.BaseActivity" /> <!-- 启动页 -->
         <activity
             android:name=".Activity.SplashActivity"
-            android:theme="@style/AppTheme.NoActionBar"
+            android:theme="@style/AppTheme.StartingWindowTheme"
 
 
             >

@@ -6,7 +6,6 @@
     android:background="@color/black"
     tools:context=".Activity.TheContractDetailsActivity">
 
-    <include layout="@layout/public_title" />
 
     <LinearLayout
         android:id="@+id/Rl_no"
@@ -17,15 +16,68 @@
 
 
             android:layout_width="match_parent"
-            android:layout_height="230dp"
+            android:layout_height="269dp"
             android:background="@mipmap/contract">
 
             <RelativeLayout
+                android:id="@+id/rl_bacground"
+                style="@style/MatchWrap"
+                android:layout_width="match_parent"
+                android:layout_height="64dp"
+
+                android:paddingStart="@dimen/panding_or_margin_15"
+                android:paddingEnd="@dimen/panding_or_margin_15">
+
+                <TextView
+                    android:id="@+id/public_back"
+                    style="@style/WrapWrap"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginBottom="12.5dp"
+                    android:background="@mipmap/back" />
+
+
+                <TextView
+                    android:id="@+id/public_title_tv"
+                    style="@style/WrapWrap"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerInParent="true"
+                    android:layout_marginBottom="12.5dp"
+                    android:gravity="center"
+                    android:text="@string/biaoti"
+                    android:textColor="#FFE5EAFF"
+                    android:textSize="@dimen/text_size_18"
+                    android:textStyle="bold" />
+
+
+                <TextView
+                    android:id="@+id/public_other"
+                    style="@style/WrapWrap"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginBottom="12.5dp"
+                    android:gravity="center"
+                    android:textColor="#FFE5EAFF" />
+
+                <ImageView
+                    android:id="@+id/iv_public_other"
+                    android:layout_width="@dimen/icon_width_height_20"
+                    android:layout_height="@dimen/icon_width_height_20"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="12.5dp"
+                    android:textColor="@color/white" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_below="@+id/rl_bacground"
                 android:id="@+id/Rl_state"
                 style="@style/MatchWrap"
                 android:layout_marginStart="@dimen/start_or_end_15"
                 android:layout_marginLeft="@dimen/start_or_end_15"
-                android:layout_marginTop="@dimen/icon_width_height_20"
                 android:layout_marginEnd="@dimen/icon_width_height_20">
 
                 <TextView
@@ -47,17 +99,17 @@
                 android:layout_marginTop="@dimen/text_size_40">
 
                 <TextView
-                    android:textSize="@dimen/text_size_12"
                     style="@style/WrapWrap"
                     android:text="@string/The_contract_amount"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size_12" />
 
                 <TextView
-                    android:textSize="@dimen/text_size_18"
                     android:id="@+id/tv_money"
                     style="@style/WrapWrap"
                     android:text=" 13123 "
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size_18" />
             </LinearLayout>
 
             <LinearLayout
@@ -67,8 +119,8 @@
                 android:layout_alignParentRight="true"
 
                 android:layout_marginStart="@dimen/icon_width_height_20"
-                android:layout_marginEnd="@dimen/icon_width_height_140"
-                android:layout_marginTop="@dimen/text_size_40">
+                android:layout_marginTop="@dimen/text_size_40"
+                android:layout_marginEnd="@dimen/icon_width_height_140">
 
                 <TextView
                     android:id="@+id/tv"
@@ -83,25 +135,34 @@
                     android:textColor="@color/white" />
             </LinearLayout>
 
+
+        </RelativeLayout>
+
+
+        <LinearLayout
+            style="@style/MatchWrap.Vertical"
+            android:layout_marginStart="@dimen/start_or_end_15"
+            android:layout_marginTop="-35dp"
+            android:layout_marginEnd="@dimen/start_or_end_15"
+            android:background="@drawable/bg_115_gray">
+
             <RelativeLayout
                 style="@style/MatchWrap"
                 android:layout_alignParentBottom="true"
-                android:layout_marginStart="@dimen/start_or_end_15"
-                android:layout_marginEnd="@dimen/start_or_end_15"
 
-                android:background="@drawable/bg_radius5_white_bottom_left">
+                >
 
                 <TextView
-                    android:textSize="@dimen/text_size_14"
                     android:id="@+id/tv_1"
                     style="@style/WrapWrap"
-                    android:layout_marginStart="@dimen/icon_width_height_10"
+                    android:layout_marginStart="@dimen/icon_width_height_25"
                     android:layout_marginLeft="@dimen/icon_width_height_10"
-                    android:padding="@dimen/icon_width_height_10"
-                    android:textColor="@color/p_white_test" />
+                    android:layout_marginTop="@dimen/start_or_end_15"
+                    android:layout_marginBottom="@dimen/start_or_end_15"
+                    android:textColor="@color/p_white_test"
+                    android:textSize="@dimen/text_size_14" />
 
                 <TextView
-                    android:textSize="@dimen/text_size_16"
                     android:id="@+id/tv_price"
                     style="@style/WrapWrap"
                     android:layout_alignParentRight="true"
@@ -109,39 +170,25 @@
                     android:layout_marginEnd="@dimen/icon_width_height_20"
                     android:layout_marginRight="@dimen/icon_width_height_20"
                     android:text="4646"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size_16" />
             </RelativeLayout>
 
-        </RelativeLayout>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginTop="-1dp"
-            android:background="@drawable/dottde_line" />
-
-        <LinearLayout
-            style="@style/MatchWrap.Vertical"
-            android:layout_marginStart="@dimen/start_or_end_15"
-            android:layout_marginTop="3dp"
-            android:layout_marginEnd="@dimen/start_or_end_15"
-            android:background="@drawable/bg_radius5_white_top_ret">
-
-            <include layout="@layout/public_line_01" />
+            <include layout="@layout/public_line_02" />
 
             <RelativeLayout style="@style/MatchWrap">
 
                 <TextView
-                    android:textSize="@dimen/text_size_14"
                     android:id="@+id/tv2"
                     style="@style/WrapWrap"
-                    android:layout_marginStart="@dimen/icon_width_height_10"
+                    android:layout_marginStart="@dimen/icon_width_height_25"
                     android:layout_marginLeft="@dimen/icon_width_height_10"
-                    android:padding="@dimen/icon_width_height_10"
-                    android:textColor="@color/p_white_test" />
+                    android:layout_marginTop="@dimen/start_or_end_15"
+                    android:layout_marginBottom="@dimen/start_or_end_15"
+                    android:textColor="@color/p_white_test"
+                    android:textSize="@dimen/text_size_14" />
 
                 <TextView
-                    android:textSize="@dimen/text_size_16"
                     android:id="@+id/tv_currency"
                     style="@style/WrapWrap"
                     android:layout_alignParentRight="true"
@@ -149,24 +196,27 @@
                     android:layout_marginEnd="@dimen/icon_width_height_20"
                     android:layout_marginRight="@dimen/icon_width_height_20"
                     android:text="ETH"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size_16" />
             </RelativeLayout>
 
-            <include layout="@layout/public_line_01" />
+            <include
+
+                layout="@layout/public_line_02" />
 
             <RelativeLayout style="@style/MatchWrap">
 
                 <TextView
-                    android:textSize="@dimen/text_size_14"
                     android:id="@+id/tv_3"
                     style="@style/WrapWrap"
-                    android:layout_marginStart="@dimen/icon_width_height_10"
+                    android:layout_marginStart="@dimen/icon_width_height_25"
                     android:layout_marginLeft="@dimen/icon_width_height_10"
-                    android:padding="@dimen/icon_width_height_10"
-                    android:textColor="@color/p_white_test" />
+                    android:layout_marginTop="@dimen/start_or_end_15"
+                    android:layout_marginBottom="@dimen/start_or_end_15"
+                    android:textColor="@color/p_white_test"
+                    android:textSize="@dimen/text_size_14" />
 
                 <TextView
-                    android:textSize="@dimen/text_size_16"
                     android:id="@+id/tv_quantity"
                     style="@style/WrapWrap"
                     android:layout_alignParentRight="true"
@@ -174,24 +224,25 @@
                     android:layout_marginEnd="@dimen/icon_width_height_20"
                     android:layout_marginRight="@dimen/icon_width_height_20"
                     android:text="1000"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size_16" />
             </RelativeLayout>
 
-            <include layout="@layout/public_line_01" />
+            <include layout="@layout/public_line_02" />
 
             <RelativeLayout style="@style/MatchWrap">
 
                 <TextView
-                    android:textSize="@dimen/text_size_14"
                     android:id="@+id/tv_4"
                     style="@style/WrapWrap"
-                    android:layout_marginStart="@dimen/icon_width_height_10"
+                    android:layout_marginStart="@dimen/icon_width_height_25"
                     android:layout_marginLeft="@dimen/icon_width_height_10"
-                    android:padding="@dimen/icon_width_height_10"
-                    android:textColor="@color/p_white_test" />
+                    android:layout_marginTop="@dimen/start_or_end_15"
+                    android:layout_marginBottom="@dimen/start_or_end_15"
+                    android:textColor="@color/p_white_test"
+                    android:textSize="@dimen/text_size_14" />
 
                 <TextView
-                    android:textSize="@dimen/text_size_16"
                     android:id="@+id/tv_time"
                     style="@style/WrapWrap"
                     android:layout_alignParentRight="true"
@@ -199,26 +250,27 @@
                     android:layout_marginEnd="@dimen/icon_width_height_20"
                     android:layout_marginRight="@dimen/icon_width_height_20"
                     android:text="08-13 12:40:30"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size_16" />
             </RelativeLayout>
 
-            <include layout="@layout/public_line_01" />
+            <include layout="@layout/public_line_02" />
 
             <RelativeLayout
                 android:id="@+id/Rl_1"
                 style="@style/MatchWrap">
 
                 <TextView
-                    android:textSize="@dimen/text_size_14"
                     android:id="@+id/tv_5"
                     style="@style/WrapWrap"
-                    android:layout_marginStart="@dimen/icon_width_height_10"
+                    android:layout_marginStart="@dimen/icon_width_height_25"
                     android:layout_marginLeft="@dimen/icon_width_height_10"
-                    android:padding="@dimen/icon_width_height_10"
-                    android:textColor="@color/p_white_test" />
+                    android:layout_marginTop="@dimen/start_or_end_15"
+                    android:layout_marginBottom="@dimen/start_or_end_15"
+                    android:textColor="@color/p_white_test"
+                    android:textSize="@dimen/text_size_14" />
 
                 <TextView
-                    android:textSize="@dimen/text_size_16"
                     android:id="@+id/tv_payment"
                     style="@style/WrapWrap"
                     android:layout_alignParentRight="true"
@@ -226,26 +278,27 @@
                     android:layout_marginEnd="@dimen/icon_width_height_20"
                     android:layout_marginRight="@dimen/icon_width_height_20"
                     android:text="08-13 12:40:30"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size_16" />
             </RelativeLayout>
 
-            <include layout="@layout/public_line_01" />
+            <include layout="@layout/public_line_02" />
 
             <RelativeLayout
                 android:id="@+id/Rl_3"
                 style="@style/MatchWrap">
 
                 <TextView
-                    android:textSize="@dimen/text_size_14"
                     android:id="@+id/tv_7"
                     style="@style/WrapWrap"
-                    android:layout_marginStart="@dimen/icon_width_height_10"
-                    android:layout_marginLeft="@dimen/icon_width_height_10"
-                    android:padding="@dimen/icon_width_height_10"
-                    android:textColor="@color/p_white_test" />
+                    android:layout_marginStart="@dimen/icon_width_height_25"
+                    android:layout_marginLeft="@dimen/start_or_end_15"
+                    android:layout_marginTop="@dimen/start_or_end_15"
+                    android:layout_marginBottom="@dimen/start_or_end_10"
+                    android:textColor="@color/p_white_test"
+                    android:textSize="@dimen/text_size_14" />
 
                 <TextView
-                    android:textSize="@dimen/text_size_16"
                     android:id="@+id/tv_time_1"
                     style="@style/WrapWrap"
                     android:layout_alignParentRight="true"
@@ -253,26 +306,35 @@
                     android:layout_marginEnd="@dimen/icon_width_height_20"
                     android:layout_marginRight="@dimen/icon_width_height_20"
                     android:text="08-13 12:40:30"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size_16" />
+
+                <View xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:id="@+id/vv_07"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_below="@+id/tv_7"
+                    android:layout_marginStart="@dimen/icon_width_height_25"
+                    android:layout_marginRight="30dp"
+                    android:background="@color/textcolor_yellow" />
             </RelativeLayout>
 
-            <include layout="@layout/public_line_01" />
 
             <RelativeLayout
                 android:id="@+id/Rl_2"
                 style="@style/MatchWrap">
 
                 <TextView
-                    android:textSize="@dimen/text_size_14"
                     android:id="@+id/tv_6"
                     style="@style/WrapWrap"
-                    android:layout_marginStart="@dimen/icon_width_height_10"
+                    android:layout_marginStart="@dimen/text_size_25"
                     android:layout_marginLeft="@dimen/icon_width_height_10"
-                    android:padding="@dimen/icon_width_height_10"
-                    android:textColor="@color/p_white_test" />
+                    android:layout_marginTop="@dimen/start_or_end_15"
+                    android:layout_marginBottom="@dimen/start_or_end_15"
+                    android:textColor="@color/p_white_test"
+                    android:textSize="@dimen/text_size_14" />
 
                 <TextView
-                    android:textSize="@dimen/text_size_16"
                     android:id="@+id/tv_time_0"
                     style="@style/WrapWrap"
                     android:layout_alignParentRight="true"
@@ -280,7 +342,8 @@
                     android:layout_marginEnd="@dimen/icon_width_height_20"
                     android:layout_marginRight="@dimen/icon_width_height_20"
                     android:text="08-13 12:40:30"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size_16" />
             </RelativeLayout>
 
         </LinearLayout>

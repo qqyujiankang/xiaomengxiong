@@ -132,12 +132,6 @@ public class ContractFragment extends BaseFragment {
     private String oid = "", pay_pass;
 
 
-
-
-
-
-
-
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -149,7 +143,14 @@ public class ContractFragment extends BaseFragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        LogUtils.i("=========123=====wode===");
+        LogUtils.i("====onDestroy=====123=====wode===");
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        LogUtils.i("===onResume======123=====wode===");
+        requestDatas();
     }
 
     CountDown countDown;
@@ -354,6 +355,7 @@ public class ContractFragment extends BaseFragment {
     }
 
     private String url;
+
 
     @Override
     public void requestDatas2() {

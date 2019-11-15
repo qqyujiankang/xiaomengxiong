@@ -14,11 +14,14 @@
 
 
             <RelativeLayout
+                android:layout_height="64dp"
                 style="@style/MatchWrap"
-                android:background="@color/black_p"
-                android:padding="10dp">
+                android:background="@color/black_p">
 
-                <LinearLayout style="@style/MatchWrap">
+                <LinearLayout
+                    android:layout_toLeftOf="@+id/service"
+                    android:layout_marginTop="32.5dp"
+                    style="@style/MatchWrap">
 
                     <ImageView
                         android:layout_width="@dimen/icon_width_height_20"
@@ -27,6 +30,7 @@
                         android:src="@mipmap/login_01" />
 
                     <TextView
+                        android:layout_height="@dimen/text_size_19"
                         android:id="@+id/textView"
                         style="@style/WrapMatch"
                         android:layout_marginLeft="10dp"
@@ -42,7 +46,7 @@
                     android:id="@+id/service"
                     style="@style/WrapWrap"
                     android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
+                    android:layout_marginTop="32dp"
                     android:layout_marginRight="20dp"
                     android:src="@mipmap/service" />
             </RelativeLayout>
@@ -86,12 +90,12 @@
                     android:layout_marginLeft="10dp">
 
                     <TextView
-                        android:textSize="@dimen/text_size_14"
                         android:id="@+id/tv_new_name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_toLeftOf="@+id/iv_bank"
-                        android:textColor="#FFE5EAFF" />
+                        android:textColor="#FFE5EAFF"
+                        android:textSize="@dimen/text_size_14" />
 
                     <ImageView
                         android:id="@+id/iv_bank"
@@ -127,12 +131,12 @@
 
 
                         <TextView
-                            android:textSize="@dimen/text_size_12"
                             android:id="@+id/tv_1"
                             style="@style/WrapWrap"
                             android:singleLine="true"
                             android:text="@string/Open_contract_currency"
-                            android:textColor="@color/white" />
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/text_size_12" />
 
                         <TextView
                             android:id="@+id/tv_r_gold"
@@ -148,11 +152,11 @@
                             android:layout_below="@+id/tv_r_gold">
 
                             <TextView
-                                android:textSize="@dimen/text_size_16"
                                 android:id="@+id/tv_r_huilv"
                                 style="@style/WrapWrap"
                                 android:text="78.08"
-                                android:textColor="@color/white" />
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/text_size_16" />
 
                             <TextView
 
@@ -180,12 +184,12 @@
                         android:gravity="center">
 
                         <TextView
-                            android:textSize="@dimen/text_size_12"
                             android:id="@+id/tv_2"
                             style="@style/WrapWrap"
                             android:singleLine="true"
                             android:text="@string/Execute_the_contract_currency"
-                            android:textColor="@color/white" />
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/text_size_12" />
 
                         <TextView
                             android:id="@+id/tv_s_gold"
@@ -203,19 +207,19 @@
                             android:layout_below="@+id/tv_s_gold">
 
                             <TextView
-                                android:textSize="@dimen/text_size_16"
                                 android:id="@+id/tv_s_huil"
                                 style="@style/WrapWrap"
                                 android:text="78.08"
-                                android:textColor="@color/white" />
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/text_size_16" />
 
                             <TextView
-                                android:textSize="@dimen/text_size_11"
                                 android:id="@+id/tv_s_zd"
                                 style="@style/WrapWrap"
                                 android:layout_marginStart="15dp"
                                 android:layout_marginLeft="15dp"
-                                android:text="-78.08" />
+                                android:text="-78.08"
+                                android:textSize="@dimen/text_size_11" />
 
                         </LinearLayout>
                     </RelativeLayout>
@@ -258,12 +262,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#FF121E2E"
-                android:paddingBottom="@dimen/start_or_end_10"
-                android:paddingTop="@dimen/start_or_end_10">
+                android:paddingTop="@dimen/start_or_end_10"
+                android:paddingBottom="@dimen/start_or_end_10">
 
                 <TextView
-                    android:layout_marginStart="@dimen/start_or_end_15"
                     style="@style/AutoWrap"
+                    android:layout_marginStart="@dimen/start_or_end_15"
                     android:gravity="left"
                     android:text="@string/number"
                     android:textColor="@color/bottom_tes1" />
@@ -276,8 +280,8 @@
                     android:textColor="@color/bottom_tes1" />
 
                 <TextView
-                    android:layout_marginEnd="@dimen/start_or_end_10"
                     style="@style/AutoWrap"
+                    android:layout_marginEnd="@dimen/start_or_end_10"
                     android:gravity="right"
                     android:text="@string/time1"
                     android:textColor="@color/bottom_tes1" />
@@ -286,7 +290,7 @@
             <com.example.et.Adapter.AutoPollRecyclerView
                 android:id="@+id/recycleView"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="@dimen/icon_width_height_150"
                 app:layoutManager="LinearLayoutManager" />
         </LinearLayout>
     </com.example.et.util.PublicSwipeRefreshLayout.SwipeRefreshLayout>

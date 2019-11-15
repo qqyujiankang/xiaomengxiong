@@ -81,54 +81,11 @@ public class AppointmentcontractActivity extends BaseActivity {
         setContentView(R.layout.activity_appointmentcontract);
         ButterKnife.bind(this);
 
-        requestDatas2();
-
-    }
-
-    @Override
-    public void requestDatas2() {
-        super.requestDatas();
-        try {
-            JSONObject jsonObject = new JSONObject();
-            jsonObject.put("phone", CacheUtils.getInstance().getString(CacheConstants.PHONE));
-
-            TaskPresenterUntils.lifeful(Constant.newcontract, jsonObject, new OnLoadLifefulListener<String>(null, new OnLoadListener<String>() {
-                @Override
-                public void onSuccess(String success) {
-                    LogUtils.i("======newcontract======" + success);
-                    //adapterRealize = new AdapterRealize();
-
-                    Map<String, Object> objectPagebean = ParseUtils.analysisListTypeDatasAndCount((Activity) context, success, null, false).getStringMap();
-                    LogUtils.i("======newcontract======" + objectPagebean.get(KeyValueConstants.MSG));
-                    if (objectPagebean.get(KeyValueConstants.CODE).equals("200")) {
-                        if (!objectPagebean.get("state").toString().equals("4")) {
-                            Intent i = new Intent();
-                            i.setClass(AppointmentcontractActivity.this, MainActivity.class);
-                            i.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                            i.putExtra("fragment_flag", 2);
-                            startActivity(i);
-                            finish();
-                        } else {
-                            initView();
+       initView();
                             requestDatas();
-                        }
 
-
-                    } else {
-                        initView();
-                        requestDatas();
-
-                    }
-
-
-                }
-
-
-            }, lifeful));
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
     }
+
 
     @Override
     public void initView() {

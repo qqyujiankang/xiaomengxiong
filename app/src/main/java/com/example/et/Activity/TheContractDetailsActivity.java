@@ -12,6 +12,7 @@ import androidx.core.content.ContextCompat;
 
 import com.example.et.Constant;
 import com.example.et.R;
+import com.example.et.Ustlis.StatusBarUtil;
 import com.example.et.util.CacheUtils;
 import com.example.et.util.LogUtils;
 import com.example.et.util.TaskPresenterUntils;
@@ -30,6 +31,8 @@ import java.util.Map;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+
+import static com.example.et.Ustlis.StatusBarUtil.setRootViewFitsSystemWindows;
 
 /**
  * 合约详情
@@ -93,6 +96,8 @@ public class TheContractDetailsActivity extends BaseActivity {
     LinearLayout RlNo;
     @BindView(R.id.tv)
     TextView tv;
+    @BindView(R.id.vv_07)
+    View vv07;
     private int id;
     private Context context;
     private Lifeful lifeful;
@@ -104,6 +109,10 @@ public class TheContractDetailsActivity extends BaseActivity {
         lifeful = this;
 
         setContentView(R.layout.activity_the_contract_details);
+        setRootViewFitsSystemWindows(this, false);
+        //设置状态栏透明
+        StatusBarUtil.setTranslucentStatus(this);
+        ButterKnife.bind(this);
         ButterKnife.bind(this);
         getIntentDatas();
         initView();
@@ -115,7 +124,7 @@ public class TheContractDetailsActivity extends BaseActivity {
     public void initView() {
         super.initView();
         publicTitleTv.setText(R.string.menu_find);
-        rlBacground.setBackgroundColor(ContextCompat.getColor(context, R.color.orange));
+
     }
 
     @Override
@@ -161,7 +170,7 @@ public class TheContractDetailsActivity extends BaseActivity {
                             tvTime1.setText(objectPagebean.get("yhzx_cur_time").toString());
                             tv6.setText(R.string.Contract_completion_time);
                             tvTime0.setText(objectPagebean.get("ok_cur_time").toString());
-                        } else if (objectPagebean.get("state").toString().equals("3")||objectPagebean.get("state").toString().equals("5")) {
+                        } else if (objectPagebean.get("state").toString().equals("3") || objectPagebean.get("state").toString().equals("5")) {
                             tvState.setText(R.string.Contract_executed_successfully);
                             tv.setText(R.string.prospective_earnings);
                             tvProspective.setText(objectPagebean.get("static").toString());
@@ -178,6 +187,7 @@ public class TheContractDetailsActivity extends BaseActivity {
                             tv7.setText(R.string.Execution_success_time);
                             tvTime1.setText(objectPagebean.get("yhzx_cur_time").toString());
                             Rl2.setVisibility(View.GONE);
+                            vv07.setVisibility(View.GONE);
                         }
                         tvMoney.setText(objectPagebean.get("money").toString() + "USDT");
                     }
