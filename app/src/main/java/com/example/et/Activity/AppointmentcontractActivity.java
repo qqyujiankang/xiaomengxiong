@@ -22,6 +22,7 @@ import com.example.et.Ustlis.ToastUtils;
 import com.example.et.View.AlipayPopuWindow;
 import com.example.et.View.AnswerDiog;
 import com.example.et.View.MyDiog;
+import com.example.et.View.SwipeCaptchaViewDialog;
 import com.example.et.entnty.Answer;
 import com.example.et.entnty.Contract;
 import com.example.et.util.CacheUtils;
@@ -81,8 +82,8 @@ public class AppointmentcontractActivity extends BaseActivity {
         setContentView(R.layout.activity_appointmentcontract);
         ButterKnife.bind(this);
 
-       initView();
-                            requestDatas();
+        initView();
+        requestDatas();
 
     }
 
@@ -94,13 +95,14 @@ public class AppointmentcontractActivity extends BaseActivity {
         publicButton.setText(getString(R.string.confirm));
         MyDiog myDiog = new MyDiog(context, CacheUtils.getInstance().getString(CacheConstants.r_gold), 1);
         myDiog.show();
-        myDiog.getWindow().setLayout(ScreenUtils.getScreenWidth()-200 , LinearLayout.LayoutParams.WRAP_CONTENT);
+        myDiog.getWindow().setLayout(ScreenUtils.getScreenWidth() - 200, LinearLayout.LayoutParams.WRAP_CONTENT);
 
 
     }
 
     AlipayPopuWindow alipayPopuWindow;
 
+    SwipeCaptchaViewDialog dialog;
 
     @OnClick({R.id.public_back, R.id.ll_contract_amount, R.id.public_button})
     public void onViewClicked(View view) {
@@ -115,9 +117,14 @@ public class AppointmentcontractActivity extends BaseActivity {
                 break;
             case R.id.public_button:
                 if (!StringUtils.isEmpty(tvUSDT.getText().toString().trim())) {
-                    AnswerDiog answerDiog=new AnswerDiog(this,onClickListener, onClickListener1, problem, answers);
-                    answerDiog.show();
-                    answerDiog.getWindow().setLayout(ScreenUtils.getScreenWidth()-100 , LinearLayout.LayoutParams.WRAP_CONTENT);
+//                    AnswerDiog answerDiog=new AnswerDiog(this,onClickListener, onClickListener1, problem, answers);
+//////                    answerDiog.show();
+//////                    answerDiog.getWindow().setLayout(ScreenUtils.getScreenWidth()-100 , LinearLayout.LayoutParams.WRAP_CONTENT);
+
+
+                    dialog = new SwipeCaptchaViewDialog(context, id, lifeful);
+                    dialog.show();
+                    dialog.getWindow().setLayout(ScreenUtils.getScreenWidth() - 100, LinearLayout.LayoutParams.WRAP_CONTENT);
                 } else {
                     ToastUtils.showShort(R.string.Please_select_contract_amount);
                 }
@@ -153,7 +160,7 @@ public class AppointmentcontractActivity extends BaseActivity {
     @Override
     public void requestDatas() {
         super.requestDatas();
-        redata(0);
+        // redata(0);
 
     }
 

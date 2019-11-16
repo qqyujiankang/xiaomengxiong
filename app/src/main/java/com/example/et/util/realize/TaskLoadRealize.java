@@ -1,6 +1,12 @@
 package com.example.et.util.realize;
 
 
+import com.example.et.Activity.LoginActivity;
+import com.example.et.Activity.MainActivity;
+import com.example.et.Ustlis.ActivityUtils;
+import com.example.et.Ustlis.GsonUtil;
+import com.example.et.Ustlis.ToastUtils;
+import com.example.et.entnty.Netstat;
 import com.example.et.util.LogUtils;
 import com.example.et.util.OkHttpUtils;
 import com.example.et.util.callback.OkCallback;
@@ -89,13 +95,23 @@ public class TaskLoadRealize implements TaskLoadModel {
         OkHttpUtils.post(url, jsonObject, new OkCallback() {
             @Override
             public void onResponse(String response) {
-                if (listener != null) {
-                    listener.onSuccess(response);
+                Netstat netstat = GsonUtil.GsonToBean(response, Netstat.class);
+                if (netstat.getCode() != 500) {
+                    if (listener != null) {
+                        listener.onSuccess(response);
+                    }
+                } else {
+                    ToastUtils.showShort(netstat.getMsg().toString());
+                 //   ActivityUtils.finishActivity(MainActivity.class);
+                    ActivityUtils.startActivity(LoginActivity.class);
+
                 }
             }
 
             @Override
             public void onFailure(String error) {
+//                ActivityUtils.finishActivity(MainActivity.class);
+//                ActivityUtils.startActivity(LoginActivity.class);
                 if (listener != null) {
                     listener.onError(error);
                 }

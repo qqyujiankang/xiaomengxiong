@@ -2,6 +2,7 @@ package com.example.et.Activity;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -112,6 +113,7 @@ public class AddressbindingActivity extends BaseActivity {
             publicTitleTv.setText(getString(R.string.USDT_address_binding));
         }
         publicButton.setText(getString(R.string.confirm));
+
     }
 
     @OnClick({R.id.public_back, R.id.tv_get_cot, R.id.public_button, R.id.public_other})

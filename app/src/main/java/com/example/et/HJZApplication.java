@@ -28,7 +28,7 @@ public class HJZApplication extends Application {
             String language = LocalManageUtil.getSelectLanguage(this);
             if (language.equals("ENGLISH")) {//英语  @"en"
                 CacheUtils.getInstance().put(CacheConstants.Lang, "en");
-            } else if (language.equals("Simplified Chinese")) {
+            } else if (language.equals("简体中文")) {
                 CacheUtils.getInstance().put(CacheConstants.Lang, "zh-Hans");
             } else if (language.equals("繁體中文")) {
                 CacheUtils.getInstance().put(CacheConstants.Lang, "zh-Hant");

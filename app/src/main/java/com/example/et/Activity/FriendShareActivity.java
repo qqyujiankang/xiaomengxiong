@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 import com.example.et.R;
 import com.example.et.Ustlis.ImageLoaderUtil;
+import com.example.et.util.CacheUtils;
+import com.example.et.util.constant.CacheConstants;
 import com.just.agentweb.AgentWeb;
 
 import butterknife.BindView;
@@ -51,7 +53,7 @@ public class FriendShareActivity extends BaseActivity {
         publicTitleTv.setText(R.string.Friends_share);
 
                // .go("");
-        ImageLoaderUtil.setGlideim(FriendShareActivity.this,mldzChufanginfoWeblayout,"https://etadmin.etac.io/uploads/er1357924680.png");
+        ImageLoaderUtil.setGlideim(FriendShareActivity.this,mldzChufanginfoWeblayout, CacheUtils.getInstance().getString(CacheConstants.i_code_img));
 
     }
 

@@ -61,9 +61,9 @@ public class MyTeamsAdapter extends ManagerAdapter {
                 tvJieidian.setImageDrawable(context.getResources().getDrawable(R.mipmap.chaojijiedian));
             }
             if (myTeam.getStates() == 1) {
-                    tvStates.setText("未激活");
-            }else if (myTeam.getStates()==2){
-                 tvStates.setText("已激活");
+                tvStates.setText("未激活");
+            } else if (myTeam.getStates() == 2) {
+                tvStates.setText("已激活");
             }
 
 

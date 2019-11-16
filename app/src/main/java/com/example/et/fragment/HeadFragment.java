@@ -317,8 +317,8 @@ public class HeadFragment extends BaseFragment implements AdapterView.OnItemClic
                         }
 
                     } else {
-                        ActivityUtils.startActivity(LoginActivity.class);
-                        ((Activity) context).finish();
+//                        ActivityUtils.startActivity(LoginActivity.class);
+//                        ((Activity) context).finish();
                     }
 
                 }

@@ -318,7 +318,7 @@ public class ContractFragment extends BaseFragment {
     }
 
 
-    @OnClick({R.id.public_button1, R.id.public_button})
+    @OnClick({R.id.public_button1, R.id.public_button })
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.public_button1:
