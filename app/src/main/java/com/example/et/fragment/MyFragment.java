@@ -175,7 +175,7 @@ public class MyFragment extends BaseFragment {
         }
         publicButton.setText(getString(R.string.quit));
         //头像
-        ImageLoaderUtil.loadCircleImage(context,CacheUtils.getInstance().getString(CacheConstants.photo_url) + CacheUtils.getInstance().getString(CacheConstants.photo) , ivHolder);
+        ImageLoaderUtil.loadCircleImage(context, CacheUtils.getInstance().getString(CacheConstants.photo_url) + CacheUtils.getInstance().getString(CacheConstants.photo), ivHolder);
         tvName.setText(CacheUtils.getInstance().getString(CacheConstants.name));
         tvPhone.setText(CacheUtils.getInstance().getString(CacheConstants.PHONE));
         tvtvVersionInformation.setText(AppUtils.getAppVersionName());
@@ -287,8 +287,8 @@ public class MyFragment extends BaseFragment {
                 break;
             case R.id.public_button:
                 CacheUtils.getInstance().put("token", "");
-                //CacheUtils.clear();
-              // ActivityUtils.finishActivity(context);
+               // CacheUtils.clear();
+                ActivityUtils.finishActivity(context);
                 ActivityUtils.startActivity(LoginActivity.class);
 
                 break;

@@ -177,10 +177,8 @@ public class ContractFragment extends BaseFragment {
                             oid = objectPagebean.get("id").toString();
                             tvState.setText(getString(R.string.To_make_an_appointment_in));
                             long p = Long.parseLong(objectPagebean.get("yytime_daojishi").toString()) * 1000;
-                            if (countDown == null) {
-                                countDown = new CountDown(tvYyTime, p - TimeUtils.getNowMills(), 0);
-                            }
 
+                            countDown = new CountDown(tvYyTime, p - TimeUtils.getNowMills(), 0);
                             countDown.timerStart();
 
 

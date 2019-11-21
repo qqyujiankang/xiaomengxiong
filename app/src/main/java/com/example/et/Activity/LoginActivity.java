@@ -254,7 +254,7 @@ public class LoginActivity extends BaseActivity implements AdapterView.OnItemCli
                     }
 
 
-                    ToastUtils.showShort(resultMap.get(KeyValueConstants.MSG).toString());
+                   // ToastUtils.showShort(resultMap.get(KeyValueConstants.MSG).toString());
 
                 }
 
