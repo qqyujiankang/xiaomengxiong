@@ -213,7 +213,6 @@
                             android:layout_centerVertical="true"
                             android:layout_marginEnd="@dimen/icon_width_height_20"
                             android:layout_marginRight="@dimen/icon_width_height_20"
-                            android:text="ETH"
                             android:textColor="@color/white" />
                     </RelativeLayout>
 
@@ -238,7 +237,6 @@
                             android:layout_centerVertical="true"
                             android:layout_marginEnd="@dimen/icon_width_height_20"
                             android:layout_marginRight="@dimen/icon_width_height_20"
-                            android:text="1000"
                             android:textColor="@color/white" />
                     </RelativeLayout>
 
@@ -262,7 +260,6 @@
                             android:layout_centerVertical="true"
                             android:layout_marginEnd="@dimen/icon_width_height_20"
                             android:layout_marginRight="@dimen/icon_width_height_20"
-                            android:text="08-13 12:40:30"
                             android:textColor="@color/white" />
                     </RelativeLayout>
 

@@ -1,24 +1,14 @@
 package com.example.et.Activity;
 
-import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.SpannableString;
-import android.text.Spanned;
-import android.text.TextWatcher;
-import android.text.style.ForegroundColorSpan;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -27,14 +17,14 @@ import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.et.Adapter.Lingondadaper;
-import com.example.et.Adapter.ManagerAdapter;
 import com.example.et.Constant;
 import com.example.et.R;
 import com.example.et.Ustlis.ActivityUtils;
 import com.example.et.Ustlis.DeviceUtils;
+import com.example.et.Ustlis.SPUtil;
+import com.example.et.Ustlis.SpUtils;
 import com.example.et.Ustlis.StringUtils;
 import com.example.et.Ustlis.ToastUtils;
 import com.example.et.Verification;
@@ -42,6 +32,7 @@ import com.example.et.View.LanguageSettingDialog;
 import com.example.et.entnty.UserData;
 import com.example.et.util.CacheUtils;
 import com.example.et.util.LogUtils;
+import com.example.et.util.SPUtils;
 import com.example.et.util.SharedPreferencesHelper;
 import com.example.et.util.TaskPresenterUntils;
 import com.example.et.util.constant.CacheConstants;
@@ -50,13 +41,11 @@ import com.example.et.util.lifeful.Lifeful;
 import com.example.et.util.lifeful.OnLoadLifefulListener;
 import com.example.et.util.lifeful.OnLoadListener;
 import com.example.et.util.realize.ParseUtils;
-import com.youth.banner.Banner;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -135,18 +124,24 @@ public class LoginActivity extends BaseActivity implements AdapterView.OnItemCli
 
     public void lodg() {
 
-        helper = new SharedPreferencesHelper(context, "user");
-        map = (Map<String, String>) helper.getAll();
-
-
+        map = (Map<String, String>) SpUtils.getAll(context);
         for (int i = 0; i < map.size(); i++) {
-            String name = (String) helper.getSharedPreference("name" + i, "");
-            String pwd = (String) helper.getSharedPreference("pwd" + i, "");
-            int pwd1 = (int) helper.getSharedPreference("pwd1" + i, 0);
+
+            String name = SpUtils.getString(context, "name" + i, "");
+            String pwd = SpUtils.getString(context, "pwd" + i, "");
+            String pwd1 = SpUtils.getString(context, "pwd1" + i, "");
+            LogUtils.i("woshonibaba==========", "name====" + SpUtils.getString(context, "name" + i, "")
+                    + "=====pwd====" + SpUtils.getString(context, "pwd" + i, "") + "" +
+                    "======pwd1==" + SpUtils.getString(context, "pwd1" + i, ""));
             if (!name.equals("") && !pwd.equals("")) {
 
-                list.add(new UserData(name, pwd, pwd1));
+                list.add(new UserData(name, pwd, Integer.parseInt(pwd1)));
             }
+
+
+        }
+        for (int i = 0; i < list.size(); i++) {
+            LogUtils.i("exp===0======" + list.get(i).getAcount() + "==========" + list.get(i).getPasswd() + "==========" + list.get(i).getAnInt());
         }
 
 
@@ -254,7 +249,7 @@ public class LoginActivity extends BaseActivity implements AdapterView.OnItemCli
                     }
 
 
-                   // ToastUtils.showShort(resultMap.get(KeyValueConstants.MSG).toString());
+                    ToastUtils.showShort(resultMap.get(KeyValueConstants.MSG).toString());
 
                 }
 
@@ -271,27 +266,37 @@ public class LoginActivity extends BaseActivity implements AdapterView.OnItemCli
         if (i == 0) {
             i = map.size() / 2;
         }
+        for (int i = 0; i < list.size(); i++) {
+            LogUtils.i("exp==h==1=====" + list.get(i).getAcount() + "==========" + list.get(i).getPasswd() + "==========" + list.get(i).getAnInt());
+        }
 
-        helper = new SharedPreferencesHelper(context, "user");
-        if (list.size() != 0) {
+
+        if (list.size() > 0) {
             for (int key = 0; key < list.size(); key++) {
+                //是哪一行报的错误？ （我给你运行）
                 if (!list.get(key).getAcount().equals(phone)) {
-
-                    helper.put("name" + i, phone);
-                    helper.put("pwd" + i, Password);
-                    helper.put("pwd1" + i, i);
+                    SpUtils.putString(context, "name" + i, phone);
+                    SpUtils.putString(context, "pwd" + i, Password);
+                    SpUtils.putString(context, "pwd1" + i, i + "");
                     i++;
                     aBoolean = true;
+                    LogUtils.i("exp=====2======" + i, phone, "==========" + "=====Password===" + Password);
+
+                } else {
+                    break;
                 }
+
+
             }
 
 
         } else {
-            helper.put("name" + i, phone);
-            helper.put("pwd" + i, Password);
-            helper.put("pwd1" + i, i);
+            SpUtils.putString(context, "name" + i, phone);
+            SpUtils.putString(context, "pwd" + i, Password);
+            SpUtils.putString(context, "pwd1" + i, i + "");
             i++;
             aBoolean = true;
+            LogUtils.i("exp=====ba======" + i, phone, "==========" + "=====Password===" + Password);
         }
 
 

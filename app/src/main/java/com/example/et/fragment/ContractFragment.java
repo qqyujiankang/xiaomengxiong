@@ -19,8 +19,10 @@ import com.example.et.Ustlis.ActivityUtils;
 import com.example.et.Ustlis.ScreenUtils;
 import com.example.et.Ustlis.ToastUtils;
 import com.example.et.View.PayDialog;
+import com.example.et.entnty.Contractyu;
 import com.example.et.util.CacheUtils;
 import com.example.et.util.CountDown;
+import com.example.et.util.JsonUtil;
 import com.example.et.util.LogUtils;
 import com.example.et.util.PublicSwipeRefreshLayout.SwipeRefreshLayout;
 import com.example.et.util.StringUtils;
@@ -163,36 +165,34 @@ public class ContractFragment extends BaseFragment {
                 public void onSuccess(String success) {
                     LogUtils.i("======newcontract======" + success);
                     //adapterRealize = new AdapterRealize();
-
+                  //  JsonUtil.stringToObject(success, Contractyu.class);
                     Map<String, Object> objectPagebean = ParseUtils.analysisListTypeDatasAndCount(getActivity(), success, null, false).getStringMap();
                     LogUtils.i("======newcontract======" + objectPagebean.get(KeyValueConstants.MSG));
+
                     if (objectPagebean.get(KeyValueConstants.CODE).equals("200")) {
                         Rl.setVisibility(View.GONE);
                         RlNo.setVisibility(View.VISIBLE);
                         LogUtils.i("======newcontract======" + objectPagebean.get("state").toString());
 
                         if (objectPagebean.get("state").toString().equals("0")) {//预约中
-
+                            RlPublicButton1.setVisibility(View.VISIBLE);
                             llPublicLine01.setVisibility(View.GONE);
                             oid = objectPagebean.get("id").toString();
                             tvState.setText(getString(R.string.To_make_an_appointment_in));
                             long p = Long.parseLong(objectPagebean.get("yytime_daojishi").toString()) * 1000;
-
-                            countDown = new CountDown(tvYyTime, p - TimeUtils.getNowMills(), 0);
-                            countDown.timerStart();
-
+                            if (countDown == null) {
+                                countDown = new CountDown(tvYyTime, p - TimeUtils.getNowMills(), 0);
+                                countDown.timerStart();
+                            }
 
                             tvPrice.setText(StringUtils.calculateProfit(Double.parseDouble(objectPagebean.get("pre_cur_money").toString()), 5));
                             tvCurrency.setText(objectPagebean.get("pre_cur").toString());
-
                             tvQuantity.setText(StringUtils.calculateProfit(Double.parseDouble(objectPagebean.get("pre_cur_number").toString()), 5));
-
                             tvTime.setText(objectPagebean.get("yytime").toString());
                         } else if (objectPagebean.get("state").toString().equals("1")) {
                             if (countDown != null) {
                                 countDown.timerCancel();
                             }
-
 
                             tvYyTime.setText(objectPagebean.get("sjsy_day").toString() + "天");
                             llPublicLine01.setVisibility(View.VISIBLE);

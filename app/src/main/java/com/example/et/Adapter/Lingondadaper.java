@@ -2,16 +2,11 @@ package com.example.et.Adapter;
 
 import android.content.Context;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ListAdapter;
 import android.widget.TextView;
 
-import com.example.et.Activity.LoginActivity;
 import com.example.et.R;
-import com.example.et.View.MyDiog;
 import com.example.et.View.MyDiog1;
 import com.example.et.entnty.UserData;
-import com.example.et.util.SharedPreferencesHelper;
 import com.example.et.util.lifeful.Lifeful;
 
 import java.util.List;

@@ -154,7 +154,6 @@
                             <TextView
                                 android:id="@+id/tv_r_huilv"
                                 style="@style/WrapWrap"
-                                android:text="78.08"
                                 android:textColor="@color/white"
                                 android:textSize="@dimen/text_size_16" />
 
@@ -209,7 +208,6 @@
                             <TextView
                                 android:id="@+id/tv_s_huil"
                                 style="@style/WrapWrap"
-                                android:text="78.08"
                                 android:textColor="@color/white"
                                 android:textSize="@dimen/text_size_16" />
 
@@ -218,7 +216,6 @@
                                 style="@style/WrapWrap"
                                 android:layout_marginStart="15dp"
                                 android:layout_marginLeft="15dp"
-                                android:text="-78.08"
                                 android:textSize="@dimen/text_size_11" />
 
                         </LinearLayout>

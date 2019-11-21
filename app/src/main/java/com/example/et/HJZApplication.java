@@ -9,6 +9,7 @@ import com.example.et.Ustlis.SimulatorUtils;
 import com.example.et.Ustlis.Utils;
 import com.example.et.Ustlis.internationalization.LocalManageUtil;
 import com.example.et.util.CacheUtils;
+import com.example.et.util.SharedPreferencesHelper;
 import com.example.et.util.constant.CacheConstants;
 import com.tencent.bugly.crashreport.CrashReport;
 
@@ -17,17 +18,20 @@ import cn.jpush.android.api.JPushInterface;
 
 public class HJZApplication extends Application {
 
-    public  static Context context;
+    public static Context context;
+
     @Override
     public void onCreate() {
         super.onCreate();
-        context=this;
+        context = this;
         if (!SimulatorUtils.isSimulator(this)) {
             Utils.init(this);//工具包相关初始化
 
 
             LocalManageUtil.setApplicationLanguage(this);
+            SharedPreferencesHelper.init(context, "user");
             String language = LocalManageUtil.getSelectLanguage(this);
+
             if (language.equals("ENGLISH")) {//英语  @"en"
                 CacheUtils.getInstance().put(CacheConstants.Lang, "en");
             } else if (language.equals("简体中文")) {
