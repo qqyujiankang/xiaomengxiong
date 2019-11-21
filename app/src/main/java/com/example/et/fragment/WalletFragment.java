@@ -85,8 +85,10 @@ public class WalletFragment extends BaseFragment implements AdapterView.OnItemCl
 
                     Map<String, Object> objectPagebean = ParseUtils.analysisListTypeDatasAndCount(getActivity(), success, null, false).getStringMap();
                     if (objectPagebean.get(KeyValueConstants.CODE).equals("200")) {
-                        List<Ass> asses = JsonUtil.stringToList(objectPagebean.get("ass").toString(), Ass.class);
-                        listv.setAdapter(new AssAdaper(context, asses, null));
+                        if (objectPagebean.containsKey("ass")) {
+                            List<Ass> asses = JsonUtil.stringToList(objectPagebean.get("ass").toString(), Ass.class);
+                            listv.setAdapter(new AssAdaper(context, asses, null));
+                        }
                     }
 
 

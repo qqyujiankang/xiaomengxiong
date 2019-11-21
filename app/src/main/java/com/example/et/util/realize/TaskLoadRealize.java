@@ -3,6 +3,7 @@ package com.example.et.util.realize;
 
 import com.example.et.Activity.LoginActivity;
 import com.example.et.Activity.MainActivity;
+import com.example.et.HJZApplication;
 import com.example.et.Ustlis.ActivityUtils;
 import com.example.et.Ustlis.GsonUtil;
 import com.example.et.Ustlis.ToastUtils;
@@ -101,9 +102,13 @@ public class TaskLoadRealize implements TaskLoadModel {
                         listener.onSuccess(response);
                     }
                 } else {
-                    ToastUtils.showShort(netstat.getMsg().toString());
-                 //   ActivityUtils.finishActivity(MainActivity.class);
-                    ActivityUtils.startActivity(LoginActivity.class);
+                    //ToastUtils.showShort(netstat.getMsg().toString());
+
+                    if (!ActivityUtils.isActivityExistsInStack(LoginActivity.class)) {
+                        ActivityUtils.finishAllActivities();
+                        ActivityUtils.startActivity(LoginActivity.class);
+                    }
+
 
                 }
             }

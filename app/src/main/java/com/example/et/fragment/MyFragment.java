@@ -150,7 +150,11 @@ public class MyFragment extends BaseFragment {
         return R.layout.fragment_my;
     }
 
-
+    @Override
+    public void onResume() {
+        super.onResume();
+        initView();
+    }
 
     @Override
     public void onDestroy() {
@@ -165,11 +169,13 @@ public class MyFragment extends BaseFragment {
             // tvBinding.setVisibility(View.GONE);
             tvBinding.setText(getString(R.string.Is_binding));
             tvBinding.setTextColor(getResources().getColor(R.color.white));
+        } else {
+            tvBinding.setText(getString(R.string.not_bound));
+            tvBinding.setTextColor(getResources().getColor(R.color.FF6F8AAC));
         }
         publicButton.setText(getString(R.string.quit));
         //头像
-        ImageLoaderUtil.loadCircleImage(context, CacheUtils.getInstance().getString(CacheConstants.photo_url)
-                + CacheUtils.getInstance().getString(CacheConstants.photo), ivHolder);
+        ImageLoaderUtil.loadCircleImage(context,CacheUtils.getInstance().getString(CacheConstants.photo_url) + CacheUtils.getInstance().getString(CacheConstants.photo) , ivHolder);
         tvName.setText(CacheUtils.getInstance().getString(CacheConstants.name));
         tvPhone.setText(CacheUtils.getInstance().getString(CacheConstants.PHONE));
         tvtvVersionInformation.setText(AppUtils.getAppVersionName());
@@ -206,8 +212,7 @@ public class MyFragment extends BaseFragment {
                     LogUtils.i("homne=========" + success + "==========" + resultMap.get(KeyValueConstants.MSG));
                     if (resultMap.get(KeyValueConstants.CODE).equals("200")) {
                         //头像
-                        ImageLoaderUtil.loadCircleImage(context, CacheUtils.getInstance().getString(CacheConstants.photo_url)
-                                + CacheUtils.getInstance().getString(CacheConstants.photo), ivHolder);
+                        ImageLoaderUtil.loadCircleImage(context, CacheUtils.getInstance().getString(CacheConstants.photo_url) + CacheUtils.getInstance().getString(CacheConstants.photo), ivHolder);
                         tvName.setText(CacheUtils.getInstance().getString(CacheConstants.name));
                         tvPhone.setText(CacheUtils.getInstance().getString(CacheConstants.PHONE));
                         tvtvVersionInformation.setText(AppUtils.getAppVersionName());
@@ -223,6 +228,9 @@ public class MyFragment extends BaseFragment {
                             // tvBinding.setVisibility(View.GONE);
                             tvBinding.setText(getString(R.string.Is_binding));
                             tvBinding.setTextColor(getResources().getColor(R.color.white));
+                        } else {
+                            tvBinding.setText(getString(R.string.not_bound));
+                            tvBinding.setTextColor(getResources().getColor(R.color.FF6F8AAC));
                         }
 
                     } else {
@@ -278,8 +286,9 @@ public class MyFragment extends BaseFragment {
             case R.id.ll_version_information:
                 break;
             case R.id.public_button:
-                CacheUtils.getInstance().put(CacheConstants.TOKEN, "");
-                ActivityUtils.finishActivity(context);
+                CacheUtils.getInstance().put("token", "");
+                //CacheUtils.clear();
+              // ActivityUtils.finishActivity(context);
                 ActivityUtils.startActivity(LoginActivity.class);
 
                 break;

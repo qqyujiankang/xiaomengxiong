@@ -1,6 +1,7 @@
 package com.example.et.Ustlis;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.view.View;
@@ -8,6 +9,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import androidx.annotation.Nullable;
+import androidx.core.graphics.drawable.RoundedBitmapDrawable;
+import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.Priority;
@@ -18,6 +21,7 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.FutureTarget;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.RequestOptions;
+import com.bumptech.glide.request.target.BitmapImageViewTarget;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.target.Target;
 import com.bumptech.glide.request.transition.Transition;
@@ -126,10 +130,12 @@ public class ImageLoaderUtil {
                 .circleCrop()//设置圆形
                 .placeholder(placeholderSoWhite)
                 .error(errorSoWhite)
-                //.priority(Priority.HIGH)
+                .priority(Priority.HIGH)
                 .diskCacheStrategy(DiskCacheStrategy.ALL);
         Glide.with(context).load(url).apply(options).into(imageView);
     }
+
+
 
     /**
      * 预先加载图片

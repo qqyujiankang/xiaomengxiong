@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -17,8 +18,11 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import com.example.et.Adapter.MyFragmentPagerAdapter;
 import com.example.et.Constant;
 import com.example.et.R;
+import com.example.et.Ustlis.GsonUtil;
 import com.example.et.Ustlis.ListDatasUtils;
+import com.example.et.Ustlis.ScreenUtils;
 import com.example.et.Ustlis.StatusBarUtil;
+import com.example.et.View.ThinnerDialog;
 import com.example.et.entnty.VersionInfo;
 import com.example.et.fragment.ContractFragment;
 import com.example.et.fragment.HeadFragment;
@@ -40,6 +44,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -93,14 +98,16 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
 
     @Override
     public void requestDatas() {
-        super.requestDatas2();
+        super.requestDatas();
         try {
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("phone", CacheUtils.getInstance().getString(CacheConstants.PHONE));
-            TaskPresenterUntils.lifeful(Constant.shujuliu, jsonObject, new OnLoadLifefulListener<String>(null, new OnLoadListener<String>() {
+            TaskPresenterUntils.lifeful(Constant.et_update, jsonObject, new OnLoadLifefulListener<String>(null, new OnLoadListener<String>() {
                 @Override
                 public void onSuccess(String success) {
                     LogUtils.i("gentgxin=====" + success);
+                    //Map<String, Object> map = GsonUtil.GsonToMaps(success);
+                    checkVersionSuccess(GsonUtil.GsonToBean(success, VersionInfo.class));
 
                 }
 
@@ -180,8 +187,11 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
      */
     public void checkVersionSuccess(VersionInfo usVersionInfo) {
 
-        if (!AppUtils.getAppVersionName().equals(usVersionInfo.getVersion())) {
-
+        if (!AppUtils.getAppVersionName().equals(usVersionInfo.getData().getAndroid())) {
+            ThinnerDialog thinnerDialog = new ThinnerDialog(context,usVersionInfo );
+            thinnerDialog.show();
+            thinnerDialog.setCancelable(false);
+            thinnerDialog.getWindow().setLayout(ScreenUtils.getScreenWidth() - 100, LinearLayout.LayoutParams.WRAP_CONTENT);
 
         }
     }

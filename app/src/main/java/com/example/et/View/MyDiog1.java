@@ -11,8 +11,12 @@ import android.widget.TextView;
 
 import com.example.et.Activity.LoginActivity;
 import com.example.et.R;
+import com.example.et.entnty.UserData;
 import com.example.et.fragment.HeadFragment;
 import com.example.et.util.SharedPreferencesHelper;
+
+import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -21,14 +25,17 @@ public class MyDiog1 extends AlertDialog {
     private Button button, button1;
     private Context context;
     SharedPreferencesHelper helper;
-    private String string;
+    private UserData userData;
     private int id;
-
-    public MyDiog1(Context context, String string, int position) {
+    private int p;
+    private  List<UserData> userDataList;
+    public MyDiog1(Context context,  int position, List<UserData> userData,int p) {
 
         super(context);
         this.context = context;
         this.id = position;
+        this.userDataList = userData;
+        this.p = p;
 
     }
 
@@ -49,6 +56,8 @@ public class MyDiog1 extends AlertDialog {
             public void onClick(View view) {
                 helper = new SharedPreferencesHelper(context, "user");
                 helper.remove("name" + id);
+                helper.remove("pwd" + id);
+                userDataList.remove(p);
                 dismiss();
                 LoginActivity.pw.dismiss();
             }

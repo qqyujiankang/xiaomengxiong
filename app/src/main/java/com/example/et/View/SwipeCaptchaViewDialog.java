@@ -25,6 +25,7 @@ import com.example.et.R;
 import com.example.et.Ustlis.ActivityUtils;
 import com.example.et.Ustlis.ScreenUtils;
 import com.example.et.Ustlis.ToastUtils;
+import com.example.et.fragment.HeadFragment;
 import com.example.et.util.CacheUtils;
 import com.example.et.util.ImageUtils;
 import com.example.et.util.LogUtils;
@@ -73,11 +74,8 @@ public class SwipeCaptchaViewDialog extends Dialog implements SwipeCaptchaView.O
         mSeekBar = (SeekBar) findViewById(R.id.dragBar);
         //测试从网络加载图片是否ok
         list.add("https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3822265507,2412038066&fm=26&gp=0.jpg");
-        list.add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1573820091901&di=ab2ecd699736a27bf4ba2aef4c6c28eb&imgtype=0&src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2Fa%2F538d3604995b9.jpg");
-        list.add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1573820091901&di=ab5e51696d888f241f70ea1bde6d3a70&imgtype=0&src=http%3A%2F%2Fbaiducdn.pig66.com%2Fuploadfile%2F2017%2F0511%2F20170511115929206.jpg");
-        list.add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1573820091901&di=3dc105a8f03bbabc33dd0ab468f0a475&imgtype=0&src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2F9%2F585256bb19769.jpg");
-        list.add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1573820091901&di=fcf01459771dd1b7e701ea0e6b64d667&imgtype=0&src=http%3A%2F%2Fbaiducdn.pig66.com%2Fuploadfile%2F2017%2F0511%2F20170511115812839.jpg");
-        list1 = createRandomList(list, 2);
+       // list.add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1574260073716&di=ab496127ddd65452e46d10cd55fce771&imgtype=0&src=http%3A%2F%2Fimg2.zol.com.cn%2Fproduct%2F89%2F111%2FceZXuwwDtXoUE.jpg");
+        list1 = createRandomList(list, 1);
         Glide.with(context).load(list1.get(0))
                 .into(new SimpleTarget<Drawable>() {
                     @Override
@@ -99,7 +97,7 @@ public class SwipeCaptchaViewDialog extends Dialog implements SwipeCaptchaView.O
 
     @Override
     public void matchSuccess(SwipeCaptchaView swipeCaptchaView) {
-        Toast.makeText(context, "恭喜你啊 验证成功 可以搞事情了", Toast.LENGTH_SHORT).show();
+     //   Toast.makeText(context, R.string.tes78, Toast.LENGTH_SHORT).show();
         //swipeCaptcha.createCaptcha();
         redata(id);
         mSeekBar.setEnabled(false);
@@ -107,7 +105,7 @@ public class SwipeCaptchaViewDialog extends Dialog implements SwipeCaptchaView.O
 
     @Override
     public void matchFailed(SwipeCaptchaView swipeCaptchaView) {
-        Toast.makeText(context, "你有80%的可能是机器人，现在走还来得及", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(context, R.string.tet31, Toast.LENGTH_SHORT).show();
         swipeCaptchaView.resetCaptcha();
         mSeekBar.setProgress(0);
     }
@@ -148,8 +146,10 @@ public class SwipeCaptchaViewDialog extends Dialog implements SwipeCaptchaView.O
                         i.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         i.putExtra("fragment_flag", 2);
                         startActivity(i);
+                        HeadFragment.state="0";
                         ActivityUtils.finishActivity(AppointmentcontractActivity.class);
                         dismiss();
+
 
                     }
 

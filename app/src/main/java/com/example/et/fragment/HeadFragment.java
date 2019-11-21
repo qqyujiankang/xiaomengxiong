@@ -316,9 +316,6 @@ public class HeadFragment extends BaseFragment implements AdapterView.OnItemClic
                             tvNewName.setText(stringObjectMap.get("name").toString());
                         }
 
-                    } else {
-//                        ActivityUtils.startActivity(LoginActivity.class);
-//                        ((Activity) context).finish();
                     }
 
                 }
@@ -402,7 +399,7 @@ public class HeadFragment extends BaseFragment implements AdapterView.OnItemClic
         ActivityUtils.startActivity(intent);
     }
 
-    private String state = "1";
+    public static String state = "1";
 
     @Override
     public void requestDatas4() {

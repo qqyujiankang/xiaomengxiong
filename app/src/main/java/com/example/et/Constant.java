@@ -6,7 +6,7 @@ package com.example.et;
  */
 
 public class Constant {
-    public static final String BASE_URL = "http://jt.etac.io/api/";
+    public static final String BASE_URL = "https://api.etac.io/api/";
     public static final String registermessage = BASE_URL + "registermessage";//短信
     public static final String login = BASE_URL + "login";//登录
     public static final String register = BASE_URL + "register";//注册
@@ -38,7 +38,7 @@ public class Constant {
     public static final String tocontractok = BASE_URL + "tocontractok";//执行合约
     public static final String getgold_hl = BASE_URL + "getgold_hl";//提币手续费
     public static final String upgoldaddress1 = BASE_URL + "upgoldaddress1";//upgoldaddress1
-
+    public static final String et_update = BASE_URL + "et_update";//获取版本信息
 
     //
 }

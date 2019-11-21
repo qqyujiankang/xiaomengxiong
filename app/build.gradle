@@ -10,12 +10,13 @@ android {
         minSdkVersion 19
         targetSdkVersion 29
         versionCode 1
-        versionName "1.0"
+        versionName "1.0.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         ndk {
             //选择要添加的对应cpu类型的.so库。
             abiFilters 'armeabi', 'armeabi-v7a', 'arm64-v8a', 'x86', 'x86_64', 'mips', 'mips64'
+
         }
 
         manifestPlaceholders = [
@@ -61,7 +62,6 @@ dependencies {
     implementation 'com.youth.banner:banner:1.1.5'
     //图片加载
     implementation 'com.github.bumptech.glide:glide:4.7.1'
-
 
 
     //noinspection GradleCompatible
@@ -126,6 +126,9 @@ dependencies {
 
     implementation 'cn.jiguang.sdk:jpush:3.3.4'  // 此处以JPush 3.3.4 版本为例。
     implementation 'cn.jiguang.sdk:jcore:2.1.0'  // 此处以JCore 2.1.0 版本为例。
-
+    implementation 'com.tencent.bugly:crashreport:latest.release'
+    //其中latest.release指代最新Bugly SDK版本号，也可以指定明确的版本号，例如2.1.9
+    implementation 'com.tencent.bugly:nativecrashreport:latest.release'
+    //其中latest.release指代最新Bugly NDK版本号，也可以指定明确的版本号，例如3.0
 
 }

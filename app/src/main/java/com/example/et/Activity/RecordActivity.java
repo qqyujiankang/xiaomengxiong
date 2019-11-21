@@ -90,7 +90,6 @@ public class RecordActivity extends BaseActivity {
             jsonObject.put("phone", CacheUtils.getInstance().getString(CacheConstants.PHONE));
             jsonObject.put("gid", id);
             jsonObject.put("page", page);
-
             TaskPresenterUntils.lifeful(Constant.assorder, jsonObject, new OnLoadLifefulListener<String>(swipeRefreshLayout, new OnLoadListener<String>() {
                 @Override
                 public void onSuccess(String success) {
@@ -100,7 +99,7 @@ public class RecordActivity extends BaseActivity {
                         adapterRealize = new AdapterRealize();
                     }
 
-                    Pagebean<Object> objectPagebean = ParseUtils.analysisListTypeDatasAndCount((Activity) context, success, Record[].class, true);
+                    Pagebean<Object> objectPagebean = ParseUtils.analysisListTypeDatasAndCount1((Activity) context, success, Record[].class, true);
 
                     page = adapterRealize.AdapterSetListDatas(objectPagebean, page, listView, context, RecordAdapter.class, lifeful);//返回第几页
 

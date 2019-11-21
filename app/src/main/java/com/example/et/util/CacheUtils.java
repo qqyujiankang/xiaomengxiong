@@ -57,7 +57,7 @@ public final class CacheUtils {
     public static final int  HEBDOMAD= 604800;//hebdomad
 
     private static final SimpleArrayMap<String, CacheUtils> CACHE_MAP = new SimpleArrayMap<>();
-    private CacheManager mCacheManager;
+    public static CacheManager mCacheManager;
 
     /**
      * 获取缓存实例
@@ -622,7 +622,7 @@ public final class CacheUtils {
      *
      * @return {@code true}: 清除成功<br>{@code false}: 清除失败
      */
-    public boolean clear() {
+    public  static boolean clear() {
         return mCacheManager.clear();
     }
 

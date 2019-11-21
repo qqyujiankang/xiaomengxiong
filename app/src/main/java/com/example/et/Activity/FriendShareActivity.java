@@ -9,7 +9,9 @@ import android.widget.TextView;
 
 import com.example.et.R;
 import com.example.et.Ustlis.ImageLoaderUtil;
+import com.example.et.Ustlis.ToastUtils;
 import com.example.et.util.CacheUtils;
+import com.example.et.util.ImageUtils;
 import com.example.et.util.constant.CacheConstants;
 import com.just.agentweb.AgentWeb;
 
@@ -52,9 +54,16 @@ public class FriendShareActivity extends BaseActivity {
         super.initView();
         publicTitleTv.setText(R.string.Friends_share);
 
-               // .go("");
-        ImageLoaderUtil.setGlideim(FriendShareActivity.this,mldzChufanginfoWeblayout, CacheUtils.getInstance().getString(CacheConstants.i_code_img));
-
+        // .go("");
+        ImageLoaderUtil.setGlideim(FriendShareActivity.this, mldzChufanginfoWeblayout, CacheUtils.getInstance().getString(CacheConstants.i_code_img));
+        mldzChufanginfoWeblayout.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                ImageUtils.saveBitmap(FriendShareActivity.this, ImageUtils.view2Bitmap(view));
+                ToastUtils.showLong("图片保存成功");
+                return true;
+            }
+        });
     }
 
     @OnClick(R.id.public_back)

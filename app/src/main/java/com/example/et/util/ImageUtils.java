@@ -44,6 +44,7 @@ import androidx.core.content.ContextCompat;
 
 import com.bumptech.glide.load.engine.bitmap_recycle.BitmapPool;
 import com.bumptech.glide.util.Preconditions;
+import com.example.et.R;
 import com.example.et.Ustlis.Utils;
 import com.example.et.util.constant.MemoryConstants;
 
@@ -1517,7 +1518,7 @@ public final class ImageUtils {
      */
     public static void saveBitmap(Context context, Bitmap bitmap) {
         // 首先保存图片
-        File appDir = new File(Environment.getExternalStorageDirectory(), "瑞易联盟");
+        File appDir = new File(Environment.getExternalStorageDirectory(), context.getString(R.string.app_name));
         if (!appDir.exists()) {
             appDir.mkdir();
         }

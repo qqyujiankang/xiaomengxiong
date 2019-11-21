@@ -74,7 +74,7 @@
                             android:layout_marginLeft="1dp"
                             android:layout_marginEnd="@dimen/icon_width_height_20"
                             android:layout_toLeftOf="@+id/iv"
-                            android:src="@mipmap/chaojijiedian" />
+                            />
 
                         <TextView
                             android:id="@+id/tv_phone"

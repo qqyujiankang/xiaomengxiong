@@ -7,6 +7,8 @@ package com.example.et.View;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
@@ -55,7 +57,7 @@ public class LoadDialog extends Dialog {
         this.cancelable = cancelable;
         this.tipMsg = tipMsg;
 
-        this.getContext().setTheme(android.R.style.Theme_DeviceDefault_Dialog_NoActionBar_MinWidth);
+        // this.getContext().setTheme(R.style.LunchTheme);
         setContentView(R.layout.public_dialog_layout);
         // 必须放在加载布局后
         setparams();
@@ -73,8 +75,9 @@ public class LoadDialog extends Dialog {
         // Dialog宽度
         lp.width = (int) (ScreenUtils.getScreenWidth() * 0.7);
         Window window = getWindow();
+        window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         window.setAttributes(lp);
-        window.getDecorView().getBackground().setAlpha(150);
+        window.getDecorView().getBackground().setAlpha(255);
     }
 
     @Override
@@ -136,8 +139,8 @@ public class LoadDialog extends Dialog {
         try {
             loadDialog = new LoadDialog(context, cancelable, message);
             loadDialog.show();
-        }catch (Exception e){
-            loadDialog=null;
+        } catch (Exception e) {
+            loadDialog = null;
         }
 
     }

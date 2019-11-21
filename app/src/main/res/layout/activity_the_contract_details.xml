@@ -107,7 +107,6 @@
                 <TextView
                     android:id="@+id/tv_money"
                     style="@style/WrapWrap"
-                    android:text=" 13123 "
                     android:textColor="@color/white"
                     android:textSize="@dimen/text_size_18" />
             </LinearLayout>
@@ -131,7 +130,6 @@
                 <TextView
                     android:id="@+id/tv_prospective"
                     style="@style/WrapWrap"
-                    android:text="13123 "
                     android:textColor="@color/white" />
             </LinearLayout>
 

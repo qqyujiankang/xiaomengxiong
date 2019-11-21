@@ -49,7 +49,7 @@ public abstract class BaseFragment extends Fragment {
         // isInit = true;
         /**初始化的时候去加载数据**/
         initView();
-        //  isCanLoadData();
+        // isCanLoadData();
 
         return view;
     }

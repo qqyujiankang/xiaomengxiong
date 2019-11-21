@@ -10,6 +10,7 @@ import com.example.et.Activity.LoginActivity;
 import com.example.et.R;
 import com.example.et.View.MyDiog;
 import com.example.et.View.MyDiog1;
+import com.example.et.entnty.UserData;
 import com.example.et.util.SharedPreferencesHelper;
 import com.example.et.util.lifeful.Lifeful;
 
@@ -21,7 +22,7 @@ import butterknife.BindView;
 public class Lingondadaper extends ManagerAdapter {
 
 
-    public Lingondadaper(Context context, List list, Lifeful lifefu) {
+    public Lingondadaper(Context context, List<UserData> list, Lifeful lifefu) {
         super(context, list, lifefu);
     }
 
@@ -46,11 +47,13 @@ public class Lingondadaper extends ManagerAdapter {
 
         @Override
         public void setViewData(int position, List list) {
-            item.setText(list.get(position).toString());
+            UserData userData= (UserData) list.get(position);
+            item.setText(userData.getAcount());
             tv.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    new MyDiog1(context,list.get(position).toString(),position).show();
+                    new MyDiog1(context,userData.getAnInt(), list,position).show();
+
 
                 }
             });

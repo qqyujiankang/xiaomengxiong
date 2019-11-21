@@ -31,7 +31,6 @@ import android.widget.Toast;
 
 import com.example.et.Adapter.Lingondadaper;
 import com.example.et.Adapter.ManagerAdapter;
-import com.example.et.Adapter.MyAdapter;
 import com.example.et.Constant;
 import com.example.et.R;
 import com.example.et.Ustlis.ActivityUtils;
@@ -40,6 +39,7 @@ import com.example.et.Ustlis.StringUtils;
 import com.example.et.Ustlis.ToastUtils;
 import com.example.et.Verification;
 import com.example.et.View.LanguageSettingDialog;
+import com.example.et.entnty.UserData;
 import com.example.et.util.CacheUtils;
 import com.example.et.util.LogUtils;
 import com.example.et.util.SharedPreferencesHelper;
@@ -50,6 +50,7 @@ import com.example.et.util.lifeful.Lifeful;
 import com.example.et.util.lifeful.OnLoadLifefulListener;
 import com.example.et.util.lifeful.OnLoadListener;
 import com.example.et.util.realize.ParseUtils;
+import com.youth.banner.Banner;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -67,7 +68,7 @@ import butterknife.OnClick;
  * 登录
  */
 
-public class LoginActivity extends BaseActivity {
+public class LoginActivity extends BaseActivity implements AdapterView.OnItemClickListener {
 
 
     @BindView(R.id.tv_get_cot)
@@ -103,12 +104,10 @@ public class LoginActivity extends BaseActivity {
     private int width, i;
     private View option;
     SharedPreferencesHelper helper;
-    private List<SpannableString> carNumber = new ArrayList<SpannableString>();
-    private PopupWindow popupWindow;
-    private ListView lView;
-    private MyAdapter adapter;
-    List<String> list;
+    private List<UserData> list = new ArrayList<>();
+
     private static boolean aBoolean;
+    Lingondadaper adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -136,148 +135,22 @@ public class LoginActivity extends BaseActivity {
 
     public void lodg() {
 
-        data();
-
-        Lingondadaper adapter = new Lingondadaper(context, list, null);
-        option =  getLayoutInflater().inflate(R.layout.simple_item, null);
-        // 要在这个linearLayout里面找listView......
-        listView = (ListView) option.findViewById(R.id.lv);
-        listView.setAdapter(adapter);
-
-
-
-        ColorDrawable dw = new ColorDrawable(0000000000);
-        // 点back键和其他地方使其消失,设置了这个才能触发OnDismisslistener ，设置其他控件变化等操作
-
-
-        //实例化一个popupwindow对象
-        pw = new PopupWindow(option, etPhone.getWidth(), WindowManager.LayoutParams.WRAP_CONTENT, true);
-        pw.setBackgroundDrawable(getResources().getDrawable(R.drawable.bg_radius15_gray));
-        pw.setOutsideTouchable(true);
-        pw.setBackgroundDrawable(dw);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view,
-                                    int position, long id) {
-
-                // 获取选中项内容及从sharePreferences中获取对应的密码
-                String username = adapterView.getItemAtPosition(position)
-                        .toString();
-                String pwd = (String) helper.getSharedPreference("pwd" + position, "");
-
-                etPhone.setText(username);
-                etPassword.setText(pwd);
-
-
-                // 选择后，popupwindow自动消失
-                pw.dismiss();
-            }
-
-        });
-        tva.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                lodg();
-                pw.showAsDropDown(Rl, 0, 0);
-            }
-        });
-
-//        etPhone.addTextChangedListener(new TextWatcher() {
-//            @Override
-//            public void onTextChanged(CharSequence s, int arg1, int arg2, int arg3) {
-//                // TODO Auto-generated method stub
-//                if (s.length() > 0) {
-//                    if (popupWindow == null) {
-//                        View contentView = View.inflate(context, R.layout.simple_item, null);
-//                        lView = (ListView) contentView.findViewById(R.id.lv);
-//                        popupWindow = new PopupWindow(contentView, etPhone.getWidth(), WindowManager.LayoutParams.WRAP_CONTENT, true);
-//                    }
-//                    carNumber.clear();
-//                    for (String str : list) {
-//                        if (str.startsWith("" + s)) {
-//                            SpannableString ss = new SpannableString(str);
-//                            ss.setSpan(new ForegroundColorSpan(Color.BLUE), 0, s.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-//                            carNumber.add(ss);
-//                        }
-//                    }
-//                    if (carNumber.size() == 0) {
-//                        SpannableString ssString = new SpannableString("");
-//                        ssString.setSpan(new ForegroundColorSpan(Color.RED), 0, ssString.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-//                        carNumber.add(ssString);
-//                    }
-//                    adapter.notifyDataSetChanged();
-//                    lView.setAdapter(adapter);
-//                    popupWindow.setOutsideTouchable(true);
-//                    popupWindow.setFocusable(false);
-//                    popupWindow.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-//                    popupWindow.showAsDropDown(etPhone, 0, 0);
-//                    if (carNumber.size() >= 5) {
-//                        popupWindow.update(etPhone.getWidth(), 250);
-//                    } else {
-//                        popupWindow.update(etPhone.getWidth(), WindowManager.LayoutParams.WRAP_CONTENT);
-//                    }
-//                    lView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//
-//                        @Override
-//                        public void onItemClick(AdapterView<?> arg0, View arg1,
-//                                                int arg2, long arg3) {
-//                            // TODO Auto-generated method stub
-//                            etPhone.setText(carNumber.get(arg2).toString());
-//                            String pwd = (String) helper.getSharedPreference("pwd" + arg2, "");
-//
-//                            etPassword.setText(pwd);
-//                            if (popupWindow != null && popupWindow.isShowing()) {
-//                                popupWindow.dismiss();
-//                            }
-//                        }
-//                    });
-//                }
-//            }
-//
-//            @Override
-//            public void beforeTextChanged(CharSequence arg0, int arg1, int arg2,
-//                                          int arg3) {
-//                // TODO Auto-generated method stub
-//
-//            }
-//
-//            @Override
-//            public void afterTextChanged(Editable arg0) {
-//                // TODO Auto-generated method stub
-//
-//            }
-//        });
-
-    }
-
-
-    private void data() {
         helper = new SharedPreferencesHelper(context, "user");
         map = (Map<String, String>) helper.getAll();
 
-        //创建一个新的map2
-        Map<String, String> map2 = new HashMap<String, String>();
-        for (String key : map.keySet()) {
-            if (!map2.containsValue(map.get(key))) {
-                map2.put(key, map.get(key));
-            }
 
-
-        }
-        list = new ArrayList<String>();
-
-        for (int i = 0; i < (map2.size() / 2); i++) {
+        for (int i = 0; i < map.size(); i++) {
             String name = (String) helper.getSharedPreference("name" + i, "");
-            list.add(name);
+            String pwd = (String) helper.getSharedPreference("pwd" + i, "");
+            int pwd1 = (int) helper.getSharedPreference("pwd1" + i, 0);
+            if (!name.equals("") && !pwd.equals("")) {
 
-
+                list.add(new UserData(name, pwd, pwd1));
+            }
         }
-        adapter = new MyAdapter(this, carNumber);
+
+
     }
-
-
-
 
 
     /**
@@ -285,10 +158,29 @@ public class LoginActivity extends BaseActivity {
      *
      * @param view
      */
-    @OnClick({R.id.tv_get_cot, R.id.public_button, R.id.tv_forget_the_password, R.id.tv_register, R.id.tv_language})
+    @OnClick({R.id.tv_get_cot, R.id.public_button, R.id.tv_forget_the_password, R.id.tv_register, R.id.tv_language, R.id.tva})
     public void onViewClicked(View view) {
         Intent intent = new Intent();
         switch (view.getId()) {
+            case R.id.tva:
+                adapter = new Lingondadaper(context, list, null);
+                option = getLayoutInflater().inflate(R.layout.simple_item, null);
+                // 要在这个linearLayout里面找listView......
+                listView = (ListView) option.findViewById(R.id.lv);
+                listView.setAdapter(adapter);
+                listView.setOnItemClickListener(this);
+
+                ColorDrawable dw = new ColorDrawable(0000000000);
+                // 点back键和其他地方使其消失,设置了这个才能触发OnDismisslistener ，设置其他控件变化等操作
+
+
+                //实例化一个popupwindow对象
+                pw = new PopupWindow(option, etPhone.getWidth(), WindowManager.LayoutParams.WRAP_CONTENT, true);
+                pw.setBackgroundDrawable(getResources().getDrawable(R.drawable.bg_radius15_gray));
+                pw.setOutsideTouchable(true);
+                pw.setBackgroundDrawable(dw);
+                pw.showAsDropDown(Rl, 0, 0);
+                break;
             case R.id.tv_language:
                 LanguageSettingDialog dialog = new LanguageSettingDialog(LoginActivity.this, LoginActivity.this);
                 dialog.show();
@@ -318,6 +210,12 @@ public class LoginActivity extends BaseActivity {
 
             default:
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finishAffinity();
     }
 
     private void requestDatas(int i) {
@@ -374,12 +272,27 @@ public class LoginActivity extends BaseActivity {
             i = map.size() / 2;
         }
 
-
         helper = new SharedPreferencesHelper(context, "user");
-        helper.put("name" + i, phone);
-        helper.put("pwd" + i, Password);
-        i++;
-        aBoolean = true;
+        if (list.size() != 0) {
+            for (int key = 0; key < list.size(); key++) {
+                if (!list.get(key).getAcount().equals(phone)) {
+
+                    helper.put("name" + i, phone);
+                    helper.put("pwd" + i, Password);
+                    helper.put("pwd1" + i, i);
+                    i++;
+                    aBoolean = true;
+                }
+            }
+
+
+        } else {
+            helper.put("name" + i, phone);
+            helper.put("pwd" + i, Password);
+            helper.put("pwd1" + i, i);
+            i++;
+            aBoolean = true;
+        }
 
 
     }
@@ -423,5 +336,20 @@ public class LoginActivity extends BaseActivity {
     }
 
 
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+
+        // 获取选中项内容及从sharePreferences中获取对应的密码
+        UserData userData = (UserData) adapter.getItem(position);
+        String username = userData.getAcount();
+        String pwd = userData.getPasswd();
+
+        etPhone.setText(username);
+        etPassword.setText(pwd);
+
+
+        // 选择后，popupwindow自动消失
+        pw.dismiss();
+    }
 }
 

@@ -200,4 +200,9 @@
     <string name="p1">Edisabled</string>
     <string name="p2">Time expired</string>
     <string name="zayt">Press again to exit the program</string>
+    <string name="tes4">Please check the replenishment address. If the loss caused by the address error cannot be recovered, the platform will not be responsible</string>
+    <string name="Quick_top_up">Etoken Quick top up</string>
+    <string name="tes78">Congratulations. Verify success. Get things done</string>
+    <string name="tet31">You have an 80% chance of being a robot</string>
+    <string name="ter56"> to complete the puzzle verification</string>
 </resources>

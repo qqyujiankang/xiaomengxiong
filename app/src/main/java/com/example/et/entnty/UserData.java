@@ -7,12 +7,20 @@ package com.example.et.entnty;
 public class UserData {
     private String acount;
     private String passwd;
-
-    public UserData(String acount, String passwd) {
+    private int anInt;
+    public UserData(String acount, String passwd,int i) {
         this.acount = acount;
         this.passwd = passwd;
+        this.anInt = anInt;
     }
 
+    public void setAcount(String acount) {
+        this.acount = acount;
+    }
+
+    public int getAnInt() {
+        return anInt;
+    }
 
     public String getAcount() {
         return acount;

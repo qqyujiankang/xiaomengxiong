@@ -9,10 +9,10 @@
     <include layout="@layout/public_title" />
 
     <RelativeLayout
-        android:layout_gravity="center_horizontal"
         style="@style/MatchWrap"
         android:layout_width="230dp"
         android:layout_height="230dp"
+        android:layout_gravity="center_horizontal"
         android:layout_marginStart="@dimen/icon_width_height_80"
         android:layout_marginTop="@dimen/icon_width_height_100"
         android:layout_marginEnd="@dimen/icon_width_height_80"
@@ -20,12 +20,12 @@
         android:background="@mipmap/top_bian">
 
         <ImageView
-            android:layout_margin="@dimen/icon_width_height_20"
             android:id="@+id/iv_address_img"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true" />
+            android:layout_centerVertical="true"
+            android:layout_margin="@dimen/icon_width_height_20" />
     </RelativeLayout>
 
     <LinearLayout
@@ -33,11 +33,11 @@
         android:layout_marginTop="@dimen/icon_width_height_20">
 
         <TextView
-            android:textSize="@dimen/text_size_14"
             style="@style/MatchWrap"
             android:gravity="center"
             android:text="@string/The_wallet_address"
-            android:textColor="@color/white" />
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_14" />
 
         <TextView
             android:id="@+id/tv_address"
@@ -48,7 +48,42 @@
             android:textColor="@color/orange"
             android:textSize="14sp" />
 
-        <include layout="@layout/public_button1" />
+        <LinearLayout style="@style/MatchWrap.Horizontal">
+
+            <Button
+                android:id="@+id/public_button"
+                style="@style/AutoWrap"
+                android:layout_marginStart="@dimen/icon_width_height_20"
+                android:layout_marginLeft="@dimen/icon_width_height_20"
+                android:layout_marginTop="60dp"
+                android:layout_marginEnd="@dimen/icon_width_height_20"
+                android:background="@drawable/bg_radius5_blue"
+                android:text=""
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_14" />
+
+            <Button
+                android:id="@+id/public_button1"
+                style="@style/AutoWrap"
+                android:layout_marginStart="@dimen/icon_width_height_20"
+                android:layout_marginLeft="@dimen/icon_width_height_20"
+                android:layout_marginTop="60dp"
+                android:layout_marginEnd="@dimen/icon_width_height_20"
+                android:background="@drawable/bg_radius5_blue"
+                android:text=""
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_14" />
+        </LinearLayout>
+
+        <TextView
+            style="@style/MatchWrap"
+            android:layout_marginStart="@dimen/icon_width_height_20"
+            android:layout_marginTop="@dimen/start_or_end_10"
+            android:layout_marginEnd="@dimen/icon_width_height_20"
+            android:text="@string/tes4"
+            android:textColor="@color/F44336"
+            android:textSize="@dimen/text_size_14" />
+
 
     </LinearLayout>
 

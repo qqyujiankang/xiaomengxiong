@@ -111,7 +111,6 @@
                                 android:id="@+id/tv_yy_time"
                                 style="@style/MatchWrap"
                                 android:gravity="right"
-                                android:text="40:56"
                                 android:textColor="@color/white" />
                         </LinearLayout>
                     </RelativeLayout>

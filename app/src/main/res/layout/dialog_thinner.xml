@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/MatchMatch.Vertical"
+    android:background="@color/black_p">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="373.5dp">
+
+        <LinearLayout
+            android:id="@+id/ll_01"
+            style="@style/MatchWrap.Vertical"
+            android:layout_height="130.5dp"
+            android:background="@mipmap/versioninfo">
+
+            <TextView
+                android:id="@+id/tv_ver"
+               style="@style/WrapWrap"
+                android:layout_marginStart="26dp"
+                android:layout_marginTop="31.5dp"
+                android:text="发现新版本"
+                android:textColor="@color/white"
+                android:textSize="23dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_version_number"
+                style="@style/WrapWrap"
+                android:layout_marginStart="26dp"
+                android:layout_marginTop="@dimen/start_or_end_15"
+                android:text="1.0.0"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ll_01"
+            android:background="@drawable/bg_button"
+            android:paddingBottom="19.5dp">
+
+            <TextView
+                android:id="@+id/tv1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="19.5dp"
+                android:layout_marginTop="21.5dp"
+                android:text="更新的内容"
+                android:textColor="#333333"
+                android:textSize="@dimen/text_size_14" />
+
+            <TextView
+                android:id="@+id/tv_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv1"
+                android:layout_marginStart="19.5dp"
+                android:layout_marginTop="18.5dp"
+                android:layout_marginEnd="27dp"
+                android:text="1.已申请提现但还未到账的提现展示 " />
+
+            <Button
+                android:id="@+id/btn_ok"
+                style="@style/MatchWrap"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="13sp"
+                android:layout_marginEnd="27dp"
+                android:background="@drawable/bg_radius15_blue"
+                android:text="立即更新"
+                android:textColor="@color/white" />
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+</LinearLayout>

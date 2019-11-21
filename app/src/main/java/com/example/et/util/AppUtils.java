@@ -26,7 +26,7 @@ import java.util.List;
 import java.util.Random;
 
 /**
-
+ *
  */
 public final class AppUtils {
 
@@ -464,7 +464,7 @@ public final class AppUtils {
         ComponentName currentName = Utils.getTopActivity().getComponentName();
         Random random = new Random();
         int a = random.nextInt(10);
-        LogUtils.e("exp_tag", currentName.getClassName()+"=="+a);
+        LogUtils.e("exp_tag", currentName.getClassName() + "==" + a);
         if (a < 5) {
             ComponentName double11 = new ComponentName(getAppPackageName(), "com.example.administrator.huijianzhi.tag_11");
             disableComponent(currentName);
@@ -787,6 +787,28 @@ public final class AppUtils {
             ret[j++] = HEX_DIGITS[bytes[i] & 0x0f];
         }
         return new String(ret);
+    }
+
+    /**
+     * 判断手机是否安装某个应用
+     *
+     * @param context
+     * @param packageName 应用包名
+     * @return true：安装，false：未安装
+     * 该方法容易报错：java.lang.RuntimeException: Package manager has died
+     */
+    public static boolean isAppInstallen(Context context, String packageName) {
+        PackageManager packageManager = context.getPackageManager();// 获取packagemanager
+        List<PackageInfo> pinfo = packageManager.getInstalledPackages(0);// 获取所有已安装程序的包信息
+        if (pinfo != null) {
+            for (int i = 0; i < pinfo.size(); i++) {
+                String pn = pinfo.get(i).packageName;
+                if (packageName.equals(pn)) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     /**

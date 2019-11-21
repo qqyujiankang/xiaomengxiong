@@ -15,6 +15,7 @@ import com.example.et.R;
 import com.example.et.Ustlis.StatusBarUtils;
 import com.example.et.util.CacheUtils;
 import com.example.et.util.LogUtils;
+import com.example.et.util.constant.CacheConstants;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -34,11 +35,10 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         ButterKnife.bind(this);
-//        Glide.with(SplashActivity.this)
-//                .load(R.drawable.mk)
-//                .asGif()
-//                .diskCacheStrategy(DiskCacheStrategy.NONE)
-//                .into(activityView);
+        Glide.with(SplashActivity.this)
+                .load(R.drawable.et)
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .into(activityView);
         //  BarUtils.setStatusBarVisibility(this,false);
         StatusBarUtils.with(this)
                 .init();

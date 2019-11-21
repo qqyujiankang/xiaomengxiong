@@ -98,7 +98,7 @@ public class GainRecordingActivity extends BaseActivity {
         setContentView(R.layout.activity_gain_recording);
         ButterKnife.bind(this);
         initView();
-        requestDatas();
+        requestDatas2();
 
     }
 
@@ -148,15 +148,17 @@ public class GainRecordingActivity extends BaseActivity {
                         adapterRealize = new AdapterRealize();
                     }
 
-                    objectPagebean = ParseUtils.analysisListTypeDatasAndCount((Activity) context, success, GainRecording[].class, true);
+                    objectPagebean = ParseUtils.analysisListTypeDatasAndCount1((Activity) context, success, GainRecording[].class, true);
                     if (objectPagebean.getList().size() != 0) {
-                        llA.setVisibility(View.GONE);
                         ll.setVisibility(View.VISIBLE);
+
                         page = adapterRealize.AdapterSetListDatas(objectPagebean, page, listView, context, GainRecordingAdapter.class, lifeful);//返回第几页
                     } else {
-                           llA.setVisibility(View.VISIBLE);
-                        ll.setVisibility(View.GONE);
-                        requestDatas2();
+                          requestDatas2();
+
+
+
+
                     }
 
                 }
@@ -184,7 +186,7 @@ public class GainRecordingActivity extends BaseActivity {
 
                     Map<String, Object> objectPagebean = ParseUtils.analysisListTypeDatasAndCount((Activity) context, success, null, false).getStringMap();
                     if (objectPagebean.get("code").equals("200")) {
-
+                              llA.setVisibility(View.VISIBLE);
                         if (!objectPagebean.get("chaojijiedian").toString().equals("0")) {
                             tvChaojia.setText(StringUtils.calculateProfit(Double.parseDouble(objectPagebean.get("chaojijiedian").toString()), 5));
                         } else {

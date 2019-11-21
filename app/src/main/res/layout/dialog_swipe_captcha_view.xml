@@ -41,11 +41,12 @@
             android:thumb="@drawable/thumb_bg" />
 
         <TextView
+            android:textSize="@dimen/text_size_12"
             android:id="@+id/drag_tv_tips2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="按住按钮往右滑动,完成拼图验证"
+            android:text="@string/ter56"
             android:textColor="@color/white" />
 
     </FrameLayout>
