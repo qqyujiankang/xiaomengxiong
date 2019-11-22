@@ -8,7 +8,19 @@ public class UserData {
     private String acount;
     private String passwd;
     private int anInt;
-    public UserData(String acount, String passwd,int i) {
+
+    public UserData(String name, String pwd) {
+    }
+
+    public void setPasswd(String passwd) {
+        this.passwd = passwd;
+    }
+
+    public void setAnInt(int anInt) {
+        this.anInt = anInt;
+    }
+
+    public UserData(String acount, String passwd, int i) {
         this.acount = acount;
         this.passwd = passwd;
         this.anInt = anInt;

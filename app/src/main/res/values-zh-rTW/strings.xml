@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">ET聯盟</string>
+    <string name="app_name">ET 合约</string>
     <string name="login_ID">登入帳號</string>
     <string name="Mobile_phone_number_email">手機號/郵箱</string>
     <string name="password">密碼</string>

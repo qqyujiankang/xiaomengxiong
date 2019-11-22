@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">ET alliance</string>
+    <string name="app_name">ET合约</string>
     <string name="login_ID">login ID</string>
     <string name="Mobile_phone_number_email">Phone number/email</string>
     <string name="password">Password</string>

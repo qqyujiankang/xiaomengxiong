@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ET联盟</string>
+    <string name="app_name">ET合约</string>
     <string name="login_ID">登录账号</string>
     <string name="Mobile_phone_number_email">手机号/邮箱</string>
     <string name="password">密码</string>

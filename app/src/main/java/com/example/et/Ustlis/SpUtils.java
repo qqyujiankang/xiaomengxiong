@@ -8,6 +8,8 @@ import java.util.Map;
 public class SpUtils {
     private static SharedPreferences sp;
 
+    public static String  login="login1";
+
     /**
      * 写入boolean变量至sp中
      *
@@ -21,6 +23,16 @@ public class SpUtils {
             sp = ctx.getSharedPreferences("config", Context.MODE_PRIVATE);
         }
         sp.edit().putBoolean(key, value).commit();
+    }
+
+    public static SharedPreferences getSharedPreferences(Context ctx) {
+        //(存储节点文件名称,读写方式)
+        if (sp == null) {
+            sp = ctx.getSharedPreferences("config", Context.MODE_PRIVATE);
+        }
+
+        return sp;
+
     }
 
     /**
@@ -81,7 +93,7 @@ public class SpUtils {
         if (sp == null) {
             sp = ctx.getSharedPreferences("config", Context.MODE_PRIVATE);
         }
-        sp.edit().putString(key, value).commit();
+        sp.edit().putString(key, value).apply();
     }
 
     /**
@@ -110,7 +122,8 @@ public class SpUtils {
      */
     public static void remove(Context ctx, String key) {
         if (sp == null) {
-            sp = ctx.getSharedPreferences("config", Context.MODE_PRIVATE);
+         //   sp = ctx.getSharedPreferences("config", Context.MODE_PRIVATE);
+            sp = ctx.getSharedPreferences("config1", Context.MODE_PRIVATE);
         }
         sp.edit().remove(key).commit();
     }
@@ -122,10 +135,12 @@ public class SpUtils {
      */
     public static Map<String, ?> getAll(Context ctx) {
         if (sp == null) {
-            sp = ctx.getSharedPreferences("config", Context.MODE_PRIVATE);
+           // sp = ctx.getSharedPreferences("config", Context.MODE_PRIVATE);
+            sp = ctx.getSharedPreferences("config1", Context.MODE_PRIVATE);
         }
         return sp.getAll();
     }
+
 
 
 }

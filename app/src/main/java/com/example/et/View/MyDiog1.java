@@ -3,13 +3,16 @@ package com.example.et.View;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
 import com.example.et.Activity.LoginActivity;
 import com.example.et.R;
+import com.example.et.Ustlis.JsonUtils;
 import com.example.et.Ustlis.SpUtils;
 import com.example.et.entnty.UserData;
+import com.example.et.entnty.UserModel;
 import com.example.et.util.SharedPreferencesHelper;
 
 import java.util.List;
@@ -20,20 +23,24 @@ import java.util.List;
 public class MyDiog1 extends AlertDialog {
     private Button button, button1;
     private Context context;
-    private UserData userData;
-    private int id;
-    private int p;
-    private List<UserData> userDataList;
 
-    public MyDiog1(Context context, int position, List<UserData> userData, int p) {
+
+
+    private int p;
+    private   UserModel userModel;
+    private UserModel.UserBean userData;
+
+    public MyDiog1(Context context, UserModel.UserBean userData, UserModel userModel, int p) {
 
         super(context);
         this.context = context;
-        this.id = position;
-        this.userDataList = userData;
+        this.userData=userData;
+        this.userModel = userModel;
         this.p = p;
 
     }
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,12 +57,19 @@ public class MyDiog1 extends AlertDialog {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                userModel.getData_list().remove(userData);
 
-                SpUtils.remove(context, "name" + id);
-                SpUtils.remove(context, "pwd" + id);
-                SpUtils.remove(context, "tepy" + id);
 
-                userDataList.remove(p);
+
+                String s=  JsonUtils.StrToJson(userModel);
+
+                Log.i("exp_","adapter22===="+s);
+                if(s!=null) {
+                   SpUtils.putString(context,SpUtils.login,s);
+                }
+
+
+
                 dismiss();
                 LoginActivity.pw.dismiss();
             }

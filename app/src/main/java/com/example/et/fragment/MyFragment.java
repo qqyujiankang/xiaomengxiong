@@ -154,6 +154,7 @@ public class MyFragment extends BaseFragment {
     public void onResume() {
         super.onResume();
         initView();
+        requestDatas();
     }
 
     @Override

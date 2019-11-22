@@ -2,26 +2,34 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/bg_radius15_gray"
+    android:background="@color/p_transparency"
     android:orientation="vertical">
 
-    <TextView
-        android:layout_marginStart="@dimen/start_or_end_10"
-        android:layout_toRightOf="@+id/tv"
-        android:text="424"
-        android:id="@+id/item"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/start_or_end_10"
-        android:paddingBottom="@dimen/start_or_end_10" />
+       >
 
-    <TextView
-        android:layout_centerVertical="true"
-        android:id="@+id/tv_"
-        android:layout_width="@dimen/text_size_40"
-        android:layout_height="@dimen/text_size_40"
-        android:layout_alignParentRight="true"
-        android:gravity="center"
-        android:text="X"
-        android:textSize="@dimen/text_size_18" />
+
+        <TextView
+
+            android:id="@+id/item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/start_or_end_10"
+            android:layout_marginTop="@dimen/start_or_end_10"
+            android:layout_toRightOf="@+id/tv"
+            android:paddingBottom="@dimen/start_or_end_10"
+           />
+
+        <TextView
+            android:id="@+id/tv_"
+            android:layout_width="@dimen/text_size_40"
+            android:layout_height="@dimen/text_size_40"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:text="X"
+            android:textSize="@dimen/text_size_18" />
+    </RelativeLayout>
 </RelativeLayout>

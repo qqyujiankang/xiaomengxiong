@@ -6,9 +6,11 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -23,6 +25,7 @@ import com.example.et.Constant;
 import com.example.et.R;
 import com.example.et.Ustlis.ActivityUtils;
 import com.example.et.Ustlis.DeviceUtils;
+import com.example.et.Ustlis.JsonUtils;
 import com.example.et.Ustlis.SPUtil;
 import com.example.et.Ustlis.SpUtils;
 import com.example.et.Ustlis.StringUtils;
@@ -30,6 +33,7 @@ import com.example.et.Ustlis.ToastUtils;
 import com.example.et.Verification;
 import com.example.et.View.LanguageSettingDialog;
 import com.example.et.entnty.UserData;
+import com.example.et.entnty.UserModel;
 import com.example.et.util.CacheUtils;
 import com.example.et.util.LogUtils;
 import com.example.et.util.SPUtils;
@@ -46,6 +50,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
@@ -89,15 +94,14 @@ public class LoginActivity extends BaseActivity implements AdapterView.OnItemCli
     private Context context;
     private Lifeful lifeful;
     private SharedPreferences sPreferences;
-    private Map<String, String> map;
+    private HashMap<String, String> map;
     private ListView listView;
     public static PopupWindow pw;
-    private int v;
     private View option;
     SharedPreferencesHelper helper;
     private List<UserData> list = new ArrayList<>();
 
-    private static boolean aBoolean;
+
     Lingondadaper adapter;
 
     @Override
@@ -108,6 +112,7 @@ public class LoginActivity extends BaseActivity implements AdapterView.OnItemCli
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
 
+
         //初始化view
         initView();
     }
@@ -116,36 +121,25 @@ public class LoginActivity extends BaseActivity implements AdapterView.OnItemCli
     public void initView() {
         super.initView();
         publicButton.setText(getString(R.string.login));
-        if (aBoolean == true) {
-            remember.setChecked(true);
-        }
-        lodg();
+        remember.setChecked(true);
+
+        // lodg();
         //读取已经记住的用户名与密码
 
+        initData();  //读取已经记住的用户名与密码
     }
 
-    public void lodg() {
+    private void initData() {
 
-        map = (Map<String, String>) SpUtils.getAll(context);
-        LogUtils.i("map=======1====" + map.size());
-        for (int i = 0; i < map.size(); i++) {
+        userModel = JsonUtils.StrToJson(SpUtils.getString(this, SpUtils.login, ""), UserModel.class);
 
-            String name = SpUtils.getString(context, "name" + i, "");
-            String pwd = SpUtils.getString(context, "pwd" + i, "");
-            String pwd1 = SpUtils.getString(context, "tepy" + i, "");
-            LogUtils.i("exp=============" + name + "=============" + pwd + "===========" + pwd1);
-            if (!name.equals("") && !pwd.equals("")) {
+        if (userModel != null && !userModel.equals("")) {
 
-                list.add(new UserData(name, pwd, Integer.parseInt(pwd1)));
-            }
+            userBeanList = userModel.getData_list();
+            Log.i("exp_", "成功0" + JsonUtils.StrToJson(SpUtils.getString(this, SpUtils.login, "")));
 
 
         }
-//        Set set = new LinkedHashSet<UserData>();
-//        set.addAll(list);
-//        list.clear();
-//        list.addAll(set);
-
 
     }
 
@@ -160,23 +154,27 @@ public class LoginActivity extends BaseActivity implements AdapterView.OnItemCli
         Intent intent = new Intent();
         switch (view.getId()) {
             case R.id.tva:
-                adapter = new Lingondadaper(context, list, null);
-                option = getLayoutInflater().inflate(R.layout.simple_item, null);
-                // 要在这个linearLayout里面找listView......
-                listView = (ListView) option.findViewById(R.id.lv);
-                listView.setAdapter(adapter);
-                listView.setOnItemClickListener(this);
+                if (userModel != null) {
+                    adapter = new Lingondadaper(context, userModel, null);
+                    option = getLayoutInflater().inflate(R.layout.simple_item, null);
+                    // 要在这个linearLayout里面找listView......
+                    listView = (ListView) option.findViewById(R.id.lv);
+                    listView.setAdapter(adapter);
+                    listView.setOnItemClickListener(this);
 
-                ColorDrawable dw = new ColorDrawable(0000000000);
-                // 点back键和其他地方使其消失,设置了这个才能触发OnDismisslistener ，设置其他控件变化等操作
+                    ColorDrawable dw = new ColorDrawable(0000000000);
+                    // 点back键和其他地方使其消失,设置了这个才能触发OnDismisslistener ，设置其他控件变化等操作
 
 
-                //实例化一个popupwindow对象
-                pw = new PopupWindow(option, etPhone.getWidth(), WindowManager.LayoutParams.WRAP_CONTENT, true);
-                pw.setBackgroundDrawable(getResources().getDrawable(R.drawable.bg_radius15_gray));
-                pw.setOutsideTouchable(true);
-                pw.setBackgroundDrawable(dw);
-                pw.showAsDropDown(Rl, 0, 0);
+                    //实例化一个popupwindow对象
+                    pw = new PopupWindow(option, etPhone.getWidth(), WindowManager.LayoutParams.WRAP_CONTENT, true);
+                    pw.setBackgroundDrawable(new ColorDrawable());
+                    pw.setOutsideTouchable(true);
+                    pw.setBackgroundDrawable(dw);
+                    pw.showAsDropDown(Rl, 0, 0);
+                }
+
+
                 break;
             case R.id.tv_language:
                 LanguageSettingDialog dialog = new LanguageSettingDialog(LoginActivity.this, LoginActivity.this);
@@ -190,7 +188,9 @@ public class LoginActivity extends BaseActivity implements AdapterView.OnItemCli
                 break;
             case R.id.public_button:
 
+
                 if (CheckTheValidation(1)) {
+
                     requestDatas(2);
                 }
 //
@@ -207,6 +207,7 @@ public class LoginActivity extends BaseActivity implements AdapterView.OnItemCli
 
             default:
         }
+
     }
 
     @Override
@@ -239,9 +240,8 @@ public class LoginActivity extends BaseActivity implements AdapterView.OnItemCli
                         CacheUtils.getInstance().put(CacheConstants.TOKEN, (CacheUtils.getInstance().getString("token")));
                         CacheUtils.getInstance().put(CacheConstants.PHONE, phone);
                         if (remember.isChecked()) {
-
-                            login();
-
+                            // login();
+                            login1();
                         }
 
                         ActivityUtils.startActivity(MainActivity.class);
@@ -265,34 +265,28 @@ public class LoginActivity extends BaseActivity implements AdapterView.OnItemCli
     private void login() {
         LogUtils.i("map===========" + map.size());
 
-
+        boolean aBoolean = false;
         if (map.size() != 0) {
+
             for (int i = 0; i < map.size(); i++) {
-
                 String name = SpUtils.getString(context, "name" + i, "");
-                String pwd = SpUtils.getString(context, "pwd" + i, "");
-                String pwd1 = SpUtils.getString(context, "tepy" + i, "");
-                LogUtils.i("exp=============" + name + "=============" + pwd + "===========" + pwd1);
-                if (!name.equals("") && !pwd.equals("") && !name.equals(phone)) {
-                    int k = i + 1;
-                    SpUtils.putString(context, "name" + k, phone);
-                    SpUtils.putString(context, "pwd" + k, Password);
-                    String s = String.valueOf(i);
-                    SpUtils.putString(context, "tepy" + k, s);
-
+                if (name.equals(phone)) {
                     aBoolean = true;
-                    // list.add(new UserData(name, pwd, Integer.parseInt(pwd1)));
+                } else {
+                    aBoolean = false;
                 }
-
-
             }
         } else {
-            SpUtils.putString(context, "name" + 0, phone);
-            SpUtils.putString(context, "pwd" + 0, Password);
-            SpUtils.putString(context, "tepy" + 0, v + "");
-
             aBoolean = true;
         }
+
+        if (aBoolean) {
+            SpUtils.putString(context, "name" + map.size(), phone);
+            SpUtils.putString(context, "pwd" + map.size(), Password);
+            //   SpUtils.putString(context, "tepy" + map.size() , map.size()+ "");
+        }
+
+
 //        if (list.size() > 0) {
 //            for (int key = 0; key < list.size(); key++) {
 //                LogUtils.i("exp=======" + "===" + key + "=======" + list.get(key).getAcount());
@@ -316,6 +310,53 @@ public class LoginActivity extends BaseActivity implements AdapterView.OnItemCli
 
     }
 
+
+    private UserModel userModel;
+
+    private List<UserModel.UserBean> userBeanList;
+
+    private void login1() {
+        //登录成功后报存新数据;
+        boolean new_user = true;
+        Log.i("exp_", "成功1");
+        if (userBeanList == null) {
+            userBeanList = new ArrayList<>();
+        }
+
+        for (int a = 0; a < userBeanList.size(); a++) {
+
+            if (userBeanList.get(a).getPhoneOremail().equals(phone)) {
+                Log.i("exp_", "成功2");
+                new_user = false;
+                break;
+            }
+
+        }
+        if (new_user) {
+
+            UserModel.UserBean user3 = new UserModel.UserBean();
+            user3.setPhoneOremail(phone);
+            user3.setPassWord(Password);
+            userBeanList.add(user3);
+
+            if (userModel == null) {
+                userModel = new UserModel();
+            }
+
+            userModel.setData_list(userBeanList);
+
+            String s = JsonUtils.StrToJson(userModel);
+
+            Log.i("exp_", "成功2" + s);
+            if (s != null) {
+
+                SpUtils.putString(this, SpUtils.login, s);
+
+            }
+        }
+
+
+    }
 
     /**
      * 检查信息
@@ -359,9 +400,13 @@ public class LoginActivity extends BaseActivity implements AdapterView.OnItemCli
     public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
 
         // 获取选中项内容及从sharePreferences中获取对应的密码
-        UserData userData = (UserData) adapter.getItem(position);
+     /*   UserData userData = (UserData) adapter.getItem(position);
         String username = userData.getAcount();
-        String pwd = userData.getPasswd();
+        String pwd = userData.getPasswd();*/
+
+        UserModel.UserBean userData = (UserModel.UserBean) adapter.getItem(position);
+        String username = userData.getPhoneOremail();
+        String pwd = userData.getPassWord();
 
         etPhone.setText(username);
         etPassword.setText(pwd);
