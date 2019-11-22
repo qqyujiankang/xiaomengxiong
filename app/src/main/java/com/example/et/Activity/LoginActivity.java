@@ -46,8 +46,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -90,7 +92,7 @@ public class LoginActivity extends BaseActivity implements AdapterView.OnItemCli
     private Map<String, String> map;
     private ListView listView;
     public static PopupWindow pw;
-    private int width, i;
+    private int v;
     private View option;
     SharedPreferencesHelper helper;
     private List<UserData> list = new ArrayList<>();
@@ -125,14 +127,13 @@ public class LoginActivity extends BaseActivity implements AdapterView.OnItemCli
     public void lodg() {
 
         map = (Map<String, String>) SpUtils.getAll(context);
+        LogUtils.i("map=======1====" + map.size());
         for (int i = 0; i < map.size(); i++) {
 
             String name = SpUtils.getString(context, "name" + i, "");
             String pwd = SpUtils.getString(context, "pwd" + i, "");
-            String pwd1 = SpUtils.getString(context, "pwd1" + i, "");
-            LogUtils.i("woshonibaba==========", "name====" + SpUtils.getString(context, "name" + i, "")
-                    + "=====pwd====" + SpUtils.getString(context, "pwd" + i, "") + "" +
-                    "======pwd1==" + SpUtils.getString(context, "pwd1" + i, ""));
+            String pwd1 = SpUtils.getString(context, "tepy" + i, "");
+            LogUtils.i("exp=============" + name + "=============" + pwd + "===========" + pwd1);
             if (!name.equals("") && !pwd.equals("")) {
 
                 list.add(new UserData(name, pwd, Integer.parseInt(pwd1)));
@@ -140,9 +141,10 @@ public class LoginActivity extends BaseActivity implements AdapterView.OnItemCli
 
 
         }
-        for (int i = 0; i < list.size(); i++) {
-            LogUtils.i("exp===0======" + list.get(i).getAcount() + "==========" + list.get(i).getPasswd() + "==========" + list.get(i).getAnInt());
-        }
+//        Set set = new LinkedHashSet<UserData>();
+//        set.addAll(list);
+//        list.clear();
+//        list.addAll(set);
 
 
     }
@@ -261,43 +263,55 @@ public class LoginActivity extends BaseActivity implements AdapterView.OnItemCli
     }
 
     private void login() {
-
-        // 若是第二次打开软件时，将map在size赋给i,若是不是,则i只要实现i++
-        if (i == 0) {
-            i = map.size() / 2;
-        }
-        for (int i = 0; i < list.size(); i++) {
-            LogUtils.i("exp==h==1=====" + list.get(i).getAcount() + "==========" + list.get(i).getPasswd() + "==========" + list.get(i).getAnInt());
-        }
+        LogUtils.i("map===========" + map.size());
 
 
-        if (list.size() > 0) {
-            for (int key = 0; key < list.size(); key++) {
-                //是哪一行报的错误？ （我给你运行）
-                if (!list.get(key).getAcount().equals(phone)) {
-                    SpUtils.putString(context, "name" + i, phone);
-                    SpUtils.putString(context, "pwd" + i, Password);
-                    SpUtils.putString(context, "pwd1" + i, i + "");
-                    i++;
+        if (map.size() != 0) {
+            for (int i = 0; i < map.size(); i++) {
+
+                String name = SpUtils.getString(context, "name" + i, "");
+                String pwd = SpUtils.getString(context, "pwd" + i, "");
+                String pwd1 = SpUtils.getString(context, "tepy" + i, "");
+                LogUtils.i("exp=============" + name + "=============" + pwd + "===========" + pwd1);
+                if (!name.equals("") && !pwd.equals("") && !name.equals(phone)) {
+                    int k = i + 1;
+                    SpUtils.putString(context, "name" + k, phone);
+                    SpUtils.putString(context, "pwd" + k, Password);
+                    String s = String.valueOf(i);
+                    SpUtils.putString(context, "tepy" + k, s);
+
                     aBoolean = true;
-                    LogUtils.i("exp=====2======" + i, phone, "==========" + "=====Password===" + Password);
-
-                } else {
-                    break;
+                    // list.add(new UserData(name, pwd, Integer.parseInt(pwd1)));
                 }
 
 
             }
-
-
         } else {
-            SpUtils.putString(context, "name" + i, phone);
-            SpUtils.putString(context, "pwd" + i, Password);
-            SpUtils.putString(context, "pwd1" + i, i + "");
-            i++;
+            SpUtils.putString(context, "name" + 0, phone);
+            SpUtils.putString(context, "pwd" + 0, Password);
+            SpUtils.putString(context, "tepy" + 0, v + "");
+
             aBoolean = true;
-            LogUtils.i("exp=====ba======" + i, phone, "==========" + "=====Password===" + Password);
         }
+//        if (list.size() > 0) {
+//            for (int key = 0; key < list.size(); key++) {
+//                LogUtils.i("exp=======" + "===" + key + "=======" + list.get(key).getAcount());
+//                if (!list.get(key).getAcount().equals(phone)) {
+//
+//                    LogUtils.i("exp=======" + "===" + key + "=======" + list.get(key).getAcount());
+//
+//                    LogUtils.i("exp=====2======" + v, phone, "==========" + "=====Password==="
+//                            + Password + "========" + SpUtils.getString(context, "tepy" + v, ""));
+//                }
+//
+//
+//            }
+//
+//
+//        } else {
+//
+//            LogUtils.i("exp=====ba======" + v, phone, "==========" + "=====Password===" + Password);
+//        }
 
 
     }

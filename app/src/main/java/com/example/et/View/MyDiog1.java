@@ -53,7 +53,7 @@ public class MyDiog1 extends AlertDialog {
 
                 SpUtils.remove(context, "name" + id);
                 SpUtils.remove(context, "pwd" + id);
-                SpUtils.remove(context, "pwd1" + id);
+                SpUtils.remove(context, "tepy" + id);
 
                 userDataList.remove(p);
                 dismiss();
