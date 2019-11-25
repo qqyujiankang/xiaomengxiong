@@ -12,6 +12,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.et.R;
+import com.example.et.Ustlis.GifListener;
+import com.example.et.Ustlis.ImageLoaderUtil;
 import com.example.et.Ustlis.StatusBarUtils;
 import com.example.et.util.CacheUtils;
 import com.example.et.util.LogUtils;
@@ -35,14 +37,26 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         ButterKnife.bind(this);
-        Glide.with(SplashActivity.this)
-                .load(R.drawable.et)
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .into(activityView);
+//        Glide.with(SplashActivity.this)
+//                .load(R.drawable.et)
+//                .diskCacheStrategy(DiskCacheStrategy.ALL)
+//                .into(activityView);
         //  BarUtils.setStatusBarVisibility(this,false);
-        StatusBarUtils.with(this)
-                .init();
-        handler.sendEmptyMessageDelayed(1, 3000);
+        ImageLoaderUtil.loadOneTimeGif(this, R.drawable.et, activityView, new GifListener() {
+            @Override
+            public void gifPlayComplete() {
+                Intent intent = new Intent();
+                if (!CacheUtils.getInstance().getString("token").equals("")) {
+                    intent.setClass(SplashActivity.this, MainActivity.class);
+                } else {
+                    intent.setClass(SplashActivity.this, LoginActivity.class);
+                }
+                startActivity(intent);
+                finish();
+            }
+        });
+        StatusBarUtils.with(this).init();
+        //   handler.sendEmptyMessageDelayed(1, 3000);
 
 
     }

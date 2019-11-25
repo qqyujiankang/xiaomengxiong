@@ -3,6 +3,7 @@ apply plugin: 'com.jakewharton.butterknife'
 
 
 android {
+
     compileSdkVersion 29
     buildToolsVersion "29.0.1"
     defaultConfig {
@@ -28,6 +29,7 @@ android {
     buildTypes {
         release {
             minifyEnabled false
+            debuggable true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }

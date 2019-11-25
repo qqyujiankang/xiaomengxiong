@@ -8,19 +8,23 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.HeaderViewListAdapter;
 import android.widget.LinearLayout;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.et.Adapter.Lingondadaper;
+import com.example.et.Adapter.ManagerAdapter;
 import com.example.et.Constant;
 import com.example.et.R;
 import com.example.et.Ustlis.ActivityUtils;
@@ -32,6 +36,7 @@ import com.example.et.Ustlis.StringUtils;
 import com.example.et.Ustlis.ToastUtils;
 import com.example.et.Verification;
 import com.example.et.View.LanguageSettingDialog;
+import com.example.et.View.LoginPopuWindow;
 import com.example.et.entnty.UserData;
 import com.example.et.entnty.UserModel;
 import com.example.et.util.CacheUtils;
@@ -64,7 +69,7 @@ import butterknife.OnClick;
  * 登录
  */
 
-public class LoginActivity extends BaseActivity implements AdapterView.OnItemClickListener {
+public class LoginActivity extends BaseActivity {
 
 
     @BindView(R.id.tv_get_cot)
@@ -93,16 +98,9 @@ public class LoginActivity extends BaseActivity implements AdapterView.OnItemCli
     CheckBox remember;
     private Context context;
     private Lifeful lifeful;
-    private SharedPreferences sPreferences;
     private HashMap<String, String> map;
-    private ListView listView;
-    public static PopupWindow pw;
-    private View option;
-    SharedPreferencesHelper helper;
-    private List<UserData> list = new ArrayList<>();
-
-
-    Lingondadaper adapter;
+    public static LoginPopuWindow loginPopuWindow;
+    LanguageSettingDialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -123,8 +121,6 @@ public class LoginActivity extends BaseActivity implements AdapterView.OnItemCli
         publicButton.setText(getString(R.string.login));
         remember.setChecked(true);
 
-        // lodg();
-        //读取已经记住的用户名与密码
 
         initData();  //读取已经记住的用户名与密码
     }
@@ -155,29 +151,18 @@ public class LoginActivity extends BaseActivity implements AdapterView.OnItemCli
         switch (view.getId()) {
             case R.id.tva:
                 if (userModel != null) {
-                    adapter = new Lingondadaper(context, userModel, null);
-                    option = getLayoutInflater().inflate(R.layout.simple_item, null);
-                    // 要在这个linearLayout里面找listView......
-                    listView = (ListView) option.findViewById(R.id.lv);
-                    listView.setAdapter(adapter);
-                    listView.setOnItemClickListener(this);
-
-                    ColorDrawable dw = new ColorDrawable(0000000000);
-                    // 点back键和其他地方使其消失,设置了这个才能触发OnDismisslistener ，设置其他控件变化等操作
-
-
-                    //实例化一个popupwindow对象
-                    pw = new PopupWindow(option, etPhone.getWidth(), WindowManager.LayoutParams.WRAP_CONTENT, true);
-                    pw.setBackgroundDrawable(new ColorDrawable());
-                    pw.setOutsideTouchable(true);
-                    pw.setBackgroundDrawable(dw);
-                    pw.showAsDropDown(Rl, 0, 0);
+                    loginPopuWindow = new LoginPopuWindow(context, userModel, onItemClickListener);
+                    loginPopuWindow.setWidth(etPhone.getWidth());
+                    loginPopuWindow.setHeight(WindowManager.LayoutParams.WRAP_CONTENT);
+                    loginPopuWindow.showAsDropDown(Rl, 0, 0);
                 }
 
 
                 break;
             case R.id.tv_language:
-                LanguageSettingDialog dialog = new LanguageSettingDialog(LoginActivity.this, LoginActivity.this);
+                if (dialog == null) {
+                    dialog = new LanguageSettingDialog(LoginActivity.this, LoginActivity.this);
+                }
                 dialog.show();
                 break;
             case R.id.tv_get_cot:
@@ -210,6 +195,7 @@ public class LoginActivity extends BaseActivity implements AdapterView.OnItemCli
 
     }
 
+
     @Override
     public void onBackPressed() {
         super.onBackPressed();
@@ -240,7 +226,6 @@ public class LoginActivity extends BaseActivity implements AdapterView.OnItemCli
                         CacheUtils.getInstance().put(CacheConstants.TOKEN, (CacheUtils.getInstance().getString("token")));
                         CacheUtils.getInstance().put(CacheConstants.PHONE, phone);
                         if (remember.isChecked()) {
-                            // login();
                             login1();
                         }
 
@@ -259,54 +244,6 @@ public class LoginActivity extends BaseActivity implements AdapterView.OnItemCli
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
-    }
-
-    private void login() {
-        LogUtils.i("map===========" + map.size());
-
-        boolean aBoolean = false;
-        if (map.size() != 0) {
-
-            for (int i = 0; i < map.size(); i++) {
-                String name = SpUtils.getString(context, "name" + i, "");
-                if (name.equals(phone)) {
-                    aBoolean = true;
-                } else {
-                    aBoolean = false;
-                }
-            }
-        } else {
-            aBoolean = true;
-        }
-
-        if (aBoolean) {
-            SpUtils.putString(context, "name" + map.size(), phone);
-            SpUtils.putString(context, "pwd" + map.size(), Password);
-            //   SpUtils.putString(context, "tepy" + map.size() , map.size()+ "");
-        }
-
-
-//        if (list.size() > 0) {
-//            for (int key = 0; key < list.size(); key++) {
-//                LogUtils.i("exp=======" + "===" + key + "=======" + list.get(key).getAcount());
-//                if (!list.get(key).getAcount().equals(phone)) {
-//
-//                    LogUtils.i("exp=======" + "===" + key + "=======" + list.get(key).getAcount());
-//
-//                    LogUtils.i("exp=====2======" + v, phone, "==========" + "=====Password==="
-//                            + Password + "========" + SpUtils.getString(context, "tepy" + v, ""));
-//                }
-//
-//
-//            }
-//
-//
-//        } else {
-//
-//            LogUtils.i("exp=====ba======" + v, phone, "==========" + "=====Password===" + Password);
-//        }
-
 
     }
 
@@ -395,25 +332,29 @@ public class LoginActivity extends BaseActivity implements AdapterView.OnItemCli
 
     }
 
+    private AdapterView.OnItemClickListener onItemClickListener = new AdapterView.OnItemClickListener() {
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long l) {
+            ManagerAdapter managerAdapter = null;
+            if (parent.getAdapter() instanceof HeaderViewListAdapter) {
 
-    @Override
-    public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                HeaderViewListAdapter ha = (HeaderViewListAdapter) parent.getAdapter();
+                managerAdapter = (ManagerAdapter) ha.getWrappedAdapter();
+            } else if (parent.getAdapter() instanceof ManagerAdapter) {
+                managerAdapter = (ManagerAdapter) parent.getAdapter();
+            }
+            UserModel.UserBean userData = (UserModel.UserBean) managerAdapter.getItem(position);
+            String username = userData.getPhoneOremail();
+            String pwd = userData.getPassWord();
 
-        // 获取选中项内容及从sharePreferences中获取对应的密码
-     /*   UserData userData = (UserData) adapter.getItem(position);
-        String username = userData.getAcount();
-        String pwd = userData.getPasswd();*/
-
-        UserModel.UserBean userData = (UserModel.UserBean) adapter.getItem(position);
-        String username = userData.getPhoneOremail();
-        String pwd = userData.getPassWord();
-
-        etPhone.setText(username);
-        etPassword.setText(pwd);
+            etPhone.setText(username);
+            etPassword.setText(pwd);
 
 
-        // 选择后，popupwindow自动消失
-        pw.dismiss();
-    }
+            // 选择后，popupwindow自动消失
+            loginPopuWindow.dismiss();
+        }
+    };
+
 }
 

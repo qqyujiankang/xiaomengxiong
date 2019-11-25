@@ -47,8 +47,7 @@ public class AlipayPopuWindow extends PopupWindow {
 
     public AlipayPopuWindow(final Activity context, AdapterView.OnItemClickListener itemsOnClick, Lifeful Lifeful, List<Currencyaddress> currencyaddresses) {
         super(context);
-        LayoutInflater inflater = (LayoutInflater) context
-                .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         mMenuView = inflater.inflate(R.layout.popup_window_alipay, null);
 
 
