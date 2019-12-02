@@ -18,7 +18,8 @@ public class Constant {
     public static final String news = BASE_URL + "news";//公告列表
     public static final String newsone = BASE_URL + "newsone";//单一公告信息
     public static final String upgoldaddress = BASE_URL + "upgoldaddress";//添加币地址
-    public static final String goldaddress = BASE_URL + "goldaddress";//查询币地址
+    //查询币地址
+    public static final String goldaddress = BASE_URL + "goldaddress";
     public static final String assets = BASE_URL + "assets";//assets
     public static final String uppass = BASE_URL + "uppass";//assets
     public static final String upphoto = BASE_URL + "upphoto";//头像
@@ -40,5 +41,4 @@ public class Constant {
     public static final String upgoldaddress1 = BASE_URL + "upgoldaddress1";//upgoldaddress1
     public static final String et_update = BASE_URL + "et_update";//获取版本信息
 
-    //
 }

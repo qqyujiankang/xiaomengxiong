@@ -110,6 +110,7 @@
     <string name="time">时 间:</string>
     <string name="time1">时 间</string>
     <string name="number">账号</string>
+
     <string name="Is_binding">已绑定</string>
     <string name="Please_enter_amount">请输入金额</string>
     <string name="Matching_success_time">匹配成功时间</string>
@@ -182,7 +183,7 @@
     <string name="t1">动态收益</string>
     <string name="t2">节点</string>
     <string name="t3">合约本金</string>
-     <string name="test2">已有账号，立即登录</string>
+    <string name="test2">已有账号，立即登录</string>
     <string name="terd">静态收益</string>
     <string name="t4">超级节点</string>
     <string name="t6">推荐超级节点</string>
@@ -203,5 +204,5 @@
     <string name="tes78">恭喜你啊 验证成功 可以搞事情了</string>
     <string name="tet31">你有80%的可能是机器人，现在走还来得及</string>
     <string name="ter56">按住按钮往右滑动,完成拼图验证</string>
-
+    <string name="number1">账号：</string>
 </resources>

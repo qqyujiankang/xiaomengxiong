@@ -12,15 +12,13 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/icon_width_height_10"
-           >
+            android:layout_marginTop="@dimen/icon_width_height_10">
 
             <TextView
-                android:layout_marginTop="@dimen/start_or_end_10"
-                android:layout_marginBottom="@dimen/start_or_end_10"
-                android:text="4124424"
                 android:id="@+id/tv_glod"
                 style="@style/WrapWrap"
+                android:layout_marginTop="@dimen/start_or_end_10"
+                android:layout_marginBottom="@dimen/start_or_end_10"
                 android:textColor="@color/orange"
                 android:textSize="@dimen/text_size_18" />
 
@@ -47,6 +45,24 @@
 
             <TextView
                 android:id="@+id/tv_Have_people"
+                style="@style/WrapWrap"
+                android:textColor="#E5EAFF"
+                android:textSize="12dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lvphone"
+            style="@style/MatchWrap"
+            android:layout_marginBottom="@dimen/icon_width_height_10">
+
+            <TextView
+                style="@style/WrapWrap"
+                android:text="@string/number1"
+                android:textColor="#E5EAFF"
+                android:textSize="@dimen/text_size_12" />
+
+            <TextView
+                android:id="@+id/tv_tophone"
                 style="@style/WrapWrap"
                 android:textColor="#E5EAFF"
                 android:textSize="12dp" />

@@ -2,6 +2,7 @@ package com.example.et.Adapter;
 
 import android.content.Context;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.et.R;
@@ -38,6 +39,10 @@ public class RecordAdapter extends ManagerAdapter {
         TextView tvTime;
         @BindView(R.id.tv_)
         TextView tv;
+        @BindView(R.id.tv_tophone)
+        TextView tvTophone;
+        @BindView(R.id.lvphone)
+        LinearLayout lvphone;
 
         @Override
         protected int getItemLayoutResId() {
@@ -52,6 +57,13 @@ public class RecordAdapter extends ManagerAdapter {
             tvTime.setText(record.getTime());
             tvType.setText(record.getTypes());
             tvHavePeople.setText(record.getType());
+            if (!record.getTophone().equals("")) {
+                lvphone.setVisibility(View.VISIBLE);
+                tvTophone.setText(record.getTophone());
+            }else {
+                lvphone.setVisibility(View.GONE);
+            }
+
 
             if (Double.parseDouble(record.getNumber()) > 0) {
                 tvGlod.setText("+" + record.getNumber());

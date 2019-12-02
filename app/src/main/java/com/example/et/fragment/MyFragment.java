@@ -185,8 +185,10 @@ public class MyFragment extends BaseFragment {
             llReturns.setVisibility(View.GONE);
         } else if (CacheUtils.getInstance().getString(CacheConstants.jiedian).equals("2")) {
             ivJiedian.setImageDrawable(getResources().getDrawable(R.mipmap.node));
+            llReturns.setVisibility(View.GONE);
         } else if (CacheUtils.getInstance().getString(CacheConstants.jiedian).equals("3")) {
             ivJiedian.setImageDrawable(getResources().getDrawable(R.mipmap.chaojijiedian));
+            llReturns.setVisibility(View.GONE);
         }
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -288,7 +290,7 @@ public class MyFragment extends BaseFragment {
                 break;
             case R.id.public_button:
                 CacheUtils.getInstance().put("token", "");
-               // CacheUtils.clear();
+                // CacheUtils.clear();
                 ActivityUtils.finishActivity(context);
                 ActivityUtils.startActivity(LoginActivity.class);
 

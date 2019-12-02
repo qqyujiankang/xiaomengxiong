@@ -3,6 +3,7 @@ package com.example.et.Activity;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
@@ -93,8 +94,7 @@ public class RecordActivity extends BaseActivity {
             TaskPresenterUntils.lifeful(Constant.assorder, jsonObject, new OnLoadLifefulListener<String>(swipeRefreshLayout, new OnLoadListener<String>() {
                 @Override
                 public void onSuccess(String success) {
-
-
+                    Log.i("exp=========",success);
                     if (adapterRealize == null) {
                         adapterRealize = new AdapterRealize();
                     }
