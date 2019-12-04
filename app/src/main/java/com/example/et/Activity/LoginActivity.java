@@ -41,8 +41,6 @@ import com.example.et.entnty.UserData;
 import com.example.et.entnty.UserModel;
 import com.example.et.util.CacheUtils;
 import com.example.et.util.LogUtils;
-import com.example.et.util.SPUtils;
-import com.example.et.util.SharedPreferencesHelper;
 import com.example.et.util.TaskPresenterUntils;
 import com.example.et.util.constant.CacheConstants;
 import com.example.et.util.constant.KeyValueConstants;
@@ -56,10 +54,8 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

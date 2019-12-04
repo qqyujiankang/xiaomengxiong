@@ -174,7 +174,7 @@
         android:paddingLeft="15dp"
         android:paddingTop="@dimen/start_or_end_10"
         android:paddingBottom="@dimen/start_or_end_10"
-        android:text="记住密码"
+        android:text="@string/remember"
         android:textColor="@color/orange" />
 
     <include layout="@layout/public_button1" />

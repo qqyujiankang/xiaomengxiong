@@ -57,7 +57,7 @@ public class RecordAdapter extends ManagerAdapter {
             tvTime.setText(record.getTime());
             tvType.setText(record.getTypes());
             tvHavePeople.setText(record.getType());
-            if (!record.getTophone().equals("")) {
+            if (record.getTophone()!=null) {
                 lvphone.setVisibility(View.VISIBLE);
                 tvTophone.setText(record.getTophone());
             }else {

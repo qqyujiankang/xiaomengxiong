@@ -205,4 +205,6 @@
     <string name="tet31">你有80%的可能是机器人，现在走还来得及</string>
     <string name="ter56">按住按钮往右滑动,完成拼图验证</string>
     <string name="number1">帳號：</string>
+    <string name="remember">記住密碼</string>
+    <string name="updated_content">更新的内容</string>
 </resources>

@@ -52,8 +52,8 @@
     <string name="rental">lump sum</string>
     <string name="usable">available</string>
     <string name="convert">convert (USDT)</string>
-    <string name="top_up">recharge</string>
-    <string name="Mention_money">money</string>
+    <string name="top_up">Top up</string>
+    <string name="Mention_money">withdraw</string>
     <string name="record">Record</string>
     <string name="USDT_assets">USDT assets</string>
     <string name="Binding_address">Binding address</string>
@@ -206,4 +206,6 @@
     <string name="tet31">You have an 80% chance of being a robot</string>
     <string name="ter56"> to complete the puzzle verification</string>
     <string name="number1">account：</string>
+    <string name="remember">remember the password </string>
+    <string name="updated_content">updated content</string>
 </resources>

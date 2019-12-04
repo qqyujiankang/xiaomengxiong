@@ -39,7 +39,7 @@ public class ThinnerDialog extends AlertDialog {
         textView = findViewById(R.id.tv_text);
         tv_version_number = findViewById(R.id.tv_version_number);
         tv_version_number.setText(versionInfo.getData().getAndroid());
-        textView.setText(versionInfo.getData().getText());
+        textView.setText(versionInfo.getData().getText().replace("/n","\n"));
         button = findViewById(R.id.btn_ok);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
