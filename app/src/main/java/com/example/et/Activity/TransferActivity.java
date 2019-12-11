@@ -1,6 +1,7 @@
 package com.example.et.Activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -15,6 +16,7 @@ import com.example.et.R;
 import com.example.et.Ustlis.ScreenUtils;
 import com.example.et.Ustlis.ToastUtils;
 import com.example.et.View.PayDialog;
+import com.example.et.fragment.WalletFragment;
 import com.example.et.util.CacheUtils;
 import com.example.et.util.LogUtils;
 import com.example.et.util.StringUtils;
@@ -162,7 +164,16 @@ public class TransferActivity extends BaseActivity {
                     Map<String, Object> objectPagebean = ParseUtils.analysisListTypeDatasAndCount(TransferActivity.this, success, null, false).getStringMap();
                     if (objectPagebean.get(KeyValueConstants.CODE).equals("200")) {
                         LogUtils.i("======钱包======" + objectPagebean.get(KeyValueConstants.MSG));
+//                        HopePropertyActivityActivity.aBoolean = true;
+//                        WalletFragment.istype = true;
+                              WalletFragment.istype=true;
+                        Intent intent=new Intent();
+                        intent.setClass(context, MainActivity.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        intent.putExtra("fragment_flag", 1);
+                        startActivity(intent);
                         finish();
+
                     }
                     ToastUtils.showShort(objectPagebean.get(KeyValueConstants.MSG).toString());
 

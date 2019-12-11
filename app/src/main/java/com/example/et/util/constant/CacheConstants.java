@@ -22,6 +22,7 @@ public class CacheConstants {
     public static final String photo = "photo";//头像
     public static final String name = "name";//name
     public static final String i_code_img = "i_code_img";//name
+    public static final String i_code = "i_code";//name
     /**
      * 手机号
      */

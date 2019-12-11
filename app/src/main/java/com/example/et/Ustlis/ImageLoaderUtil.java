@@ -5,9 +5,11 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.graphics.drawable.RoundedBitmapDrawable;
 import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory;
@@ -23,6 +25,7 @@ import com.bumptech.glide.request.FutureTarget;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.target.BitmapImageViewTarget;
+import com.bumptech.glide.request.target.CustomViewTarget;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.target.Target;
 import com.bumptech.glide.request.transition.Transition;
@@ -89,6 +92,28 @@ public class ImageLoaderUtil {
      * @param url
      */
     public static void setGlideim(Context context, final View view, String url) {
+        Glide.with(context).load(url).into(new SimpleTarget<Drawable>() {
+            @Override
+            public void onResourceReady(Drawable resource, Transition<? super Drawable> transition) {
+                int w = resource.getMinimumWidth();
+                int h = resource.getMinimumHeight();
+                LogUtils.w("手机----------w" + ScreenUtils.getScreenWidth(), "33-----------w---" + w + "---------h--------" + h);
+                view.setLayoutParams(new LinearLayout.LayoutParams(ScreenUtils.getScreenWidth(), (ScreenUtils.getScreenWidth() * h) / w));//720*365
+                view.setBackground(resource);
+
+            }
+
+        });
+    }
+
+    /**
+     * Glide 设置图片适应屏幕
+     *
+     * @param context
+     * @param view
+     * @param url
+     */
+    public static void setGlideim1(Context context, final View view, int url) {
         Glide.with(context).load(url).into(new SimpleTarget<Drawable>() {
             @Override
             public void onResourceReady(Drawable resource, Transition<? super Drawable> transition) {
@@ -350,4 +375,7 @@ public class ImageLoaderUtil {
             }
         }).into(imageView);
     }
+
+
+
 }

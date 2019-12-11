@@ -51,7 +51,7 @@ public class WalletFragment extends BaseFragment implements AdapterView.OnItemCl
 
     private Lifeful lifeful;
 
-
+    public static boolean istype = false;
 //
 //    @Override
 //    public void onHiddenChanged(boolean hidden) {
@@ -68,6 +68,14 @@ public class WalletFragment extends BaseFragment implements AdapterView.OnItemCl
 //    }
 
     private AdapterRealize adapterRealize;
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (istype) {
+            requestDatas();
+        }
+    }
 
     @Override
     public void requestDatas() {

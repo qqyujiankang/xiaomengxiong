@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     style="@style/WrapWrap.Vertical"
     android:padding="@dimen/start_or_end_10"
+    android:visibility="gone"
     android:layout_gravity="center">
 
     <ProgressBar style="@style/WrapWrap" />

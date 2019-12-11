@@ -1,5 +1,6 @@
 package com.example.et.util;
 
+import android.content.Context;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.View;
@@ -33,10 +34,12 @@ public final class SizeUtils {
     /**
      * px 转 dp
      *
+     *
+     * @param context
      * @param pxValue px 值
      * @return dp 值
      */
-    public static int px2dp(final float pxValue) {
+    public static int px2dp(Context context, final float pxValue) {
         final float scale = Utils.getApp().getResources().getDisplayMetrics().density;
         return (int) (pxValue / scale + 0.5f);
     }

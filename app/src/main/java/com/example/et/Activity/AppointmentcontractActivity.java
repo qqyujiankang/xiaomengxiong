@@ -82,7 +82,7 @@ public class AppointmentcontractActivity extends BaseActivity {
         setContentView(R.layout.activity_appointmentcontract);
         ButterKnife.bind(this);
 
-        initView();
+           initView();
         requestDatas();
 
     }

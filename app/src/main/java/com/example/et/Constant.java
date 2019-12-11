@@ -6,7 +6,8 @@ package com.example.et;
  */
 
 public class Constant {
-    public static final String BASE_URL = "https://api.etac.io/api/";
+   public static final String BASE_URL = "https://api.etac.io/api/";
+    //public static final String BASE_URL = "https://ceshi.etac.io/api/";
     public static final String registermessage = BASE_URL + "registermessage";//短信
     public static final String login = BASE_URL + "login";//登录
     public static final String register = BASE_URL + "register";//注册

@@ -165,6 +165,11 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
             settingsTab.setChecked(false);
             recordTab.setChecked(false);
 
+        } else if (fragment_flag == 1) {
+            contactTab.setChecked(false);
+            todayTab.setChecked(false);
+            settingsTab.setChecked(false);
+            recordTab.setChecked(true);
         }
     }
 
@@ -188,7 +193,7 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
     public void checkVersionSuccess(VersionInfo usVersionInfo) {
 
         if (!AppUtils.getAppVersionName().equals(usVersionInfo.getData().getAndroid())) {
-            ThinnerDialog thinnerDialog = new ThinnerDialog(context,usVersionInfo );
+            ThinnerDialog thinnerDialog = new ThinnerDialog(context, usVersionInfo);
             thinnerDialog.show();
             thinnerDialog.setCancelable(false);
             thinnerDialog.getWindow().setLayout(ScreenUtils.getScreenWidth() - 100, LinearLayout.LayoutParams.WRAP_CONTENT);

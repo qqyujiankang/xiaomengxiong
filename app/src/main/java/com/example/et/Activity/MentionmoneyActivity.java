@@ -2,6 +2,7 @@ package com.example.et.Activity;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -16,6 +17,7 @@ import com.example.et.R;
 import com.example.et.Ustlis.ScreenUtils;
 import com.example.et.Ustlis.ToastUtils;
 import com.example.et.View.PayDialog;
+import com.example.et.fragment.WalletFragment;
 import com.example.et.util.CacheUtils;
 import com.example.et.util.JsonUtil;
 import com.example.et.util.LogUtils;
@@ -157,7 +159,7 @@ public class MentionmoneyActivity extends BaseActivity {
 
                             }
                         };
-                        payDialog.getWindow().setLayout(ScreenUtils.getScreenWidth()-200 , LinearLayout.LayoutParams.WRAP_CONTENT);
+                        payDialog.getWindow().setLayout(ScreenUtils.getScreenWidth() - 200, LinearLayout.LayoutParams.WRAP_CONTENT);
                         payDialog.setCancelable(false);
                         payDialog.setView(new EditText(context));
                         payDialog.show();
@@ -197,7 +199,15 @@ public class MentionmoneyActivity extends BaseActivity {
                     Map<String, Object> resultMap = ParseUtils.analysisListTypeDatasAndCount((Activity) context, success, null, true).getStringMap();
                     LogUtils.i("exp========", success + "==============" + resultMap.get(KeyValueConstants.MSG).toString());
                     if (resultMap.get(KeyValueConstants.CODE).equals("200")) {
+                        WalletFragment.istype=true;
+                        Intent intent = new Intent();
+                        intent.setClass(context, MainActivity.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        intent.putExtra("fragment_flag", 1);
+                        startActivity(intent);
                         finish();
+
+
                     }
                     ToastUtils.showShort(resultMap.get(KeyValueConstants.MSG).toString());
 
