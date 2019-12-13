@@ -32,6 +32,8 @@ import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;
 
+import org.xutils.common.util.DensityUtil;
+
 import java.util.Hashtable;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -94,19 +96,7 @@ public class FriendShareActivity extends BaseActivity {
         super.initView();
         publicTitleTv.setText(R.string.Friends_share);
         rlBacground.setBackgroundResource(R.color.p_transparency);
-        //  ImageLoaderUtil.setGlideim1(FriendShareActivity.this, ll, R.mipmap.uploads);
-        Glide.with(context).load(R.mipmap.uploads).into(new SimpleTarget<Drawable>() {
-            @Override
-            public void onResourceReady(Drawable resource, Transition<? super Drawable> transition) {
-                int w = resource.getMinimumWidth();
-                int h = resource.getMinimumHeight();
-                LogUtils.w("手机----------w" + ScreenUtils.getScreenWidth(), "33-----------w---" + w + "---------h--------" + h);
-                ll.setLayoutParams(new LinearLayout.LayoutParams(ScreenUtils.getScreenWidth(), (ScreenUtils.getScreenWidth() * h) / w));//720*365
-                ll.setBackground(resource);
-
-            }
-
-        });
+        ImageLoaderUtil.setGlideim1(FriendShareActivity.this, ll, R.mipmap.uploads);
         ivCode.setImageBitmap(createQRCodeBitmap("https://api.etac.io/login/index.html?f_code=" + CacheUtils.getInstance().getString(CacheConstants.i_code), 180, 180, "UTF-8", "H", "1", Color.BLACK, Color.WHITE));
         tvCode.setText(CacheUtils.getInstance().getString(CacheConstants.i_code));
         if (isphoneisnobiel(CacheUtils.getInstance().getString(CacheConstants.PHONE)).equals("1")) {
