@@ -3,9 +3,7 @@ package com.example.et.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -13,30 +11,19 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.transition.Transition;
 import com.example.et.R;
 import com.example.et.Ustlis.ImageLoaderUtil;
-import com.example.et.Ustlis.ScreenUtils;
 import com.example.et.Ustlis.StatusBarUtil;
 import com.example.et.Ustlis.ToastUtils;
-import com.example.et.Ustlis.ZXingUtils;
 import com.example.et.util.CacheUtils;
 import com.example.et.util.ImageUtils;
-import com.example.et.util.LogUtils;
 import com.example.et.util.constant.CacheConstants;
-import com.google.zxing.BarcodeFormat;
-import com.google.zxing.EncodeHintType;
-import com.google.zxing.WriterException;
-import com.google.zxing.common.BitMatrix;
-import com.google.zxing.qrcode.QRCodeWriter;
-
-import org.xutils.common.util.DensityUtil;
-
-import java.util.Hashtable;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -76,6 +63,8 @@ public class FriendShareActivity extends BaseActivity {
     LinearLayout ll;
     @BindView(R.id.tv_2)
     TextView tv2;
+    @BindView(R.id.tv_)
+    TextView tv;
     private Context context;
 
     @Override
@@ -96,7 +85,8 @@ public class FriendShareActivity extends BaseActivity {
         super.initView();
         publicTitleTv.setText(R.string.Friends_share);
         rlBacground.setBackgroundResource(R.color.p_transparency);
-        ImageLoaderUtil.setGlideim1(FriendShareActivity.this, ll, R.mipmap.uploads);
+           ImageLoaderUtil.setGlideim1(FriendShareActivity.this, ll, R.mipmap.uploads);
+
         ivCode.setImageBitmap(createQRCodeBitmap("https://api.etac.io/login/index.html?f_code=" + CacheUtils.getInstance().getString(CacheConstants.i_code), 180, 180, "UTF-8", "H", "1", Color.BLACK, Color.WHITE));
         tvCode.setText(CacheUtils.getInstance().getString(CacheConstants.i_code));
         if (isphoneisnobiel(CacheUtils.getInstance().getString(CacheConstants.PHONE)).equals("1")) {

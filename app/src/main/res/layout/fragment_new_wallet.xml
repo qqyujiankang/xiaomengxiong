@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/MatchMatch.Vertical"
+    android:background="@color/black">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FF121E2E"
+        android:gravity="center"
+        android:paddingTop="32.5dp"
+        android:paddingBottom="14.5dp"
+        android:text="@string/menu_contact"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_18" />
+
+    <com.example.et.util.PublicSwipeRefreshLayout.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/swipeRefreshLayout"
+        style="@style/MatchWrap.Vertical">
+
+        <LinearLayout
+
+            style="@style/MatchWrap.Vertical">
+
+
+            <RelativeLayout
+                style="@style/MatchWrap"
+                android:layout_marginTop="1dp"
+                android:background="#121E2E">
+
+                <TextView
+                    style="@style/WrapWrap"
+                    android:layout_marginStart="15.5dp"
+                    android:layout_marginTop="@dimen/start_or_end_18"
+                    android:layout_marginBottom="@dimen/start_or_end_18"
+                    android:text="个人资产"
+                    android:textColor="@color/white"
+                    android:textSize="14sp" />
+
+                <TextView
+                    style="@style/WrapWrap"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginStart="15.5dp"
+                    android:layout_marginTop="17.8dp"
+                    android:layout_marginEnd="15.5dp"
+                    android:layout_marginBottom="@dimen/start_or_end_18"
+                    android:text="个人资产"
+                    android:textColor="@color/orange"
+                    android:textSize="@dimen/text_size_18" />
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="#192754" />
+
+            <ListView
+                android:id="@+id/listv"
+                style="@style/MatchWrap"
+                android:background="@color/black_01"
+                android:divider="@color/textcolor_yellow"
+                android:dividerHeight="1dp" />
+
+            <RelativeLayout
+                style="@style/MatchWrap"
+                android:layout_marginTop="1dp"
+                android:background="#121E2E">
+
+                <TextView
+                    style="@style/WrapWrap"
+                    android:layout_marginStart="15.5dp"
+                    android:layout_marginTop="@dimen/start_or_end_18"
+                    android:layout_marginBottom="@dimen/start_or_end_18"
+                    android:text="合约资产"
+                    android:textColor="@color/white"
+                    android:textSize="14sp" />
+
+                <TextView
+                    style="@style/WrapWrap"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginStart="15.5dp"
+                    android:layout_marginTop="17.8dp"
+                    android:layout_marginEnd="15.5dp"
+                    android:layout_marginBottom="@dimen/start_or_end_18"
+                    android:text="合约资产"
+                    android:textColor="@color/orange"
+                    android:textSize="@dimen/text_size_18" />
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="#192754" />
+
+            <ListView
+                 android:layout_height="60dp"
+                style="@style/MatchWrap"
+                android:background="@color/black_01"
+                android:divider="@color/textcolor_yellow"
+                android:dividerHeight="1dp" />
+        </LinearLayout>
+    </com.example.et.util.PublicSwipeRefreshLayout.SwipeRefreshLayout>
+
+
+</LinearLayout>

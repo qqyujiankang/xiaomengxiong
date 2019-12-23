@@ -10,6 +10,7 @@ import com.example.et.entnty.ListObject;
 import com.example.et.fragment.ContractFragment;
 import com.example.et.fragment.HeadFragment;
 import com.example.et.fragment.MyFragment;
+import com.example.et.fragment.NewWalletFragment;
 import com.example.et.fragment.WalletFragment;
 
 import java.util.ArrayList;
@@ -32,15 +33,30 @@ public class ListDatasUtils {
         return listObjects;
     }
 
+      /**
+     * @param context
+     * @return
+     */
+    public static List getListActivity1(Context context ,String s ) {
+        List<ListObject> listObjects = new ArrayList<>();
+        if (!s.equals("HOPE")) {
+            listObjects.add(new ListObject(context.getString(R.string.top_up), BitmapFactory.decodeResource(context.getResources(), R.mipmap.top_up), null));
+            listObjects.add(new ListObject(context.getString(R.string.Mention_money), BitmapFactory.decodeResource(context.getResources(), R.mipmap.mention_money), null));
+        }
+        listObjects.add(new ListObject(context.getString(R.string.Transferred), BitmapFactory.decodeResource(context.getResources(), R.mipmap.transferred), null));
+        listObjects.add(new ListObject(context.getString(R.string.transfer), BitmapFactory.decodeResource(context.getResources(), R.mipmap.transfer), null));
+        listObjects.add(new ListObject(context.getString(R.string.record), BitmapFactory.decodeResource(context.getResources(), R.mipmap.record), null));
+        return listObjects;
+    }
+
     /**
-     *
      * List<Fragment>
      */
     public static ArrayList<Fragment> getListFragmentMainActivity() {
         ArrayList<Fragment> fragments = new ArrayList<>();
 
         fragments.add(0, new HeadFragment());
-        fragments.add(1, new WalletFragment());
+        fragments.add(1, new NewWalletFragment());
         fragments.add(2, new ContractFragment());
         fragments.add(3, new MyFragment());
 

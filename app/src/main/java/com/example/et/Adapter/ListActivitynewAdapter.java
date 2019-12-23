@@ -4,7 +4,6 @@ import android.content.Context;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.example.et.Activity.PersonalDataActivity;
 import com.example.et.R;
 import com.example.et.entnty.ListObject;
@@ -19,8 +18,8 @@ import butterknife.BindView;
  * Created by ywx on 2018/4/17.
  */
 
-public class ListActivityAdapter<T> extends ManagerAdapter {
-    public ListActivityAdapter(Context context, List list, Lifeful lifeful) {
+public class ListActivitynewAdapter<T> extends ManagerAdapter {
+    public ListActivitynewAdapter(Context context, List list, Lifeful lifeful) {
         super(context, list, lifeful);
     }
 
@@ -38,12 +37,8 @@ public class ListActivityAdapter<T> extends ManagerAdapter {
 
         @Override
         protected int getItemLayoutResId() {
-                 LogUtils.i("======钱包======" , context.toString());
-            if (context instanceof PersonalDataActivity) {
 
-                return R.layout.adapter_new_list_object;
-            }
-            return R.layout.adapter_list_object;
+            return R.layout.adapter_new_list_object;
 
         }
 

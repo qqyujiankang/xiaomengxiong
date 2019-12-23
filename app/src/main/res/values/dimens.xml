@@ -14,6 +14,7 @@
     <dimen name="start_or_end_5">5dp</dimen>
     <dimen name="start_or_end_10">10dp</dimen>
     <dimen name="start_or_end_15">15dp</dimen>
+    <dimen name="start_or_end_18">18dp</dimen>
     <dimen name="start_or_end_20">20dp</dimen>
     <dimen name="start_or_end_30">30dp</dimen>
 

@@ -57,7 +57,7 @@ public class LoadDialog extends Dialog {
         this.cancelable = cancelable;
         this.tipMsg = tipMsg;
 
-        // this.getContext().setTheme(R.style.LunchTheme);
+        this.getContext().setTheme(R.style.LunchTheme);
         setContentView(R.layout.public_dialog_layout);
         // 必须放在加载布局后
         setparams();
@@ -75,9 +75,9 @@ public class LoadDialog extends Dialog {
         // Dialog宽度
         lp.width = (int) (ScreenUtils.getScreenWidth() * 0.7);
         Window window = getWindow();
-        window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+      //  window.setBackgroundDrawable(new ColorDrawable(Color.RED));
         window.setAttributes(lp);
-        window.getDecorView().getBackground().setAlpha(255);
+        window.getDecorView().getBackground().setAlpha(0);
     }
 
     @Override

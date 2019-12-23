@@ -28,8 +28,7 @@ import butterknife.ButterKnife;
 public class SplashActivity extends AppCompatActivity {
 
     @BindView(R.id.activity_view)
-    ImageView activityView;
-
+    ImageView activityView;   
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //满屏显示

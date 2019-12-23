@@ -7,18 +7,14 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.READ_LOGS" />
-
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
-
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
-
         android:name=".HJZApplication"
         android:allowBackup="true"
         android:icon="@mipmap/icon"
@@ -28,27 +24,26 @@
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         android:usesCleartextTraffic="true"
         tools:targetApi="n">
-
+        <activity android:name=".Activity.TransferredActivity"></activity>
         <!-- 配置APP ID -->
         <meta-data
             android:name="BUGLY_APPID"
-            android:value="ccdec69fa9" />
-        <!-- 配置APP版本号 -->
+            android:value="ccdec69fa9" /> <!-- 配置APP版本号 -->
         <meta-data
             android:name="BUGLY_APP_VERSION"
-            android:value="1.0.4" />
-        <!-- 配置APP渠道号 -->
-
-        <!-- 配置Bugly调试模式（true或者false）-->
+            android:value="1.0.4" /> <!-- 配置APP渠道号 -->
+        <!-- 配置Bugly调试模式（true或者false） -->
         <meta-data
             android:name="BUGLY_ENABLE_DEBUG"
-            android:value="true" />
-        <!--        语言切换-->
+            android:value="true" /> <!-- 语言切换 -->
+        <activity
+            android:name=".Activity.PersonalAssetsActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".Activity.IanguageSwitchActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme" />
-        <!-- 合约详情 -->
+            android:theme="@style/AppTheme" /> <!-- 合约详情 -->
         <activity
             android:name=".Activity.TheContractDetailsActivity"
             android:screenOrientation="portrait"
@@ -155,18 +150,14 @@
         <activity android:name=".Activity.BaseActivity" /> <!-- 启动页 -->
         <activity
             android:name=".Activity.SplashActivity"
-            android:theme="@style/AppTheme.StartingWindowTheme"
-
-
-            >
+            android:theme="@style/AppTheme.StartingWindowTheme">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <!-- 注册继承JCommonService的服务 -->
+        </activity> <!-- 注册继承JCommonService的服务 -->
         <service
             android:name=".Service.XService"
             android:enabled="true"
@@ -175,8 +166,7 @@
             <intent-filter>
                 <action android:name="cn.jiguang.user.service.action" />
             </intent-filter>
-        </service>
-        <!-- 替换原生极光推送接收器 -->
+        </service> <!-- 替换原生极光推送接收器 -->
         <receiver
             android:name=".Service.MyReceiver"
             android:enabled="true"
@@ -184,10 +174,10 @@
             tools:node="replace">
             <intent-filter>
                 <action android:name="cn.jpush.android.intent.RECEIVE_MESSAGE" />
-                <category android:name="com.example.et" /> <!--JPush上注册的包名 -->
+
+                <category android:name="com.example.et" /> <!-- JPush上注册的包名 -->
             </intent-filter>
         </receiver>
-
     </application>
 
 </manifest>

@@ -112,6 +112,7 @@ public class ImageLoaderUtil {
      * @param context
      * @param view
      * @param url
+     * @param
      */
     public static void setGlideim1(Context context, final View view, int url) {
         Glide.with(context).load(url).into(new SimpleTarget<Drawable>() {
@@ -120,24 +121,15 @@ public class ImageLoaderUtil {
                 int w = resource.getIntrinsicWidth();
                 int h = resource.getMinimumHeight();
 //                LogUtils.w("手机----------w" + ScreenUtils.getScreenWidth(), "33-----------w---" + w + "---------h--------" + h);
-//                view.setLayoutParams(new LinearLayout.LayoutParams(ScreenUtils.getScreenWidth(), (ScreenUtils.getScreenWidth() * h) / w));//720*365
-                int width = ScreenUtils.getScreenWidth();//获取屏幕宽度
-                int Height = ScreenUtils.getScreenHeight();//获取屏幕宽度
-                LogUtils.i("获取屏幕宽度========" + width + "========获取屏幕高度======" + Height);
-                ViewGroup.LayoutParams params = view.getLayoutParams();
-                params.width = width;
-                // params.height = Height;
-                params.height = (int) (1334f / 750 * width);//1334和750是背景原图的宽高
-
-                view.setLayoutParams(params);
-                //  view.setBackground(R.mipmap.uploads);
+                view.setLayoutParams(new LinearLayout.LayoutParams(ScreenUtils.getScreenWidth(), (ScreenUtils.getScreenWidth() * h) / w));//720*365
                 view.setBackground(resource);
-                LogUtils.i("view宽度========" + params.width + "========view高度======" + params.height);
+
 
 
             }
 
         });
+
     }
 
     /**
