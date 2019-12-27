@@ -57,20 +57,23 @@ public class RecordAdapter extends ManagerAdapter {
             tvTime.setText(record.getTime());
             tvType.setText(record.getTypes());
             tvHavePeople.setText(record.getType());
-            if (record.getTophone()!=null) {
+            if (record.getTophone() != null) {
                 lvphone.setVisibility(View.VISIBLE);
                 tvTophone.setText(record.getTophone());
-            }else {
+            } else {
                 lvphone.setVisibility(View.GONE);
             }
 
-
-            if (Double.parseDouble(record.getNumber()) > 0) {
-                tvGlod.setText("+" + record.getNumber());
-                tvGlod.setTextColor(context.getResources().getColor(R.color.colorPrimaryDark));
-            } else if (Double.parseDouble(record.getNumber()) < 0) {
+            if (!record.getNumber().equals("")) {
+                if (Double.parseDouble(record.getNumber()) > 0) {
+                    tvGlod.setText("+" + record.getNumber());
+                    tvGlod.setTextColor(context.getResources().getColor(R.color.colorPrimaryDark));
+                } else if (Double.parseDouble(record.getNumber()) < 0) {
+                    tvGlod.setText(record.getNumber());
+                    tvGlod.setTextColor(context.getResources().getColor(R.color.colorAccent_01));
+                }
+            }else {
                 tvGlod.setText(record.getNumber());
-                tvGlod.setTextColor(context.getResources().getColor(R.color.colorAccent_01));
             }
             if (list.size() - 1 == position) {
                 tv.setVisibility(View.GONE);

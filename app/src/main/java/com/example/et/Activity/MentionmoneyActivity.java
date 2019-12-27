@@ -199,12 +199,14 @@ public class MentionmoneyActivity extends BaseActivity {
                     Map<String, Object> resultMap = ParseUtils.analysisListTypeDatasAndCount((Activity) context, success, null, true).getStringMap();
                     LogUtils.i("exp========", success + "==============" + resultMap.get(KeyValueConstants.MSG).toString());
                     if (resultMap.get(KeyValueConstants.CODE).equals("200")) {
-                        WalletFragment.istype=true;
-                        Intent intent = new Intent();
-                        intent.setClass(context, MainActivity.class);
-                        intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        intent.putExtra("fragment_flag", 1);
-                        startActivity(intent);
+//                        WalletFragment.istype=true;
+//                        Intent intent = new Intent();
+//                        intent.setClass(context, MainActivity.class);
+//                        intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                        intent.putExtra("fragment_flag", 1);
+//                        startActivity(intent);
+//                        finish();
+                        PersonalAssetsActivity.aBoolean = true;
                         finish();
 
 

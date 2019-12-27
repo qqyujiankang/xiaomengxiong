@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ll"
     style="@style/MatchMatch.Vertical"
     tools:context=".Activity.TransferredActivity">
 
@@ -9,14 +10,14 @@
 
     <LinearLayout
         style="@style/MatchWrap.Vertical"
-        android:layout_marginTop="@dimen/icon_width_height_20"
+        android:layout_marginTop="@dimen/icon_width_height_10"
         android:background="#FF121E2E">
 
         <TextView
             style="@style/WrapWrap"
             android:layout_marginStart="@dimen/text_size_14"
             android:layout_marginTop="@dimen/text_size_18"
-            android:text="划转币种"
+            android:text="@string/Currency_transfers"
             android:textColor="@color/white"
             android:textSize="@dimen/text_size_11" />
 
@@ -25,11 +26,11 @@
             android:layout_marginStart="@dimen/text_size_14">
 
             <TextView
+
                 android:id="@+id/tv_01"
                 style="@style/WrapWrap"
                 android:layout_marginTop="1.5dp"
                 android:layout_marginBottom="9.5dp"
-                android:text="请选择"
                 android:textColor="@color/white"
 
                 android:textSize="@dimen/text_size_14" />
@@ -48,11 +49,12 @@
             style="@style/WrapWrap"
             android:layout_marginStart="@dimen/text_size_14"
             android:layout_marginTop="@dimen/text_size_18"
-            android:text="划转类型"
+            android:text="@string/Type_of_transfer"
             android:textColor="@color/white"
             android:textSize="@dimen/text_size_11" />
 
         <RelativeLayout
+            android:id="@+id/Rl_1"
             style="@style/MatchWrap"
             android:layout_marginStart="@dimen/text_size_14">
 
@@ -61,7 +63,7 @@
                 style="@style/WrapWrap"
                 android:layout_marginTop="1.5dp"
                 android:layout_marginBottom="9.5dp"
-                android:text="请选择"
+                android:text="@string/please_select"
                 android:textColor="@color/white"
 
                 android:textSize="@dimen/text_size_14" />
@@ -80,7 +82,7 @@
             style="@style/WrapWrap"
             android:layout_marginStart="@dimen/text_size_14"
             android:layout_marginTop="@dimen/text_size_18"
-            android:text="划转金额"
+            android:text="@string/Transfer_amount"
             android:textColor="@color/white"
             android:textSize="@dimen/text_size_11" />
 
@@ -88,17 +90,26 @@
             style="@style/MatchWrap"
             android:layout_marginStart="@dimen/text_size_14">
 
-            <TextView
+            <EditText
                 android:id="@+id/tv_03"
-                style="@style/WrapWrap"
+                style="@style/MatchWrap"
                 android:layout_marginTop="1.5dp"
                 android:layout_marginBottom="9.5dp"
-                android:text="请选择"
-                android:textColor="@color/white"
 
+                android:layout_toLeftOf="@+id/iv"
+                android:background="@null"
+                android:hint="@string/Pleasenter_the_transfer_amount"
+                android:inputType="number"
+                android:paddingTop="@dimen/start_or_end_5"
+                android:paddingBottom="@dimen/start_or_end_5"
+                android:singleLine="true"
+                android:textColor="@color/white"
+                android:textColorHint="@color/FF6F8AAC"
                 android:textSize="@dimen/text_size_14" />
 
-            <ImageView style="@style/WrapWrap.ImageView_bank" />
+            <ImageView
+                android:id="@+id/iv"
+                style="@style/WrapWrap.ImageView_bank" />
 
 
         </RelativeLayout>

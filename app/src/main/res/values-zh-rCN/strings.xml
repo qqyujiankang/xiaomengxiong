@@ -201,4 +201,15 @@
     <string name="remember">记住密码</string>
     <string name="updated_content">更新的内容</string>
     <string name="Transferred">划转</string>
+    <string name="things_personal">个人资产</string>
+    <string name="Pleasenter_the_transfer_amount">请输入划转金额</string>
+    <string name="Reference_Asset">合约资产</string>
+    <string name="frozen">冻结资产</string>
+    <string name="Currency_transfers">划转币种</string>
+    <string name="Type_of_transfer">划转类型</string>
+    <string name="Transfer_amount">划转金额</string>
+    <string name="please_select">请选择</string>
+    <string name="Transferto_mineral_machinery_assets">划转至矿机资产</string>
+    <string name="Assets_to_freeze">划转至冻结资产</string>
+    <string name="Temporarily_not_opened">暂未开放</string>
 </resources>

@@ -208,5 +208,17 @@
     <string name="number1">account：</string>
     <string name="remember">remember the password </string>
     <string name="updated_content">updated content</string>
-    <string name="Transferred">划转</string>
+
+    <string name="Transferred">Transfer</string>
+    <string name="things_personal">Personal assets</string>
+    <string name="Pleasenter_the_transfer_amount">Please enter transfer amount</string>
+    <string name="Reference_Asset">Contractual assets</string>
+    <string name="frozen">Frozen assets</string>
+    <string name="Currency_transfers">Currency transfers</string>
+    <string name="Type_of_transfer">Type of transfer</string>
+    <string name="Transfer_amount">Transfer amount</string>
+    <string name="please_select">Please choose</string>
+    <string name="Transferto_mineral_machinery_assets">Assets transferred to the mill</string>
+    <string name="Assets_to_freeze">Assets transferred to the freeze</string>
+    <string name="Temporarily_not_opened">Temporarily not opened</string>
 </resources>

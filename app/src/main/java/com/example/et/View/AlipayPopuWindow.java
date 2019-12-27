@@ -16,6 +16,7 @@ import android.widget.TextView;
 import com.example.et.Adapter.ContractAdapter;
 import com.example.et.Constant;
 import com.example.et.R;
+import com.example.et.Ustlis.ListDatasUtils;
 import com.example.et.entnty.Contract;
 import com.example.et.entnty.Currencyaddress;
 import com.example.et.entnty.Pagebean;
@@ -45,7 +46,7 @@ public class AlipayPopuWindow extends PopupWindow {
     private AdapterRealize adapterRealize;
     private TextView tv_cancel, tvtite;
 
-    public AlipayPopuWindow(final Activity context, AdapterView.OnItemClickListener itemsOnClick, Lifeful Lifeful, List<Currencyaddress> currencyaddresses) {
+    public AlipayPopuWindow(final Activity context, AdapterView.OnItemClickListener itemsOnClick, Lifeful Lifeful, List<Currencyaddress> currencyaddresses, int i,String name) {
         super(context);
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         mMenuView = inflater.inflate(R.layout.popup_window_alipay, null);
@@ -66,8 +67,15 @@ public class AlipayPopuWindow extends PopupWindow {
             retdata(Lifeful, context, listView);
 
         } else {
-            tvtite.setText(R.string.select);
-            listView.setAdapter(new ContractAdapter(context,currencyaddresses,Lifeful));
+            if (i == 0) {
+                tvtite.setText(R.string.select);
+                listView.setAdapter(new ContractAdapter(context, currencyaddresses, Lifeful));
+            } else {
+
+                tvtite.setVisibility(View.GONE);
+                listView.setAdapter(new ContractAdapter(context, ListDatasUtils.getListTransferred(context,i,name), Lifeful));
+            }
+
         }
         //设置SelectPicPopupWindow的View
         this.setContentView(mMenuView);
@@ -79,7 +87,7 @@ public class AlipayPopuWindow extends PopupWindow {
         //设置SelectPicPopupWindow弹出窗体可点击
         this.setFocusable(true);
         //设置SelectPicPopupWindow弹出窗体动画效果
-      //  this.setAnimationStyle(R.style.AnimBottom);
+        //  this.setAnimationStyle(R.style.AnimBottom);
         //实例化一个ColorDrawable颜色为半透明
         ColorDrawable dw = new ColorDrawable(0xb0000000);
         //设置SelectPicPopupWindow弹出窗体的背景

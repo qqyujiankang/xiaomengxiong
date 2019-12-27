@@ -207,5 +207,16 @@
     <string name="number1">帳號：</string>
     <string name="remember">記住密碼</string>
     <string name="updated_content">更新的内容</string>
-    <string name="Transferred">划转</string>
+    <string name="Transferred">劃轉</string>
+    <string name="things_personal">個人資產</string>
+    <string name="Pleasenter_the_transfer_amount">請輸入劃轉金額</string>
+    <string name="Reference_Asset">合約資產</string>
+    <string name="frozen">凍結資產</string>
+    <string name="Currency_transfers">劃轉幣種</string>
+    <string name="Type_of_transfer">劃轉類型</string>
+    <string name="Transfer_amount">劃轉金額</string>
+    <string name="please_select">請選擇</string>
+    <string name="Transferto_mineral_machinery_assets">劃轉至礦機資產</string>
+    <string name="Assets_to_freeze">劃轉至凍結資產</string>
+    <string name="Temporarily_not_opened">暂未开放</string>
 </resources>

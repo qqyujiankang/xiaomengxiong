@@ -1,5 +1,6 @@
 package com.example.et.Ustlis;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.BitmapFactory;
 
@@ -7,6 +8,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.et.R;
 import com.example.et.entnty.ListObject;
+import com.example.et.entnty.Transferred;
 import com.example.et.fragment.ContractFragment;
 import com.example.et.fragment.HeadFragment;
 import com.example.et.fragment.MyFragment;
@@ -33,21 +35,31 @@ public class ListDatasUtils {
         return listObjects;
     }
 
-      /**
+    /**
      * @param context
      * @return
      */
-    public static List getListActivity1(Context context ,String s ) {
+    public static List getListActivity1(Context context, String s,String string) {
         List<ListObject> listObjects = new ArrayList<>();
-        if (!s.equals("HOPE")) {
+        if (s.equals(context.getString(R.string.things_personal))) {
             listObjects.add(new ListObject(context.getString(R.string.top_up), BitmapFactory.decodeResource(context.getResources(), R.mipmap.top_up), null));
             listObjects.add(new ListObject(context.getString(R.string.Mention_money), BitmapFactory.decodeResource(context.getResources(), R.mipmap.mention_money), null));
+            listObjects.add(new ListObject(context.getString(R.string.Transferred), BitmapFactory.decodeResource(context.getResources(), R.mipmap.transferred), null));
+            listObjects.add(new ListObject(context.getString(R.string.transfer), BitmapFactory.decodeResource(context.getResources(), R.mipmap.transfer), null));
+            listObjects.add(new ListObject(context.getString(R.string.record), BitmapFactory.decodeResource(context.getResources(), R.mipmap.record), null));
+
+
+        } else if (s.equals(context.getString(R.string.Reference_Asset))) {
+            listObjects.add(new ListObject(context.getString(R.string.Transferred), BitmapFactory.decodeResource(context.getResources(), R.mipmap.transferred), null));
+            if (string.equals("USDT")){
+                  listObjects.add(new ListObject(context.getString(R.string.transfer), BitmapFactory.decodeResource(context.getResources(), R.mipmap.transfer), null));
+            }
+
+            listObjects.add(new ListObject(context.getString(R.string.record), BitmapFactory.decodeResource(context.getResources(), R.mipmap.record), null));
         }
-        listObjects.add(new ListObject(context.getString(R.string.Transferred), BitmapFactory.decodeResource(context.getResources(), R.mipmap.transferred), null));
-        listObjects.add(new ListObject(context.getString(R.string.transfer), BitmapFactory.decodeResource(context.getResources(), R.mipmap.transfer), null));
-        listObjects.add(new ListObject(context.getString(R.string.record), BitmapFactory.decodeResource(context.getResources(), R.mipmap.record), null));
         return listObjects;
     }
+
 
     /**
      * List<Fragment>
@@ -63,4 +75,22 @@ public class ListDatasUtils {
         return fragments;
     }
 
+    public static List getListTransferred(Activity context, int i, String name) {
+        List<Transferred> transferreds = new ArrayList<>();
+        if (i == 1) {
+            transferreds.add(new Transferred("mining", context.getString(R.string.Transferto_mineral_machinery_assets)));
+        } else if (i == 2) {
+            if (name.equals("USDT")) {
+                transferreds.add(new Transferred("dongjie", context.getString(R.string.Assets_to_freeze)));
+            } else {
+                transferreds.add(new Transferred("mining", context.getString(R.string.Transferto_mineral_machinery_assets)));
+                transferreds.add(new Transferred("all", "划转至个人资产"));
+            }
+
+        }
+        // transferreds.add(new Transferred("all", "划转至个人资产"));
+
+        return transferreds;
+
+    }
 }

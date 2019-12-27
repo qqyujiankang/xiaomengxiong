@@ -4,8 +4,11 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <RelativeLayout
 
+
+
+    <RelativeLayout
+        android:id="@+id/Rl"
         style="@style/MatchWrap"
         android:background="@color/black_01"
         android:padding="@dimen/panding_or_margin_5">
@@ -17,25 +20,26 @@
             android:paddingBottom="@dimen/start_or_end_10">
 
             <ImageView
-                android:layout_marginStart="@dimen/start_or_end_15"
                 android:id="@+id/iv_view"
                 android:layout_width="44dp"
-                android:layout_height="44dp"/>
-            <TextView
-                android:layout_centerVertical="true"
-                android:layout_toRightOf="@+id/iv_view"
-                android:textSize="@dimen/text_size_18"
-                android:id="@+id/tv_name"
-                style="@style/WrapWrap"
-                android:layout_marginStart="@dimen/icon_width_height_20"
-                android:layout_marginLeft="@dimen/icon_width_height_20"
-                android:text="USDT"
-                android:textColor="@color/orange" />
+                android:layout_height="44dp"
+                android:layout_marginStart="@dimen/start_or_end_15" />
 
             <TextView
+                android:id="@+id/tv_name"
+                style="@style/WrapWrap"
                 android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/icon_width_height_20"
+                android:layout_marginLeft="@dimen/icon_width_height_20"
+                android:layout_toRightOf="@+id/iv_view"
+                android:text="USDT"
+                android:textColor="@color/orange"
+                android:textSize="@dimen/text_size_18" />
+
+            <TextView
                 android:id="@+id/tv_number"
                 style="@style/WrapWrap"
+                android:layout_centerVertical="true"
                 android:layout_marginRight="@dimen/start_or_end_10"
                 android:layout_toStartOf="@+id/iv_bank"
                 android:layout_toLeftOf="@+id/iv_bank"
@@ -48,12 +52,7 @@
                 style="@style/WrapWrap.ImageView_bank" />
 
 
-
-
-
         </RelativeLayout>
-
-
 
 
     </RelativeLayout>

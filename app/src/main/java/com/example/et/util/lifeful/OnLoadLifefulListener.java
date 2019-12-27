@@ -42,10 +42,10 @@ public class OnLoadLifefulListener<T> extends OnLoadListener<T> {
         this.context = (Context) lifeful;
         this.swipeRefreshLayout = swipeRefreshLayout;
         if (this.swipeRefreshLayout == null) {
-            LoadDialog.show(context);
+           // LoadDialog.show(context);
         }else if (this.swipeRefreshLayout!=null){
             if (!swipeRefreshLayout.isRefreshing()&&!swipeRefreshLayout.isLoading()){
-                LoadDialog.show(context);
+              //  LoadDialog.show(context);
             }
         }
         lifefulGenerator = new DefaultLifefulGenerator<>(listener, lifeful);
@@ -55,11 +55,11 @@ public class OnLoadLifefulListener<T> extends OnLoadListener<T> {
     public void onSuccess(T success) {
 
         if (this.swipeRefreshLayout == null) {
-            LoadDialog.dismiss(context);
+           // LoadDialog.dismiss(context);
         }else if (this.swipeRefreshLayout!=null){
 
             if (!swipeRefreshLayout.isRefreshing()&&!swipeRefreshLayout.isLoading()){
-                LoadDialog.dismiss(context);
+               // LoadDialog.dismiss(context);
             }else {
                 this.swipeRefreshLayout.setState();
             }
@@ -72,10 +72,10 @@ public class OnLoadLifefulListener<T> extends OnLoadListener<T> {
     @Override
     public void onError(String error) {
         if (this.swipeRefreshLayout == null) {
-            LoadDialog.dismiss(context);
+            //LoadDialog.dismiss(context);
         }else if (this.swipeRefreshLayout!=null){
             if (!swipeRefreshLayout.isRefreshing()&&!swipeRefreshLayout.isLoading()){
-                LoadDialog.dismiss(context);
+               // LoadDialog.dismiss(context);
             }else {
                 this.swipeRefreshLayout.setState();
             }

@@ -189,7 +189,7 @@ public class HopePropertyActivityActivity extends BaseActivity {
                 ActivityUtils.startActivity(intent);//RecordActivity
                 break;
             case R.id.btn_Mention_money:
-                alipayPopuWindow = new AlipayPopuWindow((Activity) context, onItemClickListener, null, currencyaddresses);
+                alipayPopuWindow = new AlipayPopuWindow((Activity) context, onItemClickListener, null, currencyaddresses,0,null);
                 alipayPopuWindow.showAtLocation(ll, Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0); //设置layout在PopupWindow中显示的位置
 
 

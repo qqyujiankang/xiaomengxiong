@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ll"
     style="@style/MatchMatch.Vertical"
     tools:context=".Activity.PersonalAssetsActivity">
 
@@ -58,6 +59,8 @@
     </RelativeLayout>
 
     <RelativeLayout
+
+        android:id="@+id/rl_bacground"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -67,13 +70,14 @@
             android:layout_marginTop="@dimen/icon_width_height_20"
             android:background="@color/black_b"
             android:divider="@color/black"
-            android:dividerHeight="1dp" />
+            android:dividerHeight="1dp"
+            android:visibility="gone" />
 
         <com.example.et.View.MyGridView
-            android:layout_marginBottom="@dimen/icon_width_height_20"
             android:id="@+id/public_grid_view"
             style="@style/MatchWrap"
             android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/icon_width_height_20"
             android:background="#000000"
             android:listSelector="#000000"
             android:paddingTop="10dp"

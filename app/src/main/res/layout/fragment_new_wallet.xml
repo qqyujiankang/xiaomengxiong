@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     style="@style/MatchMatch.Vertical"
     android:background="@color/black">
 
@@ -14,93 +15,183 @@
         android:textColor="@color/white"
         android:textSize="@dimen/text_size_18" />
 
-    <com.example.et.util.PublicSwipeRefreshLayout.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+    <com.example.et.util.PublicSwipeRefreshLayout.SwipeRefreshLayout
         android:id="@+id/swipeRefreshLayout"
         style="@style/MatchWrap.Vertical">
 
-        <LinearLayout
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
 
-            style="@style/MatchWrap.Vertical">
+            android:layout_height="match_parent"
+            android:fillViewport="true">
 
 
-            <RelativeLayout
-                style="@style/MatchWrap"
-                android:layout_marginTop="1dp"
-                android:background="#121E2E">
+            <LinearLayout
 
-                <TextView
-                    style="@style/WrapWrap"
-                    android:layout_marginStart="15.5dp"
-                    android:layout_marginTop="@dimen/start_or_end_18"
-                    android:layout_marginBottom="@dimen/start_or_end_18"
-                    android:text="个人资产"
-                    android:textColor="@color/white"
-                    android:textSize="14sp" />
+                style="@style/MatchWrap.Vertical">
 
-                <TextView
-                    style="@style/WrapWrap"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginStart="15.5dp"
-                    android:layout_marginTop="17.8dp"
-                    android:layout_marginEnd="15.5dp"
-                    android:layout_marginBottom="@dimen/start_or_end_18"
-                    android:text="个人资产"
-                    android:textColor="@color/orange"
-                    android:textSize="@dimen/text_size_18" />
-            </RelativeLayout>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:background="#192754" />
+                <RelativeLayout
+                    style="@style/MatchWrap"
+                    android:layout_marginTop="1dp"
+                    android:background="#121E2E">
 
-            <ListView
-                android:id="@+id/listv"
-                style="@style/MatchWrap"
-                android:background="@color/black_01"
-                android:divider="@color/textcolor_yellow"
-                android:dividerHeight="1dp" />
+                    <TextView
+                        style="@style/WrapWrap"
+                        android:layout_marginStart="15.5dp"
+                        android:layout_marginTop="@dimen/start_or_end_18"
+                        android:layout_marginBottom="@dimen/start_or_end_18"
+                        android:text="@string/things_personal"
+                        android:textColor="@color/white"
+                        android:textSize="14sp" />
 
-            <RelativeLayout
-                style="@style/MatchWrap"
-                android:layout_marginTop="1dp"
-                android:background="#121E2E">
+                    <TextView
+                        android:id="@+id/tv_personal"
+                        style="@style/WrapWrap"
+                        android:layout_marginTop="17.8dp"
+                        android:layout_marginBottom="@dimen/start_or_end_18"
+                        android:layout_toStartOf="@+id/tv_04"
+                        android:text="424"
+                        android:textColor="@color/orange"
+                        android:textSize="@dimen/text_size_18"
+                        android:visibility="gone" />
 
-                <TextView
-                    style="@style/WrapWrap"
-                    android:layout_marginStart="15.5dp"
-                    android:layout_marginTop="@dimen/start_or_end_18"
-                    android:layout_marginBottom="@dimen/start_or_end_18"
-                    android:text="合约资产"
-                    android:textColor="@color/white"
-                    android:textSize="14sp" />
+                    <TextView
+                        android:id="@+id/tv_04"
+                        style="@style/WrapWrap"
+                        android:layout_alignBottom="@+id/tv_personal"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginEnd="15.5dp"
+                        android:text="@string/USDT"
+                        android:textColor="@color/orange"
+                        android:textSize="@dimen/text_size_12"
+                        android:visibility="gone" />
+                </RelativeLayout>
 
                 <TextView
-                    style="@style/WrapWrap"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginStart="15.5dp"
-                    android:layout_marginTop="17.8dp"
-                    android:layout_marginEnd="15.5dp"
-                    android:layout_marginBottom="@dimen/start_or_end_18"
-                    android:text="合约资产"
-                    android:textColor="@color/orange"
-                    android:textSize="@dimen/text_size_18" />
-            </RelativeLayout>
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="#192754" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:background="#192754" />
+                <com.example.et.View.MyListView
+                    android:id="@+id/listv"
+                    style="@style/MatchWrap"
+                    android:background="@color/black_01"
+                    android:divider="@color/textcolor_yellow"
+                    android:dividerHeight="1dp" />
 
-            <ListView
-                 android:layout_height="60dp"
-                style="@style/MatchWrap"
-                android:background="@color/black_01"
-                android:divider="@color/textcolor_yellow"
-                android:dividerHeight="1dp" />
-        </LinearLayout>
+                <RelativeLayout
+                    style="@style/MatchWrap"
+                    android:layout_marginTop="1dp"
+                    android:background="#121E2E">
+
+                    <TextView
+                        style="@style/WrapWrap"
+                        android:layout_marginStart="15.5dp"
+                        android:layout_marginTop="@dimen/start_or_end_18"
+                        android:layout_marginBottom="@dimen/start_or_end_18"
+                        android:text="@string/Reference_Asset"
+                        android:textColor="@color/white"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/tv_content"
+                        style="@style/WrapWrap"
+                        android:layout_marginStart="15.5dp"
+                        android:layout_marginTop="17.8dp"
+                        android:layout_marginBottom="@dimen/start_or_end_18"
+                        android:layout_toStartOf="@+id/tv_05"
+                        android:textColor="@color/orange"
+                        android:textSize="@dimen/text_size_18"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:id="@+id/tv_05"
+                        style="@style/WrapWrap"
+                        android:layout_alignBottom="@+id/tv_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginEnd="15.5dp"
+                        android:text="@string/USDT"
+                        android:textColor="@color/orange"
+                        android:textSize="@dimen/text_size_12"
+                        android:visibility="gone" />
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="#192754" />
+
+                <com.example.et.View.MyListView
+                    android:id="@+id/list_item"
+                    style="@style/MatchWrap"
+                    android:background="@color/black_01"
+                    android:divider="@color/textcolor_yellow"
+                    android:dividerHeight="1dp" />
+
+                <LinearLayout
+                    style="@style/MatchWrap.Vertical"
+                    android:visibility="gone">
+
+
+                    <TextView
+
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:background="#192754" />
+
+                    <RelativeLayout
+                        style="@style/MatchWrap"
+                        android:layout_marginTop="1dp"
+                        android:background="#121E2E">
+
+                        <TextView
+                            style="@style/WrapWrap"
+                            android:layout_marginStart="15.5dp"
+                            android:layout_marginTop="@dimen/start_or_end_18"
+                            android:layout_marginBottom="@dimen/start_or_end_18"
+                            android:text="@string/frozen"
+                            android:textColor="@color/white"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/tv_frozen"
+                            style="@style/WrapWrap"
+                            android:layout_marginStart="15.5dp"
+                            android:layout_marginTop="17.8dp"
+                            android:layout_marginBottom="@dimen/start_or_end_18"
+                            android:layout_toStartOf="@+id/tv_06"
+                            android:textColor="@color/orange"
+                            android:textSize="@dimen/text_size_18"
+                            android:visibility="gone" />
+
+                        <TextView
+                            android:id="@+id/tv_06"
+                            style="@style/WrapWrap"
+                            android:layout_alignBottom="@+id/tv_frozen"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginEnd="15.5dp"
+                            android:text="@string/USDT"
+                            android:textColor="@color/orange"
+                            android:textSize="@dimen/text_size_12"
+                            android:visibility="gone" />
+                    </RelativeLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:background="#192754" />
+
+                    <com.example.et.View.MyListView
+                        android:id="@+id/list_frozen"
+                        style="@style/MatchWrap"
+                        android:background="@color/black_01"
+                        android:divider="@color/textcolor_yellow"
+                        android:dividerHeight="1dp" />
+                </LinearLayout>
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
     </com.example.et.util.PublicSwipeRefreshLayout.SwipeRefreshLayout>
-
 
 </LinearLayout>

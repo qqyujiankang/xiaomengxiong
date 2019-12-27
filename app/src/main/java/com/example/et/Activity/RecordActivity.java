@@ -73,11 +73,14 @@ public class RecordActivity extends BaseActivity {
 
     }
 
+    private String name,moneytype;
+
     @Override
     public void getIntentDatas() {
         super.getIntentDatas();
         id = getIntent().getIntExtra("id", 0);
-
+        name = getIntent().getStringExtra("name");
+        moneytype = getIntent().getStringExtra("moneytype");
     }
 
 
@@ -89,13 +92,20 @@ public class RecordActivity extends BaseActivity {
         try {
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("phone", CacheUtils.getInstance().getString(CacheConstants.PHONE));
-            //jsonObject.put("phone", "13546180013");
-            jsonObject.put("gid", id);
+//            //jsonObject.put("phone", "13546180013");
+//            jsonObject.put("gid", id);
             jsonObject.put("page", page);
-            TaskPresenterUntils.lifeful(Constant.assorder, jsonObject, new OnLoadLifefulListener<String>(swipeRefreshLayout, new OnLoadListener<String>() {
+            if (name.equals(getString(R.string.things_personal))) {
+                jsonObject.put("type", "all");
+            } else {
+                jsonObject.put("type", "contract");
+
+            }
+            jsonObject.put("moneytype", moneytype);
+            TaskPresenterUntils.lifeful(Constant.assetswalletorder, jsonObject, new OnLoadLifefulListener<String>(swipeRefreshLayout, new OnLoadListener<String>() {
                 @Override
                 public void onSuccess(String success) {
-                    LogUtils.i("===============" + success);
+                    LogUtils.i("===============记录-----" + success);
                     if (adapterRealize == null) {
                         adapterRealize = new AdapterRealize();
                     }

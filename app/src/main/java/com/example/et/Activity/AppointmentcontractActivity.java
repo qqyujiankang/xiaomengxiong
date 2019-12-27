@@ -82,7 +82,7 @@ public class AppointmentcontractActivity extends BaseActivity {
         setContentView(R.layout.activity_appointmentcontract);
         ButterKnife.bind(this);
 
-           initView();
+        initView();
         requestDatas();
 
     }
@@ -111,7 +111,7 @@ public class AppointmentcontractActivity extends BaseActivity {
                 finish();
                 break;
             case R.id.ll_contract_amount:
-                alipayPopuWindow = new AlipayPopuWindow((Activity) context, onItemClickListener, lifeful, null);
+                alipayPopuWindow = new AlipayPopuWindow((Activity) context, onItemClickListener, lifeful, null, 0, null);
                 alipayPopuWindow.showAtLocation(ll, Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0); //设置layout在PopupWindow中显示的位置
 
                 break;

@@ -62,7 +62,7 @@ public class TransferActivity extends BaseActivity {
     EditText etTransferAmount;
     private Context context;
     private int id;
-    private String pay_pass, name;
+    private String pay_pass, name,assetstype;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,6 +80,7 @@ public class TransferActivity extends BaseActivity {
         super.getIntentDatas();
         id = getIntent().getIntExtra("id", 0);
         name = getIntent().getStringExtra("name");
+        assetstype = getIntent().getStringExtra("assetstype");
 
     }
 
@@ -154,8 +155,9 @@ public class TransferActivity extends BaseActivity {
             jsonObject.put("money", TransferAmount);
             jsonObject.put("pay_pass", pay_pass);
             jsonObject.put("touser", AccountNumber);
+            jsonObject.put("assetstype", assetstype);//assetstype;//哪个钱包  个人 all 矿机 mining 合约  contract
 
-
+            LogUtils.i("exp======"+jsonObject);
             TaskPresenterUntils.lifeful(Constant.userupdate, jsonObject, new OnLoadLifefulListener<String>(null, new OnLoadListener<String>() {
                 @Override
                 public void onSuccess(String success) {
@@ -163,15 +165,16 @@ public class TransferActivity extends BaseActivity {
 
                     Map<String, Object> objectPagebean = ParseUtils.analysisListTypeDatasAndCount(TransferActivity.this, success, null, false).getStringMap();
                     if (objectPagebean.get(KeyValueConstants.CODE).equals("200")) {
-                        LogUtils.i("======钱包======" + objectPagebean.get(KeyValueConstants.MSG));
+                        LogUtils.i("======钱包======" + objectPagebean.get(KeyValueConstants.MSG).toString());
 //                        HopePropertyActivityActivity.aBoolean = true;
 //                        WalletFragment.istype = true;
-                              WalletFragment.istype=true;
-                        Intent intent=new Intent();
-                        intent.setClass(context, MainActivity.class);
-                        intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        intent.putExtra("fragment_flag", 1);
-                        startActivity(intent);
+//                              WalletFragment.istype=true;
+//                        Intent intent=new Intent();
+//                        intent.setClass(context, MainActivity.class);
+//                        intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                        intent.putExtra("fragment_flag", 1);
+//                        startActivity(intent);
+                        PersonalAssetsActivity.aBoolean = true;
                         finish();
 
                     }

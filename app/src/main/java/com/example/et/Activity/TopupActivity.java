@@ -138,7 +138,7 @@ public class TopupActivity extends BaseActivity {
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("phone", CacheUtils.getInstance().getString(CacheConstants.PHONE));
             jsonObject.put("type", id);
-
+            LogUtils.i("======钱包======" + jsonObject);
 
             TaskPresenterUntils.lifeful(Constant.recharge, jsonObject, new OnLoadLifefulListener<String>(null, new OnLoadListener<String>() {
                 @Override

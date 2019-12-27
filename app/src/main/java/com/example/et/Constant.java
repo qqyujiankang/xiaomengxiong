@@ -6,8 +6,8 @@ package com.example.et;
  */
 
 public class Constant {
-   public static final String BASE_URL = "https://api.etac.io/api/";
-    //public static final String BASE_URL = "https://ceshi.etac.io/api/";
+    public static final String BASE_URL = "https://api.etac.io/api/";
+    // public static final String BASE_URL = "https://ceshi.etac.io/api/";
     public static final String registermessage = BASE_URL + "registermessage";//短信
     public static final String login = BASE_URL + "login";//登录
     public static final String register = BASE_URL + "register";//注册
@@ -22,6 +22,9 @@ public class Constant {
     //查询币地址
     public static final String goldaddress = BASE_URL + "goldaddress";
     public static final String assets = BASE_URL + "assets";//assets
+    public static final String assetswallet = BASE_URL + "assetswallet";//assetswallet
+    public static final String assetswalletone = BASE_URL + "assetswalletone";//assetswallet
+    public static final String assetstransfer = BASE_URL + "assetstransfer";//assetswallet
     public static final String uppass = BASE_URL + "uppass";//assets
     public static final String upphoto = BASE_URL + "upphoto";//头像
     public static final String getpass = BASE_URL + "getpass";//找回密码
@@ -41,5 +44,6 @@ public class Constant {
     public static final String getgold_hl = BASE_URL + "getgold_hl";//提币手续费
     public static final String upgoldaddress1 = BASE_URL + "upgoldaddress1";//upgoldaddress1
     public static final String et_update = BASE_URL + "et_update";//获取版本信息
+    public static final String assetswalletorder = BASE_URL + "assetswalletorder";//获取版本信息
 
 }

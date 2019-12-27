@@ -185,6 +185,9 @@ public class AddressbindingActivity extends BaseActivity {
                 } else if (id == 7) {
                     jsonObject.put("yaddress", addressbinding);
                     url = Constant.upgoldaddress1;
+                } else if (id == 11) {
+                    jsonObject.put("yaddress", addressbinding);
+                    url = Constant.upgoldaddress1;
                 }
             } else {
                 url = Constant.upgoldaddress;
@@ -199,7 +202,7 @@ public class AddressbindingActivity extends BaseActivity {
                     Map<String, Object> resultMap = ParseUtils.analysisListTypeDatasAndCount((Activity) context, success, null, true).getStringMap();
                     if (resultMap.get(KeyValueConstants.CODE).equals("200")) {
                         CacheUtils.getInstance().put(CacheConstants.usdtaddress, etPassword.getText().toString().trim());
-                        HopePropertyActivityActivity.aBoolean = true;
+                        PersonalAssetsActivity.aBoolean = true;
                         finish();
                     }
                     ToastUtils.showShort(resultMap.get(KeyValueConstants.MSG).toString());

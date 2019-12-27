@@ -12,6 +12,7 @@ public class KeyValueConstants {
     public static final String LIST = "list";
     public static final String answer = "answer";
     public static final String ass = "ass";
+    public static final String address = "address";
 
 
 
