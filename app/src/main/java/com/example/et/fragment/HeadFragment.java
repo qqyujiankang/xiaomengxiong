@@ -144,7 +144,7 @@ public class HeadFragment extends BaseFragment implements AdapterView.OnItemClic
 
         requestDatas();
         requestDatas2();
-        requestDatas3();
+    //    requestDatas3();
         requestDatas4();
 
 //        StatusBarUtils.with(getActivity())
@@ -174,7 +174,7 @@ public class HeadFragment extends BaseFragment implements AdapterView.OnItemClic
             @Override
             public void onRefresh() {
                 requestDatas();
-                requestDatas3();
+              //  requestDatas3();
                 requestDatas2();
 
 

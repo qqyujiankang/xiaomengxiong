@@ -89,7 +89,7 @@ public class AddressbindingActivity extends BaseActivity {
     public void getIntentDatas() {
         super.getIntentDatas();
         id = getIntent().getIntExtra("id", 0);
-        addressbinding = getIntent().getStringExtra("name");
+           addressbinding = getIntent().getStringExtra("name");
         tepy = getIntent().getStringExtra("tepy");
         stringname = getIntent().getStringExtra("stringname");
         xiugan = getIntent().getStringExtra("xiugan");

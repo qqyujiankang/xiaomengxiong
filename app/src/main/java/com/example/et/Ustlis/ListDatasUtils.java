@@ -84,7 +84,7 @@ public class ListDatasUtils {
                 transferreds.add(new Transferred("dongjie", context.getString(R.string.Assets_to_freeze)));
             } else {
                 transferreds.add(new Transferred("mining", context.getString(R.string.Transferto_mineral_machinery_assets)));
-                transferreds.add(new Transferred("all", "划转至个人资产"));
+                transferreds.add(new Transferred("all", context.getString(R.string.Transfer_to_personal_assets)));
             }
 
         }

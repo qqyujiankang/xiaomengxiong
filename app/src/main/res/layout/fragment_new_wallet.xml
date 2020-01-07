@@ -129,9 +129,7 @@
                     android:divider="@color/textcolor_yellow"
                     android:dividerHeight="1dp" />
 
-                <LinearLayout
-                    style="@style/MatchWrap.Vertical"
-                    android:visibility="gone">
+
 
 
                     <TextView
@@ -189,7 +187,7 @@
                         android:divider="@color/textcolor_yellow"
                         android:dividerHeight="1dp" />
                 </LinearLayout>
-            </LinearLayout>
+
 
         </androidx.core.widget.NestedScrollView>
     </com.example.et.util.PublicSwipeRefreshLayout.SwipeRefreshLayout>

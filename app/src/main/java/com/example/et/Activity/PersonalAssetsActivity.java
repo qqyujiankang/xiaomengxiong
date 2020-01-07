@@ -254,14 +254,14 @@ public class PersonalAssetsActivity extends BaseActivity {
                         intent.setClass(context, TransferredActivity.class);
                         ActivityUtils.startActivity(intent);
                     } else {
-                        if (assetswallet.getName().equals("USDT")) {
-                            ToastUtils.showShort(getString(R.string.Temporarily_not_opened));
-                        } else {
-                            intent.putExtra("name", name);
-                            intent.putExtra("currency", assetswallet.getName());
-                            intent.setClass(context, TransferredActivity.class);
-                            ActivityUtils.startActivity(intent);
-                        }
+//                        if (assetswallet.getName().equals("USDT")) {
+//                            ToastUtils.showShort(getString(R.string.Temporarily_not_opened));
+//                        } else {
+                           intent.putExtra("name", name);
+                        intent.putExtra("currency", assetswallet.getName());
+                        intent.setClass(context, TransferredActivity.class);
+                        ActivityUtils.startActivity(intent);
+                        //   }
 
                     }
                 } else if (objectList.getName().equals(getString(R.string.transfer))) {

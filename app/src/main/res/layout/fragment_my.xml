@@ -73,8 +73,7 @@
                             android:layout_centerVertical="true"
                             android:layout_marginLeft="1dp"
                             android:layout_marginEnd="@dimen/icon_width_height_20"
-                            android:layout_toLeftOf="@+id/iv"
-                            />
+                            android:layout_toLeftOf="@+id/iv" />
 
                         <TextView
                             android:id="@+id/tv_phone"
@@ -139,6 +138,7 @@
                         style="@style/MatchWrap.Horizontal"
                         android:layout_marginStart="15dp"
                         android:paddingTop="10dp"
+                        android:visibility="gone"
 
                         >
 

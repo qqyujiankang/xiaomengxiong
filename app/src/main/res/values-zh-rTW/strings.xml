@@ -211,12 +211,13 @@
     <string name="things_personal">個人資產</string>
     <string name="Pleasenter_the_transfer_amount">請輸入劃轉金額</string>
     <string name="Reference_Asset">合約資產</string>
-    <string name="frozen">凍結資產</string>
+    <string name="frozen">釋放資產</string>
     <string name="Currency_transfers">劃轉幣種</string>
     <string name="Type_of_transfer">劃轉類型</string>
     <string name="Transfer_amount">劃轉金額</string>
     <string name="please_select">請選擇</string>
     <string name="Transferto_mineral_machinery_assets">劃轉至礦機資產</string>
-    <string name="Assets_to_freeze">劃轉至凍結資產</string>
+    <string name="Assets_to_freeze">劃轉至釋放資產</string>
     <string name="Temporarily_not_opened">暂未开放</string>
+    <string name="Transfer_to_personal_assets">劃轉至個人資產</string>
 </resources>
